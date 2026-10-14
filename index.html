@@ -128,6 +128,51 @@ h1,h2,h3,p,dl{margin:0}
 .grab::before{content:"";width:44px;height:5px;border-radius:99px;background:rgba(58,29,11,.28)}
 .stars{color:#C98200;font-weight:800}
 .rd{color:var(--ink-soft);font-weight:700}
+.factbtn{position:absolute;top:10px;right:10px;z-index:460;display:flex;align-items:center;gap:6px;height:42px;padding:0 16px 0 12px;border-radius:99px;background:linear-gradient(#FFB347,var(--orange-deep));color:#fff;font-family:var(--display);font-weight:800;font-size:16px;box-shadow:0 4px 0 #B84A00,0 6px 14px rgba(58,29,11,.25);animation:nudge 3s ease-in-out 1.2s 2}
+.factbtn span{font-size:20px}
+@keyframes nudge{0%,100%{transform:none}8%{transform:rotate(-4deg) scale(1.05)}16%{transform:rotate(4deg) scale(1.05)}24%{transform:none}}
+.ptspill{position:absolute;top:60px;right:10px;z-index:460;display:flex;align-items:center;gap:5px;height:34px;padding:0 12px;border-radius:99px;background:var(--white);box-shadow:var(--shadow);font-weight:800;font-size:13.5px}
+#factModal{position:fixed;inset:0;z-index:900;background:rgba(40,16,4,.55);display:grid;place-items:center;padding:20px}
+.fact{width:100%;max-width:400px;background:var(--paper);border-radius:26px;border:4px solid #fff;box-shadow:0 10px 0 rgba(58,29,11,.25);padding:20px 18px 18px;display:flex;flex-direction:column;gap:10px;animation:pop .25s ease-out;max-height:90vh;overflow-y:auto}
+@keyframes pop{from{transform:scale(.85);opacity:0}}
+.fact-k{align-self:flex-start;font-weight:800;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:var(--orange-deep);padding:3px 10px;border-radius:99px}
+.fact-e{font-size:46px;line-height:1}
+.fact h2{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.1}
+.fact p{line-height:1.5;font-size:15.5px}
+.fact-b{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
+.qhead{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#FFA23F,var(--orange-deep));color:#fff;border-radius:20px;padding:16px;box-shadow:0 4px 0 rgba(58,29,11,.2)}
+.qpts{display:flex;flex-direction:column;align-items:center;min-width:76px}
+.qpts b{font-family:var(--display);font-size:40px;line-height:1}
+.qpts span{font-weight:800;font-size:12px}
+.qlv{flex:1;display:flex;flex-direction:column;gap:6px}
+.qlv b{font-family:var(--display);font-size:22px;line-height:1}
+.qlv .bar{height:10px;border-radius:99px;background:rgba(255,255,255,.35);overflow:hidden}
+.qlv .bar i{display:block;height:100%;background:#fff;border-radius:99px}
+.qlv small{font-weight:800;font-size:12px}
+.qstats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.qstats span{background:#fff;border-radius:14px;padding:8px;text-align:center;font-size:11.5px;font-weight:700;color:var(--ink-soft);box-shadow:0 2px 0 rgba(58,29,11,.12)}
+.qstats b{display:block;font-family:var(--display);font-size:20px;color:var(--ink)}
+.qcard{background:#fff;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:8px;box-shadow:0 2px 0 rgba(58,29,11,.12)}
+.qcard.ok{background:#EEF8EE}
+.qdiff{align-self:flex-start;color:#fff;font-weight:800;font-size:11.5px;padding:3px 10px;border-radius:99px}
+.qt{font-family:var(--display);font-size:19px;line-height:1.15}
+.qcard p{font-size:14px;line-height:1.4}
+.qat{align-self:flex-start;font-weight:800;font-size:13px;color:var(--orange-deep);text-align:left}
+.qbtn{cursor:pointer}
+.qdone{font-weight:800;color:#1E7A43}
+.qwait{font-weight:800;color:var(--ink-soft)}
+.qimg{width:100%;max-height:220px;object-fit:cover;border-radius:12px}
+.qq{font-weight:800}
+.qopt{text-align:left;place-items:center start;padding:8px 12px}
+.qopt.wrong{background:#FDE2E4;color:#9B1C2C;box-shadow:none}
+.badges{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.badge{background:#fff;border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:2px;opacity:.45;filter:grayscale(1);box-shadow:0 2px 0 rgba(58,29,11,.12)}
+.badge.on{opacity:1;filter:none;border:2px solid #FFD23F}
+.badge span{font-size:26px}
+.badge b{font-size:14px}
+.badge small{font-size:11.5px;color:var(--ink-soft);font-weight:700}
+.qhow{font-size:13px;line-height:1.55;color:var(--ink-soft);font-weight:700;background:#fff;border-radius:14px;padding:12px}
+.tab{font-size:13.5px}
 #toast{position:absolute;left:12px;right:76px;bottom:34px;z-index:500;background:var(--ink);color:var(--white);padding:10px 14px;border-radius:14px;font-weight:700;font-size:13px}
 
 /* Liste */
@@ -193,6 +238,8 @@ h1,h2,h3,p,dl{margin:0}
     <div class="view">
       <div id="map"></div>
       <div class="gps" id="gps"><i></i><span>Konum bekleniyor</span></div>
+      <button class="factbtn" id="factBtn" type="button"><span aria-hidden="true">💡</span>Günün bilgisi</button>
+      <button class="ptspill" id="ptsPill" type="button" aria-label="Puanların ve görevler"><span aria-hidden="true">⭐</span><span>0 puan</span></button>
       <div id="loading"><i></i><span>Harita yükleniyor…</span></div>
       <button class="help" id="helpBtn" type="button" aria-label="Haritadaki işaretlerin anlamı">?</button>
       <div id="legend" hidden></div>
@@ -204,9 +251,11 @@ h1,h2,h3,p,dl{margin:0}
     <nav class="tabs">
       <button class="tab" data-tab="map" aria-selected="true" type="button">Harita</button>
       <button class="tab" data-tab="list" aria-selected="false" type="button">Liste</button>
+      <button class="tab" data-tab="quest" aria-selected="false" type="button">Görevler</button>
       <button class="tab" data-tab="fav" aria-selected="false" type="button">Favoriler</button>
     </nav>
   </section>
+  <div id="factModal" hidden></div>
 </div>
 
 <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
@@ -479,7 +528,7 @@ function openCity(key){
   city = CITIES[key]; sel = null;
   $("#home").hidden = true; $("#city").hidden = false; $("#cityTitle").textContent = city.name;
   if (!(history.state && history.state.city)) history.pushState({city:key}, "");
-  renderChips(); setTab("map");
+  renderChips(); setTab("map"); startLocate();
   if (map){ map.resize(); return; }
   if (!window.maplibregl){ $("#loading").firstChild.hidden = true; $("#loading").lastChild.textContent = "Harita yüklenemedi. Bağlantını kontrol edip sayfayı yenile. Liste sekmesi yine çalışır."; return; }
   fetch("https://tiles.openfreemap.org/styles/liberty").then(r => r.json()).then(themed).then(initMap)
@@ -563,9 +612,10 @@ function startLocate(){
   watching = true; gps("", "Konum aranıyor");
   navigator.geolocation.watchPosition(pos => {
     me = [pos.coords.latitude, pos.coords.longitude]; const acc = pos.coords.accuracy;
-    if (!meMarker){ const d = document.createElement("div"); d.className = "medot"; meMarker = new maplibregl.Marker({element:d}).setLngLat(ll(me)).addTo(map); }
-    meMarker.setLngLat(ll(me));
-    if (inCity()){ gps("on", "Canlı konum ±" + Math.round(acc) + " m"); if (follow) map.panTo(ll(me)); }
+    if (map){ if (!meMarker){ const d = document.createElement("div"); d.className = "medot"; meMarker = new maplibregl.Marker({element:d}).setLngLat(ll(me)).addTo(map); }
+    meMarker.setLngLat(ll(me)); }
+    try { onPos(pos); } catch(e){}
+    if (inCity()){ gps("on", "Canlı konum ±" + Math.round(acc) + " m"); if (follow && map) map.panTo(ll(me)); }
     else gps("on", city.name + "'a " + fmtD(km(me, city.center)));
   }, err => {
     const framed = (() => { try { return window.top !== window.self; } catch(e){ return true; } })();
@@ -667,6 +717,7 @@ function setTab(t){
 }
 document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) setTab(b.dataset.tab); });
 function renderList(){
+  if (tab === "quest"){ renderQuest(); return; }
   if (!$("#q")){
     $("#list").innerHTML = `<div class="search"><input id="q" type="search" placeholder="Ara: kilise, patates, park…" aria-label="Noktalarda ara" autocomplete="off"></div><div id="listBody"></div>`;
     $("#q").addEventListener("input", e => { query = e.target.value; renderList(); });
@@ -692,6 +743,256 @@ function renderList(){
 $("#list").addEventListener("click", e => { const b = e.target.closest("[data-id]"); if (b) select(b.dataset.id); });
 
 renderHome();
+/* =====================================================================
+   GÜNÜN BİLGİSİ ve OYUN (Dolcan Puanı, günün görevleri, rozetler)
+   Her şey bu telefonda saklanır; sunucu yok.
+   ===================================================================== */
+const FACTS = [
+  {e:"🏗️", t:"Amsterdam'ın adı nereden geliyor?", x:"13. yüzyılda Amstel nehrinin üzerine bir set (dam) kuruldu. Çevresindeki yerleşim \"Amstelredam\", yani Amstel'deki set diye anıldı. O setin yeri bugünkü Dam Meydanı.", p:"dam"},
+  {e:"🪵", t:"13.659 kazık", x:"Kraliyet Sarayı bataklık zeminde 13.659 ahşap kazığın üzerinde duruyor. Hollandalılar sayıyı şöyle ezberler: başına 1, sonuna 9, ortasına yılın gün sayısı 365.", p:"paleis"},
+  {e:"👑", t:"Saray aslında belediye binasıydı", x:"Dam'daki saray 17. yüzyılda belediye binası olarak yapıldı. 1808'de Napolyon'un kardeşi Louis Bonaparte Hollanda kralı olunca binayı kendine saray yaptı. Bugün kralın resmi kabul sarayı.", p:"paleis"},
+  {e:"❌", t:"XXX ne demek?", x:"Şehrin her yerindeki üç X, Aziz Andreas haçı. Tarihçilerin çoğu bunu 1280-1282'de Amsterdam'ın efendisi olan Persijn ailesinin armasına bağlıyor. \"Yangın, sel ve vebaya karşı\" açıklaması ise tarihi dayanağı olmayan bir efsane."},
+  {e:"🛡️", t:"Kahraman, Kararlı, Merhametli", x:"Amsterdam armasının altında \"Heldhaftig, Vastberaden, Barmhartig\" yazar: Kahraman, Kararlı, Merhametli."},
+  {e:"🛶", t:"Tamamen yapay bir şehir", x:"Kanal kuşağı 16. yüzyıl sonunda planlandı ve 17. yüzyılda sıfırdan, tamamen yapay olarak inşa edildi. 2010'da UNESCO Dünya Mirası listesine girdi.", p:"keizers"},
+  {e:"🪝", t:"Çatılardaki kancalar", x:"Kanal evleri dar ve merdivenleri çok dik olduğu için eşyalar çatıdaki kancaya takılan halatla pencereden taşınır. Bu kancalar bugün de kullanılıyor."},
+  {e:"📈", t:"Dünyanın ilk halka arzı", x:"Hollanda Doğu Hindistan Şirketi (VOC) 1602'de halka açıldı. Amsterdam borsası dünyanın en eski modern menkul kıymet piyasası sayılır. Bilinen en eski hisse senedi 1606 tarihli.", p:"voc"},
+  {e:"🗽", t:"Manhattan'ı muskata değiştiler", x:"New York'un eski adı Yeni Amsterdam'dı. 1667 Breda Antlaşması ile İngiltere Manhattan'ı tuttu, Hollanda ise muskat yetişen minicik Run adasını aldı. O gün bu ada daha değerli görülüyordu."},
+  {e:"🌙", t:"Liever Turks dan Paaps", x:"\"Papacı olmaktansa Türk olmayı yeğlerim.\" İspanya'ya karşı savaşan Hollandalı Deniz Dilencilerinin sloganı. Osmanlı vergisini ödeyen gayrimüslimleri inançları yüzünden zorlamıyordu; İspanya ise Protestanlara ağır baskı uyguluyordu."},
+  {e:"🏅", t:"Hilal madalyalar", x:"Deniz Dilencileri şapkalarında hilal biçimli madalyalar taşıdı. Bir yüzünde \"LIVER TVRCX DAN PAVS\" yazar. 1574'te Leiden'i kurtaran denizciler bunları takıyordu; Rijksmuseum koleksiyonunda bir örneği var.", p:"rijks"},
+  {e:"🌷", t:"Lale aslında Osmanlı'dan", x:"Hollanda'nın simgesi lale bu topraklara ait değil. Osmanlı sarayından Avrupa'ya geldi; \"tulip\" kelimesinin Türkçe \"tülbent\"ten geldiği düşünülür. Leiden'de ilk resmi lale 1594'te çiçek açtı."},
+  {e:"💸", t:"İlk ekonomik balon", x:"1634-1637 Lale Çılgınlığı'nda tek bir lale soğanı usta bir zanaatkârın yıllık gelirinin 10 katından fazlasına satıldı. Şubat 1637'de piyasa bir anda çöktü."},
+  {e:"📜", t:"1612: Osmanlı ile ilk anlaşma", x:"Sultan I. Ahmed 1612'de Hollanda'ya ticari ayrıcalıklar tanıdı. İstanbul'daki ilk Hollanda elçisi Cornelis Haga geçici bir görev için geldi ve 27 yıl kaldı."},
+  {e:"☕", t:"Kahvenin Amsterdam durağı", x:"VOC tüccarları 18. yüzyıl başında Java'dan Hortus Botanicus'a kahve fidanı getirdi. En yaygın anlatıma göre bu fidanın bir kopyası 1714'te XIV. Louis'ye hediye edildi; kahve oradan Karayipler'e ve Latin Amerika'ya yayıldı.", p:"hortus"},
+  {e:"🕯️", t:"Elektriksiz sinagog", x:"1675'te açılan Portekiz Sinagogu'nun ana salonunda hâlâ elektrik yok; yaklaşık 1.000 mumlu avizelerle aydınlanıyor. Zemini toz ve nemi emsin diye ince kumla kaplı.", p:"portsyn"},
+  {e:"💍", t:"Dünyada bir ilk", x:"1 Nisan 2001'de Amsterdam belediye binasında Belediye Başkanı Job Cohen dört eşcinsel çifti evlendirdi. Hollanda bunu yasallaştıran ilk ülke oldu.", p:"stopera"},
+  {e:"🌊", t:"Denizin altında", x:"Hollanda'nın yaklaşık %26'sı deniz seviyesinin altında, %59'u denizden ya da nehirlerden sel riski taşıyor. Ünlü söz: \"Dünyayı Tanrı yarattı, Hollanda'yı Hollandalılar.\""},
+  {e:"🚲", t:"İnsandan çok bisiklet", x:"Hollanda'da yaklaşık 23 milyon bisiklet var, kişi başı 1,3. Kırmızı asfaltlı yollar bisiklet yoludur; üzerinde yürüme."},
+  {e:"📏", t:"Dünyanın en uzun erkekleri", x:"2016'da yayımlanan büyük bir araştırmaya göre Hollandalı erkekler ortalama 182,5 cm ile dünyanın en uzun boylu erkekleri."},
+  {e:"🏝️", t:"Denizden doğan şehir", x:"Flevopolder dünyanın en büyük yapay adası. Üzerindeki Almere 1984'te belediye oldu; yani 50 yıl önce orası deniz tabanıydı."},
+  {e:"🎶", t:"En eski milli marş", x:"Wilhelmus'un sözleri en geç 1572'ye uzanır. 15 kıtanın baş harfleri yan yana gelince \"Willem van Nassov\" adı çıkar."},
+  {e:"⛴️", t:"Bedava vapur", x:"Centraal'in hemen arkasından Noord'a giden vapurlar yayalar ve bisikletliler için ücretsiz. F3 Buiksloterweg'e, F4 NDSM'e gider.", p:"adam"},
+  {e:"🌉", t:"Sıska Köprü", x:"Magere Brug'un adı \"sıska köprü\" demek. Efsaneye göre nehrin iki yakasında oturan Mager kız kardeşler birbirini kolay ziyaret etmek için yaptırmış. Köprü hâlâ tekneler için elle açılıyor.", p:"magere"},
+  {e:"🎨", t:"Rembrandt'ın kayıp mezarı", x:"Rembrandt 1669'da yoksul biri olarak Westerkerk'e gömüldü. Mezarının tam yeri bilinmiyor; içeride yalnızca bir anma plaketi var.", p:"westerkerk"},
+  {e:"🏰", t:"Kapı, tartı evi, anatomi salonu", x:"De Waag 1488'de bir şehir kapısı olarak yapıldı, sonra tartı evine çevrildi. Üst katındaki cerrahlar loncası için Rembrandt \"Dr. Tulp'un Anatomi Dersi\"ni yaptı.", p:"waag"},
+  {e:"⏰", t:"Şaşkın Jaap", x:"Montelbaanstoren'in saati ve çanları sık sık yanlış zamanda çaldığı için Amsterdamlılar kuleye \"Malle Jaap\" (Şaşkın Jaap) adını taktı.", p:"montel"},
+  {e:"🖼️", t:"Müzenin içinden bisiklet yolu", x:"Rijksmuseum'un ortasındaki tonozlu geçitten bisiklet yolu geçer. Binanın mimarı Pierre Cuypers aynı yıllarda Centraal garını da tasarladı; ikisinin benzemesi bundan.", p:"rijks"},
+  {e:"⛪", t:"Şehrin en eski binası", x:"Oude Kerk 1306'da kutsandı ve Amsterdam'ın ayakta kalan en eski binası. Zemini baştan sona mezar taşlarıyla kaplı; Rembrandt'ın eşi Saskia da burada yatıyor.", p:"oudekerk"},
+  {e:"🌳", t:"Gizli avlu", x:"Begijnhof'taki 34 numaralı Houten Huys, şehrin ayakta kalan en eski ahşap evlerinden biri. Avlu ortaçağ sokak seviyesinde kaldığı için çevresinden yaklaşık bir metre alçakta.", p:"begijnhof"},
+  {e:"🕊️", t:"İki dakikalık sessizlik", x:"Dam'daki beyaz Ulusal Anıt 1956'da İkinci Dünya Savaşı kurbanları için dikildi. Her 4 Mayıs akşamı saat 20.00'de bütün ülke iki dakika susar.", p:"dam"},
+  {e:"🧇", t:"Stroopwafel nasıl yenir?", x:"Stroopwafel'in Gouda'dan çıktığı anlatılır. Sıcak bir çay ya da kahve bardağının üstüne koy; buhar ortadaki şerbeti yumuşatır.", p:"egstorf"},
+  {e:"💳", t:"Trenden inerken kartı okut", x:"Toplu taşımada banka kartıyla binerken ve inerken okutman gerekiyor. Trenden inerken unutursan 33,30 € çekilir; tramvay, metro ve otobüste 4 €."}
+];
+
+/* Günün görevleri: her gün bir kolay, bir orta, bir zor. at = hedef nokta, r = metre cinsinden yarıçap. */
+const MISSIONS = {
+  easy: [
+    {id:"e_stroop", type:"photo", at:"egstorf", r:90, t:"Sıcak stroopwafel avı", d:"Hans Egstorf'a git, gözünün önünde yapılan bir stroopwafel al ve fotoğrafını çek."},
+    {id:"e_magere", type:"photo", at:"magere", r:100, t:"Sıska Köprü", d:"Magere Brug'a git ve köprünün fotoğrafını çek."},
+    {id:"e_dam", type:"photo", at:"dam", r:120, t:"Şehrin kalbi", d:"Dam Meydanı'na git, Ulusal Anıt'ı ya da Sarayı fotoğrafla."},
+    {id:"e_bunbun", type:"photo", at:"bunbun", r:90, t:"Jordaan'da tarçınlı çörek", d:"BunBun'dan bir tarçınlı çörek al ve fotoğrafını çek."},
+    {id:"e_sango", type:"photo", at:"sango", r:90, t:"Filtre kahve molası", d:"Sango'da bir filtre kahve iç ve fincanın fotoğrafını çek."},
+    {id:"e_dancing", type:"photo", at:"dancing", r:120, t:"Dans eden evler", d:"Amstel kıyısındaki birbirine yaslanmış evleri bul ve fotoğrafla."},
+    {id:"e_xxx", type:"photo", at:null, r:0, t:"XXX avı", d:"Şehrin herhangi bir yerinde üzerinde XXX olan kahverengi bir direği (Amsterdammertje) fotoğrafla."}
+  ],
+  medium: [
+    {id:"m_begijnhof", type:"quiz", at:"begijnhof", r:120, t:"Gizli avlu", d:"Begijnhof'a git; oraya varınca soru açılır.", q:"Begijnhof'taki 34 numaralı Houten Huys neden önemli?", o:["Şehrin ayakta kalan en eski ahşap evlerinden biri","Rembrandt'ın doğduğu ev","Amsterdam'ın ilk belediye binası"], a:0},
+    {id:"m_paleis", type:"quiz", at:"paleis", r:130, t:"Sarayın sırrı", d:"Kraliyet Sarayı'nın önüne git; oraya varınca soru açılır.", q:"Saray kaç ahşap kazığın üzerinde duruyor?", o:["1.365","13.659","136.590"], a:1},
+    {id:"m_waag", type:"quiz", at:"waag", r:120, t:"Nieuwmarkt'ın kalesi", d:"De Waag'a git; oraya varınca soru açılır.", q:"De Waag 1488'de ilk yapıldığında neydi?", o:["Bir kilise","Bir şehir kapısı","Bir liman deposu"], a:1},
+    {id:"m_westerkerk", type:"quiz", at:"westerkerk", r:120, t:"Kulenin tacı", d:"Westerkerk'e git; oraya varınca soru açılır.", q:"Westerkerk'te gömülü olan ünlü ressam kim?", o:["Vermeer","Van Gogh","Rembrandt"], a:2},
+    {id:"m_jordaan", type:"quiz", at:"luuks", r:150, t:"Jordaan mahallesi", d:"Jordaan'daki Noordermarkt'a git; oraya varınca soru açılır.", q:"Jordaan 17. yüzyılda kimler için kuruldu?", o:["Zengin tüccarlar","İşçiler, zanaatkârlar ve göçmenler","Askerler"], a:1},
+    {id:"m_pijp", type:"quiz", at:"cuyp", r:150, t:"De Pijp pazarı", d:"Albert Cuyp Pazarı'na git; oraya varınca soru açılır.", q:"Albert Cuyp Pazarı adını kimden alıyor?", o:["17. yüzyıl ressamı Albert Cuyp","Pazarı kuran tüccar","Bir belediye başkanı"], a:0},
+    {id:"m_portsyn", type:"quiz", at:"portsyn", r:120, t:"Mumlarla aydınlanan sinagog", d:"Portekiz Sinagogu'na git; oraya varınca soru açılır.", q:"Portekiz Sinagogu'nun zemini neyle kaplı?", o:["Mermer","İnce kum","Ahşap parke"], a:1}
+  ],
+  hard: [
+    {id:"h_adam", type:"photo", at:"adam", r:150, t:"Kuzey yakası", d:"Centraal'in arkasından ücretsiz vapura bin, Noord'a geç ve A'DAM Kulesi'nin önünde fotoğraf çek."},
+    {id:"h_ndsm", type:"photo", at:"ndsm", r:200, t:"Eski tersane", d:"F4 vapuruyla NDSM'e git ve tersane binalarını fotoğrafla."},
+    {id:"h_bijlmer", type:"photo", at:"bijlmer", r:200, t:"Beton blok", d:"Bijlmer'e git ve Kleiburg bloğunun fotoğrafını çek."},
+    {id:"h_vondel", type:"photo", at:"vondel", r:250, t:"Müzeden parka", d:"Rijksmuseum'un altındaki geçitten geç, Vondelpark'a yürü ve parkın içinde fotoğraf çek."},
+    {id:"h_kardas", type:"photo", at:"kardas", r:100, t:"Oost'ta Türk fırını", d:"Javastraat'taki Kardas'a git, bir börek ya da pide al ve fotoğrafını çek."},
+    {id:"h_gooyer", type:"photo", at:"gooyer", r:150, t:"Yel değirmeni", d:"Doğudaki De Gooyer yel değirmenine yürü ve fotoğrafla."},
+    {id:"h_route", type:"route", at:null, r:0, t:"Rota ustası", d:"Bugün herhangi bir yürüyüş rotasını baştan sona yürü (durakların hepsinden geç)."}
+  ]
+};
+const LEVELS = [[0,"Turist"],[100,"Gezgin"],[300,"Kaşif"],[600,"Amsterdamlı"],[1000,"Efsane"]];
+const BADGES = [
+  {id:"first", e:"👣", t:"İlk adım", d:"Bir noktayı yerinde ziyaret et", ok:() => Object.keys(store.visits).length >= 1},
+  {id:"km5", e:"🥾", t:"5 km", d:"Uygulama açıkken 5 km yürü", ok:() => store.walkM >= 5000},
+  {id:"km20", e:"🏃", t:"20 km", d:"Uygulama açıkken 20 km yürü", ok:() => store.walkM >= 20000},
+  {id:"bakery3", e:"🥐", t:"Fırın avcısı", d:"3 fırını ziyaret et", ok:() => visitedCat("bakery") >= 3},
+  {id:"coffee3", e:"☕", t:"Kahve tadımcısı", d:"3 kahveciyi ziyaret et", ok:() => visitedCat("coffee") >= 3},
+  {id:"hist10", e:"🏛️", t:"Tarih meraklısı", d:"10 tarihi noktayı ziyaret et", ok:() => visitedCat("hist") >= 10},
+  {id:"north", e:"⛴️", t:"Kuzey yakası", d:"IJ'nin kuzeyindeki bir noktayı ziyaret et", ok:() => city && city.places.some(p => store.visits[p.id] && p.lat > 52.381)},
+  {id:"route1", e:"🗺️", t:"Rota ustası", d:"Bir yürüyüş rotasını bitir", ok:() => Object.keys(store.routesDone).length >= 1},
+  {id:"quest5", e:"🎯", t:"Görev avcısı", d:"5 görev tamamla", ok:() => store.mCount >= 5},
+  {id:"hard1", e:"🔥", t:"Zor görev", d:"Bir zor görevi tamamla", ok:() => store.hardCount >= 1}
+];
+Object.assign(store, Object.assign({pts:0, walkM:0, walkPaid:0, visits:{}, routeHits:{}, routesDone:{}, routeDay:{}, missions:{}, mCount:0, hardCount:0, badges:{}, factDay:""}, store));
+const visitedCat = c => city ? city.places.filter(p => p.cat === c && store.visits[p.id]).length : 0;
+const dayKey = () => { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0"); };
+const dayNum = () => Math.floor((new Date(dayKey() + "T12:00:00")).getTime() / 864e5);
+const levelOf = p => { let i = 0; while (i + 1 < LEVELS.length && p >= LEVELS[i+1][0]) i++; return i; };
+const placeById = id => city && city.places.find(p => p.id === id);
+
+function award(n, why){
+  const before = levelOf(store.pts);
+  store.pts += n; save(); updatePill();
+  toast("+" + n + " puan · " + why);
+  const after = levelOf(store.pts);
+  if (after > before) setTimeout(() => toast("🎉 Yeni seviye: " + LEVELS[after][1]), 2600);
+  checkBadges();
+  if (tab === "quest") renderQuest();
+}
+function checkBadges(){
+  BADGES.forEach(b => { if (!store.badges[b.id] && b.ok()){ store.badges[b.id] = dayKey(); save(); setTimeout(() => toast(b.e + " Yeni rozet: " + b.t), 1300); } });
+}
+function updatePill(){ const el = $("#ptsPill"); if (el) el.lastChild.textContent = store.pts + " puan"; }
+
+/* ---------- Konum: yürüme, ziyaret, rota durakları ---------- */
+let lastWalk = null, lastFix = null;
+function onPos(pos){
+  if (!city) return;
+  const p = [pos.coords.latitude, pos.coords.longitude], acc = pos.coords.accuracy, t = pos.timestamp || Date.now();
+  lastFix = {p, acc, t:Date.now()};
+  if (acc > 40) return;
+  // Yürüme: makul hızdaki (tramvay/bisiklet değil) adımlar sayılır. 100 m = 1 puan.
+  if (lastWalk){
+    const d = km(lastWalk.p, p) * 1000, dt = Math.max(1, (t - lastWalk.t) / 1000);
+    if (d >= 8){
+      if (d <= 250 && d / dt <= 2.8) store.walkM += d;
+      lastWalk = {p, t};
+      const due = Math.floor(store.walkM / 100) - store.walkPaid;
+      if (due >= 5){ store.walkPaid += due; award(due, "yürüyüş (" + (store.walkM/1000).toFixed(1).replace(".",",") + " km)"); }
+      else save();
+    }
+  } else lastWalk = {p, t};
+  // Yerinde ziyaret: 50 m içine girince otomatik "Gittim" ve 5 puan.
+  city.places.forEach(o => {
+    if (!store.visits[o.id] && km(p, [o.lat, o.lon]) * 1000 <= 50){
+      store.visits[o.id] = dayKey(); store.done[o.id] = 1; save(); refresh();
+      award(5, o.name.replace(/ \(.*\)$/, "") + " ziyaret edildi");
+    }
+  });
+  // Rota durakları: hepsinden geçince rota tamamlanır, 40 puan.
+  city.routes.filter(r => !r.ferry).forEach(r => {
+    const hits = store.routeHits[r.id] = store.routeHits[r.id] || [];
+    r.pts.forEach((q, i) => { if (!hits.includes(i) && km(p, q) * 1000 <= 70){ hits.push(i); save(); } });
+    if (!store.routesDone[r.id] && hits.length === r.pts.length){
+      store.routesDone[r.id] = dayKey(); store.routeDay[dayKey()] = r.id; store.done[r.id] = 1; save(); refresh();
+      award(40, r.name + " rotası tamamlandı");
+    }
+  });
+}
+
+/* ---------- Günün bilgisi ---------- */
+let factIdx = 0;
+function openFact(next){
+  factIdx = next ? (factIdx + 1) % FACTS.length : dayNum() % FACTS.length;
+  const f = FACTS[factIdx], m = $("#factModal"), pl = f.p && placeById(f.p);
+  m.innerHTML = `<div class="fact" role="dialog" aria-modal="true" aria-label="Günün bilgisi">
+    <span class="fact-k">${next ? "Bir bilgi daha" : "Günün bilgisi"}</span>
+    <div class="fact-e" aria-hidden="true">${f.e}</div><h2>${esc(f.t)}</h2><p>${esc(f.x)}</p>
+    <div class="fact-b">${pl ? `<button class="btn primary" type="button" data-f="show">Haritada göster</button>` : ""}
+    <button class="btn" type="button" data-f="next">Bir tane daha</button>
+    <button class="btn" type="button" data-f="close"${pl ? ' style="grid-column:1/-1"' : ""}>Kapat</button></div></div>`;
+  m.hidden = false;
+  if (!next && store.factDay !== dayKey()){ store.factDay = dayKey(); save(); setTimeout(() => award(2, "günün bilgisi okundu"), 400); }
+}
+$("#factBtn").addEventListener("click", () => openFact(false));
+$("#factModal").addEventListener("click", e => {
+  const b = e.target.closest("[data-f]");
+  if (!b){ if (e.target.id === "factModal") $("#factModal").hidden = true; return; }
+  if (b.dataset.f === "next") openFact(true);
+  else { const f = FACTS[factIdx]; $("#factModal").hidden = true; if (b.dataset.f === "show") select(f.p); }
+});
+$("#ptsPill").addEventListener("click", () => setTab("quest"));
+
+/* ---------- Günün görevleri ---------- */
+const DIFF = {easy:["Kolay",10,"#1E9E5A"], medium:["Orta",25,"#E8890C"], hard:["Zor",50,"#D7263D"]};
+function todays(){ const n = dayNum(); return {easy:MISSIONS.easy[n % 7], medium:MISSIONS.medium[(n * 3 + 1) % 7], hard:MISSIONS.hard[(n * 5 + 2) % 7]}; }
+const mKey = m => dayKey() + ":" + m.id;
+let photos = {}; try { photos = JSON.parse(localStorage.getItem("dolcanrota.photos") || "{}"); } catch(e){}
+const savePhotos = () => { try { localStorage.setItem("dolcanrota.photos", JSON.stringify(photos)); } catch(e){ const k = Object.keys(photos); if (k.length > 1){ delete photos[k[0]]; savePhotos(); } } };
+let quizOpen = null, busy = null;
+
+function renderQuest(){
+  const lv = levelOf(store.pts), cur = LEVELS[lv], nx = LEVELS[lv+1];
+  const pct = nx ? Math.round((store.pts - cur[0]) / (nx[0] - cur[0]) * 100) : 100;
+  const T = todays();
+  let h = `<div class="qhead"><div class="qpts"><b>${store.pts}</b><span>puan</span></div>
+    <div class="qlv"><b>${cur[1]}</b><span class="bar"><i style="width:${pct}%"></i></span><small>${nx ? (nx[0] - store.pts) + " puan sonra: " + nx[1] : "En yüksek seviye"}</small></div></div>
+    <div class="qstats"><span><b>${(store.walkM/1000).toFixed(1).replace(".",",")}</b> km yürüdün</span><span><b>${Object.keys(store.visits).length}</b> yer ziyaret</span><span><b>${Object.keys(store.routesDone).length}</b> rota bitti</span></div>
+    <h2 class="lh">Günün görevleri</h2>`;
+  for (const k of ["easy","medium","hard"]){
+    const m = T[k], [lab, pts, col] = DIFF[k], done = store.missions[mKey(m)], pl = m.at && placeById(m.at);
+    let act = "";
+    if (done) act = `<p class="qdone">✓ Tamamlandı · +${pts} puan</p>` + (photos[mKey(m)] ? `<img class="qimg" alt="Kanıt fotoğrafı" src="${photos[mKey(m)]}">` : "");
+    else if (busy === m.id) act = `<p class="qwait">Konumun kontrol ediliyor…</p>`;
+    else if (m.type === "photo") act = `<label class="btn primary qbtn">📷 Kanıt fotoğrafı çek<input type="file" accept="image/*" capture="environment" data-m="${k}" hidden></label>`;
+    else if (m.type === "quiz" && quizOpen === m.id) act = `<p class="qq">${esc(m.q)}</p>` + m.o.map((o, i) => `<button class="btn qopt" type="button" data-qa="${k}:${i}">${esc(o)}</button>`).join("");
+    else if (m.type === "quiz") act = `<button class="btn primary qbtn" type="button" data-qs="${k}">📍 Buradayım, soruyu aç</button>`;
+    else act = `<button class="btn primary qbtn" type="button" data-qr="${k}">Kontrol et</button>`;
+    h += `<div class="qcard${done ? " ok" : ""}"><span class="qdiff" style="background:${col}">${lab} · ${pts} puan</span>
+      <b class="qt">${esc(m.t)}</b><p>${esc(m.d)}</p>${pl ? `<button class="qat" type="button" data-qp="${pl.id}">📍 ${esc(pl.name)}${me ? " · " + fmtD(km(me, [pl.lat, pl.lon])) : ""}</button>` : ""}${act}</div>`;
+  }
+  h += `<h2 class="lh">Rozetler</h2><div class="badges">` + BADGES.map(b => `<div class="badge${store.badges[b.id] ? " on" : ""}"><span>${b.e}</span><b>${b.t}</b><small>${b.d}</small></div>`).join("") + `</div>
+    <h2 class="lh">Nasıl puan kazanılır?</h2>
+    <p class="qhow">🚶 Uygulama açıkken her 100 m yürüyüş: 1 puan (yalnızca yürüme hızı sayılır)<br>📍 Bir noktanın 50 m yakınına gitmek: 5 puan (otomatik "Gittim")<br>🗺️ Bir rotanın tüm duraklarından geçmek: 40 puan<br>💡 Günün bilgisini okumak: günde 2 puan<br>🎯 Görevler: kolay 10, orta 25, zor 50 puan<br><br>Görevler her gece yenilenir. Kanıt fotoğrafı yalnızca uygulamanın içinden o an çekilebilir; uygulama çekim anında konumunun hedefin yakınında olduğunu kontrol eder. Puanlar ve fotoğraflar yalnızca bu telefonda saklanır. iPhone'da web uygulamaları arka planda konum alamadığı için yürüyüş, uygulama ekranda açıkken sayılır.</p>`;
+  $("#list").innerHTML = h;
+}
+function freshPos(){
+  if (lastFix && Date.now() - lastFix.t < 15000 && lastFix.acc <= 60) return Promise.resolve(lastFix.p);
+  return new Promise((ok, no) => navigator.geolocation ? navigator.geolocation.getCurrentPosition(p => ok([p.coords.latitude, p.coords.longitude]), no, {enableHighAccuracy:true, maximumAge:10000, timeout:15000}) : no(new Error("no geo")));
+}
+async function nearTarget(m){
+  const p = await freshPos(); me = p;
+  if (!m.at) return inCity() ? true : "Şu an Amsterdam'da değilsin.";
+  const pl = placeById(m.at), d = km(p, [pl.lat, pl.lon]) * 1000;
+  return d <= m.r ? true : `Hedefe ${fmtD(d/1000)} uzaktasın. ${m.r} m içine girince tekrar dene.`;
+}
+function finishMission(k, m){
+  store.missions[mKey(m)] = 1; store.mCount++; if (k === "hard") store.hardCount++; save();
+  award(DIFF[k][1], DIFF[k][0].toLowerCase() + " görev: " + m.t);
+}
+async function thumb(file){
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await new Promise((ok, no) => { const i = new Image(); i.onload = () => ok(i); i.onerror = no; i.src = url; });
+    const s = 360 / Math.max(img.width, img.height), c = document.createElement("canvas");
+    c.width = Math.round(img.width * Math.min(1, s)); c.height = Math.round(img.height * Math.min(1, s));
+    c.getContext("2d").drawImage(img, 0, 0, c.width, c.height); return c.toDataURL("image/jpeg", 0.6);
+  } catch(e){ return null; } finally { URL.revokeObjectURL(url); }
+}
+$("#list").addEventListener("change", async e => {
+  const inp = e.target.closest("input[data-m]"); if (!inp || !inp.files[0]) return;
+  const k = inp.dataset.m, m = todays()[k], f = inp.files[0];
+  if (Date.now() - f.lastModified > 3 * 60 * 1000){ toast("Bu fotoğraf az önce çekilmemiş. Kanıt için fotoğrafı uygulamanın içinden, şimdi çek."); return; }
+  busy = m.id; renderQuest();
+  try {
+    const r = await nearTarget(m);
+    if (r !== true){ toast(r); return; }
+    const t = await thumb(f); if (t){ photos[mKey(m)] = t; savePhotos(); }
+    finishMission(k, m);
+  } catch(err){ toast("Konum alınamadı. Konum iznini kontrol edip tekrar dene."); }
+  finally { busy = null; renderQuest(); }
+});
+$("#list").addEventListener("click", async e => {
+  const qp = e.target.closest("[data-qp]"); if (qp){ select(qp.dataset.qp); return; }
+  const qs = e.target.closest("[data-qs]");
+  if (qs){ const m = todays()[qs.dataset.qs]; busy = m.id; renderQuest();
+    try { const r = await nearTarget(m); if (r === true) quizOpen = m.id; else toast(r); } catch(err){ toast("Konum alınamadı. Konum iznini kontrol edip tekrar dene."); }
+    busy = null; renderQuest(); return; }
+  const qa = e.target.closest("[data-qa]");
+  if (qa){ const [k, i] = qa.dataset.qa.split(":"), m = todays()[k];
+    if (+i === m.a){ quizOpen = null; finishMission(k, m); renderQuest(); }
+    else { qa.classList.add("wrong"); qa.disabled = true; toast("Yanlış cevap, bir daha dene."); }
+    return; }
+  const qr = e.target.closest("[data-qr]");
+  if (qr){ const k = qr.dataset.qr, m = todays()[k];
+    if (store.routeDay[dayKey()]) { finishMission(k, m); renderQuest(); }
+    else toast("Bugün henüz bir rotanın bütün duraklarından geçmedin. Rotayı yürürken uygulamayı açık tut."); }
+});
+updatePill(); checkBadges();
+
 /* Ana ekrana eklenince uygulama gibi çalışsın: servis çalışanını kaydet. */
 if ("serviceWorker" in navigator && location.protocol === "https:" && location.hostname.endsWith("github.io")) {
   addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
