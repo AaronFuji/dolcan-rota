@@ -185,6 +185,45 @@ h1,h2,h3,p,dl{margin:0}
 @keyframes spUp{to{opacity:1;transform:none}}
 @keyframes spOut{to{opacity:0;visibility:hidden}}
 @media (prefers-reduced-motion:reduce){#splash{animation:spOut .3s 1.2s forwards}.sp-word{clip-path:none}.sp-motto{opacity:1;transform:none}}
+.planchip{position:absolute;left:50%;transform:translateX(-50%);bottom:34px;z-index:470;height:40px;padding:0 14px;border-radius:99px;background:var(--ink);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.planning .mk{opacity:.3}
+.planning .mk.on{opacity:1}
+.pmk{width:30px;height:30px;border-radius:50%;background:#E85D04;color:#fff;border:3px solid #fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 3px 0 rgba(58,29,11,.35);cursor:pointer;font-family:var(--body)}
+.pmk.meal{background:#7A4A2A}
+.pmk.start{background:var(--ink);font-size:11px}
+.phead{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.phead b{display:block;font-family:var(--display);font-size:22px;line-height:1.1}
+.phead small{font-weight:700;color:var(--ink-soft);font-size:12.5px}
+.phead .btn{min-height:40px;padding:0 14px}
+#list>*{flex-shrink:0}
+.pdays{display:flex;gap:8px;overflow-x:auto}
+.pday{flex:none;height:40px;padding:0 16px;border-radius:99px;background:#fff;font-weight:800;box-shadow:0 2px 0 rgba(58,29,11,.12)}
+.pday[aria-pressed="true"]{background:var(--orange-deep);color:#fff}
+.psum{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.psum span{background:#fff;border-radius:14px;padding:8px;text-align:center;font-size:11.5px;font-weight:700;color:var(--ink-soft);box-shadow:0 2px 0 rgba(58,29,11,.12)}
+.psum b{display:block;font-family:var(--display);font-size:17px;color:var(--ink)}
+.pact{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pact .btn:first-child:last-child{grid-column:1/-1}
+.ptl{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:4px}
+.pwalk{font-size:12.5px;font-weight:700;color:var(--ink-soft);padding:2px 0 2px 46px;border-left:3px dotted #E7C79F;margin-left:16px}
+.pstop{display:flex;align-items:center;gap:10px;width:100%;text-align:left;background:#fff;border-radius:14px;padding:9px 12px;box-shadow:0 2px 0 rgba(58,29,11,.12);border-left:6px solid var(--c)}
+.pstop .pn{flex:none;width:26px;height:26px;border-radius:50%;background:var(--c);color:#fff;font-weight:800;font-size:13px;display:grid;place-items:center}
+.pstop .pt{flex:none;font-weight:800;font-size:13px;color:var(--orange-deep);width:42px}
+.pstop .pb{flex:1;min-width:0}
+.pstop .pb b{display:block;line-height:1.2}
+.pstop .pb small{color:var(--ink-soft);font-weight:700;font-size:12px}
+.pstop em{font-style:normal;font-weight:800;color:#1E7A43}
+.pform{display:flex;flex-direction:column;gap:8px}
+.pq{font-weight:800;margin-top:6px}
+.prow{display:flex;flex-wrap:wrap;gap:8px}
+.pcol{display:flex;flex-direction:column;gap:8px}
+.pchip{min-height:42px;padding:0 16px;border-radius:99px;background:#fff;font-weight:800;box-shadow:0 2px 0 rgba(58,29,11,.12)}
+.pchip.big{border-radius:16px;padding:10px 14px;text-align:left;display:flex;flex-direction:column;align-items:flex-start}
+.pchip.big small{font-weight:700;font-size:12.5px;color:var(--ink-soft)}
+.pchip[aria-pressed="true"]{background:var(--orange-deep);color:#fff}
+.pchip[aria-pressed="true"] small{color:#FFE3C2}
+.pgo{margin-top:10px;min-height:52px;font-size:16px}
+.tab{font-size:13px}
 #toast{position:absolute;left:12px;right:76px;bottom:34px;z-index:500;background:var(--ink);color:var(--white);padding:10px 14px;border-radius:14px;font-weight:700;font-size:13px}
 
 /* Liste */
@@ -256,6 +295,7 @@ h1,h2,h3,p,dl{margin:0}
       <div id="map"></div>
       <div class="gps" id="gps"><i></i><span>Konum bekleniyor</span></div>
       <button class="factbtn" id="factBtn" type="button"><span aria-hidden="true">💡</span>Günün bilgisi</button>
+      <button class="planchip" id="planChip" type="button" hidden aria-label="Planı haritadan kaldır"><span>🗓️ Plan</span>✕</button>
       <button class="ptspill" id="ptsPill" type="button" aria-label="Puanların ve görevler"><span aria-hidden="true">⭐</span><span>0 puan</span></button>
       <div id="loading"><i></i><span>Harita yükleniyor…</span></div>
       <button class="help" id="helpBtn" type="button" aria-label="Haritadaki işaretlerin anlamı">?</button>
@@ -268,6 +308,7 @@ h1,h2,h3,p,dl{margin:0}
     <nav class="tabs">
       <button class="tab" data-tab="map" aria-selected="true" type="button">Harita</button>
       <button class="tab" data-tab="list" aria-selected="false" type="button">Liste</button>
+      <button class="tab" data-tab="plan" aria-selected="false" type="button">Plan</button>
       <button class="tab" data-tab="quest" aria-selected="false" type="button">Görevler</button>
       <button class="tab" data-tab="fav" aria-selected="false" type="button">Favoriler</button>
     </nav>
@@ -729,12 +770,13 @@ let query = "";
 const norm = t => String(t).toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 function setTab(t){
   tab = t; document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === t));
-  $("#list").hidden = t === "map"; $("#locate").hidden = t !== "map"; $("#helpBtn").hidden = t !== "map"; $("#legend").hidden = true;
+  $("#list").hidden = t === "map"; $("#locate").hidden = t !== "map"; $("#helpBtn").hidden = t !== "map"; if ($("#planChip")) $("#planChip").hidden = t !== "map" || planOnMap === null; $("#legend").hidden = true;
   if (t !== "map"){ $("#sheet").hidden = true; $("#toast").hidden = true; renderList(); } else if (map) map.resize();
 }
 document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) setTab(b.dataset.tab); });
 function renderList(){
   if (tab === "quest"){ renderQuest(); return; }
+  if (tab === "plan"){ renderPlan(); return; }
   if (!$("#q")){
     $("#list").innerHTML = `<div class="search"><input id="q" type="search" placeholder="Ara: kilise, patates, park…" aria-label="Noktalarda ara" autocomplete="off"></div><div id="listBody"></div>`;
     $("#q").addEventListener("input", e => { query = e.target.value; renderList(); });
@@ -1016,6 +1058,209 @@ $("#list").addEventListener("click", async e => {
     else toast("Bugün henüz bir rotanın bütün duraklarından geçmedin. Rotayı yürürken uygulamayı açık tut."); }
 });
 updatePill(); checkBadges();
+
+/* =====================================================================
+   GÜNLÜK PLANLAYICI: gün sayısı, tempo ve başlangıca göre rota üretir.
+   Plan telefonda saklanır (store.plan).
+   ===================================================================== */
+const PACE = {
+  sakin:{label:"Sakin", km:7, hrs:7, stay:1, steps:"~10.000 adım"},
+  orta:{label:"Orta", km:14, hrs:9, stay:0.7, steps:"~20.000 adım"},
+  full:{label:"Full", km:21, hrs:11, stay:0.5, steps:"~30.000 adım"}
+};
+const STARTS = {
+  me:{label:"Konumum"},
+  centraal:{label:"Centraal", p:[52.3791, 4.9003]},
+  dam:{label:"Dam", p:[52.3731, 4.8924]},
+  leidse:{label:"Leidseplein", p:[52.3641, 4.8828]},
+  museum:{label:"Museumplein", p:[52.3577, 4.8822]}
+};
+const INTEREST = {hist:"Tarih", arch:"Mimari", park:"Park", photo:"Foto"};
+const WALK_KMH = 4.5, DETOUR = 1.3, DAY_START = 9.5;
+let planForm = {days:2, pace:"orta", start:"centraal", interests:{hist:true, arch:false, park:true, photo:true}, meals:true};
+let planDay = 0, planOnMap = null, planMarkers = [];
+
+const legKm = (a, b) => km(a, b) * DETOUR;
+const durH = o => { const m = /(\d+(?:,\d+)?)\s*(sa|dk)/.exec(o.dur || ""); if (!m) return o.cat === "park" ? 0.5 : 0.3; const v = parseFloat(m[1].replace(",", ".")); return m[2] === "sa" ? v : v / 60; };
+const ptOf = o => [o.lat, o.lon];
+const fmtT = h => { const m = Math.round(h * 60); return String(Math.floor(m / 60) % 24).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); };
+const fmtKm = v => v.toFixed(1).replace(".", ",");
+function scoreOf(o){
+  const base = {hist:3, arch:2, park:2, photo:2}[o.cat] || 1;
+  return base + (ART[o.id] ? 1.2 : 0) + (o.hist ? 0.4 : 0);
+}
+
+function buildPlan(f){
+  const start = f.start === "me" && me && inCity() ? me.slice() : (STARTS[f.start].p || STARTS.centraal.p);
+  const pace = PACE[f.pace];
+  let cand = city.places.filter(o => f.interests[o.cat]);
+  // Sakin tempoda merkezden çok uzak noktaları ele (ör. Bijlmer).
+  const maxR = f.pace === "sakin" ? 3.2 : f.pace === "orta" ? 5 : 9;
+  cand = cand.filter(o => km(city.center, ptOf(o)) <= maxR);
+  // Günlere bölme: merkeze göre açıya göre sırala, eşit parçalara ayır (her gün bir bölge).
+  const c0 = city.center;
+  cand.sort((a, b) => Math.atan2(a.lat - c0[0], a.lon - c0[1]) - Math.atan2(b.lat - c0[0], b.lon - c0[1]));
+  const D = f.days, sectors = Array.from({length:D}, (_, i) => cand.slice(Math.round(i * cand.length / D), Math.round((i + 1) * cand.length / D)));
+  const used = new Set(), usedFood = new Set(), days = [];
+  const reserveKm = f.meals ? 1.2 : 0, reserveH = f.meals ? 2 : 0, near = f.pace === "full" ? 1.2 : f.pace === "orta" ? 0.7 : 0.35;
+  const st = Array.from({length:D}, () => ({cur:start, kmU:0, hU:0, seq:[]}));
+  const grow = (S, pool) => {
+    for (;;){
+      let best = null, bestV = -1;
+      for (const o of pool){
+        if (used.has(o.id)) continue;
+        const l = legKm(S.cur, ptOf(o)), h = l / WALK_KMH + durH(o) * pace.stay;
+        if (S.kmU + l > pace.km - reserveKm || S.hU + h > pace.hrs - reserveH) continue;
+        const v = scoreOf(o) / (l + near);
+        if (v > bestV){ bestV = v; best = o; }
+      }
+      if (!best) return;
+      const l = legKm(S.cur, ptOf(best)); S.kmU += l; S.hU += l / WALK_KMH + durH(best) * pace.stay;
+      S.seq.push(best); used.add(best.id); S.cur = ptOf(best);
+    }
+  };
+  // 1. tur: her gün yalnızca kendi bölgesinden. 2. tur: kalan noktalar, en boş günden başlayarak.
+  st.forEach((S, d) => grow(S, sectors[d]));
+  st.slice().sort((x, y) => x.hU - y.hU).forEach(S => grow(S, cand));
+  st.forEach(S => { twoOpt(start, S.seq); days.push(f.meals ? addMeals(start, S.seq, usedFood, pace.stay) : S.seq.map(o => ({id:o.id, kind:"see"}))); });
+  return {f:JSON.parse(JSON.stringify(f)), start, days, made:dayKey()};
+}
+function twoOpt(start, seq){
+  const len = s => { let t = 0, c = start; s.forEach(o => { t += legKm(c, ptOf(o)); c = ptOf(o); }); return t; };
+  let improved = true, n = 0;
+  while (improved && n++ < 40){
+    improved = false;
+    for (let i = 0; i < seq.length - 1; i++) for (let j = i + 1; j < seq.length; j++){
+      const t = seq.slice(0, i).concat(seq.slice(i, j + 1).reverse(), seq.slice(j + 1));
+      if (len(t) + 1e-9 < len(seq)){ seq.splice(0, seq.length, ...t); improved = true; }
+    }
+  }
+}
+function nearestOf(cats, p, usedFood){
+  let best = null, bd = 1e9;
+  city.places.forEach(o => { if (!cats.includes(o.cat) || usedFood.has(o.id)) return; const d = km(p, ptOf(o)); if (d < bd){ bd = d; best = o; } });
+  if (best) usedFood.add(best.id);
+  return best;
+}
+function addMeals(start, seq, usedFood, stayF){
+  const out = [];
+  if (seq.length){ const m = nearestOf(["coffee","bakery"], seq[0] ? ptOf(seq[0]) : start, usedFood); if (m) out.push({id:m.id, kind:"coffee"}); }
+  let t = DAY_START, cur = start, lunch = false;
+  for (const o of seq){
+    t += legKm(cur, ptOf(o)) / WALK_KMH;
+    if (!lunch && t >= 12.5){ const m = nearestOf(["food"], cur, usedFood); if (m){ out.push({id:m.id, kind:"lunch"}); t += 0.75; } lunch = true; }
+    out.push({id:o.id, kind:"see"}); t += durH(o) * stayF; cur = ptOf(o);
+  }
+  if (!lunch && seq.length >= 2){ const m = nearestOf(["food"], cur, usedFood); if (m) out.splice(Math.ceil(out.length / 2), 0, {id:m.id, kind:"lunch"}); }
+  const m = nearestOf(["food"], cur, usedFood); if (m) out.push({id:m.id, kind:"dinner"});
+  return out;
+}
+const MEAL = {coffee:["☕ Kahve molası", 0.33], lunch:["🍽️ Öğle yemeği", 0.75], dinner:["🌙 Akşam yemeği", 1]};
+function timeline(plan, d){
+  let t = DAY_START, cur = plan.start, kmT = 0; const rows = [];
+  plan.days[d].forEach(s => {
+    const o = find(s.id); if (!o) return;
+    const l = legKm(cur, ptOf(o)); kmT += l; t += l / WALK_KMH;
+    const stay = s.kind === "see" ? durH(o) * PACE[plan.f.pace].stay : MEAL[s.kind][1];
+    rows.push({o, s, arrive:t, walkMin:Math.round(l / WALK_KMH * 60), walkKm:l, stay}); t += stay; cur = ptOf(o);
+  });
+  return {rows, km:kmT, end:t};
+}
+
+/* ---------- Plan sekmesi ---------- */
+function renderPlan(){
+  const P = store.plan;
+  if (!P || P.editing){ renderPlanForm(); return; }
+  if (planDay >= P.days.length) planDay = 0;
+  const tl = timeline(P, planDay), steps = Math.round(tl.km * 1350 / 500) * 500;
+  let h = `<div class="phead"><div><b>${P.f.days} günlük plan</b><small>${PACE[P.f.pace].label} tempo · ${STARTS[P.f.start].label} başlangıç</small></div><button class="btn" type="button" data-pl="edit">Yeni plan</button></div>
+    <div class="pdays">${P.days.map((_, i) => `<button type="button" class="pday" data-pd="${i}" aria-pressed="${i === planDay}">${i + 1}. Gün</button>`).join("")}</div>
+    <div class="psum"><span><b>${fmtKm(tl.km)} km</b>yürüyüş</span><span><b>~${steps.toLocaleString("tr-TR")}</b>adım (duraklar arası)</span><span><b>${fmtT(DAY_START)}–${fmtT(tl.end)}</b>tahmini</span></div>
+    <div class="pact"><button class="btn primary" type="button" data-pl="map">🗺️ Haritada göster</button>${gmLinks(P, planDay)}</div><ol class="ptl">`;
+  tl.rows.forEach((r, i) => {
+    const o = r.o, cat = CATS[o.cat], tag = r.s.kind === "see" ? cat.label : MEAL[r.s.kind][0];
+    h += `${r.walkMin ? `<li class="pwalk">🚶 ${r.walkMin} dk · ${fmtKm(r.walkKm)} km</li>` : ""}
+      <li><button class="pstop" type="button" data-id="${o.id}" style="--c:${cat.c}"><span class="pn">${i + 1}</span><span class="pt">${fmtT(r.arrive)}</span><span class="pb"><b>${esc(o.name)}</b><small>${tag} · ${Math.round(r.stay * 60)} dk${o.rating ? " · ★ " + o.rating.toFixed(1).replace(".", ",") : ""}</small></span>${store.visits[o.id] || store.done[o.id] ? '<em>✓</em>' : ""}</button></li>`;
+  });
+  h += `</ol><p class="foot">Süreler tahmini. Hızlı tempolarda müzelerde daha kısa kalacağın varsayılır. Yürüyüş ${WALK_KMH} km/saat ve sokak kıvrımları için kuş uçuşunun 1,3 katı. Müze ve yemek saatlerini kartlardan kontrol et. Plan bu telefonda saklanır.</p>`;
+  const keep = renderPlan.lastDay === planDay && renderPlan.lastMade === P.made + P.days.length; $("#list").innerHTML = h; if (!keep) $("#list").scrollTop = 0;
+  renderPlan.lastDay = planDay; renderPlan.lastMade = P.made + P.days.length;
+}
+function gmLinks(P, d){
+  const pts = timeline(P, d).rows.map(r => ptOf(r.o));
+  const all = [P.start].concat(pts), out = [];
+  for (let i = 0; i < all.length - 1; i += 9){
+    const part = all.slice(i, i + 10); if (part.length < 2) break;
+    const o = part[0].join(","), de = part[part.length - 1].join(","), wp = part.slice(1, -1).map(p => p.join(",")).join("|");
+    out.push(`https://www.google.com/maps/dir/?api=1&origin=${o}&destination=${de}${wp ? "&waypoints=" + encodeURIComponent(wp) : ""}&travelmode=walking`);
+  }
+  return out.map((u, i) => `<a class="btn" href="${u}" target="_blank" rel="noopener">Google Maps${out.length > 1 ? " " + (i + 1) + ". kısım" : "'te aç"}</a>`).join("");
+}
+function renderPlanForm(){
+  const f = planForm, chip = (k, v, l, on) => `<button type="button" class="pchip" data-pf="${k}:${v}" aria-pressed="${on}">${l}</button>`;
+  $("#list").innerHTML = `<div class="pform">
+    <h2 class="lh">Günlük plan oluştur</h2>
+    <p class="pq">Amsterdam'da kaç gün kalacaksın?</p><div class="prow">${[1,2,3,4].map(n => chip("days", n, n + " gün", f.days === n)).join("")}</div>
+    <p class="pq">Ne kadar yoğun olsun?</p><div class="pcol">${Object.entries(PACE).map(([k, p]) => `<button type="button" class="pchip big" data-pf="pace:${k}" aria-pressed="${f.pace === k}"><b>${p.label}</b><small>${p.steps} · günde ~${p.km} km</small></button>`).join("")}</div>
+    <p class="pq">Nereden başlıyorsun?</p><div class="prow">${Object.entries(STARTS).map(([k, s]) => chip("start", k, s.label, f.start === k)).join("")}</div>
+    <p class="pq">Neleri görmek istersin?</p><div class="prow">${Object.entries(INTEREST).map(([k, l]) => chip("int", k, l, !!f.interests[k])).join("")}</div>
+    <div class="prow">${chip("meals", 1, "🍽️ Kahve ve yemek molalarını ekle", f.meals)}</div>
+    <button class="btn primary pgo" type="button" data-pl="make">Planımı oluştur</button>
+    ${store.plan ? `<button class="btn" type="button" data-pl="back">Kayıtlı plana dön</button>` : ""}
+    <p class="foot">Plan, şehri günlere bölge bölge ayırır; her gün aynı semtte kalırsın. Başlangıç "Konumum" ise ve Amsterdam'da değilsen Centraal'den başlar.</p></div>`;
+}
+$("#list").addEventListener("click", e => {
+  if (tab !== "plan") return;
+  const pf = e.target.closest("[data-pf]");
+  if (pf){ const [k, v] = pf.dataset.pf.split(":");
+    if (k === "days") planForm.days = +v; else if (k === "pace") planForm.pace = v; else if (k === "start") planForm.start = v;
+    else if (k === "int"){ planForm.interests[v] = !planForm.interests[v]; if (!Object.values(planForm.interests).some(Boolean)) planForm.interests[v] = true; }
+    else if (k === "meals") planForm.meals = !planForm.meals;
+    renderPlanForm(); return; }
+  const pd = e.target.closest("[data-pd]"); if (pd){ planDay = +pd.dataset.pd; renderPlan(); if (planOnMap !== null) planOnMap = planDay; return; }
+  const pl = e.target.closest("[data-pl]"); if (!pl) return;
+  const a = pl.dataset.pl;
+  if (a === "edit"){ if (store.plan){ planForm = JSON.parse(JSON.stringify(store.plan.f)); store.plan.editing = true; } renderPlanForm(); }
+  else if (a === "back"){ delete store.plan.editing; renderPlan(); }
+  else if (a === "make"){ renderPlan.lastDay = -1; store.plan = buildPlan(planForm); planDay = 0; save(); clearPlanMap(); renderPlan(); toast("Plan hazır: " + store.plan.days.map((d, i) => (i + 1) + ". gün " + d.length + " durak").join(", ")); }
+  else if (a === "map") showPlanDay(planDay);
+});
+
+/* ---------- Planı haritada göster ---------- */
+function whenMap(fn){ if (!map) return; if (map.isStyleLoaded()) fn(); else map.once("load", fn); }
+function clearPlanMap(){
+  planMarkers.forEach(m => m.remove()); planMarkers = []; planOnMap = null;
+  $("#map").classList.remove("planning"); $("#planChip").hidden = true;
+  if (map && map.getLayer("plan-l")){ map.setLayoutProperty("plan-c", "visibility", "none"); map.setLayoutProperty("plan-l", "visibility", "none"); }
+}
+function showPlanDay(d){
+  const P = store.plan; if (!P) return;
+  setTab("map");
+  if (!map){ toast("Harita henüz yüklenmedi. Biraz bekleyip tekrar dene."); return; }
+  whenMap(() => {
+    clearPlanMap(); planOnMap = d;
+    const rows = timeline(P, d).rows, pts = [P.start].concat(rows.map(r => ptOf(r.o)));
+    const data = {type:"Feature", geometry:{type:"LineString", coordinates:pts.map(ll)}};
+    if (!map.getSource("plan")){
+      map.addSource("plan", {type:"geojson", data});
+      map.addLayer({id:"plan-c", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":10}});
+      map.addLayer({id:"plan-l", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#E85D04","line-width":6}});
+    } else { map.getSource("plan").setData(data); map.setLayoutProperty("plan-c", "visibility", "visible"); map.setLayoutProperty("plan-l", "visibility", "visible"); map.moveLayer("plan-c"); map.moveLayer("plan-l"); }
+    const s = document.createElement("div"); s.className = "pmk start"; s.textContent = "▶";
+    planMarkers.push(new maplibregl.Marker({element:s}).setLngLat(ll(P.start)).addTo(map));
+    rows.forEach((r, i) => { const el = document.createElement("button"); el.type = "button"; el.className = "pmk" + (r.s.kind !== "see" ? " meal" : ""); el.textContent = i + 1; el.setAttribute("aria-label", (i + 1) + ". durak: " + r.o.name);
+      el.addEventListener("click", ev => { ev.stopPropagation(); lastPick = Date.now(); select(r.o.id); });
+      planMarkers.push(new maplibregl.Marker({element:el}).setLngLat(ll(ptOf(r.o))).addTo(map)); });
+    $("#map").classList.add("planning");
+    const chip = $("#planChip"); chip.hidden = false; chip.firstChild.textContent = "🗓️ " + (d + 1) + ". Gün planı ";
+    const bb = new maplibregl.LngLatBounds(ll(pts[0]), ll(pts[0])); pts.forEach(p => bb.extend(ll(p)));
+    map.fitBounds(bb, {padding:{top:110, bottom:60, left:40, right:40}, duration:700});
+    // Gerçek sokaklardan geçen çizgi (yaya yönlendirme). Olmazsa düz çizgi kalır.
+    if (pts.length <= 40) fetch("https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + pts.map(p => p[1] + "," + p[0]).join(";") + "?overview=full&geometries=geojson")
+      .then(x => x.json()).then(j => { if (planOnMap === d && j.routes && j.routes[0]) map.getSource("plan").setData({type:"Feature", geometry:j.routes[0].geometry}); }).catch(() => {});
+  });
+}
+$("#planChip").addEventListener("click", () => clearPlanMap());
 
 /* Ana ekrana eklenince uygulama gibi çalışsın: servis çalışanını kaydet. */
 if ("serviceWorker" in navigator && location.protocol === "https:" && location.hostname.endsWith("github.io")) {
