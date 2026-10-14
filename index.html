@@ -57,9 +57,10 @@ h1,h2,h3,p,dl{margin:0}
 /* Şehir ekranı */
 #city{display:flex;flex-direction:column}
 .topbar{display:flex;align-items:center;gap:10px;padding:8px 12px 6px}
-.back{width:40px;height:40px;border-radius:50%;background:var(--white);box-shadow:var(--shadow);display:grid;place-items:center;flex:none;font-weight:800;font-size:20px}
-.city-title{font-family:var(--display);font-weight:800;font-size:26px;color:var(--white);text-shadow:0 3px 0 var(--orange-deep);line-height:1}
-.gps{margin-left:auto;font-size:12px;font-weight:800;background:rgba(255,255,255,.9);padding:5px 10px;border-radius:99px;display:flex;align-items:center;gap:6px}
+.back{height:40px;padding:0 14px 0 10px;border-radius:99px;background:var(--white);box-shadow:var(--shadow);display:flex;align-items:center;gap:6px;flex:none;font-weight:800;font-size:14px;color:var(--ink)}
+.back svg{width:18px;height:18px;flex:none}
+.city-title{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--display);font-weight:800;font-size:23px;color:var(--white);text-shadow:0 3px 0 var(--orange-deep);line-height:1}
+.gps{position:absolute;top:10px;left:10px;z-index:460;max-width:calc(100% - 20px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:0 2px 0 rgba(58,29,11,.18);font-size:12px;font-weight:800;background:rgba(255,255,255,.9);padding:5px 10px;border-radius:99px;display:flex;align-items:center;gap:6px}
 .gps i{width:9px;height:9px;border-radius:50%;background:#B9A089}
 .gps.on i{background:var(--me);box-shadow:0 0 0 3px rgba(18,115,235,.25)}
 .gps.err i{background:var(--food)}
@@ -102,6 +103,29 @@ h1,h2,h3,p,dl{margin:0}
 @keyframes pulse{to{box-shadow:0 0 0 20px rgba(18,115,235,0)}}
 .fab{position:absolute;right:12px;bottom:34px;width:52px;height:52px;border-radius:50%;background:var(--white);box-shadow:var(--shadow);display:grid;place-items:center;z-index:500}
 .fab span{width:18px;height:18px;border-radius:50%;border:4px solid var(--me);box-shadow:inset 0 0 0 3px var(--white),inset 0 0 0 9px var(--me)}
+#loading{position:absolute;inset:0;z-index:450;display:grid;place-items:center;align-content:center;gap:12px;background:#F6D9B0;font-weight:800;color:var(--ink-soft);text-align:center;padding:24px}
+#loading i{width:44px;height:44px;border-radius:50%;border:5px solid rgba(58,29,11,.15);border-top-color:var(--orange-deep);animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.help{position:absolute;left:12px;bottom:34px;width:44px;height:44px;border-radius:50%;background:var(--white);box-shadow:var(--shadow);z-index:500;font-family:var(--display);font-weight:800;font-size:20px}
+#legend{position:absolute;left:12px;right:12px;bottom:90px;z-index:650;background:var(--paper);border-radius:18px;box-shadow:0 6px 20px rgba(58,29,11,.3);padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center;font-size:13.5px;font-weight:700}
+#legend h3{grid-column:1/-1;font-family:var(--display);font-size:17px;display:flex;justify-content:space-between;align-items:center}
+#legend h3 button{font-size:13px;font-weight:800;color:var(--orange-deep);padding:4px}
+#legend .sw{width:22px;height:22px;border-radius:50%;background:var(--c);border:3px solid #fff;box-shadow:0 1px 0 rgba(58,29,11,.3)}
+#legend .ln{width:26px;height:0;border-top:5px dotted var(--c)}
+#legend .ln.d{border-top-style:dashed}
+#legend .me{width:18px;height:18px;border-radius:50%;background:var(--me);border:3px solid #fff;margin-left:2px}
+#legend p{grid-column:1/-1;color:var(--ink-soft);font-size:12.5px}
+.search{position:sticky;top:-14px;z-index:2;margin:-14px -16px 4px;padding:12px 16px 10px;background:var(--paper)}
+.search input{width:100%;height:46px;border-radius:14px;border:2px solid #EBD3B4;background:#fff;padding:0 14px;font:inherit;font-weight:700;color:var(--ink)}
+.search input:focus{outline:none;border-color:var(--orange)}
+.prog{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:10px 12px;box-shadow:0 2px 0 rgba(58,29,11,.12);font-weight:800;font-size:13.5px}
+.prog .bar{flex:1;height:10px;border-radius:99px;background:#F3E2CC;overflow:hidden}
+.prog .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--orange),var(--orange-deep));border-radius:99px}
+.city-prog{display:flex;align-items:center;gap:8px;font-weight:800;font-size:12.5px}
+.city-prog .bar{flex:1;max-width:160px;height:8px;border-radius:99px;background:rgba(255,255,255,.35);overflow:hidden}
+.city-prog .bar i{display:block;height:100%;background:#fff}
+.grab{position:sticky;top:0;z-index:3;height:22px;display:grid;place-items:center;margin-bottom:-22px;pointer-events:none}
+.grab::before{content:"";width:44px;height:5px;border-radius:99px;background:rgba(58,29,11,.28)}
 #toast{position:absolute;left:12px;right:76px;bottom:34px;z-index:500;background:var(--ink);color:var(--white);padding:10px 14px;border-radius:14px;font-weight:700;font-size:13px}
 
 /* Liste */
@@ -160,13 +184,16 @@ h1,h2,h3,p,dl{margin:0}
 
   <section id="city" class="screen" hidden>
     <div class="topbar">
-      <button class="back" id="back" type="button" aria-label="Şehirlere dön">‹</button>
+      <button class="back" id="back" type="button" aria-label="Ana sayfaya, şehirlere dön"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11.5 12 5l8 6.5V20a1 1 0 0 1-1 1h-5v-6h-4v6H5a1 1 0 0 1-1-1z" fill="currentColor"/></svg>Şehirler</button>
       <h1 class="city-title" id="cityTitle"></h1>
-      <div class="gps" id="gps"><i></i><span>Konum bekleniyor</span></div>
     </div>
     <div class="chips" id="chips"></div>
     <div class="view">
       <div id="map"></div>
+      <div class="gps" id="gps"><i></i><span>Konum bekleniyor</span></div>
+      <div id="loading"><i></i><span>Harita yükleniyor…</span></div>
+      <button class="help" id="helpBtn" type="button" aria-label="Haritadaki işaretlerin anlamı">?</button>
+      <div id="legend" hidden></div>
       <div id="list" hidden></div>
       <button class="fab" id="locate" type="button" aria-label="Konumuma git"><span></span></button>
       <div id="toast" hidden></div>
@@ -301,6 +328,33 @@ const CATS = {
 };
 /* Simge yapılar için küçük çizimler (48x56). Yakınlaştırınca pin yerine bunlar görünür. */
 const ART = {
+  dam:'<path fill="#E9D3A6" d="M3 48h42v4H3z"/><path fill="#D8BE8A" d="M13 44h22v4H13z"/><path fill="#F2E3C6" d="M20 44l2-32h4l2 32z"/><path fill="#C9B07E" d="M19 32h10v7H19z"/><circle cx="24" cy="10" r="2.400" fill="#D8BE8A"/><path fill="#8A6A3A" d="M15 40h4v4h-4zM29 40h4v4h-4z"/>',
+  nieuwekerk:'<path fill="#B5532A" d="M6 30h36v22H6z"/><path fill="#4A5568" d="M4 30l20-12 20 12z"/><path fill="#4A5568" d="M22.500 19l1.500-13 1.500 13z"/><path fill="#9FD3F0" d="M20 37a4 5 0 0 1 8 0v10h-8z"/><path fill="#3A1D0B" d="M10 52v-6a2 2 0 0 1 4 0v6zM34 52v-6a2 2 0 0 1 4 0v6z"/><circle cx="24" cy="27" r="2.200" fill="#F2E3C6"/>',
+  begijnhof:'<path fill="#2E2A28" d="M6 32h12v18H6zM6 32l6-8 6 8z"/><path fill="#B5532A" d="M28 30h14v20H28zM28 30l7-9 7 9z"/><path fill="#F2E3C6" d="M8.500 36h2v3h-2zM13.500 36h2v3h-2zM31 34h3v4h-3zM36 34h3v4h-3zM31 41h3v4h-3zM36 41h3v4h-3z"/><path fill="#6B4A2B" d="M22 42h2v8h-2z"/><circle cx="23" cy="37" r="5.500" fill="#4FA35A"/><path fill="#B4DB7A" d="M3 50h42v2H3z"/><path fill="#F2E3C6" d="M10 50v-5h4v5z"/>',
+  solder:'<path fill="#9C4623" d="M14 22h20v30H14zM14 22h3v-3h3v-3h3v-4h2v4h3v3h3v3h3z"/><path fill="#F2E3C6" d="M17 26h4v5h-4zM27 26h4v5h-4zM17 35h4v5h-4zM27 35h4v5h-4z"/><path fill="#F7B500" d="M23.200 13.500h1.600v6h-1.600zM21.500 15.200h5v1.400h-5z"/><path fill="#3A1D0B" d="M21 52v-8h6v8z"/>',
+  voc:'<path fill="#B5532A" d="M3 28h42v24H3z"/><path fill="#4A5568" d="M3 28l4-6h34l4 6z"/><path fill="#F2E3C6" d="M7 32h4v5H7zM14 32h4v5h-4zM30 32h4v5h-4zM37 32h4v5h-4zM7 41h4v5H7zM14 41h4v5h-4zM30 41h4v5h-4zM37 41h4v5h-4z"/><path fill="#D8BE8A" d="M20 28h8v24h-8z"/><path fill="#F7B500" d="M21 31h6v4h-6z"/><path fill="#3A1D0B" d="M21.500 52v-7a2.500 2.500 0 0 1 5 0v7z"/>',
+  wic:'<path fill="#9C4623" d="M5 30h38v22H5z"/><path fill="#4A5568" d="M5 30l19-8 19 8z"/><path fill="#D8BE8A" d="M21 14h6v8h-6z"/><path fill="#4FA39A" d="M20.500 14l3.500-6 3.500 6z"/><path fill="#F2E3C6" d="M9 35h4v5H9zM16 35h4v5h-4zM28 35h4v5h-4zM35 35h4v5h-4zM9 43h4v5H9zM35 43h4v5h-4z"/><path fill="#3A1D0B" d="M20 52v-9a4 4 0 0 1 8 0v9z"/>',
+  zuiderkerk:'<path fill="#9C4623" d="M7 40h10v12H7zM31 40h10v12H31z"/><path fill="#B5532A" d="M17 30h14v22H17z"/><path fill="#F2E3C6" d="M19 20h10v10H19z"/><path fill="#4FA39A" d="M20 20l4-15 4 15z"/><circle cx="24" cy="25" r="2.600" fill="#fff" stroke="#3A1D0B" stroke-width=".800"/><path fill="#3A1D0B" d="M22 52v-8a2 2 0 0 1 4 0v8z"/>',
+  rembrandt:'<path fill="#B5532A" d="M12 24h24v28H12zM12 24h4v-4h4v-4h8v4h4v4h4z"/><path fill="#F2E3C6" d="M16 28h5v6h-5zM27 28h5v6h-5zM16 38h5v6h-5zM27 38h5v6h-5z"/><path fill="#C53030" d="M14 28h2v6h-2zM21 28h2v6h-2zM25 28h2v6h-2zM32 28h2v6h-2zM14 38h2v6h-2zM32 38h2v6h-2z"/><path fill="#3A1D0B" d="M21.500 52v-6h5v6z"/>',
+  portsyn:'<path fill="#B5532A" d="M6 22h36v30H6z"/><path fill="#9C4623" d="M5 20h38v3H5z"/><path fill="#9FD3F0" d="M10 30a2 2 0 0 1 4 0v14h-4zM17 30a2 2 0 0 1 4 0v14h-4zM27 30a2 2 0 0 1 4 0v14h-4zM34 30a2 2 0 0 1 4 0v14h-4z"/><path fill="#3A1D0B" d="M22 52v-7a2 2 0 0 1 4 0v7z"/><path fill="#E9D3A6" d="M3 50h42v2H3z"/>',
+  schreier:'<path fill="#27B7D9" d="M2 46h44v6H2z"/><path fill="#9C4623" d="M12 26h24v22H12z"/><path fill="#4A5568" d="M10 26l14-14 14 14z"/><path fill="#F7B500" d="M23.300 7h1.400v6h-1.400z"/><path fill="#F2E3C6" d="M17 32h3v4h-3zM28 32h3v4h-3z"/><path fill="#3A1D0B" d="M22 46v-6a2 2 0 0 1 4 0v6z"/>',
+  annefrank:'<path fill="#6B4A2B" d="M13 22h17v30H13zM16.500 22v-6h10v6zM18.500 16a3 3 0 0 1 6 0z"/><path fill="#F2E3C6" d="M16 26h4v5h-4zM23 26h4v5h-4zM16 35h4v5h-4zM23 35h4v5h-4z"/><path fill="#3A1D0B" d="M19.500 52v-7h4v7z"/><path fill="#6B4A2B" d="M36 39h2v13h-2z"/><circle cx="37" cy="34" r="7" fill="#4FA35A"/>',
+  homomonument:'<path fill="#E9D3A6" d="M2 44h44v2H2z"/><path fill="#27B7D9" d="M2 46h44v6H2z"/><path fill="#E879A6" d="M4 44l9-16 9 16z"/><path fill="#D6578E" d="M26 44l9-16 9 16z"/><path fill="#F49AC1" d="M16 44l8-13 8 13z"/>',
+  scheepvaart:'<path fill="#27B7D9" d="M2 46h44v6H2z"/><path fill="#E9D3A6" d="M20 18h24v28H20z"/><path fill="#D8BE8A" d="M30 12h4v6h-4z"/><path fill="#F2E3C6" d="M23 22h4v5h-4zM30 22h4v5h-4zM37 22h4v5h-4zM23 31h4v5h-4zM37 31h4v5h-4z"/><path fill="#6B4A2B" d="M2 40h20l-3 6H5z"/><path fill="#3A1D0B" d="M8 22h1.500v18H8zM14 25h1.500v15H14z"/><path fill="#fff" d="M9.500 24l6 8h-6zM3 27l5 6H3zM15.500 27l5 7h-5z"/>',
+  stopera:'<path fill="#27B7D9" d="M2 48h44v4H2z"/><path fill="#F2E3C6" d="M3 48c4-14 13-20 25-20v20z"/><path fill="#B5532A" d="M28 22h17v26H28z"/><path fill="#9FD3F0" d="M9 42h17v2H9zM13 37h13v2H13zM18 32h8v2h-8zM31 27h11v2H31zM31 33h11v2H31zM31 39h11v2H31z"/>',
+  weesperflat:'<path fill="#A0A7AF" d="M6 16h36v36H6z"/><path fill="#7A828B" d="M6 25h36v2H6zM6 34h36v2H6zM6 43h36v2H6z"/><path fill="#55606E" d="M9 18h4v5H9zM16 18h4v5h-4zM23 18h4v5h-4zM30 18h4v5h-4zM37 18h3v5h-3zM9 28h4v4H9zM16 28h4v4h-4zM23 28h4v4h-4zM30 28h4v4h-4zM37 28h3v4h-3zM9 37h4v4H9zM16 37h4v4h-4zM30 37h4v4h-4zM37 37h3v4h-3z"/><path fill="#3A1D0B" d="M20 52v-6h8v6z"/>',
+  dnb:'<path fill="#8E96A0" d="M3 36h42v16H3z"/><path fill="#B9C0C8" d="M16 8h16v44H16z"/><path fill="#55606E" d="M18 12h12v2H18zM18 17h12v2H18zM18 22h12v2H18zM18 27h12v2H18zM18 32h12v2H18zM18 37h12v2H18zM18 42h12v2H18zM6 40h8v2H6zM34 40h8v2h-8zM6 45h8v2H6zM34 45h8v2h-8z"/>',
+  hetschip:'<path fill="#C4622F" d="M4 38c0-6 6-9 12-9h28v23H4z"/><path fill="#A64F24" d="M18 14h6v15h-6z"/><path fill="#4A5568" d="M18 14l3-8 3 8z"/><path fill="#F2E3C6" d="M9 39h3v3H9zM15 36h3v3h-3zM24 36h3v3h-3zM31 36h3v3h-3zM38 36h3v3h-3zM15 43h3v3h-3zM24 43h3v3h-3zM31 43h3v3h-3zM38 43h3v3h-3z"/><path fill="#3A1D0B" d="M8 52v-6h4v6z"/>',
+  ndsm:'<path fill="#27B7D9" d="M2 48h44v4H2z"/><path fill="#6B7280" d="M3 30h27v18H3z"/><path fill="#4B5563" d="M3 30l13.500-7 13.500 7z"/><path fill="#F0355B" d="M7 36h4v4H7zM15 36h4v4h-4zM23 34h3v14h-3z"/><path fill="#E8A33D" d="M36 13h3v35h-3zM27 11h19v3H27z"/><path fill="#3A1D0B" d="M29.500 14h1v11h-1zM28.500 25h3v2h-3z"/>',
+  burgerweeshuis:'<path fill="#C9CDD2" d="M3 38h42v14H3zM11 31h26v7H11z"/><path fill="#A0A7AF" d="M4 38a5 5 0 0 1 10 0zM14 38a5 5 0 0 1 10 0zM24 38a5 5 0 0 1 10 0zM34 38a5 5 0 0 1 10 0zM11 31a6.500 6.500 0 0 1 13 0zM24 31a6.500 6.500 0 0 1 13 0z"/><path fill="#55606E" d="M6 42h4v6H6zM14 42h4v6h-4zM30 42h4v6h-4zM38 42h4v6h-4z"/><path fill="#3A1D0B" d="M22 52v-8h4v8z"/>',
+  bijlmer:'<path fill="#9CA3AF" d="M2 18h44v32H2z"/><path fill="#6B7280" d="M2 24h44v1.500H2zM2 30h44v1.500H2zM2 36h44v1.500H2zM2 42h44v1.500H2z"/><path fill="#F7B500" d="M6 19h3v4H6zM14 25.500h3v4h-3zM24 31.500h3v4h-3zM34 19h3v4h-3zM40 37.500h3v4h-3zM10 43.500h3v4h-3zM29 43.500h3v4h-3z"/><path fill="#4FA35A" d="M2 50h44v2H2z"/>',
+  vondel:'<path fill="#B4DB7A" d="M2 44h44v8H2z"/><ellipse cx="32" cy="48" rx="12" ry="3" fill="#27B7D9"/><path fill="#6B4A2B" d="M11 35h2v11h-2zM35 32h2v10h-2z"/><circle cx="12" cy="29" r="9" fill="#3E8E4B"/><circle cx="36" cy="27" r="7" fill="#4FA35A"/><path fill="#A68A5B" d="M22 36h4v9h-4zM21 34h6v2h-6z"/><circle cx="24" cy="31" r="2.200" fill="#A68A5B"/>',
+  ooster:'<path fill="#B4DB7A" d="M2 44h44v8H2z"/><ellipse cx="16" cy="47.500" rx="12" ry="3.500" fill="#27B7D9"/><path fill="#6B4A2B" d="M33 34h2v13h-2zM11 37h2v8h-2z"/><circle cx="34" cy="27" r="10" fill="#3E8E4B"/><circle cx="12" cy="32" r="6" fill="#4FA35A"/>',
+  hortus:'<path fill="#B4DB7A" d="M2 48h44v4H2z"/><path fill="#CFEFFA" stroke="#8FB7C6" stroke-width="1" d="M6 48V36a10 10 0 0 1 20 0v12z"/><path fill="none" stroke="#8FB7C6" stroke-width="1" d="M16 26v22M6 40h20M9 30l7 4 7-4"/><path fill="#6B4A2B" d="M35 30h2v18h-2z"/><path fill="#3E8E4B" d="M36 30c-6-1-9 2-10 5 3-3 7-3 10-5zM36 30c6-1 9 2 10 5-3-3-7-3-10-5zM36 30c-2-5 1-8 4-9-2 3-2 6-4 9zM36 30c2-5-1-8-4-9 2 3 2 6 4 9z"/>',
+  wester:'<path fill="#B4DB7A" d="M2 46h44v6H2z"/><path fill="#B5532A" d="M18 26h23v20H18z"/><path fill="#9C4623" d="M18 26a11.500 4 0 0 1 23 0z"/><path fill="#F2E3C6" d="M21 32h3v6h-3zM28 32h3v6h-3zM35 32h3v6h-3z"/><path fill="#6B4A2B" d="M9 38h2v9H9z"/><circle cx="10" cy="33" r="7" fill="#4FA35A"/>',
+  sarphati:'<path fill="#B4DB7A" d="M2 46h44v6H2z"/><path fill="#27B7D9" d="M13 46h22v3H13z"/><path fill="#C9B07E" d="M20 30h8v16h-8zM18 44h12v2H18z"/><path fill="#A68A5B" d="M21 21h6v9h-6z"/><circle cx="24" cy="19" r="3" fill="#A68A5B"/><path fill="#6B4A2B" d="M7 37h2v9H7zM39 37h2v9h-2z"/><circle cx="8" cy="32" r="7" fill="#3E8E4B"/><circle cx="40" cy="32" r="7" fill="#4FA35A"/>',
+  frankendael:'<path fill="#B4DB7A" d="M2 46h44v6H2z"/><path fill="#F2E3C6" d="M10 28h28v18H10z"/><path fill="#4A5568" d="M8 28l16-8 16 8z"/><path fill="#9FD3F0" d="M14 32h3v4h-3zM20 32h3v4h-3zM26 32h3v4h-3zM32 32h3v4h-3zM14 39h3v4h-3zM32 39h3v4h-3z"/><path fill="#3A1D0B" d="M22 46v-6h4v6z"/><circle cx="5" cy="41" r="4" fill="#4FA35A"/><circle cx="43" cy="41" r="4" fill="#4FA35A"/>',
+  rembrandtpark:'<path fill="#B4DB7A" d="M2 44h44v8H2z"/><ellipse cx="32" cy="48" rx="11" ry="3" fill="#27B7D9"/><path fill="#6B4A2B" d="M11 36h2v10h-2zM19 38h2v8h-2zM37 34h2v10h-2z"/><circle cx="12" cy="30" r="8" fill="#4FA35A"/><circle cx="20" cy="34" r="6" fill="#3E8E4B"/><circle cx="38" cy="29" r="6" fill="#3E8E4B"/>',
   waag:'<path fill="#B5532A" d="M10 28h28v22H10z"/><path fill="#9C4623" d="M5 24h9v26H5zM34 24h9v26h-9zM19 16h10v34H19z"/><path fill="#4A5568" d="M3.5 24l6-10 6 10zM32.5 24l6-10 6 10zM17.5 16l6.500-11 6.500 11z"/><path fill="#3A1D0B" d="M21.5 50v-7a2.500 2.500 0 0 1 5 0v7z"/>',
   westerkerk:'<path fill="#B5532A" d="M17 28h14v24H17z"/><path fill="#F2E3C6" d="M19 18h10v10H19zM21 10h6v8h-6z"/><path fill="#2F6FDE" d="M20.500 10a3.500 4 0 0 1 7 0z"/><circle cx="24" cy="5" r="1.800" fill="#F7B500"/><path fill="#3A1D0B" d="M22 52v-8a2 2 0 0 1 4 0v8z"/>',
   paleis:'<path fill="#E9D3A6" d="M4 30h40v20H4z"/><path fill="#D8BE8A" d="M14 30l10-7 10 7z"/><path fill="#4FA39A" d="M21 15a3 3.500 0 0 1 6 0v9h-6z"/><path fill="#8A6A3A" d="M8 35h3v5H8zM14 35h3v5h-3zM20 35h3v5h-3zM26 35h3v5h-3zM32 35h3v5h-3zM38 35h3v5h-3zM8 43h3v5H8zM14 43h3v5h-3zM32 43h3v5h-3zM38 43h3v5h-3z"/><path fill="#3A1D0B" d="M21 50v-6h6v6z"/>',
@@ -314,6 +368,13 @@ const ART = {
   eye:'<path fill="#fff" stroke="#B8C4CE" stroke-width="1" d="M3 46l8-16 22-10 12 8-6 18z"/><path fill="#9FD3F0" d="M12 44l4-9 20-4-2 13z"/>',
   gooyer:'<path fill="#6B4A2B" d="M19 24h10l4 28H15z"/><path fill="#F2E3C6" d="M15 46h18l1 6H14z"/><path stroke="#3A1D0B" stroke-width="2.600" stroke-linecap="round" d="M24 22L8 8M24 22l16-14M24 22L10 38M24 22l14 16"/><circle cx="24" cy="22" r="2.500" fill="#3A1D0B"/>'
 };
+/* Çizimi olmayan noktalar kategorisine göre bir çizim alır: kanal evi, beton blok veya ağaç. */
+const ART_CAT = {
+  hist:'<path fill="#B5532A" d="M15 24h18v28H15zM15 24h3v-3h3v-3h6v3h3v3h3z"/><path fill="#F2E3C6" d="M18 28h4v5h-4zM26 28h4v5h-4zM18 37h4v5h-4zM26 37h4v5h-4z"/><path fill="#3A1D0B" d="M22 52v-7h4v7z"/>',
+  arch:'<path fill="#A0A7AF" d="M10 18h28v34H10z"/><path fill="#55606E" d="M13 22h6v4h-6zM21 22h6v4h-6zM29 22h6v4h-6zM13 30h6v4h-6zM21 30h6v4h-6zM29 30h6v4h-6zM13 38h6v4h-6zM29 38h6v4h-6z"/><path fill="#3A1D0B" d="M21 52v-8h6v8z"/>',
+  park:'<path fill="#B4DB7A" d="M2 46h44v6H2z"/><path fill="#6B4A2B" d="M15 36h2v11h-2zM31 34h2v12h-2z"/><circle cx="16" cy="30" r="8" fill="#4FA35A"/><circle cx="32" cy="27" r="9" fill="#3E8E4B"/>'
+};
+const artOf = p => ART[p.id] || ART_CAT[p.cat] || "";
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let store = {done:{},fav:{},layers:{hist:true,arch:true,park:true,food:true,walk:true,photo:true},geo:{}};
@@ -333,17 +394,23 @@ function photo(title, size){
 }
 
 /* ---------- Ana ekran ---------- */
+const doneCount = c => c.places.filter(p => store.done[p.id]).length + c.routes.filter(r => store.done[r.id]).length;
+const totalCount = c => c.places.length + c.routes.length;
+function progHTML(c){ const d = doneCount(c), t = totalCount(c); return `<span class="city-prog"><span class="bar"><i style="width:${Math.round(d/t*100)}%"></i></span>${d} / ${t} gittin</span>`; }
 function renderHome(){
   $("#cityCards").innerHTML = Object.entries(CITIES).map(([key,c]) =>
     `<button class="city-card" type="button" data-city="${key}"><span class="city-body"><span class="city-name">${c.name}</span>
      <span class="city-meta">${c.places.length} nokta · ${c.routes.filter(r=>!r.ferry).length} yürüyüş rotası · ${c.routes.filter(r=>r.ferry).length} vapur hattı</span>
-     <span class="go">Haritayı aç</span></span></button>`).join("");
+     ${progHTML(c)}<span class="go">Haritayı aç</span></span></button>`).join("");
   Object.entries(CITIES).forEach(([key,c]) => photo(c.hero, 1000).then(src => { if (!src) return;
     const img = new Image(); img.alt = ""; img.onload = () => document.querySelector(`[data-city="${key}"]`).prepend(img); img.src = src; }));
 }
 $("#cityCards").addEventListener("click", e => { const b = e.target.closest("[data-city]"); if (b) openCity(b.dataset.city); });
 $("#addCity").addEventListener("click", () => { $("#addNote").hidden = !$("#addNote").hidden; });
-$("#back").addEventListener("click", () => { $("#city").hidden = true; $("#home").hidden = false; });
+function goHome(){ closeSheet(); $("#legend").hidden = true; $("#city").hidden = true; $("#home").hidden = false; renderHome(); }
+/* Telefonun geri hareketi (kenardan kaydırma) de ana sayfaya döner. */
+$("#back").addEventListener("click", () => { if (history.state && history.state.city) history.back(); else goHome(); });
+addEventListener("popstate", () => { if (!$("#city").hidden) goHome(); });
 
 /* ---------- Harita (MapLibre + OpenFreeMap, anahtar gerektirmez) ---------- */
 const ll = p => [p[1], p[0]];
@@ -372,21 +439,23 @@ const ROUTE = "#1D3FA8", FERRY = "#0B8FB8";
 function openCity(key){
   city = CITIES[key]; sel = null;
   $("#home").hidden = true; $("#city").hidden = false; $("#cityTitle").textContent = city.name;
+  if (!(history.state && history.state.city)) history.pushState({city:key}, "");
   renderChips(); setTab("map");
   if (map){ map.resize(); return; }
-  if (!window.maplibregl){ toast("Harita kütüphanesi yüklenemedi. İnternet bağlantını kontrol et."); return; }
+  if (!window.maplibregl){ $("#loading").firstChild.hidden = true; $("#loading").lastChild.textContent = "Harita yüklenemedi. Bağlantını kontrol edip sayfayı yenile. Liste sekmesi yine çalışır."; return; }
   fetch("https://tiles.openfreemap.org/styles/liberty").then(r => r.json()).then(themed).then(initMap)
-    .catch(() => toast("Harita zemini yüklenemedi. Bağlantını kontrol edip sayfayı yenile."));
+    .catch(() => { $("#loading").lastChild.textContent = "Harita yüklenemedi. Bağlantını kontrol edip sayfayı yenile. Liste sekmesi yine çalışır."; $("#loading").firstChild.hidden = true; });
 }
 function initMap(style){
   const b = city.bounds;
   map = new maplibregl.Map({container:"map", style, center:ll(city.center), zoom:city.zoom, minZoom:city.minZoom, maxZoom:19,
     maxBounds:[[b[0][1], b[0][0]], [b[1][1], b[1][0]]], dragRotate:false, pitchWithRotate:false, attributionControl:{compact:true}});
   map.touchZoomRotate.disableRotation();
-  city.places.forEach(p => { markers[p.id] = mk(p.id, (ART[p.id] ? `<svg class="art" viewBox="0 0 48 56">${ART[p.id]}</svg>` : "") + `<div class="${pinCls(p)}" style="--c:${CATS[p.cat].c}"><b>${p.price || ""}</b></div>`, p.name, [p.lat, p.lon], "bottom"); if (ART[p.id]) markers[p.id].el.classList.add("hasart"); });
+  city.places.forEach(p => { markers[p.id] = mk(p.id, (artOf(p) ? `<svg class="art" viewBox="0 0 48 56">${artOf(p)}</svg>` : "") + `<div class="${pinCls(p)}" style="--c:${CATS[p.cat].c}"><b>${p.price || ""}</b></div>`, p.name, [p.lat, p.lon], "bottom"); if (ART[p.id]) markers[p.id].el.classList.add("hasart"); });
   let n = 0;
   city.routes.forEach(r => { markers[r.id] = mk(r.id, `<div class="rstart${r.ferry ? " ferry" : ""}">${r.ferry || ++n}</div>`, r.name, r.pts[0], "center"); });
   map.on("load", () => {
+    $("#loading").hidden = true;
     city.routes.forEach(r => {
       map.addSource(r.id, {type:"geojson", data:gj(r.geo ? r.geo.line : r.pts)});
       map.addLayer({id:r.id + "-c", type:"line", source:r.id, layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":9}});
@@ -503,7 +572,7 @@ function select(id, keepView){
     dir = `https://www.google.com/maps/dir/?api=1&destination=${q}&destination_place_id=${o.pid}&travelmode=walking`;
   }
   const s = $("#sheet"); s.style.setProperty("--c", CATS[cat].c);
-  s.innerHTML = `<button class="x" type="button" id="closeSheet" aria-label="Kartı kapat">✕</button><div class="photo none" id="ph"></div>
+  s.innerHTML = `<div class="grab" aria-hidden="true"></div><button class="x" type="button" id="closeSheet" aria-label="Kartı kapat">✕</button><div class="photo none" id="ph"></div>
     <div class="sbody"><span class="tag">${o.ferry ? "Ücretsiz vapur" : CATS[cat].tag}</span><h2>${esc(o.name)}</h2>
     <p>${esc(o.desc || "")}</p><p class="why">${esc(o.why)}</p>
     ${o.hist ? `<h3 class="sec">${cat === "food" ? "Hikâyesi" : "Tarihçe"}</h3>` + o.hist.split("\n\n").map(t => `<p class="histxt">${esc(t)}</p>`).join("") : ""}
@@ -525,21 +594,49 @@ $("#sheet").addEventListener("click", e => {
   const t = e.target.closest("[data-t]"); if (!t) return;
   const k = t.dataset.t; if (store[k][sel]) delete store[k][sel]; else store[k][sel] = 1; save(); select(sel, true);
 });
+/* Kartı aşağı kaydırarak kapat. */
+(function(){ let y0 = null; const sh = $("#sheet");
+  sh.addEventListener("touchstart", e => { y0 = sh.scrollTop <= 0 ? e.touches[0].clientY : null; }, {passive:true});
+  sh.addEventListener("touchmove", e => { if (y0 === null) return; const dy = e.touches[0].clientY - y0; if (dy > 0) sh.style.transform = `translateY(${dy}px)`; }, {passive:true});
+  sh.addEventListener("touchend", e => { if (y0 === null) return; const dy = e.changedTouches[0].clientY - y0; sh.style.transform = ""; y0 = null; if (dy > 90) closeSheet(); });
+})();
 function closeSheet(){ if ($("#sheet").hidden) return; $("#sheet").hidden = true; sel = null; refresh(); }
 
+/* ---------- Harita açıklaması ---------- */
+function renderLegend(){
+  const dot = k => `<span class="sw" style="--c:${CATS[k].c}"></span><span>${CATS[k].label}: ${CATS[k].tag.toLowerCase()}</span>`;
+  $("#legend").innerHTML = `<h3>Haritadaki işaretler <button type="button" id="legendX">Kapat</button></h3>
+    ${["hist","arch","park","food","photo"].map(dot).join("")}
+    <span class="ln" style="--c:${ROUTE}"></span><span>Yürüyüş rotası (numara: başlangıç)</span>
+    <span class="ln d" style="--c:${FERRY}"></span><span>Ücretsiz vapur hattı</span>
+    <span class="me"></span><span>Sen (canlı konum)</span>
+    <p>Yakınlaştırınca tarihi yapılar, mimari ve parklar küçük çizimleriyle görünür. Bir işarete dokun, kartı açılır. Üstteki renkli düğmelerle katmanları aç/kapat.</p>`;
+}
+$("#helpBtn").addEventListener("click", () => { const l = $("#legend"); if (l.hidden) renderLegend(); l.hidden = !l.hidden; });
+$("#legend").addEventListener("click", e => { if (e.target.closest("#legendX")) $("#legend").hidden = true; });
+
 /* ---------- Liste ve favoriler ---------- */
+let query = "";
+const norm = t => String(t).toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 function setTab(t){
   tab = t; document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === t));
-  $("#list").hidden = t === "map"; $("#locate").hidden = t !== "map";
+  $("#list").hidden = t === "map"; $("#locate").hidden = t !== "map"; $("#helpBtn").hidden = t !== "map"; $("#legend").hidden = true;
   if (t !== "map"){ $("#sheet").hidden = true; $("#toast").hidden = true; renderList(); } else if (map) map.resize();
 }
 document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) setTab(b.dataset.tab); });
 function renderList(){
-  const favOnly = tab === "fav", near = me && inCity(); let html = "";
+  if (!$("#q")){
+    $("#list").innerHTML = `<div class="search"><input id="q" type="search" placeholder="Ara: kilise, patates, park…" aria-label="Noktalarda ara" autocomplete="off"></div><div id="listBody"></div>`;
+    $("#q").addEventListener("input", e => { query = e.target.value; renderList(); });
+  }
+  const favOnly = tab === "fav", near = me && inCity(), q = norm(query.trim()); let html = "";
+  if (!q && !favOnly){ const d = doneCount(city), t = totalCount(city);
+    html += `<div class="prog"><span>${d} / ${t} gittin</span><span class="bar"><i style="width:${Math.round(d/t*100)}%"></i></span></div>`; }
   for (const k in CATS){
     if (!store.layers[k]) continue;
     let items = (k === "walk" ? city.routes : city.places.filter(p => p.cat === k)).slice();
     if (favOnly) items = items.filter(o => store.fav[o.id]);
+    if (q) items = items.filter(o => norm(o.name + " " + (o.desc || "") + " " + (o.eat || "") + " " + (o.why || "")).includes(q));
     if (near && k !== "walk") items.sort((a, b) => km(me, [a.lat, a.lon]) - km(me, [b.lat, b.lon]));
     if (!items.length) continue;
     html += `<h2 class="lh" style="--c:${CATS[k].c}"><i></i>${CATS[k].label}</h2>` + items.map(o => {
@@ -548,7 +645,7 @@ function renderList(){
       return `<button class="row" type="button" data-id="${o.id}" style="--c:${CATS[k].c}"><div><b>${esc(o.name)}</b><small>${esc(sub)}</small></div>${right ? `<em>${right}</em>` : ""}</button>`;
     }).join("");
   }
-  $("#list").innerHTML = (html || `<p class="empty">${favOnly ? "Henüz favorin yok. Bir noktanın kartından Favori'ye bas." : "Bütün katmanlar kapalı. Üstteki çiplerden birini aç."}</p>`) + `<p class="foot">Veriler en son ${city.updated} tarihinde doğrulandı.${near ? " Liste sana yakınlığa göre sıralı." : ""}</p>`;
+  $("#listBody").innerHTML = (html.includes("class=\"row\"") ? html : html + `<p class="empty">${q ? "Aramana uyan nokta yok. Başka bir kelime dene ya da üstteki kapalı katmanları aç." : favOnly ? "Henüz favorin yok. Bir noktanın kartından Favori'ye bas." : "Bütün katmanlar kapalı. Üstteki çiplerden birini aç."}</p>`) + `<p class="foot">Veriler en son ${city.updated} tarihinde doğrulandı.${near ? " Liste sana yakınlığa göre sıralı." : ""}</p>`;
 }
 $("#list").addEventListener("click", e => { const b = e.target.closest("[data-id]"); if (b) select(b.dataset.id); });
 
