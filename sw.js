@@ -2,7 +2,7 @@
    Sayfa her açılışta önce internetten taze alınır; bağlantı yoksa son kaydedilen hâli açılır.
    Gezdiğin harita alanları, fotoğraflar ve kütüphaneler de saklanır, böylece metroda ya da
    zayıf bağlantıda daha önce baktığın yerler boş görünmez. Canlı veri her zaman önceliklidir. */
-const V = "dolcanrota-v6";
+const V = "dolcanrota-v7";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
 const MAX_TILES = 1500;
 
