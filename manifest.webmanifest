@@ -1,0 +1,17 @@
+{
+  "name": "Dolcan Rota",
+  "short_name": "Dolcan Rota",
+  "description": "Kişisel gezi rehberi: tarihi noktalar, fiyat performans yemek, parklar ve yürüyüş rotaları.",
+  "lang": "tr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FF8A1F",
+  "theme_color": "#FF8A1F",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
