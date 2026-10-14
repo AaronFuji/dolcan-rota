@@ -21,7 +21,7 @@
 :root{
   --orange:#FF8A1F;--orange-deep:#E85D04;--orange-soft:#FFD9A8;
   --ink:#3A1D0B;--ink-soft:#7A5236;--paper:#FFF7EA;--white:#fff;
-  --hist:#6C4DF5;--arch:#55606E;--park:#1E9E5A;--food:#F0355B;--photo:#D99A00;--walk:#1D3FA8;--me:#1273EB;
+  --hist:#6C4DF5;--arch:#55606E;--park:#1E9E5A;--food:#F0355B;--coffee:#7A4A2A;--photo:#D99A00;--walk:#1D3FA8;--me:#1273EB;
   --shadow:0 4px 0 rgba(58,29,11,.22);
   --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
   --body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -126,6 +126,8 @@ h1,h2,h3,p,dl{margin:0}
 .city-prog .bar i{display:block;height:100%;background:#fff}
 .grab{position:sticky;top:0;z-index:3;height:22px;display:grid;place-items:center;margin-bottom:-22px;pointer-events:none}
 .grab::before{content:"";width:44px;height:5px;border-radius:99px;background:rgba(58,29,11,.28)}
+.stars{color:#C98200;font-weight:800}
+.rd{color:var(--ink-soft);font-weight:700}
 #toast{position:absolute;left:12px;right:76px;bottom:34px;z-index:500;background:var(--ink);color:var(--white);padding:10px 14px;border-radius:14px;font-weight:700;font-size:13px}
 
 /* Liste */
@@ -215,7 +217,7 @@ h1,h2,h3,p,dl{margin:0}
    ===================================================================== */
 const CITIES = {
   amsterdam: {
-    name:"Amsterdam", updated:"08.10.2026", hero:"Canals_of_Amsterdam",
+    name:"Amsterdam", updated:"14.10.2026", hero:"Canals_of_Amsterdam",
     center:[52.3702,4.8935], zoom:13.6, minZoom:11,
     bounds:[[52.27,4.72],[52.45,5.06]],
     places:[
@@ -271,6 +273,15 @@ const CITIES = {
       {id:"amstel",cat:"photo",name:"Amstel Kıyısı",wiki:"Magere_Brug",lat:52.3642627,lon:4.901162,pid:"ChIJKUQVXQAJxkcR15qSn8LEW40",desc:"Nehir kıyısından Magere Brug'a bakan açı.",why:"Köprüyü tek karede almak için.",dur:"10 dk",fee:"Ücretsiz",hours:"Her zaman"},
 
       /* ================= YEMEK ================= */
+      /* ================= KAHVE (Google puanları 14.10.2026 itibarıyla) ================= */
+      {id:"sango",cat:"coffee",name:"Sango Specialty Coffee Roasters",lat:52.3785368,lon:4.8945098,pid:"ChIJXXoMacgJxkcRB7roIOz_63Q",rating:4.7,rc:1321,rdate:"14.10.2026",eat:"Tek kökenli çekirdeklerden V60 / pour over; espresso ve sütlü kahvede çekirdeği sen seçiyorsun.",why:"Ziyaretçilerin Amsterdam'daki en iyi filtre kahve dediği yer. Centraal'e 5 dk.",hours:"Her gün 08:30-16:00 (Paz 09:00'da açılır)",tip:"Filtre, diğer içeceklerden pahalı ama yorumlara göre değiyor. Erken kapanıyor, sabah git."},
+      {id:"rumbaba",cat:"coffee",name:"Rum Baba",lat:52.3691337,lon:4.8787234,pid:"ChIJSQdRlmMJxkcRoWwD7y12alU",rating:4.7,rc:524,rdate:"14.10.2026",eat:"V60 ve hazır filtre (batch brew). Özel seri çekirdekleri dene.",why:"Yerel kavurucu; meyvemsi, aromatik kahveler (bir yorum: \"kiraz gibi\").",hours:"Pzt-Cum 08:00-16:30, hafta sonu 09:00-17:00"},
+      {id:"hummingbird",cat:"coffee",name:"Hummingbird Coffee",lat:52.3715868,lon:4.8895103,pid:"ChIJ-ZHrz_QJxkcRKC2ovKvwteo",price:"€",rating:4.7,rc:1138,rdate:"14.10.2026",eat:"V60; her ay değişen misafir kavurucu. Etiyopya çekirdeklerini dene.",why:"V60'ın aroması özellikle övülüyor. Dam'a çok yakın.",hours:"Pzt-Cum 08:30-17:00, hafta sonu 09:00-17:30"},
+      {id:"haku",cat:"coffee",name:"Haku Specialty Coffee",lat:52.373288,lon:4.8808005,pid:"ChIJsTHDhlcJxkcRCnAHjYMBalU",price:"€",rating:4.7,rc:606,rdate:"14.10.2026",eat:"Pour over, cappuccino; kahve içmeyen için matcha ve hojicha.",why:"Sakin, Japon tarzı mekan; baristalar kahveyi anlatmayı seviyor. Anne Frank Evi'ne yakın.",hours:"Pzt-Cum 08:00-17:00, hafta sonu 09:00-18:00"},
+      {id:"bocca",cat:"coffee",name:"Bocca Coffee",lat:52.3643905,lon:4.8868164,pid:"ChIJ18bKQdwJxkcReqmMFkEeavw",price:"€",rating:4.4,rc:2117,rdate:"14.10.2026",eat:"Kendi kavurduğu çekirdeklerden V60; geniş çekirdek seçimi.",why:"Oturacak yer bol, kalabalıktan uzak.",hours:"Pzt-Cum 08:00-18:00, hafta sonu 09:00-18:00",tip:"Bir yorumcu filtreyi hafif bulmuş; gövdeli seviyorsan baristaya söyle."},
+      {id:"blackgold",cat:"coffee",name:"Black Gold",lat:52.371788,lon:4.9030432,pid:"ChIJXzhr4tUJxkcRe35UyYT1wr8",price:"€",rating:4.7,rc:898,rdate:"14.10.2026",eat:"Latte ve sütlü kahveler; bezelye sütü seçeneği var.",why:"Plak dükkanının içinde kahve; Nieuwmarkt'a yakın.",hours:"Pzt-Cum 09:00-17:00, hafta sonu 10:00-18:00"},
+      {id:"backtoblack",cat:"coffee",name:"Back to Black",lat:52.361077,lon:4.888494,pid:"ChIJc5vMcuwJxkcRBl98RxpjxI4",rating:4.7,rc:2038,rdate:"14.10.2026",eat:"Kendi kavurduğu kahveler ve meşhur, çok büyük elmalı turta.",why:"Rijksmuseum'un karşısında, kanal kenarında; müzeden önce ya da sonra.",hours:"Pzt-Cum 08:00-18:00, hafta sonu 09:00-18:00"},
+      {id:"luuks",cat:"coffee",name:"Luuk's Coffee Noordermarkt",lat:52.3787639,lon:4.8862575,pid:"ChIJYwCkFOgJxkcREFF7URu9Spk",price:"€",rating:4.8,rc:1048,rdate:"14.10.2026",eat:"Flat white ve cappuccino; tarçınlı çörek.",why:"Listenin en yüksek puanlısı; sütlü kahvede çok güçlü.",hours:"Pzt-Cum 07:30-16:30, Cmt 08:00-17:00, Paz 09:00-17:00",tip:"Küçük mekan, masa yok; ayaküstü ya da alıp Jordaan'da yürüyerek iç."},
       {id:"vleminckx",cat:"food",name:"Vleminckx (Vlaams Friteshuis)",wiki:"French_fries",gen:1,lat:52.3678913,lon:4.8909863,pid:"ChIJW8FgycEJxkcRImIYQha8SXI",price:"€",eat:"Kağıt külahta patat, sos seçimi geniş. Paket servis, oturma yok.",why:"Şehrin en bilinen patatçısı, kuyruk hızlı ilerliyor.",hours:"Her gün 11:00-19:00 (Per 20:00)"},
       {id:"fabel",cat:"food",name:"Fabel Friet (Runstraat)",wiki:"French_fries",gen:1,lat:52.3688273,lon:4.8840617,pid:"ChIJrftMriIJxkcRmsYdm9XycFA",price:"€",eat:"Trüf mayonez ve parmesanlı patat, yaklaşık €7. Bir porsiyon iki kişiye yeter.",why:"Sosyal medyadaki ünlü patat. Kanal kenarında yenir.",hours:"Her gün 11:00-21:00"},
       {id:"wigboldus",cat:"food",name:"Rob Wigboldus Vishandel",wiki:"Kibbeling",gen:1,lat:52.3741861,lon:4.8938745,pid:"ChIJ_R_GDccJxkcRjIPrA98swRk",price:"€",eat:"Ringa (haring) sandviç ve kibbeling. Tabak yaklaşık €5-6.",why:"Dam'ın dibinde, turistik olmayan balıkçı.",hours:"Her gün 08:00-17:00",tip:"Yalnızca nakit."},
@@ -323,6 +334,7 @@ const CATS = {
   arch:{label:"Mimari",tag:"Modern mimari",c:"var(--arch)"},
   park:{label:"Park",tag:"Park ve bahçe",c:"var(--park)"},
   food:{label:"Yemek",tag:"Fiyat performans",c:"var(--food)"},
+  coffee:{label:"Kahve",tag:"Specialty kahve",c:"var(--coffee)"},
   photo:{label:"Foto",tag:"Foto noktası",c:"var(--photo)"},
   walk:{label:"Rotalar",tag:"Yürüyüş rotası",c:"var(--walk)"}
 };
@@ -377,7 +389,7 @@ const ART_CAT = {
 const artOf = p => ART[p.id] || ART_CAT[p.cat] || "";
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let store = {done:{},fav:{},layers:{hist:true,arch:true,park:true,food:true,walk:true,photo:true},geo:{}};
+let store = {done:{},fav:{},layers:{hist:true,arch:true,park:true,food:true,coffee:true,walk:true,photo:true},geo:{}};
 try { const sv = JSON.parse(localStorage.getItem("dolcanrota.v1") || "{}"); sv.layers = Object.assign(store.layers, sv.layers); Object.assign(store, sv); } catch(e){}
 const save = () => { try { localStorage.setItem("dolcanrota.v1", JSON.stringify(store)); } catch(e){} };
 
@@ -451,7 +463,7 @@ function initMap(style){
   map = new maplibregl.Map({container:"map", style, center:ll(city.center), zoom:city.zoom, minZoom:city.minZoom, maxZoom:19,
     maxBounds:[[b[0][1], b[0][0]], [b[1][1], b[1][0]]], dragRotate:false, pitchWithRotate:false, attributionControl:{compact:true}});
   map.touchZoomRotate.disableRotation();
-  city.places.forEach(p => { markers[p.id] = mk(p.id, (artOf(p) ? `<svg class="art" viewBox="0 0 48 56">${artOf(p)}</svg>` : "") + `<div class="${pinCls(p)}" style="--c:${CATS[p.cat].c}"><b>${p.price || ""}</b></div>`, p.name, [p.lat, p.lon], "bottom"); if (ART[p.id]) markers[p.id].el.classList.add("hasart"); });
+  city.places.forEach(p => { markers[p.id] = mk(p.id, (artOf(p) ? `<svg class="art" viewBox="0 0 48 56">${artOf(p)}</svg>` : "") + `<div class="${pinCls(p)}" style="--c:${CATS[p.cat].c}"><b>${p.cat === "coffee" ? "☕" : (p.price || "")}</b></div>`, p.name, [p.lat, p.lon], "bottom"); if (ART[p.id]) markers[p.id].el.classList.add("hasart"); });
   let n = 0;
   city.routes.forEach(r => { markers[r.id] = mk(r.id, `<div class="rstart${r.ferry ? " ferry" : ""}">${r.ferry || ++n}</div>`, r.name, r.pts[0], "center"); });
   map.on("load", () => {
@@ -465,7 +477,7 @@ function initMap(style){
     });
     // İsimler harita katmanı olarak çizilir: uzaktan da okunur, üst üste binenleri harita kendisi ayıklar.
     const fontLayer = map.getStyle().layers.find(l => l.type === "symbol" && l.layout && l.layout["text-font"]);
-    const rank = {hist:1, arch:2, park:3, photo:4, food:5};
+    const rank = {hist:1, arch:2, park:3, photo:4, coffee:5, food:5};
     map.addSource("names", {type:"geojson", data:{type:"FeatureCollection", features:city.places.map(p => ({type:"Feature", properties:{id:p.id, cat:p.cat, name:p.name.replace(/ \(.*\)$/, ""), rank:rank[p.cat] + (ART[p.id] ? 0 : .5)}, geometry:{type:"Point", coordinates:[p.lon, p.lat]}}))}});
     map.addLayer({id:"names", type:"symbol", source:"names", minzoom:12.5,
       layout:{"text-field":["get","name"], "text-font":fontLayer ? fontLayer.layout["text-font"] : ["Noto Sans Regular"], "text-size":["interpolate",["linear"],["zoom"],12.5,10.5,16,13], "text-anchor":"top", "text-offset":[0,0.35], "text-max-width":8, "symbol-sort-key":["get","rank"], "text-padding":4},
@@ -563,11 +575,12 @@ function select(id, keepView){
     dir = `https://www.google.com/maps/dir/?api=1&destination=${s.join(",")}&travelmode=walking`;
   } else {
     if (me && inCity()) facts += `<dt>Uzaklık</dt><dd>Buradan ${fmtD(km(me, [o.lat, o.lon]))} (kuş uçuşu)</dd>`;
-    if (o.eat) facts += `<dt>Ne yenir</dt><dd>${esc(o.eat)}</dd><dt>Fiyat</dt><dd>${o.price} ${o.price === "€" ? "(ucuz)" : "(orta)"}</dd>`;
+    if (o.rating) facts += `<dt>Google</dt><dd><span class="stars">★ ${String(o.rating).replace(".",",")}</span> (${o.rc.toLocaleString("tr-TR")} yorum) <small class="rd">· ${o.rdate} itibarıyla, güncel puan Google Maps'te</small></dd>`;
+    if (o.eat) facts += `<dt>${o.cat === "coffee" ? "Ne içilir" : "Ne yenir"}</dt><dd>${esc(o.eat)}</dd>` + (o.price ? `<dt>Fiyat</dt><dd>${o.price} ${o.price === "€" ? "(ucuz)" : "(orta)"}</dd>` : "");
     if (o.dur) facts += `<dt>Süre</dt><dd>${esc(o.dur)}</dd>`;
-    if (o.cat !== "food") facts += `<dt>Giriş</dt><dd>${o.fee ? esc(o.fee) : "Doğrulanmadı"}</dd>`;
+    if (o.cat !== "food" && o.cat !== "coffee") facts += `<dt>Giriş</dt><dd>${o.fee ? esc(o.fee) : "Doğrulanmadı"}</dd>`;
     facts += `<dt>Saatler</dt><dd>${o.hours ? esc(o.hours) : "Doğrulanmadı"}</dd>`;
-    if (o.cat !== "food" && !o.fee) open.push("Açık nokta: güncel giriş ücreti doğrulanmadı, resmi siteden bak.");
+    if (o.cat !== "food" && o.cat !== "coffee" && !o.fee) open.push("Açık nokta: güncel giriş ücreti doğrulanmadı, resmi siteden bak.");
     gm = `https://www.google.com/maps/search/?api=1&query=${q}&query_place_id=${o.pid}`;
     dir = `https://www.google.com/maps/dir/?api=1&destination=${q}&destination_place_id=${o.pid}&travelmode=walking`;
   }
@@ -606,7 +619,7 @@ function closeSheet(){ if ($("#sheet").hidden) return; $("#sheet").hidden = true
 function renderLegend(){
   const dot = k => `<span class="sw" style="--c:${CATS[k].c}"></span><span>${CATS[k].label}: ${CATS[k].tag.toLowerCase()}</span>`;
   $("#legend").innerHTML = `<h3>Haritadaki işaretler <button type="button" id="legendX">Kapat</button></h3>
-    ${["hist","arch","park","food","photo"].map(dot).join("")}
+    ${["hist","arch","park","food","coffee","photo"].map(dot).join("")}
     <span class="ln" style="--c:${ROUTE}"></span><span>Yürüyüş rotası (numara: başlangıç)</span>
     <span class="ln d" style="--c:${FERRY}"></span><span>Ücretsiz vapur hattı</span>
     <span class="me"></span><span>Sen (canlı konum)</span>
@@ -636,11 +649,11 @@ function renderList(){
     if (!store.layers[k]) continue;
     let items = (k === "walk" ? city.routes : city.places.filter(p => p.cat === k)).slice();
     if (favOnly) items = items.filter(o => store.fav[o.id]);
-    if (q) items = items.filter(o => norm(o.name + " " + (o.desc || "") + " " + (o.eat || "") + " " + (o.why || "")).includes(q));
+    if (q) items = items.filter(o => norm(CATS[k].label + " " + CATS[k].tag + " " + o.name + " " + (o.desc || "") + " " + (o.eat || "") + " " + (o.why || "")).includes(q));
     if (near && k !== "walk") items.sort((a, b) => km(me, [a.lat, a.lon]) - km(me, [b.lat, b.lon]));
     if (!items.length) continue;
     html += `<h2 class="lh" style="--c:${CATS[k].c}"><i></i>${CATS[k].label}</h2>` + items.map(o => {
-      const sub = o.ferry ? o.why : o.pts ? (o.geo ? o.geo.km.toFixed(1).replace(".",",") + " km · " + Math.round(o.geo.min/5)*5 + " dk" : o.why) : (o.price ? o.price + " · " + o.why : o.why);
+      const sub = o.ferry ? o.why : o.pts ? (o.geo ? o.geo.km.toFixed(1).replace(".",",") + " km · " + Math.round(o.geo.min/5)*5 + " dk" : o.why) : ((o.rating ? "★ " + String(o.rating).replace(".",",") + " · " : "") + (o.price ? o.price + " · " : "") + o.why);
       const right = [near && !o.pts ? fmtD(km(me, [o.lat, o.lon])) : "", store.done[o.id] ? "Gittim ✓" : ""].filter(Boolean).join("<br>");
       return `<button class="row" type="button" data-id="${o.id}" style="--c:${CATS[k].c}"><div><b>${esc(o.name)}</b><small>${esc(sub)}</small></div>${right ? `<em>${right}</em>` : ""}</button>`;
     }).join("");
