@@ -163,7 +163,7 @@ h1,h2,h3,p,dl{margin:0}
 .qwait{font-weight:800;color:var(--ink-soft)}
 .qimg{width:100%;max-height:220px;object-fit:cover;border-radius:12px}
 .qq{font-weight:800}
-.qopt{text-align:left;place-items:center start;padding:8px 12px}
+.qopt{text-align:left;justify-content:flex-start;padding:8px 12px}
 .qopt.wrong{background:#FDE2E4;color:#9B1C2C;box-shadow:none}
 .badges{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
 .badge{background:#fff;border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:2px;opacity:.45;filter:grayscale(1);box-shadow:0 2px 0 rgba(58,29,11,.12)}
@@ -224,6 +224,30 @@ h1,h2,h3,p,dl{margin:0}
 .pchip[aria-pressed="true"] small{color:#FFE3C2}
 .pgo{margin-top:10px;min-height:52px;font-size:16px}
 .tab{font-size:13px}
+.ic{width:1.2em;height:1.2em;flex:none;vertical-align:-.22em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn .ic{margin-right:6px}
+.btn{display:flex;align-items:center;justify-content:center}
+.pin b .ic{width:14px;height:14px;stroke-width:2.5;vertical-align:0}
+.factbtn .ic{width:21px;height:21px;stroke-width:2.3}
+.ptspill .ic{color:#F4B400;width:17px;height:17px}
+.fact-art{width:84px;height:98px;filter:drop-shadow(0 3px 0 rgba(58,29,11,.25))}
+.fact-ic{width:64px;height:64px;border-radius:50%;background:var(--orange-soft);color:var(--orange-deep);display:grid;place-items:center}
+.fact-ic .ic{width:34px;height:34px}
+.badge .ic{width:28px;height:28px;color:var(--orange-deep)}
+.qat .ic,.pwalk .ic,.pstop small .ic{width:15px;height:15px}
+.pmk.start .ic{width:14px;height:14px;stroke-width:2.6}
+.pts{display:flex;flex-direction:column;background:#fff;border-radius:14px;box-shadow:0 2px 0 rgba(58,29,11,.12);overflow:hidden}
+.pts div{display:flex;align-items:center;gap:10px;padding:10px 12px;font-weight:700;font-size:14px}
+.pts div+div{border-top:1px solid #F3E2CC}
+.pts .ic{color:var(--orange-deep);width:20px;height:20px}
+.pts span{flex:1}
+.pts b{font-family:var(--display);font-size:16px;white-space:nowrap}
+.pnote{font-size:12.5px;color:var(--ink-soft);font-weight:700}
+.plancard{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--paper);border-radius:22px;padding:14px 16px;box-shadow:0 6px 0 rgba(58,29,11,.22)}
+.plancard .pci{width:52px;height:52px;border-radius:16px;background:var(--orange-deep);color:#fff;display:grid;place-items:center;flex:none}
+.plancard .pci .ic{width:28px;height:28px}
+.plancard b{display:block;font-family:var(--display);font-size:20px;line-height:1.1}
+.plancard small{display:block;font-weight:700;color:var(--ink-soft);font-size:13px;margin-top:2px}
 #toast{position:absolute;left:12px;right:76px;bottom:34px;z-index:500;background:var(--ink);color:var(--white);padding:10px 14px;border-radius:14px;font-weight:700;font-size:13px}
 
 /* Liste */
@@ -261,7 +285,7 @@ h1,h2,h3,p,dl{margin:0}
 .facts dd{margin:0;font-weight:700}
 .open-q{background:#FFE9C7;border-radius:10px;padding:6px 10px;font-size:12.5px;font-weight:700}
 .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.btn{min-height:46px;border-radius:14px;font-weight:800;font-size:14px;display:grid;place-items:center;text-align:center;text-decoration:none;padding:4px 8px;background:var(--white);color:var(--ink);box-shadow:var(--shadow)}
+.btn{min-height:46px;border-radius:14px;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;padding:4px 8px;background:var(--white);color:var(--ink);box-shadow:var(--shadow)}
 .btn.primary{background:#18A957;color:var(--white);box-shadow:0 4px 0 #0E7A3C}
 .btn[aria-pressed="true"]{background:var(--ink);color:var(--white)}
 @media (min-width:760px){#sheet{left:auto;right:16px;bottom:16px;width:400px;border-radius:24px;max-height:calc(100% - 32px)}}
@@ -281,6 +305,7 @@ h1,h2,h3,p,dl{margin:0}
       <div class="word">dolcan<b>ROTA</b></div>
     </div>
     <div id="cityCards"></div>
+    <button class="plancard" id="planCard" type="button"><span class="pci"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18h7.3a3.5 3.5 0 0 0 0-7h-7a3.5 3.5 0 0 1 0-7h7.3"/></svg></span><span><b>Kendi rotanı oluştur</b><small>Kaç gün kalacağını ve ne kadar yürümek istediğini seç, sana gün gün rota çıkaralım.</small></span></button>
     <button class="ghost" id="addCity" type="button">+ Şehir ekle<small>Sırada: Utrecht</small></button>
     <p class="note" id="addNote" hidden>Yeni şehir için Claude'a şehir adını yazman yeterli. Noktalar araştırılıp doğrulanır, şehir kendi temasıyla buraya eklenir.</p>
   </section>
@@ -294,9 +319,9 @@ h1,h2,h3,p,dl{margin:0}
     <div class="view">
       <div id="map"></div>
       <div class="gps" id="gps"><i></i><span>Konum bekleniyor</span></div>
-      <button class="factbtn" id="factBtn" type="button"><span aria-hidden="true">💡</span>Günün bilgisi</button>
-      <button class="planchip" id="planChip" type="button" hidden aria-label="Planı haritadan kaldır"><span>🗓️ Plan</span>✕</button>
-      <button class="ptspill" id="ptsPill" type="button" aria-label="Puanların ve görevler"><span aria-hidden="true">⭐</span><span>0 puan</span></button>
+      <button class="factbtn" id="factBtn" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2v.1h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>Günün bilgisi</button>
+      <button class="planchip" id="planChip" type="button" hidden aria-label="Planı haritadan kaldır"><span>Plan</span>✕</button>
+      <button class="ptspill" id="ptsPill" type="button" aria-label="Puanların ve görevler"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg><span>0 puan</span></button>
       <div id="loading"><i></i><span>Harita yükleniyor…</span></div>
       <button class="help" id="helpBtn" type="button" aria-label="Haritadaki işaretlerin anlamı">?</button>
       <div id="legend" hidden></div>
@@ -521,6 +546,30 @@ const ART_CAT = {
   park:'<path fill="#B4DB7A" d="M2 46h44v6H2z"/><path fill="#6B4A2B" d="M15 36h2v11h-2zM31 34h2v12h-2z"/><circle cx="16" cy="30" r="8" fill="#4FA35A"/><circle cx="32" cy="27" r="9" fill="#3E8E4B"/>'
 };
 const artOf = p => ART[p.id] || ART_CAT[p.cat] || "";
+/* Kendi ikon setimiz (24x24, ince çizgi). ic("camera") gibi kullanılır. */
+const IC = {
+  bulb:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2v.1h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/>',
+  star:'<path fill="currentColor" stroke="none" d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/>',
+  calendar:'<rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+  camera:'<path d="M4 8.5a2 2 0 0 1 2-2h2l1.5-2h5l1.5 2h2a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.5"/>',
+  pin:'<path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/>',
+  map:'<path d="M9 4 3.5 6v14L9 18l6 2 5.5-2V4L15 6z"/><path d="M9 4v14M15 6v14"/>',
+  walk:'<circle cx="13" cy="4.5" r="1.8"/><path d="M10.5 21l2-6-2.5-2.5 1-5 3 3 3 1M8 11l2-3.5M12.5 15l3 6"/>',
+  cup:'<path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.6 1 .6 2 0 3M12 3.5c-.6 1 .6 2 0 3"/>',
+  croissant:'<path d="M3.5 15c2-5 5.5-8 8.5-8s6.5 3 8.5 8c-2 1.5-4 1.8-5.5 1.2L12 13l-3 3.2c-1.5.6-3.5.3-5.5-1.2z"/><path d="M9 9.2l3 3.8 3-3.8"/>',
+  cart:'<path d="M3 4h2.5l2 10.5h10l2-7.5H7"/><circle cx="9" cy="19" r="1.5"/><circle cx="17" cy="19" r="1.5"/>',
+  plate:'<path d="M7 3v7a2 2 0 0 0 2 2v9M5 3v5M9 3v5M17 21V3c-2 1-3 4-3 8h3"/>',
+  moon:'<path d="M19 14.5A7.5 7.5 0 0 1 9.5 5a7.5 7.5 0 1 0 9.5 9.5z"/>',
+  flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+  columns:'<path d="M3 9.5 12 4l9 5.5M4.5 20h15M6 10v8M10 10v8M14 10v8M18 10v8"/>',
+  ship:'<path d="M3 15l2 4.5h14l2-4.5zM6 15V9.5h12V15M12 9.5V5M9 5h6"/>',
+  target:'<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/>',
+  flame:'<path d="M12 21c-4 0-6.5-2.7-6.5-6.2 0-3.5 2.6-5.5 3.5-8.8 1.8 1.4 2.6 3 2.7 4.6 1-.8 1.7-2 1.8-3.4 2.4 1.9 3 4.6 3 7.4 0 3.6-2.6 6.4-4.5 6.4z"/>',
+  steps:'<path d="M8 3.5c1.7 0 2.5 2 2.5 4.2S9.6 12 8 12 5.5 10 5.5 7.7 6.3 3.5 8 3.5zM6 15h4v1.5a2 2 0 0 1-4 0zM16 7c1.7 0 2.5 2 2.5 4.2s-.9 4.3-2.5 4.3-2.5-2-2.5-4.3S14.3 7 16 7zM14 18.5h4V20a2 2 0 0 1-4 0z"/>',
+  route:'<circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18h7.3a3.5 3.5 0 0 0 0-7h-7a3.5 3.5 0 0 1 0-7h7.3"/>',
+  trophy:'<path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8.5 20h7M10 17h4"/>'
+};
+const ic = (n, c) => `<svg class="ic${c ? " " + c : ""}" viewBox="0 0 24 24" aria-hidden="true">${IC[n]}</svg>`;
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 let store = {done:{},fav:{},layers:{hist:true,arch:true,park:true,food:true,coffee:true,bakery:true,market:true,walk:true,photo:true},geo:{}};
@@ -552,6 +601,7 @@ function renderHome(){
     const img = new Image(); img.alt = ""; img.onload = () => document.querySelector(`[data-city="${key}"]`).prepend(img); img.src = src; }));
 }
 $("#cityCards").addEventListener("click", e => { const b = e.target.closest("[data-city]"); if (b) openCity(b.dataset.city); });
+$("#planCard").addEventListener("click", () => { openCity("amsterdam"); setTab("plan"); });
 $("#addCity").addEventListener("click", () => { $("#addNote").hidden = !$("#addNote").hidden; });
 function goHome(){ closeSheet(); $("#legend").hidden = true; $("#city").hidden = true; $("#home").hidden = false; renderHome(); }
 /* Telefonun geri hareketi (kenardan kaydırma) de ana sayfaya döner. */
@@ -597,7 +647,7 @@ function initMap(style){
   map = new maplibregl.Map({container:"map", style, center:ll(city.center), zoom:city.zoom, minZoom:city.minZoom, maxZoom:19,
     maxBounds:[[b[0][1], b[0][0]], [b[1][1], b[1][0]]], dragRotate:false, pitchWithRotate:false, attributionControl:{compact:true}});
   map.touchZoomRotate.disableRotation();
-  city.places.forEach(p => { markers[p.id] = mk(p.id, (artOf(p) ? `<svg class="art" viewBox="0 0 48 56">${artOf(p)}</svg>` : "") + `<div class="${pinCls(p)}" style="--c:${CATS[p.cat].c}"><b>${p.cat === "coffee" ? "☕" : p.cat === "bakery" ? "🥐" : p.cat === "market" ? "🛒" : (p.price || "")}</b></div>`, p.name, [p.lat, p.lon], "bottom"); if (ART[p.id]) markers[p.id].el.classList.add("hasart"); });
+  city.places.forEach(p => { markers[p.id] = mk(p.id, (artOf(p) ? `<svg class="art" viewBox="0 0 48 56">${artOf(p)}</svg>` : "") + `<div class="${pinCls(p)}" style="--c:${CATS[p.cat].c}"><b>${p.cat === "coffee" ? ic("cup") : p.cat === "bakery" ? ic("croissant") : p.cat === "market" ? ic("cart") : (p.price || "")}</b></div>`, p.name, [p.lat, p.lon], "bottom"); if (ART[p.id]) markers[p.id].el.classList.add("hasart"); });
   let n = 0;
   city.routes.forEach(r => { markers[r.id] = mk(r.id, `<div class="rstart${r.ferry ? " ferry" : ""}">${r.ferry || ++n}</div>`, r.name, r.pts[0], "center"); });
   map.on("load", () => {
@@ -813,39 +863,39 @@ renderHome();
    Her şey bu telefonda saklanır; sunucu yok.
    ===================================================================== */
 const FACTS = [
-  {e:"🏗️", t:"Amsterdam'ın adı nereden geliyor?", x:"13. yüzyılda Amstel nehrinin üzerine bir set (dam) kuruldu. Çevresindeki yerleşim \"Amstelredam\", yani Amstel'deki set diye anıldı. O setin yeri bugünkü Dam Meydanı.", p:"dam"},
-  {e:"🪵", t:"13.659 kazık", x:"Kraliyet Sarayı bataklık zeminde 13.659 ahşap kazığın üzerinde duruyor. Hollandalılar sayıyı şöyle ezberler: başına 1, sonuna 9, ortasına yılın gün sayısı 365.", p:"paleis"},
-  {e:"👑", t:"Saray aslında belediye binasıydı", x:"Dam'daki saray 17. yüzyılda belediye binası olarak yapıldı. 1808'de Napolyon'un kardeşi Louis Bonaparte Hollanda kralı olunca binayı kendine saray yaptı. Bugün kralın resmi kabul sarayı.", p:"paleis"},
-  {e:"❌", t:"XXX ne demek?", x:"Şehrin her yerindeki üç X, Aziz Andreas haçı. Tarihçilerin çoğu bunu 1280-1282'de Amsterdam'ın efendisi olan Persijn ailesinin armasına bağlıyor. \"Yangın, sel ve vebaya karşı\" açıklaması ise tarihi dayanağı olmayan bir efsane."},
-  {e:"🛡️", t:"Kahraman, Kararlı, Merhametli", x:"Amsterdam armasının altında \"Heldhaftig, Vastberaden, Barmhartig\" yazar: Kahraman, Kararlı, Merhametli."},
-  {e:"🛶", t:"Tamamen yapay bir şehir", x:"Kanal kuşağı 16. yüzyıl sonunda planlandı ve 17. yüzyılda sıfırdan, tamamen yapay olarak inşa edildi. 2010'da UNESCO Dünya Mirası listesine girdi.", p:"keizers"},
-  {e:"🪝", t:"Çatılardaki kancalar", x:"Kanal evleri dar ve merdivenleri çok dik olduğu için eşyalar çatıdaki kancaya takılan halatla pencereden taşınır. Bu kancalar bugün de kullanılıyor."},
-  {e:"📈", t:"Dünyanın ilk halka arzı", x:"Hollanda Doğu Hindistan Şirketi (VOC) 1602'de halka açıldı. Amsterdam borsası dünyanın en eski modern menkul kıymet piyasası sayılır. Bilinen en eski hisse senedi 1606 tarihli.", p:"voc"},
-  {e:"🗽", t:"Manhattan'ı muskata değiştiler", x:"New York'un eski adı Yeni Amsterdam'dı. 1667 Breda Antlaşması ile İngiltere Manhattan'ı tuttu, Hollanda ise muskat yetişen minicik Run adasını aldı. O gün bu ada daha değerli görülüyordu."},
-  {e:"🌙", t:"Liever Turks dan Paaps", x:"\"Papacı olmaktansa Türk olmayı yeğlerim.\" İspanya'ya karşı savaşan Hollandalı Deniz Dilencilerinin sloganı. Osmanlı vergisini ödeyen gayrimüslimleri inançları yüzünden zorlamıyordu; İspanya ise Protestanlara ağır baskı uyguluyordu."},
-  {e:"🏅", t:"Hilal madalyalar", x:"Deniz Dilencileri şapkalarında hilal biçimli madalyalar taşıdı. Bir yüzünde \"LIVER TVRCX DAN PAVS\" yazar. 1574'te Leiden'i kurtaran denizciler bunları takıyordu; Rijksmuseum koleksiyonunda bir örneği var.", p:"rijks"},
-  {e:"🌷", t:"Lale aslında Osmanlı'dan", x:"Hollanda'nın simgesi lale bu topraklara ait değil. Osmanlı sarayından Avrupa'ya geldi; \"tulip\" kelimesinin Türkçe \"tülbent\"ten geldiği düşünülür. Leiden'de ilk resmi lale 1594'te çiçek açtı."},
-  {e:"💸", t:"İlk ekonomik balon", x:"1634-1637 Lale Çılgınlığı'nda tek bir lale soğanı usta bir zanaatkârın yıllık gelirinin 10 katından fazlasına satıldı. Şubat 1637'de piyasa bir anda çöktü."},
-  {e:"📜", t:"1612: Osmanlı ile ilk anlaşma", x:"Sultan I. Ahmed 1612'de Hollanda'ya ticari ayrıcalıklar tanıdı. İstanbul'daki ilk Hollanda elçisi Cornelis Haga geçici bir görev için geldi ve 27 yıl kaldı."},
-  {e:"☕", t:"Kahvenin Amsterdam durağı", x:"VOC tüccarları 18. yüzyıl başında Java'dan Hortus Botanicus'a kahve fidanı getirdi. En yaygın anlatıma göre bu fidanın bir kopyası 1714'te XIV. Louis'ye hediye edildi; kahve oradan Karayipler'e ve Latin Amerika'ya yayıldı.", p:"hortus"},
-  {e:"🕯️", t:"Elektriksiz sinagog", x:"1675'te açılan Portekiz Sinagogu'nun ana salonunda hâlâ elektrik yok; yaklaşık 1.000 mumlu avizelerle aydınlanıyor. Zemini toz ve nemi emsin diye ince kumla kaplı.", p:"portsyn"},
-  {e:"💍", t:"Dünyada bir ilk", x:"1 Nisan 2001'de Amsterdam belediye binasında Belediye Başkanı Job Cohen dört eşcinsel çifti evlendirdi. Hollanda bunu yasallaştıran ilk ülke oldu.", p:"stopera"},
-  {e:"🌊", t:"Denizin altında", x:"Hollanda'nın yaklaşık %26'sı deniz seviyesinin altında, %59'u denizden ya da nehirlerden sel riski taşıyor. Ünlü söz: \"Dünyayı Tanrı yarattı, Hollanda'yı Hollandalılar.\""},
-  {e:"🚲", t:"İnsandan çok bisiklet", x:"Hollanda'da yaklaşık 23 milyon bisiklet var, kişi başı 1,3. Kırmızı asfaltlı yollar bisiklet yoludur; üzerinde yürüme."},
-  {e:"📏", t:"Dünyanın en uzun erkekleri", x:"2016'da yayımlanan büyük bir araştırmaya göre Hollandalı erkekler ortalama 182,5 cm ile dünyanın en uzun boylu erkekleri."},
-  {e:"🏝️", t:"Denizden doğan şehir", x:"Flevopolder dünyanın en büyük yapay adası. Üzerindeki Almere 1984'te belediye oldu; yani 50 yıl önce orası deniz tabanıydı."},
-  {e:"🎶", t:"En eski milli marş", x:"Wilhelmus'un sözleri en geç 1572'ye uzanır. 15 kıtanın baş harfleri yan yana gelince \"Willem van Nassov\" adı çıkar."},
-  {e:"⛴️", t:"Bedava vapur", x:"Centraal'in hemen arkasından Noord'a giden vapurlar yayalar ve bisikletliler için ücretsiz. F3 Buiksloterweg'e, F4 NDSM'e gider.", p:"adam"},
-  {e:"🌉", t:"Sıska Köprü", x:"Magere Brug'un adı \"sıska köprü\" demek. Efsaneye göre nehrin iki yakasında oturan Mager kız kardeşler birbirini kolay ziyaret etmek için yaptırmış. Köprü hâlâ tekneler için elle açılıyor.", p:"magere"},
-  {e:"🎨", t:"Rembrandt'ın kayıp mezarı", x:"Rembrandt 1669'da yoksul biri olarak Westerkerk'e gömüldü. Mezarının tam yeri bilinmiyor; içeride yalnızca bir anma plaketi var.", p:"westerkerk"},
-  {e:"🏰", t:"Kapı, tartı evi, anatomi salonu", x:"De Waag 1488'de bir şehir kapısı olarak yapıldı, sonra tartı evine çevrildi. Üst katındaki cerrahlar loncası için Rembrandt \"Dr. Tulp'un Anatomi Dersi\"ni yaptı.", p:"waag"},
-  {e:"⏰", t:"Şaşkın Jaap", x:"Montelbaanstoren'in saati ve çanları sık sık yanlış zamanda çaldığı için Amsterdamlılar kuleye \"Malle Jaap\" (Şaşkın Jaap) adını taktı.", p:"montel"},
-  {e:"🖼️", t:"Müzenin içinden bisiklet yolu", x:"Rijksmuseum'un ortasındaki tonozlu geçitten bisiklet yolu geçer. Binanın mimarı Pierre Cuypers aynı yıllarda Centraal garını da tasarladı; ikisinin benzemesi bundan.", p:"rijks"},
-  {e:"⛪", t:"Şehrin en eski binası", x:"Oude Kerk 1306'da kutsandı ve Amsterdam'ın ayakta kalan en eski binası. Zemini baştan sona mezar taşlarıyla kaplı; Rembrandt'ın eşi Saskia da burada yatıyor.", p:"oudekerk"},
-  {e:"🌳", t:"Gizli avlu", x:"Begijnhof'taki 34 numaralı Houten Huys, şehrin ayakta kalan en eski ahşap evlerinden biri. Avlu ortaçağ sokak seviyesinde kaldığı için çevresinden yaklaşık bir metre alçakta.", p:"begijnhof"},
-  {e:"🕊️", t:"İki dakikalık sessizlik", x:"Dam'daki beyaz Ulusal Anıt 1956'da İkinci Dünya Savaşı kurbanları için dikildi. Her 4 Mayıs akşamı saat 20.00'de bütün ülke iki dakika susar.", p:"dam"},
-  {e:"🧇", t:"Stroopwafel nasıl yenir?", x:"Stroopwafel'in Gouda'dan çıktığı anlatılır. Sıcak bir çay ya da kahve bardağının üstüne koy; buhar ortadaki şerbeti yumuşatır.", p:"egstorf"},
-  {e:"💳", t:"Trenden inerken kartı okut", x:"Toplu taşımada banka kartıyla binerken ve inerken okutman gerekiyor. Trenden inerken unutursan 33,30 € çekilir; tramvay, metro ve otobüste 4 €."}
+  {t:"Amsterdam'ın adı nereden geliyor?", x:"13. yüzyılda Amstel nehrinin üzerine bir set (dam) kuruldu. Çevresindeki yerleşim \"Amstelredam\", yani Amstel'deki set diye anıldı. O setin yeri bugünkü Dam Meydanı.", p:"dam"},
+  {t:"13.659 kazık", x:"Kraliyet Sarayı bataklık zeminde 13.659 ahşap kazığın üzerinde duruyor. Hollandalılar sayıyı şöyle ezberler: başına 1, sonuna 9, ortasına yılın gün sayısı 365.", p:"paleis"},
+  {t:"Saray aslında belediye binasıydı", x:"Dam'daki saray 17. yüzyılda belediye binası olarak yapıldı. 1808'de Napolyon'un kardeşi Louis Bonaparte Hollanda kralı olunca binayı kendine saray yaptı. Bugün kralın resmi kabul sarayı.", p:"paleis"},
+  {t:"XXX ne demek?", x:"Şehrin her yerindeki üç X, Aziz Andreas haçı. Tarihçilerin çoğu bunu 1280-1282'de Amsterdam'ın efendisi olan Persijn ailesinin armasına bağlıyor. \"Yangın, sel ve vebaya karşı\" açıklaması ise tarihi dayanağı olmayan bir efsane."},
+  {t:"Kahraman, Kararlı, Merhametli", x:"Amsterdam armasının altında \"Heldhaftig, Vastberaden, Barmhartig\" yazar: Kahraman, Kararlı, Merhametli."},
+  {t:"Tamamen yapay bir şehir", x:"Kanal kuşağı 16. yüzyıl sonunda planlandı ve 17. yüzyılda sıfırdan, tamamen yapay olarak inşa edildi. 2010'da UNESCO Dünya Mirası listesine girdi.", p:"keizers"},
+  {t:"Çatılardaki kancalar", x:"Kanal evleri dar ve merdivenleri çok dik olduğu için eşyalar çatıdaki kancaya takılan halatla pencereden taşınır. Bu kancalar bugün de kullanılıyor."},
+  {t:"Dünyanın ilk halka arzı", x:"Hollanda Doğu Hindistan Şirketi (VOC) 1602'de halka açıldı. Amsterdam borsası dünyanın en eski modern menkul kıymet piyasası sayılır. Bilinen en eski hisse senedi 1606 tarihli.", p:"voc"},
+  {t:"Manhattan'ı muskata değiştiler", x:"New York'un eski adı Yeni Amsterdam'dı. 1667 Breda Antlaşması ile İngiltere Manhattan'ı tuttu, Hollanda ise muskat yetişen minicik Run adasını aldı. O gün bu ada daha değerli görülüyordu."},
+  {t:"Liever Turks dan Paaps", x:"\"Papacı olmaktansa Türk olmayı yeğlerim.\" İspanya'ya karşı savaşan Hollandalı Deniz Dilencilerinin sloganı. Osmanlı vergisini ödeyen gayrimüslimleri inançları yüzünden zorlamıyordu; İspanya ise Protestanlara ağır baskı uyguluyordu."},
+  {t:"Hilal madalyalar", x:"Deniz Dilencileri şapkalarında hilal biçimli madalyalar taşıdı. Bir yüzünde \"LIVER TVRCX DAN PAVS\" yazar. 1574'te Leiden'i kurtaran denizciler bunları takıyordu; Rijksmuseum koleksiyonunda bir örneği var.", p:"rijks"},
+  {t:"Lale aslında Osmanlı'dan", x:"Hollanda'nın simgesi lale bu topraklara ait değil. Osmanlı sarayından Avrupa'ya geldi; \"tulip\" kelimesinin Türkçe \"tülbent\"ten geldiği düşünülür. Leiden'de ilk resmi lale 1594'te çiçek açtı."},
+  {t:"İlk ekonomik balon", x:"1634-1637 Lale Çılgınlığı'nda tek bir lale soğanı usta bir zanaatkârın yıllık gelirinin 10 katından fazlasına satıldı. Şubat 1637'de piyasa bir anda çöktü."},
+  {t:"1612: Osmanlı ile ilk anlaşma", x:"Sultan I. Ahmed 1612'de Hollanda'ya ticari ayrıcalıklar tanıdı. İstanbul'daki ilk Hollanda elçisi Cornelis Haga geçici bir görev için geldi ve 27 yıl kaldı."},
+  {t:"Kahvenin Amsterdam durağı", x:"VOC tüccarları 18. yüzyıl başında Java'dan Hortus Botanicus'a kahve fidanı getirdi. En yaygın anlatıma göre bu fidanın bir kopyası 1714'te XIV. Louis'ye hediye edildi; kahve oradan Karayipler'e ve Latin Amerika'ya yayıldı.", p:"hortus"},
+  {t:"Elektriksiz sinagog", x:"1675'te açılan Portekiz Sinagogu'nun ana salonunda hâlâ elektrik yok; yaklaşık 1.000 mumlu avizelerle aydınlanıyor. Zemini toz ve nemi emsin diye ince kumla kaplı.", p:"portsyn"},
+  {t:"Dünyada bir ilk", x:"1 Nisan 2001'de Amsterdam belediye binasında Belediye Başkanı Job Cohen dört eşcinsel çifti evlendirdi. Hollanda bunu yasallaştıran ilk ülke oldu.", p:"stopera"},
+  {t:"Denizin altında", x:"Hollanda'nın yaklaşık %26'sı deniz seviyesinin altında, %59'u denizden ya da nehirlerden sel riski taşıyor. Ünlü söz: \"Dünyayı Tanrı yarattı, Hollanda'yı Hollandalılar.\""},
+  {t:"İnsandan çok bisiklet", x:"Hollanda'da yaklaşık 23 milyon bisiklet var, kişi başı 1,3. Kırmızı asfaltlı yollar bisiklet yoludur; üzerinde yürüme."},
+  {t:"Dünyanın en uzun erkekleri", x:"2016'da yayımlanan büyük bir araştırmaya göre Hollandalı erkekler ortalama 182,5 cm ile dünyanın en uzun boylu erkekleri."},
+  {t:"Denizden doğan şehir", x:"Flevopolder dünyanın en büyük yapay adası. Üzerindeki Almere 1984'te belediye oldu; yani 50 yıl önce orası deniz tabanıydı."},
+  {t:"En eski milli marş", x:"Wilhelmus'un sözleri en geç 1572'ye uzanır. 15 kıtanın baş harfleri yan yana gelince \"Willem van Nassov\" adı çıkar."},
+  {t:"Bedava vapur", x:"Centraal'in hemen arkasından Noord'a giden vapurlar yayalar ve bisikletliler için ücretsiz. F3 Buiksloterweg'e, F4 NDSM'e gider.", p:"adam"},
+  {t:"Sıska Köprü", x:"Magere Brug'un adı \"sıska köprü\" demek. Efsaneye göre nehrin iki yakasında oturan Mager kız kardeşler birbirini kolay ziyaret etmek için yaptırmış. Köprü hâlâ tekneler için elle açılıyor.", p:"magere"},
+  {t:"Rembrandt'ın kayıp mezarı", x:"Rembrandt 1669'da yoksul biri olarak Westerkerk'e gömüldü. Mezarının tam yeri bilinmiyor; içeride yalnızca bir anma plaketi var.", p:"westerkerk"},
+  {t:"Kapı, tartı evi, anatomi salonu", x:"De Waag 1488'de bir şehir kapısı olarak yapıldı, sonra tartı evine çevrildi. Üst katındaki cerrahlar loncası için Rembrandt \"Dr. Tulp'un Anatomi Dersi\"ni yaptı.", p:"waag"},
+  {t:"Şaşkın Jaap", x:"Montelbaanstoren'in saati ve çanları sık sık yanlış zamanda çaldığı için Amsterdamlılar kuleye \"Malle Jaap\" (Şaşkın Jaap) adını taktı.", p:"montel"},
+  {t:"Müzenin içinden bisiklet yolu", x:"Rijksmuseum'un ortasındaki tonozlu geçitten bisiklet yolu geçer. Binanın mimarı Pierre Cuypers aynı yıllarda Centraal garını da tasarladı; ikisinin benzemesi bundan.", p:"rijks"},
+  {t:"Şehrin en eski binası", x:"Oude Kerk 1306'da kutsandı ve Amsterdam'ın ayakta kalan en eski binası. Zemini baştan sona mezar taşlarıyla kaplı; Rembrandt'ın eşi Saskia da burada yatıyor.", p:"oudekerk"},
+  {t:"Gizli avlu", x:"Begijnhof'taki 34 numaralı Houten Huys, şehrin ayakta kalan en eski ahşap evlerinden biri. Avlu ortaçağ sokak seviyesinde kaldığı için çevresinden yaklaşık bir metre alçakta.", p:"begijnhof"},
+  {t:"İki dakikalık sessizlik", x:"Dam'daki beyaz Ulusal Anıt 1956'da İkinci Dünya Savaşı kurbanları için dikildi. Her 4 Mayıs akşamı saat 20.00'de bütün ülke iki dakika susar.", p:"dam"},
+  {t:"Stroopwafel nasıl yenir?", x:"Stroopwafel'in Gouda'dan çıktığı anlatılır. Sıcak bir çay ya da kahve bardağının üstüne koy; buhar ortadaki şerbeti yumuşatır.", p:"egstorf"},
+  {t:"Trenden inerken kartı okut", x:"Toplu taşımada banka kartıyla binerken ve inerken okutman gerekiyor. Trenden inerken unutursan 33,30 € çekilir; tramvay, metro ve otobüste 4 €."}
 ];
 
 /* Günün görevleri: her gün bir kolay, bir orta, bir zor. at = hedef nokta, r = metre cinsinden yarıçap. */
@@ -881,16 +931,16 @@ const MISSIONS = {
 };
 const LEVELS = [[0,"Turist"],[100,"Gezgin"],[300,"Kaşif"],[600,"Amsterdamlı"],[1000,"Efsane"]];
 const BADGES = [
-  {id:"first", e:"👣", t:"İlk adım", d:"Bir noktayı yerinde ziyaret et", ok:() => Object.keys(store.visits).length >= 1},
-  {id:"km5", e:"🥾", t:"5 km", d:"Uygulama açıkken 5 km yürü", ok:() => store.walkM >= 5000},
-  {id:"km20", e:"🏃", t:"20 km", d:"Uygulama açıkken 20 km yürü", ok:() => store.walkM >= 20000},
-  {id:"bakery3", e:"🥐", t:"Fırın avcısı", d:"3 fırını ziyaret et", ok:() => visitedCat("bakery") >= 3},
-  {id:"coffee3", e:"☕", t:"Kahve tadımcısı", d:"3 kahveciyi ziyaret et", ok:() => visitedCat("coffee") >= 3},
-  {id:"hist10", e:"🏛️", t:"Tarih meraklısı", d:"10 tarihi noktayı ziyaret et", ok:() => visitedCat("hist") >= 10},
-  {id:"north", e:"⛴️", t:"Kuzey yakası", d:"IJ'nin kuzeyindeki bir noktayı ziyaret et", ok:() => city && city.places.some(p => store.visits[p.id] && p.lat > 52.381)},
-  {id:"route1", e:"🗺️", t:"Rota ustası", d:"Bir yürüyüş rotasını bitir", ok:() => Object.keys(store.routesDone).length >= 1},
-  {id:"quest5", e:"🎯", t:"Görev avcısı", d:"5 görev tamamla", ok:() => store.mCount >= 5},
-  {id:"hard1", e:"🔥", t:"Zor görev", d:"Bir zor görevi tamamla", ok:() => store.hardCount >= 1}
+  {id:"first", i:"steps", t:"İlk adım", d:"Bir noktayı yerinde ziyaret et", ok:() => Object.keys(store.visits).length >= 1},
+  {id:"km5", i:"walk", t:"5 km", d:"Uygulama açıkken 5 km yürü", ok:() => store.walkM >= 5000},
+  {id:"km20", i:"route", t:"20 km", d:"Uygulama açıkken 20 km yürü", ok:() => store.walkM >= 20000},
+  {id:"bakery3", i:"croissant", t:"Fırın avcısı", d:"3 fırını ziyaret et", ok:() => visitedCat("bakery") >= 3},
+  {id:"coffee3", i:"cup", t:"Kahve tadımcısı", d:"3 kahveciyi ziyaret et", ok:() => visitedCat("coffee") >= 3},
+  {id:"hist10", i:"columns", t:"Tarih meraklısı", d:"10 tarihi noktayı ziyaret et", ok:() => visitedCat("hist") >= 10},
+  {id:"north", i:"ship", t:"Kuzey yakası", d:"IJ'nin kuzeyindeki bir noktayı ziyaret et", ok:() => city && city.places.some(p => store.visits[p.id] && p.lat > 52.381)},
+  {id:"route1", i:"map", t:"Rota ustası", d:"Bir yürüyüş rotasını bitir", ok:() => Object.keys(store.routesDone).length >= 1},
+  {id:"quest5", i:"target", t:"Görev avcısı", d:"5 görev tamamla", ok:() => store.mCount >= 5},
+  {id:"hard1", i:"flame", t:"Zor görev", d:"Bir zor görevi tamamla", ok:() => store.hardCount >= 1}
 ];
 Object.assign(store, Object.assign({pts:0, walkM:0, walkPaid:0, visits:{}, routeHits:{}, routesDone:{}, routeDay:{}, missions:{}, mCount:0, hardCount:0, badges:{}, factDay:""}, store));
 const visitedCat = c => city ? city.places.filter(p => p.cat === c && store.visits[p.id]).length : 0;
@@ -904,12 +954,12 @@ function award(n, why){
   store.pts += n; save(); updatePill();
   toast("+" + n + " puan · " + why);
   const after = levelOf(store.pts);
-  if (after > before) setTimeout(() => toast("🎉 Yeni seviye: " + LEVELS[after][1]), 2600);
+  if (after > before) setTimeout(() => toast("Yeni seviye: " + LEVELS[after][1]), 2600);
   checkBadges();
   if (tab === "quest") renderQuest();
 }
 function checkBadges(){
-  BADGES.forEach(b => { if (!store.badges[b.id] && b.ok()){ store.badges[b.id] = dayKey(); save(); setTimeout(() => toast(b.e + " Yeni rozet: " + b.t), 1300); } });
+  BADGES.forEach(b => { if (!store.badges[b.id] && b.ok()){ store.badges[b.id] = dayKey(); save(); setTimeout(() => toast("Yeni rozet: " + b.t), 1300); } });
 }
 function updatePill(){ const el = $("#ptsPill"); if (el) el.lastChild.textContent = store.pts + " puan"; }
 
@@ -956,7 +1006,7 @@ function openFact(next){
   const f = FACTS[factIdx], m = $("#factModal"), pl = f.p && placeById(f.p);
   m.innerHTML = `<div class="fact" role="dialog" aria-modal="true" aria-label="Günün bilgisi">
     <span class="fact-k">${next ? "Bir bilgi daha" : "Günün bilgisi"}</span>
-    <div class="fact-e" aria-hidden="true">${f.e}</div><h2>${esc(f.t)}</h2><p>${esc(f.x)}</p>
+    ${pl && artOf(pl) ? `<svg class="fact-art" viewBox="0 0 48 56" aria-hidden="true">${artOf(pl)}</svg>` : `<div class="fact-ic">${ic("bulb")}</div>`}<h2>${esc(f.t)}</h2><p>${esc(f.x)}</p>
     <div class="fact-b">${pl ? `<button class="btn primary" type="button" data-f="show">Haritada göster</button>` : ""}
     <button class="btn" type="button" data-f="next">Bir tane daha</button>
     <button class="btn" type="button" data-f="close"${pl ? ' style="grid-column:1/-1"' : ""}>Kapat</button></div></div>`;
@@ -993,16 +1043,23 @@ function renderQuest(){
     let act = "";
     if (done) act = `<p class="qdone">✓ Tamamlandı · +${pts} puan</p>` + (photos[mKey(m)] ? `<img class="qimg" alt="Kanıt fotoğrafı" src="${photos[mKey(m)]}">` : "");
     else if (busy === m.id) act = `<p class="qwait">Konumun kontrol ediliyor…</p>`;
-    else if (m.type === "photo") act = `<label class="btn primary qbtn">📷 Kanıt fotoğrafı çek<input type="file" accept="image/*" capture="environment" data-m="${k}" hidden></label>`;
+    else if (m.type === "photo") act = `<label class="btn primary qbtn">${ic("camera")}Kanıt fotoğrafı çek<input type="file" accept="image/*" capture="environment" data-m="${k}" hidden></label>`;
     else if (m.type === "quiz" && quizOpen === m.id) act = `<p class="qq">${esc(m.q)}</p>` + m.o.map((o, i) => `<button class="btn qopt" type="button" data-qa="${k}:${i}">${esc(o)}</button>`).join("");
-    else if (m.type === "quiz") act = `<button class="btn primary qbtn" type="button" data-qs="${k}">📍 Buradayım, soruyu aç</button>`;
+    else if (m.type === "quiz") act = `<button class="btn primary qbtn" type="button" data-qs="${k}">${ic("pin")}Buradayım, soruyu aç</button>`;
     else act = `<button class="btn primary qbtn" type="button" data-qr="${k}">Kontrol et</button>`;
     h += `<div class="qcard${done ? " ok" : ""}"><span class="qdiff" style="background:${col}">${lab} · ${pts} puan</span>
-      <b class="qt">${esc(m.t)}</b><p>${esc(m.d)}</p>${pl ? `<button class="qat" type="button" data-qp="${pl.id}">📍 ${esc(pl.name)}${me ? " · " + fmtD(km(me, [pl.lat, pl.lon])) : ""}</button>` : ""}${act}</div>`;
+      <b class="qt">${esc(m.t)}</b><p>${esc(m.d)}</p>${pl ? `<button class="qat" type="button" data-qp="${pl.id}">${ic("pin")} ${esc(pl.name)}${me ? " · " + fmtD(km(me, [pl.lat, pl.lon])) : ""}</button>` : ""}${act}</div>`;
   }
-  h += `<h2 class="lh">Rozetler</h2><div class="badges">` + BADGES.map(b => `<div class="badge${store.badges[b.id] ? " on" : ""}"><span>${b.e}</span><b>${b.t}</b><small>${b.d}</small></div>`).join("") + `</div>
-    <h2 class="lh">Nasıl puan kazanılır?</h2>
-    <p class="qhow">🚶 Uygulama açıkken her 100 m yürüyüş: 1 puan (yalnızca yürüme hızı sayılır)<br>📍 Bir noktanın 50 m yakınına gitmek: 5 puan (otomatik "Gittim")<br>🗺️ Bir rotanın tüm duraklarından geçmek: 40 puan<br>💡 Günün bilgisini okumak: günde 2 puan<br>🎯 Görevler: kolay 10, orta 25, zor 50 puan<br><br>Görevler her gece yenilenir. Kanıt fotoğrafı yalnızca uygulamanın içinden o an çekilebilir; uygulama çekim anında konumunun hedefin yakınında olduğunu kontrol eder. Puanlar ve fotoğraflar yalnızca bu telefonda saklanır. iPhone'da web uygulamaları arka planda konum alamadığı için yürüyüş, uygulama ekranda açıkken sayılır.</p>`;
+  h += `<h2 class="lh">Rozetler</h2><div class="badges">` + BADGES.map(b => `<div class="badge${store.badges[b.id] ? " on" : ""}">${ic(b.i)}<b>${b.t}</b><small>${b.d}</small></div>`).join("") + `</div>
+    <h2 class="lh">Puan nasıl kazanılır?</h2>
+    <div class="pts">
+      <div>${ic("walk")}<span>Yürü (uygulama açıkken)</span><b>100 m = 1</b></div>
+      <div>${ic("pin")}<span>Bir yerin yanına git</span><b>5</b></div>
+      <div>${ic("route")}<span>Bir rotayı baştan sona yürü</span><b>40</b></div>
+      <div>${ic("bulb")}<span>Günün bilgisini oku</span><b>2</b></div>
+      <div>${ic("target")}<span>Görev: kolay / orta / zor</span><b>10 / 25 / 50</b></div>
+    </div>
+    <p class="pnote">Görev fotoğrafını uygulamadan, o yerde çekmen gerekiyor. Puanlar bu telefonda kalır.</p>`;
   $("#list").innerHTML = h;
 }
 function freshPos(){
@@ -1155,7 +1212,7 @@ function addMeals(start, seq, usedFood, stayF){
   const m = nearestOf(["food"], cur, usedFood); if (m) out.push({id:m.id, kind:"dinner"});
   return out;
 }
-const MEAL = {coffee:["☕ Kahve molası", 0.33], lunch:["🍽️ Öğle yemeği", 0.75], dinner:["🌙 Akşam yemeği", 1]};
+const MEAL = {coffee:["Kahve molası", 0.33, "cup"], lunch:["Öğle yemeği", 0.75, "plate"], dinner:["Akşam yemeği", 1, "moon"]};
 function timeline(plan, d){
   let t = DAY_START, cur = plan.start, kmT = 0; const rows = [];
   plan.days[d].forEach(s => {
@@ -1176,10 +1233,10 @@ function renderPlan(){
   let h = `<div class="phead"><div><b>${P.f.days} günlük plan</b><small>${PACE[P.f.pace].label} tempo · ${STARTS[P.f.start].label} başlangıç</small></div><button class="btn" type="button" data-pl="edit">Yeni plan</button></div>
     <div class="pdays">${P.days.map((_, i) => `<button type="button" class="pday" data-pd="${i}" aria-pressed="${i === planDay}">${i + 1}. Gün</button>`).join("")}</div>
     <div class="psum"><span><b>${fmtKm(tl.km)} km</b>yürüyüş</span><span><b>~${steps.toLocaleString("tr-TR")}</b>adım (duraklar arası)</span><span><b>${fmtT(DAY_START)}–${fmtT(tl.end)}</b>tahmini</span></div>
-    <div class="pact"><button class="btn primary" type="button" data-pl="map">🗺️ Haritada göster</button>${gmLinks(P, planDay)}</div><ol class="ptl">`;
+    <div class="pact"><button class="btn primary" type="button" data-pl="map">${ic("map")}Haritada göster</button>${gmLinks(P, planDay)}</div><ol class="ptl">`;
   tl.rows.forEach((r, i) => {
-    const o = r.o, cat = CATS[o.cat], tag = r.s.kind === "see" ? cat.label : MEAL[r.s.kind][0];
-    h += `${r.walkMin ? `<li class="pwalk">🚶 ${r.walkMin} dk · ${fmtKm(r.walkKm)} km</li>` : ""}
+    const o = r.o, cat = CATS[o.cat], tag = r.s.kind === "see" ? cat.label : ic(MEAL[r.s.kind][2]) + " " + MEAL[r.s.kind][0];
+    h += `${r.walkMin ? `<li class="pwalk">${ic("walk")} ${r.walkMin} dk · ${fmtKm(r.walkKm)} km</li>` : ""}
       <li><button class="pstop" type="button" data-id="${o.id}" style="--c:${cat.c}"><span class="pn">${i + 1}</span><span class="pt">${fmtT(r.arrive)}</span><span class="pb"><b>${esc(o.name)}</b><small>${tag} · ${Math.round(r.stay * 60)} dk${o.rating ? " · ★ " + o.rating.toFixed(1).replace(".", ",") : ""}</small></span>${store.visits[o.id] || store.done[o.id] ? '<em>✓</em>' : ""}</button></li>`;
   });
   h += `</ol><p class="foot">Süreler tahmini. Hızlı tempolarda müzelerde daha kısa kalacağın varsayılır. Yürüyüş ${WALK_KMH} km/saat ve sokak kıvrımları için kuş uçuşunun 1,3 katı. Müze ve yemek saatlerini kartlardan kontrol et. Plan bu telefonda saklanır.</p>`;
@@ -1204,7 +1261,7 @@ function renderPlanForm(){
     <p class="pq">Ne kadar yoğun olsun?</p><div class="pcol">${Object.entries(PACE).map(([k, p]) => `<button type="button" class="pchip big" data-pf="pace:${k}" aria-pressed="${f.pace === k}"><b>${p.label}</b><small>${p.steps} · günde ~${p.km} km</small></button>`).join("")}</div>
     <p class="pq">Nereden başlıyorsun?</p><div class="prow">${Object.entries(STARTS).map(([k, s]) => chip("start", k, s.label, f.start === k)).join("")}</div>
     <p class="pq">Neleri görmek istersin?</p><div class="prow">${Object.entries(INTEREST).map(([k, l]) => chip("int", k, l, !!f.interests[k])).join("")}</div>
-    <div class="prow">${chip("meals", 1, "🍽️ Kahve ve yemek molalarını ekle", f.meals)}</div>
+    <div class="prow">${chip("meals", 1, ic("plate") + " Kahve ve yemek molalarını ekle", f.meals)}</div>
     <button class="btn primary pgo" type="button" data-pl="make">Planımı oluştur</button>
     ${store.plan ? `<button class="btn" type="button" data-pl="back">Kayıtlı plana dön</button>` : ""}
     <p class="foot">Plan, şehri günlere bölge bölge ayırır; her gün aynı semtte kalırsın. Başlangıç "Konumum" ise ve Amsterdam'da değilsen Centraal'den başlar.</p></div>`;
@@ -1246,13 +1303,13 @@ function showPlanDay(d){
       map.addLayer({id:"plan-c", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":10}});
       map.addLayer({id:"plan-l", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#E85D04","line-width":6}});
     } else { map.getSource("plan").setData(data); map.setLayoutProperty("plan-c", "visibility", "visible"); map.setLayoutProperty("plan-l", "visibility", "visible"); map.moveLayer("plan-c"); map.moveLayer("plan-l"); }
-    const s = document.createElement("div"); s.className = "pmk start"; s.textContent = "▶";
+    const s = document.createElement("div"); s.className = "pmk start"; s.innerHTML = ic("flag");
     planMarkers.push(new maplibregl.Marker({element:s}).setLngLat(ll(P.start)).addTo(map));
     rows.forEach((r, i) => { const el = document.createElement("button"); el.type = "button"; el.className = "pmk" + (r.s.kind !== "see" ? " meal" : ""); el.textContent = i + 1; el.setAttribute("aria-label", (i + 1) + ". durak: " + r.o.name);
       el.addEventListener("click", ev => { ev.stopPropagation(); lastPick = Date.now(); select(r.o.id); });
       planMarkers.push(new maplibregl.Marker({element:el}).setLngLat(ll(ptOf(r.o))).addTo(map)); });
     $("#map").classList.add("planning");
-    const chip = $("#planChip"); chip.hidden = false; chip.firstChild.textContent = "🗓️ " + (d + 1) + ". Gün planı ";
+    const chip = $("#planChip"); chip.hidden = false; chip.firstChild.textContent = (d + 1) + ". gün planı ";
     const bb = new maplibregl.LngLatBounds(ll(pts[0]), ll(pts[0])); pts.forEach(p => bb.extend(ll(p)));
     map.fitBounds(bb, {padding:{top:110, bottom:60, left:40, right:40}, duration:700});
     // Gerçek sokaklardan geçen çizgi (yaya yönlendirme). Olmazsa düz çizgi kalır.
