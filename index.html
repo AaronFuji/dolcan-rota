@@ -21,7 +21,7 @@
 :root{
   --orange:#FF8A1F;--orange-deep:#E85D04;--orange-soft:#FFD9A8;
   --ink:#3A1D0B;--ink-soft:#7A5236;--paper:#FFF7EA;--white:#fff;
-  --hist:#6C4DF5;--arch:#55606E;--park:#1E9E5A;--food:#F0355B;--coffee:#7A4A2A;--bakery:#D4891F;--photo:#D99A00;--walk:#1D3FA8;--me:#1273EB;
+  --hist:#6C4DF5;--arch:#55606E;--park:#1E9E5A;--food:#F0355B;--coffee:#7A4A2A;--bakery:#D4891F;--market:#2F7D8C;--photo:#D99A00;--walk:#1D3FA8;--me:#1273EB;
   --shadow:0 4px 0 rgba(58,29,11,.22);
   --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
   --body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
@@ -273,6 +273,20 @@ const CITIES = {
       {id:"amstel",cat:"photo",name:"Amstel Kıyısı",wiki:"Magere_Brug",lat:52.3642627,lon:4.901162,pid:"ChIJKUQVXQAJxkcR15qSn8LEW40",desc:"Nehir kıyısından Magere Brug'a bakan açı.",why:"Köprüyü tek karede almak için.",dur:"10 dk",fee:"Ücretsiz",hours:"Her zaman"},
 
       /* ================= YEMEK ================= */
+      /* ================= MARKET (Google puanları 14.10.2026 itibarıyla) ================= */
+      {id:"ah_nzv",cat:"market",name:"Albert Heijn (Nieuwezijds Voorburgwal)",lat:52.3728032,lon:4.8902179,pid:"ChIJIcJrtsYJxkcRIRWS5J0TKHE",price:"€€",rating:4.3,rc:4620,rdate:"14.10.2026",desc:"Hollanda'nın en büyük zinciri; ürün çeşidi ve hazır yemek en geniş, büyük zincirler içinde fiyatı en yüksek olanı. Sarı \"Bonus\" etiketli indirimlere bak.",why:"Dam'ın arkasında, merkezdeki en büyük ve ferah AH; peynir reyonu ve fırını geniş.",hours:"Pzt-Cum 07:00-22:00, Cmt-Paz 08:00-22:00"},
+      {id:"ah_oosterdok",cat:"market",name:"Albert Heijn (Oosterdokskade)",lat:52.3760896,lon:4.9066937,pid:"ChIJq_Q-lLoJxkcRl8tSgNDDkew",price:"€€",rating:4.2,rc:1078,rdate:"14.10.2026",desc:"Hollanda'nın en büyük zinciri; ürün çeşidi ve hazır yemek en geniş, büyük zincirler içinde fiyatı en yüksek olanı. Sarı \"Bonus\" etiketli indirimlere bak.",why:"Centraal'in doğusunda; yorumlara göre fiyat-kalite dengesi iyi.",hours:"Pzt-Cmt 08:00-22:00, Paz 09:00-22:00"},
+      {id:"ah_eland",cat:"market",name:"Albert Heijn (Elandsgracht)",lat:52.369749,lon:4.88184,pid:"ChIJNdq2Kt0JxkcREElRx27Vi0U",price:"€€",rating:4.1,rc:11180,rdate:"14.10.2026",desc:"Hollanda'nın en büyük zinciri; ürün çeşidi ve hazır yemek en geniş, büyük zincirler içinde fiyatı en yüksek olanı. Sarı \"Bonus\" etiketli indirimlere bak.",why:"Jordaan'ın girişinde büyük şube; Rum Baba ve Sainte Madeleine'e yakın.",hours:"Her gün 07:30-22:00"},
+      {id:"jumbo_jodenbree",cat:"market",name:"Jumbo (Jodenbreestraat)",lat:52.3695,lon:4.90294,pid:"ChIJ00BDK2kJxkcROOTst6n0Lzk",price:"€€",rating:4.0,rc:389,rdate:"14.10.2026",desc:"Fiyatı Albert Heijn'dan biraz düşük, çeşidi geniş ikinci büyük zincir. \"City\" şubeleri küçük ama geç saate kadar açık.",why:"Waterlooplein yanında büyük Jumbo; ev ihtiyaçlarına kadar her şey var.",hours:"Her gün 08:00-22:00"},
+      {id:"jumbo_wolven",cat:"market",name:"Jumbo City (Wolvenstraat)",lat:52.370415,lon:4.885096,pid:"ChIJaRexCE4JxkcRGo5-D-mu5ak",price:"€€",rating:4.4,rc:440,rdate:"14.10.2026",desc:"Fiyatı Albert Heijn'dan biraz düşük, çeşidi geniş ikinci büyük zincir. \"City\" şubeleri küçük ama geç saate kadar açık.",why:"Dokuz Sokak'ta; hazır yemek, stroopwafel ve içecek için pratik.",hours:"Pzt-Cmt 08:00-22:00, Paz 09:00-22:00"},
+      {id:"jumbo_wester",cat:"market",name:"Jumbo (Westerstraat)",lat:52.37867,lon:4.883832,pid:"ChIJv-X05M8JxkcRW0Eriz9Jghg",price:"€€",rating:4.2,rc:957,rdate:"14.10.2026",desc:"Fiyatı Albert Heijn'dan biraz düşük, çeşidi geniş ikinci büyük zincir. \"City\" şubeleri küçük ama geç saate kadar açık.",why:"Jordaan'da mahalle marketi; çeşidi geniş.",hours:"Pzt-Cmt 07:30-22:00, Paz 08:00-22:00"},
+      {id:"dirk_heineken",cat:"market",name:"Dirk (Marie Heinekenplein)",lat:52.3571217,lon:4.8923224,pid:"ChIJxfr9Ru0JxkcRcQhONWw5GOk",price:"€",rating:4.2,rc:1378,rdate:"14.10.2026",desc:"Amsterdam'a özgü indirimli zincir; sebze-meyve ve temel ürünlerde ucuz.",why:"De Pijp'te, Heineken binasının yanında; temiz ve düzenli, turistler için atıştırmalık stoklamaya uygun.",hours:"Pzt-Cmt 08:00-22:00, Paz 09:00-22:00"},
+      {id:"dirk_bilderdijk",cat:"market",name:"Dirk (Bilderdijkstraat)",lat:52.368175,lon:4.871127,pid:"ChIJlUQX0t8JxkcRIbWqiuRBWSU",price:"€",rating:4.0,rc:706,rdate:"14.10.2026",desc:"Amsterdam'a özgü indirimli zincir; sebze-meyve ve temel ürünlerde ucuz.",why:"Oud-West'te büyük şube; yorumlara göre fiyatlar düşük.",hours:"Pzt-Cmt 08:00-22:00, Paz 09:00-22:00"},
+      {id:"dirk_noord",cat:"market",name:"Dirk (Meeuwenlaan, Noord)",lat:52.3846614,lon:4.918311,pid:"ChIJrcKMhKsJxkcR-RKW_qmczxY",price:"€",rating:4.0,rc:1981,rdate:"14.10.2026",desc:"Amsterdam'a özgü indirimli zincir; sebze-meyve ve temel ürünlerde ucuz.",why:"IJ'nin kuzeyinde; bir turiste göre \"rakipsiz fiyatlar\". Noord gezisinde uğra.",hours:"Her gün 08:00-22:00"},
+      {id:"lidl_ath",cat:"market",name:"Lidl (Alberdingk Thijmstraat)",lat:52.3641372,lon:4.8763254,pid:"ChIJu8PH_eYJxkcRWQ_g2smgsSw",price:"€",rating:4.1,rc:1563,rdate:"14.10.2026",desc:"Alman indirim zinciri; temel ürünlerde en ucuzlardan. Fırın köşesindeki sıcak kruvasan ve ekmekler çok uygun.",why:"Vondelpark ve Leidseplein arasında; küçük ama düzenli, fiyatlar çok iyi.",hours:"Pzt-Cmt 08:00-21:00, Paz 10:00-21:00"},
+      {id:"lidl_hemony",cat:"market",name:"Lidl (Hemonylaan)",lat:52.35791,lon:4.90147,pid:"ChIJpWezvJEJxkcRvKADhVdEm9o",price:"€",rating:4.0,rc:1788,rdate:"14.10.2026",desc:"Alman indirim zinciri; temel ürünlerde en ucuzlardan. Fırın köşesindeki sıcak kruvasan ve ekmekler çok uygun.",why:"De Pijp / Amstel kıyısı; 22:00'ye kadar açık.",hours:"Pzt-Cmt 08:00-22:00, Paz 09:00-21:00"},
+      {id:"aldi_pijp",cat:"market",name:"ALDI (Pijnackerstraat)",lat:52.3499859,lon:4.8888208,pid:"ChIJFTqfjvQJxkcRWeLCr0EKYZ0",price:"€",rating:3.9,rc:427,rdate:"14.10.2026",desc:"Alman indirim zinciri; Lidl ile birlikte en ucuz seçenek, çeşit daha sınırlı.",why:"De Pijp'in güneyinde küçük şube; şarap seçimi iyi.",hours:"Pzt-Cmt 08:00-20:00, Paz 10:00-19:00"},
+      {id:"vomar_kinker",cat:"market",name:"Vomar (Kinkerstraat)",lat:52.3679998,lon:4.8740964,pid:"ChIJEQGBBt4JxkcR7hTHBj2Cdvk",price:"€",rating:3.8,rc:863,rdate:"14.10.2026",desc:"Hollanda'nın indirim marketi; fiyatlar düşük, mağaza ve hizmet sade.",why:"Oud-West, Foodhallen yakını; yorumlarda raf ve kasa fiyatı farkı şikâyeti var, fişini kontrol et.",hours:"Her gün 08:00-22:00"},
       /* ================= FIRIN (Google puanları 14.10.2026 itibarıyla) ================= */
       {id:"egstorf",cat:"bakery",name:"Hans Egstorf",lat:52.370225,lon:4.888908,pid:"ChIJO02hfMEJxkcRng7IGxNcKK8",price:"€",rating:4.8,rc:10701,rdate:"14.10.2026",eat:"Gözünün önünde yapılan sıcak stroopwafel; fındıklı ve fıstıklı çeşitleri öne çıkıyor.",why:"Şehrin en çok puanlanan fırını; tarihi bir binada. Gece 22:00'ye kadar açık.",hours:"Her gün 08:00-22:00",tip:"Paket kutularla hediyelik de alınabiliyor. Bir yorum fiyatı biraz yüksek bulmuş."},
       {id:"bunbun",cat:"bakery",name:"BunBun",lat:52.3788371,lon:4.886504,pid:"ChIJD1dBgB8JxkcRG9k_OpJsQrE",price:"€",rating:4.6,rc:962,rdate:"14.10.2026",eat:"Kruvasan hamurundan tarçınlı çörek (cinnabun), cronut, tuzlu çörekler.",why:"Ziyaretçilerin \"hayatımın en iyi tarçınlı çöreği\" dediği yer. Jordaan, Prinsengracht başı.",hours:"Her gün 10:00-18:00",tip:"Oturacak yer yok; sıra hızlı ilerliyor."},
@@ -347,6 +361,7 @@ const CATS = {
   food:{label:"Yemek",tag:"Fiyat performans",c:"var(--food)"},
   coffee:{label:"Kahve",tag:"Specialty kahve",c:"var(--coffee)"},
   bakery:{label:"Fırın",tag:"Fırın ve pastane",c:"var(--bakery)"},
+  market:{label:"Market",tag:"Süpermarket",c:"var(--market)"},
   photo:{label:"Foto",tag:"Foto noktası",c:"var(--photo)"},
   walk:{label:"Rotalar",tag:"Yürüyüş rotası",c:"var(--walk)"}
 };
@@ -401,7 +416,7 @@ const ART_CAT = {
 const artOf = p => ART[p.id] || ART_CAT[p.cat] || "";
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-let store = {done:{},fav:{},layers:{hist:true,arch:true,park:true,food:true,coffee:true,bakery:true,walk:true,photo:true},geo:{}};
+let store = {done:{},fav:{},layers:{hist:true,arch:true,park:true,food:true,coffee:true,bakery:true,market:true,walk:true,photo:true},geo:{}};
 try { const sv = JSON.parse(localStorage.getItem("dolcanrota.v1") || "{}"); sv.layers = Object.assign(store.layers, sv.layers); Object.assign(store, sv); } catch(e){}
 const save = () => { try { localStorage.setItem("dolcanrota.v1", JSON.stringify(store)); } catch(e){} };
 
@@ -475,7 +490,7 @@ function initMap(style){
   map = new maplibregl.Map({container:"map", style, center:ll(city.center), zoom:city.zoom, minZoom:city.minZoom, maxZoom:19,
     maxBounds:[[b[0][1], b[0][0]], [b[1][1], b[1][0]]], dragRotate:false, pitchWithRotate:false, attributionControl:{compact:true}});
   map.touchZoomRotate.disableRotation();
-  city.places.forEach(p => { markers[p.id] = mk(p.id, (artOf(p) ? `<svg class="art" viewBox="0 0 48 56">${artOf(p)}</svg>` : "") + `<div class="${pinCls(p)}" style="--c:${CATS[p.cat].c}"><b>${p.cat === "coffee" ? "☕" : p.cat === "bakery" ? "🥐" : (p.price || "")}</b></div>`, p.name, [p.lat, p.lon], "bottom"); if (ART[p.id]) markers[p.id].el.classList.add("hasart"); });
+  city.places.forEach(p => { markers[p.id] = mk(p.id, (artOf(p) ? `<svg class="art" viewBox="0 0 48 56">${artOf(p)}</svg>` : "") + `<div class="${pinCls(p)}" style="--c:${CATS[p.cat].c}"><b>${p.cat === "coffee" ? "☕" : p.cat === "bakery" ? "🥐" : p.cat === "market" ? "🛒" : (p.price || "")}</b></div>`, p.name, [p.lat, p.lon], "bottom"); if (ART[p.id]) markers[p.id].el.classList.add("hasart"); });
   let n = 0;
   city.routes.forEach(r => { markers[r.id] = mk(r.id, `<div class="rstart${r.ferry ? " ferry" : ""}">${r.ferry || ++n}</div>`, r.name, r.pts[0], "center"); });
   map.on("load", () => {
@@ -489,7 +504,7 @@ function initMap(style){
     });
     // İsimler harita katmanı olarak çizilir: uzaktan da okunur, üst üste binenleri harita kendisi ayıklar.
     const fontLayer = map.getStyle().layers.find(l => l.type === "symbol" && l.layout && l.layout["text-font"]);
-    const rank = {hist:1, arch:2, park:3, photo:4, coffee:5, bakery:5, food:5};
+    const rank = {hist:1, arch:2, park:3, photo:4, coffee:5, bakery:5, market:6, food:5};
     map.addSource("names", {type:"geojson", data:{type:"FeatureCollection", features:city.places.map(p => ({type:"Feature", properties:{id:p.id, cat:p.cat, name:p.name.replace(/ \(.*\)$/, ""), rank:rank[p.cat] + (ART[p.id] ? 0 : .5)}, geometry:{type:"Point", coordinates:[p.lon, p.lat]}}))}});
     map.addLayer({id:"names", type:"symbol", source:"names", minzoom:12.5,
       layout:{"text-field":["get","name"], "text-font":fontLayer ? fontLayer.layout["text-font"] : ["Noto Sans Regular"], "text-size":["interpolate",["linear"],["zoom"],12.5,10.5,16,13], "text-anchor":"top", "text-offset":[0,0.35], "text-max-width":8, "symbol-sort-key":["get","rank"], "text-padding":4},
@@ -587,12 +602,14 @@ function select(id, keepView){
     dir = `https://www.google.com/maps/dir/?api=1&destination=${s.join(",")}&travelmode=walking`;
   } else {
     if (me && inCity()) facts += `<dt>Uzaklık</dt><dd>Buradan ${fmtD(km(me, [o.lat, o.lon]))} (kuş uçuşu)</dd>`;
-    if (o.rating) facts += `<dt>Google</dt><dd><span class="stars">★ ${String(o.rating).replace(".",",")}</span> (${o.rc.toLocaleString("tr-TR")} yorum) <small class="rd">· ${o.rdate} itibarıyla, güncel puan Google Maps'te</small></dd>`;
+    if (o.rating) facts += `<dt>Google</dt><dd><span class="stars">★ ${o.rating.toFixed(1).replace(".",",")}</span> (${o.rc.toLocaleString("tr-TR")} yorum) <small class="rd">· ${o.rdate} itibarıyla, güncel puan Google Maps'te</small></dd>`;
+    if (o.cat === "market") facts += `<dt>Fiyat</dt><dd>${o.price} ${o.price === "€" ? "(indirim marketi, en ucuz)" : "(orta-üst)"}</dd>`;
     if (o.eat) facts += `<dt>${o.cat === "coffee" ? "Ne içilir" : o.cat === "bakery" ? "Ne alınır" : "Ne yenir"}</dt><dd>${esc(o.eat)}</dd>` + (o.price ? `<dt>Fiyat</dt><dd>${o.price} ${o.price === "€" ? "(ucuz)" : "(orta)"}</dd>` : "");
     if (o.dur) facts += `<dt>Süre</dt><dd>${esc(o.dur)}</dd>`;
-    if (!["food","coffee","bakery"].includes(o.cat)) facts += `<dt>Giriş</dt><dd>${o.fee ? esc(o.fee) : "Doğrulanmadı"}</dd>`;
+    if (!["food","coffee","bakery","market"].includes(o.cat)) facts += `<dt>Giriş</dt><dd>${o.fee ? esc(o.fee) : "Doğrulanmadı"}</dd>`;
     facts += `<dt>Saatler</dt><dd>${o.hours ? esc(o.hours) : "Doğrulanmadı"}</dd>`;
-    if (!["food","coffee","bakery"].includes(o.cat) && !o.fee) open.push("Açık nokta: güncel giriş ücreti doğrulanmadı, resmi siteden bak.");
+    if (o.cat === "market") open.push("Poşet paralı, yanında çanta taşı. Çoğu şubede kendin okut-öde kasası var.");
+    if (!["food","coffee","bakery","market"].includes(o.cat) && !o.fee) open.push("Açık nokta: güncel giriş ücreti doğrulanmadı, resmi siteden bak.");
     gm = `https://www.google.com/maps/search/?api=1&query=${q}&query_place_id=${o.pid}`;
     dir = `https://www.google.com/maps/dir/?api=1&destination=${q}&destination_place_id=${o.pid}&travelmode=walking`;
   }
@@ -631,7 +648,7 @@ function closeSheet(){ if ($("#sheet").hidden) return; $("#sheet").hidden = true
 function renderLegend(){
   const dot = k => `<span class="sw" style="--c:${CATS[k].c}"></span><span>${CATS[k].label}: ${CATS[k].tag.toLowerCase()}</span>`;
   $("#legend").innerHTML = `<h3>Haritadaki işaretler <button type="button" id="legendX">Kapat</button></h3>
-    ${["hist","arch","park","food","coffee","bakery","photo"].map(dot).join("")}
+    ${["hist","arch","park","food","coffee","bakery","market","photo"].map(dot).join("")}
     <span class="ln" style="--c:${ROUTE}"></span><span>Yürüyüş rotası (numara: başlangıç)</span>
     <span class="ln d" style="--c:${FERRY}"></span><span>Ücretsiz vapur hattı</span>
     <span class="me"></span><span>Sen (canlı konum)</span>
@@ -665,7 +682,7 @@ function renderList(){
     if (near && k !== "walk") items.sort((a, b) => km(me, [a.lat, a.lon]) - km(me, [b.lat, b.lon]));
     if (!items.length) continue;
     html += `<h2 class="lh" style="--c:${CATS[k].c}"><i></i>${CATS[k].label}</h2>` + items.map(o => {
-      const sub = o.ferry ? o.why : o.pts ? (o.geo ? o.geo.km.toFixed(1).replace(".",",") + " km · " + Math.round(o.geo.min/5)*5 + " dk" : o.why) : ((o.rating ? "★ " + String(o.rating).replace(".",",") + " · " : "") + (o.price ? o.price + " · " : "") + o.why);
+      const sub = o.ferry ? o.why : o.pts ? (o.geo ? o.geo.km.toFixed(1).replace(".",",") + " km · " + Math.round(o.geo.min/5)*5 + " dk" : o.why) : ((o.rating ? "★ " + o.rating.toFixed(1).replace(".",",") + " · " : "") + (o.price ? o.price + " · " : "") + o.why);
       const right = [near && !o.pts ? fmtD(km(me, [o.lat, o.lon])) : "", store.done[o.id] ? "Gittim ✓" : ""].filter(Boolean).join("<br>");
       return `<button class="row" type="button" data-id="${o.id}" style="--c:${CATS[k].c}"><div><b>${esc(o.name)}</b><small>${esc(sub)}</small></div>${right ? `<em>${right}</em>` : ""}</button>`;
     }).join("");
