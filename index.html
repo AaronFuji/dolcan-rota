@@ -173,6 +173,18 @@ h1,h2,h3,p,dl{margin:0}
 .badge small{font-size:11.5px;color:var(--ink-soft);font-weight:700}
 .qhow{font-size:13px;line-height:1.55;color:var(--ink-soft);font-weight:700;background:#fff;border-radius:14px;padding:12px}
 .tab{font-size:13.5px}
+#splash{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:radial-gradient(circle at 50% 40%,#FFB347,var(--orange) 45%,var(--orange-deep));animation:spOut .5s ease-in 2.9s forwards;cursor:pointer}
+.sp-logo{width:116px;height:116px;animation:spZoom 1.05s cubic-bezier(.2,1.4,.4,1) both;filter:drop-shadow(0 8px 0 rgba(58,29,11,.25))}
+.sp-svg{width:100%;height:100%}
+.sp-word{display:flex;flex-direction:column;align-items:center;font-family:var(--display);line-height:.9;clip-path:inset(0 100% 0 0);animation:spMask .75s cubic-bezier(.6,0,.2,1) 1s forwards}
+.sp-word span{font-size:54px;font-weight:800;color:#fff;text-shadow:0 4px 0 var(--orange-deep)}
+.sp-word b{font-size:26px;letter-spacing:.42em;margin-right:-.42em;color:var(--ink);margin-top:4px}
+.sp-motto{font-family:var(--display);font-weight:700;font-size:19px;color:#fff;opacity:0;transform:translateY(10px);animation:spUp .6s ease-out 1.75s forwards}
+@keyframes spZoom{0%{transform:scale(3.4) rotate(-12deg);opacity:0}55%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes spMask{to{clip-path:inset(0 0 0 0)}}
+@keyframes spUp{to{opacity:1;transform:none}}
+@keyframes spOut{to{opacity:0;visibility:hidden}}
+@media (prefers-reduced-motion:reduce){#splash{animation:spOut .3s 1.2s forwards}.sp-word{clip-path:none}.sp-motto{opacity:1;transform:none}}
 #toast{position:absolute;left:12px;right:76px;bottom:34px;z-index:500;background:var(--ink);color:var(--white);padding:10px 14px;border-radius:14px;font-weight:700;font-size:13px}
 
 /* Liste */
@@ -219,6 +231,11 @@ h1,h2,h3,p,dl{margin:0}
 </head>
 <body>
 <div class="app">
+  <div id="splash" role="button" tabindex="0" aria-label="Açılış ekranı, geçmek için dokun">
+    <div class="sp-logo"><svg class="sp-svg" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#fff"/><path fill="#E85D04" fill-rule="evenodd" d="M15 10h14a18 18 0 0 1 0 36H15zM24 19v18h5a9 9 0 0 0 0-18z"/><path d="M17 55c10 0 14-6 24-5" fill="none" stroke="#3A1D0B" stroke-width="3.5" stroke-linecap="round" stroke-dasharray=".1 7"/><circle cx="49" cy="50" r="5" fill="#3A1D0B"/></svg></div>
+    <div class="sp-word"><span>dolcan</span><b>ROTA</b></div>
+    <p class="sp-motto">Hayat Dolaştıkça Güzel!</p>
+  </div>
   <section id="home" class="screen">
     <div class="logo">
       <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#fff"/><path fill="#E85D04" fill-rule="evenodd" d="M15 10h14a18 18 0 0 1 0 36H15zM24 19v18h5a9 9 0 0 0 0-18z"/><path d="M17 55c10 0 14-6 24-5" fill="none" stroke="#3A1D0B" stroke-width="3.5" stroke-linecap="round" stroke-dasharray=".1 7"/><circle cx="49" cy="50" r="5" fill="#3A1D0B"/></svg>
@@ -743,6 +760,12 @@ function renderList(){
 $("#list").addEventListener("click", e => { const b = e.target.closest("[data-id]"); if (b) select(b.dataset.id); });
 
 renderHome();
+/* Açılış ekranı: logodaki D yaklaşır, yazı maskeyle açılır, motto gelir. Dokununca geçilir. */
+(function(){ const sp = $("#splash"); if (!sp) return;
+  const end = () => { sp.style.animation = "spOut .25s ease-in forwards"; setTimeout(() => sp.remove(), 300); };
+  sp.addEventListener("click", end); sp.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") end(); });
+  setTimeout(() => sp.remove(), 3600);
+})();
 /* =====================================================================
    GÜNÜN BİLGİSİ ve OYUN (Dolcan Puanı, günün görevleri, rozetler)
    Her şey bu telefonda saklanır; sunucu yok.
@@ -792,6 +815,7 @@ const MISSIONS = {
     {id:"e_bunbun", type:"photo", at:"bunbun", r:90, t:"Jordaan'da tarçınlı çörek", d:"BunBun'dan bir tarçınlı çörek al ve fotoğrafını çek."},
     {id:"e_sango", type:"photo", at:"sango", r:90, t:"Filtre kahve molası", d:"Sango'da bir filtre kahve iç ve fincanın fotoğrafını çek."},
     {id:"e_dancing", type:"photo", at:"dancing", r:120, t:"Dans eden evler", d:"Amstel kıyısındaki birbirine yaslanmış evleri bul ve fotoğrafla."},
+    {id:"e_begijnhof", type:"photo", at:"begijnhof", r:120, t:"Begijnhof'un kapısı", d:"Spui meydanındaki küçük kapıdan Begijnhof'a gir ve avlunun fotoğrafını çek. İçeride insanlar yaşıyor: sessiz ol, video çekme, fotoğrafı sakin bir köşeden çek."},
     {id:"e_xxx", type:"photo", at:null, r:0, t:"XXX avı", d:"Şehrin herhangi bir yerinde üzerinde XXX olan kahverengi bir direği (Amsterdammertje) fotoğrafla."}
   ],
   medium: [
@@ -908,7 +932,7 @@ $("#ptsPill").addEventListener("click", () => setTab("quest"));
 
 /* ---------- Günün görevleri ---------- */
 const DIFF = {easy:["Kolay",10,"#1E9E5A"], medium:["Orta",25,"#E8890C"], hard:["Zor",50,"#D7263D"]};
-function todays(){ const n = dayNum(); return {easy:MISSIONS.easy[n % 7], medium:MISSIONS.medium[(n * 3 + 1) % 7], hard:MISSIONS.hard[(n * 5 + 2) % 7]}; }
+function todays(){ const n = dayNum(); const E = MISSIONS.easy, M = MISSIONS.medium, H = MISSIONS.hard; return {easy:E[n % E.length], medium:M[(n * 3 + 1) % M.length], hard:H[(n * 5 + 2) % H.length]}; }
 const mKey = m => dayKey() + ":" + m.id;
 let photos = {}; try { photos = JSON.parse(localStorage.getItem("dolcanrota.photos") || "{}"); } catch(e){}
 const savePhotos = () => { try { localStorage.setItem("dolcanrota.photos", JSON.stringify(photos)); } catch(e){ const k = Object.keys(photos); if (k.length > 1){ delete photos[k[0]]; savePhotos(); } } };
