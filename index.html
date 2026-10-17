@@ -20,7 +20,7 @@
 <style>
 :root{
   --sun-hi:#FFB547;--sun:#FF7A45;--sun-deep:#E8483F;--sun-ink:#7A1E1A;
-  --orange:#FF8A1F;--orange-deep:#E85D04;--orange-soft:#FFD9A8;
+  --orange:#FF8A1F;--orange-deep:#E85D04;--orange-soft:#FFD9A8;--orange-hi:#FFA23F;--orange-shadow:#B84A00;
   --ink:#3A1D0B;--ink-soft:#7A5236;--paper:#FFF7EA;--white:#fff;
   --hist:#6C4DF5;--arch:#55606E;--park:#1E9E5A;--food:#F0355B;--coffee:#7A4A2A;--bakery:#D4891F;--market:#2F7D8C;--photo:#D99A00;--walk:#1D3FA8;--me:#1273EB;
   --shadow:0 4px 0 rgba(58,29,11,.22);
@@ -129,7 +129,7 @@ h1,h2,h3,p,dl{margin:0}
 .grab::before{content:"";width:44px;height:5px;border-radius:99px;background:rgba(58,29,11,.28)}
 .stars{color:#C98200;font-weight:800}
 .rd{color:var(--ink-soft);font-weight:700}
-.factbtn{position:absolute;top:10px;right:10px;z-index:460;display:flex;align-items:center;gap:6px;height:42px;padding:0 16px 0 12px;border-radius:99px;background:linear-gradient(#FFB347,var(--orange-deep));color:#fff;font-family:var(--display);font-weight:800;font-size:16px;box-shadow:0 4px 0 #B84A00,0 6px 14px rgba(58,29,11,.25);animation:nudge 3s ease-in-out 1.2s 2}
+.factbtn{position:absolute;top:10px;right:10px;z-index:460;display:flex;align-items:center;gap:6px;height:42px;padding:0 16px 0 12px;border-radius:99px;background:linear-gradient(var(--orange-hi),var(--orange-deep));color:#fff;font-family:var(--display);font-weight:800;font-size:16px;box-shadow:0 4px 0 var(--orange-shadow),0 6px 14px rgba(58,29,11,.25);animation:nudge 3s ease-in-out 1.2s 2}
 .factbtn span{font-size:20px}
 @keyframes nudge{0%,100%{transform:none}8%{transform:rotate(-4deg) scale(1.05)}16%{transform:rotate(4deg) scale(1.05)}24%{transform:none}}
 .ptspill{position:absolute;top:60px;right:10px;z-index:460;display:flex;align-items:center;gap:5px;height:34px;padding:0 12px;border-radius:99px;background:var(--white);box-shadow:var(--shadow);font-weight:800;font-size:13.5px}
@@ -141,7 +141,7 @@ h1,h2,h3,p,dl{margin:0}
 .fact h2{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.1}
 .fact p{line-height:1.5;font-size:15.5px}
 .fact-b{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
-.qhead{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#FFA23F,var(--orange-deep));color:#fff;border-radius:20px;padding:16px;box-shadow:0 4px 0 rgba(58,29,11,.2)}
+.qhead{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,var(--orange-hi),var(--orange-deep));color:#fff;border-radius:20px;padding:16px;box-shadow:0 4px 0 rgba(58,29,11,.2)}
 .qpts{display:flex;flex-direction:column;align-items:center;min-width:76px}
 .qpts b{font-family:var(--display);font-size:40px;line-height:1}
 .qpts span{font-weight:800;font-size:12px}
@@ -189,7 +189,7 @@ h1,h2,h3,p,dl{margin:0}
 .planchip{position:absolute;left:50%;transform:translateX(-50%);bottom:34px;z-index:470;height:40px;padding:0 14px;border-radius:99px;background:var(--ink);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
 .planning .mk{opacity:.3}
 .planning .mk.on{opacity:1}
-.pmk{width:30px;height:30px;border-radius:50%;background:#E85D04;color:#fff;border:3px solid #fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 3px 0 rgba(58,29,11,.35);cursor:pointer;font-family:var(--body)}
+.pmk{width:30px;height:30px;border-radius:50%;background:var(--orange-deep);color:#fff;border:3px solid #fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 3px 0 rgba(58,29,11,.35);cursor:pointer;font-family:var(--body)}
 .pmk.meal{background:#7A4A2A}
 .pmk.start{background:var(--ink);font-size:11px}
 .phead{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -307,7 +307,7 @@ h1,h2,h3,p,dl{margin:0}
     </div>
     <div id="cityCards"></div>
     <button class="plancard" id="planCard" type="button"><span class="pci"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18h7.3a3.5 3.5 0 0 0 0-7h-7a3.5 3.5 0 0 1 0-7h7.3"/></svg></span><span><b>Kendi rotanı oluştur</b><small>Kaç gün kalacağını ve ne kadar yürümek istediğini seç, sana gün gün rota çıkaralım.</small></span></button>
-    <button class="ghost" id="addCity" type="button">+ Şehir ekle<small>Sırada: Utrecht</small></button>
+    <button class="ghost" id="addCity" type="button">+ Şehir ekle<small>Sırada: Regensburg, Münih, Nürnberg, Prag…</small></button>
     <p class="note" id="addNote" hidden>Yeni şehir için Claude'a şehir adını yazman yeterli. Noktalar araştırılıp doğrulanır, şehir kendi temasıyla buraya eklenir.</p>
   </section>
 
@@ -350,7 +350,9 @@ h1,h2,h3,p,dl{margin:0}
    ===================================================================== */
 const CITIES = {
   amsterdam: {
-    name:"Amsterdam", updated:"14.10.2026", hero:"Canals_of_Amsterdam",
+    name:"Amsterdam", loc:"Amsterdam'da", dat:"Amsterdam'a", updated:"14.10.2026", hero:"Canals_of_Amsterdam",
+    theme:{main:"#FF8A1F", deep:"#E85D04", soft:"#FFD9A8", hi:"#FFA23F", shadow:"#B84A00", card:"#B8431B",
+      map:{land:"#FFE3B8", landuse:"#FFD7A0", water:"#27B7D9", green:"#B4DB7A", bld:"#F5B872", edge:"#E39A4E", road:"#FFF9EE", cas:"#E9AE6E", text:"#5A3418", halo:"#FFF3DC"}},
     center:[52.3702,4.8935], zoom:13.6, minZoom:11,
     bounds:[[52.27,4.72],[52.45,5.06]],
     places:[
@@ -483,8 +485,93 @@ const CITIES = {
       {id:"f-buik",ferry:"F3",name:"Vapur F3: Centraal - Buiksloterweg",wiki:"Amsterdam_Ferry_Service",desc:"Garın arkasından IJ'nin karşı kıyısına geçen ücretsiz vapur. Eye ve A'DAM kulesi iskelenin hemen yanında.",hist:"IJ üzerinde merkez ile Noord arasında köprü yoktur. Büyük gemilerin geçişini engellememek için şehir köprü yerine vapuru seçti. Vapurlar belediyenin ulaşım şirketi GVB tarafından işletilir ve yayalar, bisikletliler ve mopedler için ücretsizdir. Bilet ya da kart okutmak gerekmez, binip geçersin.",why:"Bedava IJ turu. Geceleri de çalışır.",facts:[["Ücret","Ücretsiz, bilet gerekmez"],["Sefer","Gündüz birkaç dakikada bir, gece de çalışır (ziyaretçi yorumuna göre)"],["Süre","Yaklaşık 3-5 dk"],["Nereden","Centraal'in arka (IJ) tarafı"]],pts:[[52.3807,4.8997],[52.38221,4.90313]]},
       {id:"f-ndsm",ferry:"F4",name:"Vapur F4: Centraal - NDSM",wiki:"Amsterdam_Ferry_Service",desc:"Garın arkasından eski NDSM tersanesine giden ücretsiz vapur. IJ boyunca kısa bir tekne gezisi gibi.",hist:"IJ, Amsterdam'ın limanıdır ve bir zamanlar denizin bir koluydu. 1870'lerde Kuzey Denizi Kanalı açılınca şehir açık denize doğrudan bağlandı, IJ'nin doğusu setle kapatıldı. Vapurdan batıya bakınca liman vinçlerini, doğuya bakınca garın arka cephesini görürsün.",why:"NDSM'ye gitmenin tek keyifli yolu.",facts:[["Ücret","Ücretsiz, bilet gerekmez"],["Sefer","Güncel saatleri GVB'den doğrula"],["Süre","Yaklaşık 15 dk"],["Nereden","Centraal'in arka (IJ) tarafı"]],tip:"Haritadaki vapur çizgisi şematiktir.",pts:[[52.3807,4.8997],[52.3868,4.8925],[52.395,4.889],[52.40121,4.89094]]}
     ]
+  },
+  utrecht: {
+    name:"Utrecht", loc:"Utrecht'te", dat:"Utrecht'e", updated:"17.10.2026", hero:"Oudegracht",
+    center:[52.0907,5.1214], zoom:14.4, minZoom:11.5,
+    bounds:[[52.04,5.04],[52.14,5.20]],
+    theme:{main:"#D62839", deep:"#9E1B2B", soft:"#F9D5D3", hi:"#F0646E", shadow:"#6E0F1C", card:"#8E1B26",
+      map:{land:"#FBE7E1", landuse:"#F7D6CD", water:"#27B7D9", green:"#B4DB7A", bld:"#EDB0A4", edge:"#CF7C6E", road:"#FFFBF8", cas:"#EDB9AE", text:"#5C1F1A", halo:"#FFF4F0"}},
+    places:[
+      /* ================= TARİHİ ================= */
+      {id:"u_dom",cat:"hist",name:"Domtoren (Dom Kulesi)",wiki:"Dom_Tower_of_Utrecht",lat:52.0908254,lon:5.1213254,pid:"ChIJgf7hSkVvxkcRNQQW-7nl0T8",desc:"Hollanda'nın en yüksek kilise kulesi, 112 metre. Şehrin her yerinden görünür, Utrecht'te kaybolursan ona bak.",hist:"Kule 1321'de başladı, 1382'de bitti. Utrecht o dönem Kuzey Hollanda'nın dini başkentiydi ve piskoposun katedrali bütün bölgeye gücünü göstermeliydi. Tasarımı Hainautlu Jan'a (Jan van Henegouwen) atfedilir. O zamanın vaizlerinden Geert Groote kuleyi fazla yüksek, fazla pahalı ve gösterişçi bulup eleştirmişti.\n\nKule bir zamanlar katedralin batı ucuydu, kiliseyle arasındaki nef 1 Ağustos 1674 gecesi bir kasırgada çöktü ve bir daha yapılmadı. O günden beri kule kilisenin karşısında tek başına durur. Arada açılan boşluk bugünkü Domplein'dır.\n\nTepeye 465 basamak çıkılır. İçeride toplam ağırlığı 32 tonu bulan 14 çan var, en büyüğü Salvator yaklaşık 8 ton. Havanın açık olduğu günlerde tepeden Amsterdam ve Rotterdam görünür.",why:"Utrecht'in simgesi. Çıkmasan da altından geçmek şart.",dur:"1 sa",fee:null,hours:"Her gün 10:00-17:00",tip:"Kuleye yalnızca rehberli turla çıkılıyor. Bileti kulenin yanındaki ofisten ya da internetten saatli al. Tur üç molalı, son kısım çok dar merdiven."},
+      {id:"u_domkerk",cat:"hist",name:"Domkerk (Dom Kilisesi)",wiki:"St._Martin's_Cathedral,_Utrecht",lat:52.0909146,lon:5.1222327,pid:"ChIJ1YcENUVvxkcRF6Woa2FQZYU",desc:"Kulenin karşısındaki gotik katedral. Bugün gördüğün kısım, 1674'te nefi yıkılan dev kilisenin ayakta kalan koro ve transept bölümü.",hist:"Bu noktada 7. yüzyıldan beri kilise var. Gotik katedral 1254'te başladı ve yaklaşık 270 yıl sürdü. Para bitince nefin üst kısmı aceleyle ve zayıf payandalarla tamamlandı. 1674 kasırgası tam bu zayıf bölümü yıktı: kule ve koro ayakta kaldı, ortası çöktü.\n\n1580'de Utrecht Protestanlığa geçince kilise Kalvinistlere verildi, heykel ve resimlerin çoğu söküldü ya da tahrip edildi. Duvarlardaki başı kesilmiş kabartmalar o günlerden kalmadır. Bugün Hollanda Protestan Kilisesi'ne ait ve ziyaret ücretsiz.",why:"Ücretsiz ve içi ferah. Kuleye çıkmasan bile mutlaka gir.",dur:"30 dk",fee:"Ücretsiz (bağış kabul ediliyor)",hours:"Pzt-Cum 10:00-17:00, Cmt 10:00-15:15, Paz 12:30-16:00",tip:"Cumartesi öğleden sonraları yerel halkın çok sevdiği ücretsiz konser oluyor (ziyaretçi yorumundan)."},
+      {id:"u_pandhof",cat:"hist",name:"Pandhof",wiki:"St._Martin's_Cathedral,_Utrecht",gen:1,lat:52.0905308,lon:5.122583,pid:"ChIJM1Oyq1pvxkcR7k4195pnIJs",desc:"Dom Kilisesi ile üniversite binası arasında saklı gotik avlu ve bahçe. Kapıdan girer girmez şehrin gürültüsü kesilir.",hist:"Pandhof katedralin manastır avlusudur, 14. yüzyıl sonunda yapıldı. Rahipler kemerli koridorlarda dua ederek dolaşır, ortadaki bahçede şifalı otlar yetiştirirdi. Bugün bahçede yine ortaçağdan bilinen tıbbi bitkiler var.\n\nKemerlerin üstündeki üçgen panellerde Utrecht'in koruyucu azizi Aziz Martin'in hayatından sahneler oyulmuştur. Martin, pelerinini ikiye bölüp bir dilenciyle paylaşan Romalı askerdir.",why:"Beş dakikalık sessizlik, ücretsiz. Fotoğraf için çok güzel.",dur:"15 dk",fee:"Ücretsiz",hours:"Her gün 10:00-16:00"},
+      {id:"u_domunder",cat:"hist",name:"DOMunder",wiki:"Domplein",gen:1,lat:52.0908175,lon:5.1216784,pid:"ChIJoRQHFnZUZUERULgFeNykcqQ",desc:"Domplein'ın altına inilen rehberli tur. Elinde fenerle Roma kalesinin ve yıkılan katedralin kalıntılarını arıyorsun.",hist:"Utrecht'in hikâyesi bu meydanın altında başlar. Romalılar yaklaşık MS 50'de Ren kıyısına Traiectum adında küçük bir ahşap kale kurdu. Ren o zaman Roma İmparatorluğu'nun kuzey sınırıydı ve kale bir geçit noktasını koruyordu. Şehrin adı da buradan gelir: Traiectum zamanla \"Uut-Trecht\", sonra Utrecht oldu.\n\nKale terk edildikten sonra yerine kiliseler yapıldı, sonra dev katedral. 1674'te çöken nefin temelleri de bu toprağın altında. Meydanın yüzeyinde Roma kalesinin duvar hattını gösteren işaretler vardır, yürürken yere bak.",why:"Dom'un hikâyesini en iyi anlatan tur. Yorumlara göre beklentiyi aşıyor.",dur:"1 sa 15 dk",fee:null,hours:"Her gün 10:00-17:00 (tur saatleri belli)",tip:"Tur 75 dakika, ilk yarım saati yer üstünde anlatım. İngilizce tur saatini önceden kontrol et."},
+      {id:"u_academie",cat:"hist",name:"Academiegebouw (Üniversite Binası)",wiki:"Utrecht_University",gen:1,lat:52.090237,lon:5.122578,pid:"ChIJoWoiLHVvxkcRuoNuMDjZr4E",desc:"Domplein'ın güney yanındaki görkemli üniversite binası. Hollanda Cumhuriyeti'nin doğduğu salon bu binanın içinde.",hist:"Utrecht Üniversitesi 1636'da kuruldu. Bugünkü cephe 19. yüzyılın sonunda yapıldı, ama binanın arka kısmı katedralin ortaçağdan kalma kapitel salonudur.\n\n1579'da kuzeydeki eyaletler İspanya'ya karşı birlik olmak için Utrecht Birliği'ni (Unie van Utrecht) bu salonda imzaladı. Bu antlaşma bugünkü Hollanda devletinin başlangıcı sayılır. Bugün salonda doktora savunmaları ve törenler yapılır.",why:"Dışarıdan bak, Pandhof'un çıkışında zaten önünden geçiyorsun.",dur:"10 dk",fee:"Dışarıdan ücretsiz",hours:"İç mekân genelde ziyarete kapalı",tip:"Hafta içi kapı açık olsa bile içeri girmek için izin gerekiyor (ziyaretçi yorumundan)."},
+      {id:"u_paushuize",cat:"hist",name:"Paushuize (Papa Evi)",wiki:"Paushuize",lat:52.0903861,lon:5.1241417,pid:"ChIJQ0b2HlBvxkcRSlRETIZ9mDg",desc:"Kromme Nieuwegracht kıyısında, tek Hollandalı papa için yapılmış ev.",hist:"Utrechtli Adriaan Florenszoon Boeyens, gençliğinde geleceğin İmparatoru Şarlken'in hocasıydı. 1517'de emekliliğinde yaşamak için bu evi yaptırmaya başladı. Ama 1522'de papa seçildi ve VI. Adrianus adıyla Roma'ya gitti. Bir yıl sonra orada öldü ve evini hiç görmedi.\n\nAdrianus, 1978'de II. Ioannes Paulus seçilene kadar İtalyan olmayan son papaydı. Ev bugün Utrecht eyaletinin resmi kabul binası, içi yalnızca rehberli turlarla geziliyor.",why:"Kromme Nieuwegracht yürüyüşünde önünden geçersin.",dur:"10 dk",fee:"Dışarıdan ücretsiz",hours:"İçi yalnızca rehberli turla",tip:"Rehberli tur için turizm ofisine sor."},
+      {id:"u_pieterskerk",cat:"hist",name:"Pieterskerk",wiki:"Pieterskerk,_Utrecht",lat:52.0914501,lon:5.1244639,pid:"ChIJb4aN6E9vxkcR8GtkP_xBMSc",desc:"Utrecht'in ayakta kalan en eski kilisesi. Romanesk sütunları ve kriptası 11. yüzyıldan.",hist:"11. yüzyılda Piskopos Bernold, Dom'un çevresine haç şeklinde dört kilise yaptırdı. Kuzeyde Janskerk, doğuda bu Pieterskerk, batıda Mariakerk ve güneyde Paulus Manastırı. Haritada çizgi çekersen ortası Dom'a düşer. Bu düzene \"kerkenkruis\" (kiliseler haçı) denir. Dördünden bugün yalnızca Pieterskerk ve Janskerk ayakta.\n\nPieterskerk 1048'de kutsandı. Kalın taş sütunları ve kemerleri Hollanda'da az kalmış Romanesk mimari örneklerindendir. 17. yüzyıldan beri Fransızca konuşan Valon Protestan cemaatinin kilisesi; Fransa'dan kaçan Huguenotlar burada ibadet etti.",why:"Dom kalabalığından iki sokak ötede, gerçekten bin yaşında bir iç mekân.",dur:"20 dk",fee:null,hours:null,tip:"Açılış saatleri değişken, gitmeden Google Maps'ten bak."},
+      {id:"u_janskerk",cat:"hist",name:"Janskerk",wiki:"Janskerk_(Utrecht)",gen:1,lat:52.0932605,lon:5.1214765,pid:"ChIJgScEC0VvxkcR5wj44PSIaNk",desc:"Ağaçlı Janskerkhof meydanındaki kilise. Cumartesi meydanı çiçek pazarı kaplar.",hist:"Janskerk, Piskopos Bernold'un kiliseler haçının kuzey koludur ve 11. yüzyılda kuruldu. Sonraki yüzyıllarda gotik koro eklendi. Reformdan sonra bir dönem üniversite kütüphanesi olarak da kullanıldı.\n\nKilisenin önünde Anne Frank heykeli var. Meydanın çevresi bugün üniversite binaları ve öğrenci kafeleriyle dolu.",why:"Cumartesi çiçek pazarı için git, kilise dışarıdan yeter.",dur:"10 dk",fee:"Dışarıdan ücretsiz",hours:"İç mekân yenileme nedeniyle ziyarete kapalı (ziyaretçi yorumundan)",tip:"Cumartesi meydanda çiçek pazarı kuruluyor."},
+      {id:"u_speelklok",cat:"hist",name:"Museum Speelklok",wiki:"Museum_Speelklok",lat:52.0908267,lon:5.1195937,pid:"ChIJi_joKltvxkcRXXh-E9QA1ZU",desc:"Ortaçağdan kalma Buurkerk'in içinde kendi kendine çalan müzik aletleri müzesi: laterna, müzik kutusu, dev dans orgları.",hist:"Buurkerk, Utrecht'in en eski mahalle (buurt) kilisesidir. Dom piskoposun kilisesiyken burası sıradan halkın kilisesiydi. Bugün içinde 18. yüzyıldan 20. yüzyıla kadar yapılmış otomatik müzik aletleri sergileniyor.\n\nHollanda sokaklarında hâlâ görebileceğin büyük, süslü laternalar (draaiorgel) buranın uzmanlık alanıdır. Rehberli turda aletler gerçekten çalıştırılıyor.",why:"Yorumlara göre her yaşa hitap eden, beklenenden çok daha keyifli bir müze.",dur:"1 sa 30 dk",fee:"Yaklaşık €17 (ziyaretçi yorumundan, doğrula)",hours:"Her gün 10:00-17:00",tip:"Rehberli turu kaçırma, aletleri o zaman çalıştırıyorlar."},
+      {id:"u_oudaen",cat:"hist",name:"Stadskasteel Oudaen",wiki:"Oudaen",gen:1,lat:52.0928674,lon:5.116691,pid:"ChIJWxOEnURvxkcRvlE0JbI2exI",desc:"Oudegracht kıyısında, ortaçağdan kalma bir şehir şatosu. Bugün içinde kendi birasını yapan bir restoran var.",hist:"Ortaçağda Utrecht'in zengin aileleri kanal kıyısına \"stadskasteel\" denen, kule gibi yüksek ve taş evler yaptırırdı. Hem güç gösterisiydi hem de şehir içindeki kavgalara karşı korunmanın yoluydu. Oudaen bu evlerin en iyi korunmuş örneklerinden biri ve 13. yüzyıla dayanır.\n\nKanal tarafındaki mahzen katı doğrudan suya açılır. Bugün içi restoran, bira fabrikası ve toplantı salonu.",why:"Oudegracht yürüyüşünde dışarıdan bakmalık. İçeride bira tadımı da yapılabilir.",dur:"10 dk",fee:"Dışarıdan ücretsiz",hours:"Restoran her gün, yaklaşık 10:00-22:30"},
+      {id:"u_catharijne",cat:"hist",name:"Museum Catharijneconvent",wiki:"Museum_Catharijneconvent",lat:52.0872889,lon:5.1239194,pid:"ChIJrZtH7VBvxkcR4NrImVuDYC8",desc:"Eski bir manastırda, Hollanda'da Hristiyanlık tarihini ve ortaçağ dini sanatını anlatan müze.",hist:"Bina 15. yüzyılda Kudüs'teki Aziz Yahya Şövalyeleri'nin (Johanniterler) manastırıydı. Yanındaki Catharijnekerk bugün Utrecht'in Katolik katedrali.\n\nMüzenin bodrumundaki hazine odasında ortaçağdan kalma altın kadehler, işlemeli piskopos giysileri ve el yazmaları var. Yorumlara göre açıklamaların çoğu Felemenkçe, sesli rehber istemek iyi olur.",why:"Ortaçağ sanatına meraklıysan. Değilsen dışarıdan bakmak yeter.",dur:"1 sa 30 dk",fee:null,hours:"Sal-Cum 10:00-17:00, hafta sonu 11:00-17:00, Pazartesi kapalı"},
+      {id:"u_centraal",cat:"hist",name:"Centraal Museum",wiki:"Centraal_Museum",lat:52.083748,lon:5.12591,pid:"ChIJ30TWwVZvxkcRl1x9CXB9YcI",desc:"Eski bir manastır kompleksinde şehir müzesi: Utrecht Karavaggiocuları, 1000 yıllık Utrecht gemisi, Rietveld mobilyaları ve Dick Bruna'nın atölyesi.",hist:"Müze 1838'de kuruldu ve Hollanda'nın en eski belediye müzesi sayılır. Agnietenklooster adlı eski bir rahibe manastırına yerleşmiştir.\n\nEn çok konuşulan parçası, 1930'da şehirde kazı sırasında bulunan ve yaklaşık bin yıllık olan Utrecht gemisidir. 17. yüzyılda Roma'da Caravaggio'dan etkilenip dönen Utrechtli ressamların (Honthorst, Ter Brugghen) eserleri de burada. Bir bölümde Miffy'nin yaratıcısı Dick Bruna'nın atölyesi olduğu gibi kurulmuş.",why:"Utrecht'i tek binada anlatan müze. Rietveld evinin bileti de buradan.",dur:"1 sa 30 dk",fee:null,hours:"Sal-Paz 11:00-17:00, Pazartesi kapalı"},
+      {id:"u_nijntje",cat:"hist",name:"Nijntje Museum (Miffy Müzesi)",wiki:"Miffy",gen:1,lat:52.0838688,lon:5.125625,pid:"ChIJwwY26FZvxkcRmHlnni0UfX8",desc:"Miffy'nin (Nijntje) müzesi. Asıl hedef kitlesi küçük çocuklar; yetişkinler için hızlı bir tur ve dükkân.",hist:"Miffy, Utrechtli çizer Dick Bruna'nın 1955'te yarattığı küçük tavşandır. Felemenkçe adı Nijntje. Bruna bütün hayatını Utrecht'te geçirdi ve 2017'de burada öldü. Kitaplar 50'den fazla dile çevrildi.\n\nMüze tamamen çocuk boyunda tasarlandı. Yorumlara göre yetişkinler için 20-30 dakika yeterli; karşıdaki Centraal Museum dükkânında Miffy ürünleri şehirdeki diğer dükkânlardan daha uygun.",why:"Utrecht'in en sevilen sembolü. Hızlı bir uğrama.",dur:"30 dk",fee:null,hours:"Sal-Paz 10:00-17:00, Pazartesi kapalı",tip:"Yetişkinler için 15:00'ten sonra gitmek öneriliyor, çocuk kalabalığı azalıyor."},
+      {id:"u_sonnenborgh",cat:"hist",name:"Sonnenborgh Gözlemevi",wiki:"Sonnenborgh",lat:52.085383,lon:5.1292032,pid:"ChIJ3eLj-VNvxkcRvVGnkrg9WlI",desc:"16. yüzyıldan kalma bir surun burcunun üstüne kurulmuş gözlemevi ve müze, Zocherpark'ın içinde.",hist:"Sonnenborgh, 16. yüzyılın ortasında şehri savunmak için yapılan bir burçtur. 1853'te üniversite burcun üstüne gözlemevi kurdu. Bir yıl sonra meteorolog Buys Ballot, Hollanda'nın ulusal meteoroloji enstitüsü KNMI'yi burada kurdu; enstitü sonradan De Bilt'e taşındı.\n\nBugün müzede eski teleskoplar, güneş gözlemi ve Hollanda'nın astronomiye katkıları anlatılıyor. Burcun altındaki eski top galerisi de gezilebiliyor.",why:"Sakin, turistsiz ve parkın içinde. Güneşli pazarlarda teleskopla güneşe bakılabiliyor.",dur:"1 sa",fee:null,hours:"Sal-Cum 11:00-17:00 (Per akşam da açık), hafta sonu 13:00-17:00, Pazartesi kapalı"},
+      {id:"u_spoorweg",cat:"hist",name:"Spoorwegmuseum (Demiryolu Müzesi)",wiki:"Spoorwegmuseum",lat:52.0879257,lon:5.1311934,pid:"ChIJlzLgSVJvxkcRR16e-9yzpYA",desc:"Eski Maliebaan istasyonunda Hollanda'nın ulusal demiryolu müzesi. Buharlı lokomotifler, kraliyet vagonları, döner platform.",hist:"Müze 19. yüzyıldan kalma Maliebaan istasyon binasında. Utrecht ülkenin tam ortasında olduğu için demiryolları başından beri buradan yönetildi. Hollanda demiryolu şirketi NS'nin merkezi bugün de Utrecht'tedir.\n\nİçeride ülkenin ilk lokomotifi De Arend'in kopyası, kraliyet ailesinin eski vagonları ve çalışan bir döner platform var.",why:"Google'da şehrin en çok yorum alan müzesi. Çocuk ya da tren meraklısı değilsen bile keyifli.",dur:"2-3 sa",fee:null,hours:"Her gün 10:00-17:00",tip:"Merkezden 15-20 dakika yürüme. Yakındaki SAB. Broodjes ile öğle yemeğini birleştir."},
+      {id:"u_bartholomeus",cat:"hist",name:"Bartholomeus Gasthuis",wiki:"Bartholomeusgasthuis",gen:1,lat:52.0855186,lon:5.1199272,pid:"ChIJuZ7BiVlvxkcRs8Pr2Grquoo",desc:"Ortaçağdan beri aynı işi yapan bir bakımevi. Avlusu, bahçesi ve uygun fiyatlı brasserisi ziyaretçilere açık.",hist:"Gasthuis, ortaçağda yaşlıların, hastaların ve yolcuların bakıldığı hayır kurumudur. Bartholomeus 14. yüzyılda kuruldu ve yüzyıllardır aynı yerde aynı amaçla çalışıyor; bugün de bir bakım ve iyileşme merkezi.\n\nİçerideki Brasserie Zunte ve bahçe herkese açık. Yorumlara göre şehir merkezinde beklenmeyecek kadar uygun fiyatlı.",why:"Şehrin saklı köşelerinden. Kahve ya da öğle yemeği molasına uygun.",dur:"20 dk",fee:"Ücretsiz",hours:"Her gün 08:30-20:00",tip:"Burası bir bakımevi; sakin ol, sakinlerin fotoğrafını çekme."},
+      /* ================= MİMARİ ================= */
+      {id:"u_rietveld",cat:"arch",name:"Rietveld Schröderhuis",wiki:"Rietveld_Schröder_House",lat:52.0853216,lon:5.1475553,pid:"ChIJ7_vH9qVoxkcRCe6nL5FRYJQ",desc:"1924'te Gerrit Rietveld'in tasarladığı De Stijl evi. UNESCO Dünya Mirası.",hist:"Dul Truus Schröder çocuklarıyla yaşayacağı, alışılmışın dışında bir ev istedi. Mobilya ustası Gerrit Rietveld ile birlikte tasarladılar. Sonuç, Mondrian'ın tablolarındaki gibi yalnızca düz yüzeyler, ana renkler (kırmızı, sarı, mavi) ve siyah beyazdan oluşan bir evdi.\n\nÜst kat neredeyse tek bir odadır: kayar paneller çekilince yatak odalarına bölünür, açılınca kocaman bir yaşam alanı olur. Ev yapıldığında sokağın sonunda tarla vardı. 2000'de UNESCO Dünya Mirası listesine girdi.",why:"Mimarlık tarihinin en ünlü evlerinden. İçini görmek için bilet şart.",dur:"1 sa",fee:null,hours:"Sal-Paz 11:00-16:00, Pazartesi kapalı",tip:"Giriş saatli ve sesli rehberli. Bileti Centraal Museum üzerinden önceden al."},
+      {id:"u_fiets",cat:"arch",name:"Stationsplein Bisiklet Otoparkı",wiki:"Utrecht_Centraal_station",gen:1,lat:52.0911977,lon:5.110556,pid:"ChIJodthTV1vxkcR_aOPrFFcwAs",desc:"Dünyanın en büyük bisiklet otoparkı: 12.500 bisiklet, üç kat, içinde bisiklet yolları.",hist:"Utrecht Centraal ülkenin en işlek tren istasyonudur ve yolcuların büyük kısmı istasyona bisikletle gelir. Belediye bunun için garın önündeki meydanın altına üç katlı bir otopark yaptı. Son bölüm 19 Ağustos 2019'da açıldı ve 30 milyon eurodan fazlaya mal oldu.\n\nİçeride bisikletinle sürerek boş yere gidersin; her sıranın üstündeki ışıklı tabela kaç boş yer kaldığını gösterir. İlk 24 saat ücretsizdir.",why:"Hollanda'nın bisiklet kültürünü en çarpıcı gösteren yer. Turistlerin çoğu kaçırıyor.",dur:"15 dk",fee:"Bakmak ücretsiz",hours:"Her zaman açık"},
+      {id:"u_tivoli",cat:"arch",name:"TivoliVredenburg",wiki:"TivoliVredenburg",lat:52.0924298,lon:5.1128171,pid:"ChIJZVoL6EJvxkcRtj7MXDv3c8s",desc:"Beş konser salonunun üst üste dizildiği müzik binası. Pop konserinden klasik müziğe her akşam bir şey var.",hist:"Bina 2014'te açıldı. Utrecht'in iki müzik kurumu, pop kulübü Tivoli ile klasik konser salonu Vredenburg, tek çatı altında birleşti. Her salonu farklı bir mimar tasarladı ve salonlar kutular gibi üst üste kondu; aralarındaki merdivenler ve teraslar bir dikey sokak gibi.\n\nYorumlara göre ses kalitesi ve salonların sahneye yakınlığı çok iyi.",why:"Akşam programına bak, uygun fiyatlı bir konser yakalayabilirsin.",dur:"15 dk",fee:"Dışarıdan ücretsiz",hours:null,tip:"Konser takvimi ve bilet fiyatları resmi sitede."},
+      {id:"u_neude",cat:"arch",name:"Bibliotheek Neude (Eski Postane)",wiki:"Neude",gen:1,lat:52.0930912,lon:5.118041,pid:"ChIJ6wUC1ahvxkcRYUe-5GRNPD0",desc:"Amsterdam Okulu tarzında tuğla postane, bugün halk kütüphanesi. Ana salonun parabolik tavanı görülmeye değer.",hist:"Bina 1924'te şehrin ana postanesi olarak açıldı, mimarı Joseph Crouwel'di. Amsterdam Okulu'nun tuğla süslemeleri ve ana salonun yüksek, kemerli cam tavanı dönemin en gösterişli kamu binalarından biri yaptı.\n\nPostane 2011'de kapandı. Belediye binayı yıkmak yerine kütüphaneye çevirdi ve 2020'de açtı. Ziyaretçi yorumları burayı bir kütüphaneden çok mahalle merkezi gibi anlatıyor.",why:"Ücretsiz, sıcak ve kuru. Yağmurda mola için birebir.",dur:"15 dk",fee:"Ücretsiz",hours:"Pzt-Cmt 09:00-21:00, Paz 10:00-18:00"},
+      /* ================= PARK ================= */
+      {id:"u_zocher",cat:"park",name:"Zocherpark (Singel)",wiki:"Singel_(Utrecht)",gen:1,lat:52.0886009,lon:5.1278539,pid:"ChIJs2Lp6FpvxkcRtwqaivYVBzQ",desc:"Eski şehir hendeği boyunca uzanan şerit park. Yaşlı çınarlar, ginkgo ve sekoya ağaçları.",hist:"Singel, ortaçağ Utrecht'ini çevreleyen savunma hendeğidir. 19. yüzyılda surlar artık işe yaramayınca yıkıldı ve peyzaj mimarı Jan David Zocher hendek boyunca İngiliz bahçesi tarzında bir park tasarladı. Eski burçlar ağaçlı tepelere dönüştü; Sonnenborgh bunlardan biridir.\n\nPark bugün hendeğin doğu ve güney kıyısını takip eder. Bisiklete kapalı olduğu için yürüyüşe çok uygun.",why:"Müze mahallesinden Spoorwegmuseum'a giderken en güzel yol.",dur:"30 dk",fee:"Ücretsiz",hours:"Her zaman açık"},
+      {id:"u_hortus",cat:"park",name:"Oude Hortus (Eski Botanik Bahçesi)",wiki:"Utrecht_University_Botanic_Gardens",gen:1,lat:52.084843,lon:5.125769,pid:"ChIJi3mu0VZvxkcR1XUwZPuqBMI",desc:"Müze mahallesinin ortasında, seralarıyla küçük ve sakin bir üniversite botanik bahçesi.",hist:"Utrecht Üniversitesi'nin tıp öğrencileri için şifalı bitki yetiştirdiği bahçedir ve 18. yüzyılın başından beri bu konumdadır. Ana bahçe sonradan şehrin dışına taşındı, burası \"eski bahçe\" olarak kaldı.\n\nSeralardan birinde Hollanda'nın en yaşlı ağaçlarından sayılan bir sagu palmiyesi (cycas) bulunduğu anlatılır. Yanında üniversite müzesi var.",why:"Kalabalıktan kaçmak için. Kafesi de iyi.",dur:"45 dk",fee:"Yaklaşık €5, yalnızca kart (ziyaretçi yorumundan)",hours:"Sal-Paz 10:00-17:00, Pazartesi kapalı"},
+      {id:"u_wilhelmina",cat:"park",name:"Wilhelminapark",wiki:"Wilhelminapark_(Utrecht)",gen:1,lat:52.0885152,lon:5.1390991,pid:"ChIJv5Vspa1oxkcRw1rZtrE4C60",desc:"Doğudaki villa mahallesinin ortasında göllü, geniş bir park. Rietveld evine giderken yolun üstünde.",hist:"19. yüzyılın sonunda, surların dışında zenginler için villa mahallesi kurulurken parkın ortasına yapıldı. Adını Kraliçe Wilhelmina'dan alır.\n\nÇevresindeki sokaklar Utrecht'in en şık villalarıyla doludur.",why:"Rietveld'e yürürken mola yeri.",dur:"30 dk",fee:"Ücretsiz",hours:"Her zaman açık"},
+      {id:"u_griftpark",cat:"park",name:"Griftpark",wiki:"Griftpark",gen:1,lat:52.0991848,lon:5.128452,pid:"ChIJFRF0JEhvxkcRzAOOBqB6Ve4",desc:"Merkezin kuzeydoğusunda mahallelinin parkı: hayvan çiftliği, sebze bahçeleri, kaykay parkı ve kafe.",hist:"Park eski bir gaz fabrikasının arazisine kuruldu. Fabrika kapandıktan sonra toprak ağır biçimde kirli çıktı ve yıllarca süren bir temizlik projesinden sonra park olarak açıldı. Bugün yerel halkın en sevdiği parklardan biri.",why:"Turist rotasının dışında, gerçek Utrecht hayatını görmek için.",dur:"45 dk",fee:"Ücretsiz",hours:"Her zaman açık"},
+      /* ================= FOTO NOKTALARI ================= */
+      {id:"u_oudegracht",cat:"photo",name:"Oudegracht Werfleri",wiki:"Oudegracht",lat:52.0895354,lon:5.120886,pid:"ChIJC7Lm5FpvxkcR_GDbpi-FzVk",desc:"Utrecht'e özgü iki katlı kanal: sokak yukarıda, kafeler ve restoranlar aşağıda, suyun hemen kıyısında.",hist:"Oudegracht, Ren'in eski bir kolunun kanala çevrilmesiyle oluştu. Ortaçağda tüccarlar malları teknelerden doğrudan su seviyesindeki rıhtıma (werf) indirdi ve sokağın altına oyulmuş mahzenlerde sakladı. Sokak bu mahzenlerin tavanının üstünden geçer.\n\nBu yapı dünyada nadirdir. Bugün eski depoların çoğu kafe, restoran ve dükkân; yazın rıhtım masalarla dolar.",why:"Utrecht'in en ikonik fotoğrafı. Rıhtıma inen merdivenlerden aşağı in.",dur:"30 dk",fee:"Ücretsiz",hours:"Her zaman açık",tip:"En güzel kare Gaardbrug ve Bezembrug arasından, kule arkada."},
+      {id:"u_miffy",cat:"photo",name:"Miffy Trafik Lambası",wiki:"Miffy",gen:1,lat:52.0931011,lon:5.1149599,pid:"ChIJo3G_qXdvxkcRlWTBb7p-UJQ",desc:"Vredenburg'daki yaya geçidinde ışıkta adam yerine Miffy yanıyor. Geçit gökkuşağı renkli.",hist:"Dick Bruna'nın memleketinde, onun en ünlü karakterine küçük bir saygı. Kırmızıda Miffy duruyor, yeşilde yürüyor. Turistler doğru ışığı yakalamak için geçidi defalarca karşıdan karşıya geçer.",why:"İki dakikalık eğlenceli bir kare.",dur:"5 dk",fee:"Ücretsiz",hours:"Her zaman"},
+      {id:"u_kromme",cat:"photo",name:"Kromme Nieuwegracht",wiki:"Kromme_Nieuwegracht",gen:1,lat:52.0937732,lon:5.1232513,pid:"ChIJK0TEwk9vxkcR3NKRV9345a4",desc:"Her evin kendi küçük köprüsüyle kanala bağlandığı kavisli, sakin kanal.",hist:"Kanalın kıyısındaki evlerin çoğunun önünde kendi özel köprüsü vardır, bu yüzden kanal boyunca onlarca küçük köprü dizilir. Paushuize ve Pieterskerk bu kanalın üstündedir. Sonbaharda ağaçların rengiyle şehrin en güzel köşelerinden biri olur.",why:"Oudegracht'ın sakin, turistsiz kardeşi.",dur:"15 dk",fee:"Ücretsiz",hours:"Her zaman açık"},
+      {id:"u_twijnstraat",cat:"photo",name:"Twijnstraat ve Tolsteegbrug",wiki:"Oudegracht",gen:1,lat:52.0827323,lon:5.1234164,pid:"ChIJS6uvCVdvxkcR-wSq7rPbldw",desc:"Oudegracht'ın güney ucunda küçük dükkânlı eski sokak ve kanala bakan köprü.",hist:"Twijnstraat'ın adının ortaçağda burada iplik büken (twijnen) zanaatkârlardan geldiği söylenir. Oudegracht'ın bu ucu merkezden daha sakindir; yerel dükkânlar, fırınlar ve kanal manzarası bir arada.",why:"Oudegracht rotasının bitişi, sakin bir son.",dur:"15 dk",fee:"Ücretsiz",hours:"Her zaman açık"},
+      {id:"u_weerd",cat:"photo",name:"Bemuurde Weerd ve Weerdsluis",wiki:"Oudegracht",gen:1,lat:52.0974943,lon:5.1148896,pid:"ChIJ3ZhBckFvxkcR4DqiLe37h5c",desc:"Oudegracht'ın kuzey ucunda kanal kilidi ve sakin kıyılar.",hist:"Weerdsluis, Oudegracht'ın Vecht nehrine bağlandığı kanal kilididir. Tekneler buradan şehre girip çıkar. Kıyıdaki evler eski şehir surunun dışındaki ilk mahalledendir.",why:"Oudegracht rotasının başlangıcı. Turist neredeyse yok.",dur:"10 dk",fee:"Ücretsiz",hours:"Her zaman açık"},
+      /* ================= KAHVE ================= */
+      {id:"u_keen",cat:"coffee",name:"Keen Coffee Bar",lat:52.0925061,lon:5.1200664,pid:"ChIJUb38QgBvxkcRGDnBCoP44QY",price:"€",rating:4.6,rc:401,rdate:"17.10.2026",eat:"Geniş filtre kahve seçkisi (ör. Ruanda Baho), her kahveye köken kartı.",why:"Filtre kahvede şehrin en iddialısı. Ganzenmarkt'ta, Dom'a iki dakika.",hours:"Pzt-Cmt 08:30-18:00, Paz 09:00-18:00"},
+      {id:"u_blackbird",cat:"coffee",name:"Blackbird Coffee",lat:52.0883558,lon:5.1217029,pid:"ChIJsaxth1pvxkcRCoMBlzDa4AA",price:"€",rating:4.8,rc:522,rdate:"17.10.2026",eat:"Flat white ve hamur işleri. Kanal kenarındaki taburelerde gerçek fincanla.",why:"Oudegracht'ın tam kıyısında küçük ve samimi.",hours:"Çar-Cmt 09:00-17:00, Paz 12:00-17:00, Pzt-Sal kapalı"},
+      {id:"u_darras",cat:"coffee",name:"Darras Coffee Roasters",lat:52.091464,lon:5.1168719,pid:"ChIJK6y6RGlvxkcRUrV4u-W7a6o",price:"€",rating:4.8,rc:628,rdate:"17.10.2026",eat:"Kendi kavurduğu kahve, latte; falafel ve tavuk dürüm de iyi.",why:"Kahve ve hafif öğle yemeğini tek yerde.",hours:"Pzt-Cum 09:30-20:00, Cmt-Paz 10:00/11:00-20:30"},
+      {id:"u_village",cat:"coffee",name:"The Village Coffee & Music",lat:52.094938,lon:5.1200696,pid:"ChIJXyoPNURvxkcRfTCKIkaKmbI",price:"€",rating:4.7,rc:1152,rdate:"17.10.2026",eat:"Cappuccino ve muzlu ekmek (banana bread). Kendi kavurdukları çekirdekler.",why:"En çok yorumlu kahveci. Rock müzik, iyi pasta.",hours:"Pzt-Cum 07:30-18:00, Cmt 08:00-18:00, Paz 08:30-18:00",tip:"Pastalar erken bitiyor."},
+      {id:"u_blackbrew",cat:"coffee",name:"Black Brew",lat:52.094608,lon:5.1133401,pid:"ChIJg7_rRzBvxkcRDlnR3FqA0YM",price:"€",rating:4.6,rc:306,rdate:"17.10.2026",eat:"Kahve, bagel ve gün boyu kahvaltı (yaklaşık €15).",why:"Uygun fiyatlı kahvaltı ve brunch.",hours:"Sal-Cum 09:00-17:00, Cmt 11:00-17:00, Pzt ve Paz kapalı"},
+      {id:"u_fufu",cat:"coffee",name:"Fufu Coffee Studio",lat:52.0984916,lon:5.1248741,pid:"ChIJ84-i1y1lxkcRaaVMSceYECg",price:"€",rating:4.8,rc:208,rdate:"17.10.2026",eat:"Çift shot kahveler, yuzulu matcha, Bask cheesecake ve Japon usulü kruvasan.",why:"Griftpark yakınında, kahve ve tatlıda çok iddialı.",hours:"Sal-Paz 10:00-16:30, Pazartesi kapalı"},
+      {id:"u_happytoko",cat:"coffee",name:"The Happy Toko",lat:52.0982863,lon:5.1037488,pid:"ChIJS-GkXUtvxkcR0oi7qO5aeCs",price:"€",rating:4.9,rc:147,rdate:"17.10.2026",eat:"Pandanlı buzlu latte, matcha ve kurabiye.",why:"Listenin en yüksek puanlısı, merkezin biraz dışında.",hours:"Çar 08:00-16:00, Per-Cum 08:00-16:30, Cmt 09:00-17:00, Paz-Sal kapalı"},
+      /* ================= FIRIN ================= */
+      {id:"u_bond",cat:"bakery",name:"Bond & Smolders",lat:52.0900151,lon:5.1201148,pid:"ChIJubwl21pvxkcRmQCX6xRa7fg",price:"€€",rating:4.6,rc:708,rdate:"17.10.2026",eat:"Bademli kruvasan, elmalı turta, ekler ve \"cinnamon dream\" kahvesi.",why:"Yorumlarda \"şehrin en iyi fırını\" denen yer.",hours:"Sal-Cum 09:00-17:00, Cmt 08:30-17:00, Pazar ve Pazartesi kapalı"},
+      {id:"u_casaferreira",cat:"bakery",name:"Casa Ferreira To Go",lat:52.0920614,lon:5.1174798,pid:"ChIJhUas9cRvxkcRsNkCHab8-hY",rating:4.9,rc:699,rdate:"17.10.2026",eat:"Pastel de nata (Portekiz yumurtalı tartı), pão de Deus, elmalı tart.",why:"Fırınlar içinde en yüksek puan. Hollanda'nın en iyi pastel de nata'sı diyen çok.",hours:"Her gün 09:00-18:00"},
+      {id:"u_theoblom",cat:"bakery",name:"Banketbakkerij Theo Blom",lat:52.090178,lon:5.119311,pid:"ChIJxcTqJ1tvxkcRj-3Gtv2RY04",price:"€",rating:4.6,rc:363,rdate:"17.10.2026",eat:"Tereyağlı kurabiye (küçük kutu yaklaşık €6), pastalar.",why:"Eski usul Hollanda pastanesi. Kurabiyeler hediyelik.",hours:"Pzt 08:00-17:00, Sal-Cum 08:00-18:00, Cmt 08:00-17:00, Paz 13:00-17:00"},
+      {id:"u_keek",cat:"bakery",name:"KEEK Bakkerij",lat:52.0887871,lon:5.1186723,pid:"ChIJoRuYk1JvxkcR3we8iRdsXSI",price:"€€",rating:4.6,rc:321,rdate:"17.10.2026",eat:"KEEK scone ve tarçınlı çörek; havuçlu kek.",why:"Kahvaltı için sıcak bir köşe.",hours:"Pzt-Cum 08:00-17:00, Cmt-Paz 08:00-18:00"},
+      {id:"u_keukenkeek",cat:"bakery",name:"De Keuken van KEEK",lat:52.0846034,lon:5.1232247,pid:"ChIJb1ytR1dvxkcRMXQMVws3J5M",price:"€",rating:4.5,rc:382,rdate:"17.10.2026",eat:"Elmalı turta, scone, havuçlu kek; öğlen büyük salatalar.",why:"Oudegracht'ın güney ucunda, kanal kenarında.",hours:"Pzt-Cum 08:30-17:00, Cmt-Paz 08:30-18:00"},
+      /* ================= YEMEK ================= */
+      {id:"u_dapp",cat:"food",name:"Dapp Frietwinkel",wiki:"French_fries",gen:1,lat:52.0921462,lon:5.1176161,pid:"ChIJMSy0vURvxkcRtmgUcH2pqsw",price:"€",rating:4.5,rc:1841,rdate:"17.10.2026",eat:"Kabuklu, çıtır patat. Trüf mayonez öneriliyor. Bitterballen da var.",why:"Yorumlara göre şehrin en iyi patatı, yerlilerin tercihi.",hours:"Her gün 11:30-21:00"},
+      {id:"u_carlo",cat:"food",name:"Broodje Carlo",lat:52.093192,lon:5.1218275,pid:"ChIJ7UkDqEVvxkcR7uUZYMzR_GE",price:"€",rating:4.6,rc:304,rdate:"17.10.2026",eat:"Taze yapılan sandviçler, vegan seçenek var.",why:"Janskerkhof'ta, \"Utrecht'in en iyi sandviçi\" diyen çok.",hours:"Pzt-Cmt 11:15-17:30, Pazar kapalı",tip:"Öğle saatinde kuyruk yola taşabiliyor."},
+      {id:"u_martin",cat:"food",name:"Broodje van Martin",lat:52.0933376,lon:5.1133408,pid:"ChIJ0bqM_UJvxkcRWkr7X5b2v8k",price:"€",rating:4.8,rc:283,rdate:"17.10.2026",eat:"Klasik Hollanda sandviçleri (broodje), yaklaşık €5.",why:"Aile işletmesi, gerçek yerel öğle yemeği.",hours:"Pzt-Cmt 09:00-14:00, Pazar kapalı"},
+      {id:"u_ben",cat:"food",name:"Broodje Ben (Oudegracht)",lat:52.0916327,lon:5.1170301,pid:"ChIJT7zXHXWFx0cR6bGznWI2AYU",price:"€",rating:4.5,rc:1089,rdate:"17.10.2026",eat:"Sıcak ve soğuk sandviçler; 17 numara en sevileni.",why:"Merkezde hızlı ve doyurucu öğle.",hours:"Pzt-Cmt 10:30-17:00, Paz 11:00-17:00"},
+      {id:"u_sab",cat:"food",name:"SAB. Broodjes",lat:52.0900502,lon:5.1345708,pid:"ChIJmUwINvtvxkcR7lQEBbW49b8",price:"€",rating:5.0,rc:147,rdate:"17.10.2026",eat:"Büyük sandviçler ve iyi kahve.",why:"Spoorwegmuseum ile Rietveld arasında tam kıvamında mola.",hours:"Pzt-Cum 09:00-15:00, Cmt 10:00-16:00, Pazar kapalı"},
+      {id:"u_bambi",cat:"food",name:"Broodje Bambi",wiki:"Doner_kebab",gen:1,lat:52.0922991,lon:5.1219976,pid:"ChIJgYWHQkVvxkcRZVMLNTLqnNo",price:"€",eat:"Döner, dürüm ve patat. Porsiyonlar büyük.",rating:4.6,rc:475,rdate:"17.10.2026",why:"Ucuz ve gece çok geç saate kadar açık.",hours:"Her gün 12:00'den sabaha kadar (04:00-06:00)"},
+      {id:"u_musa",cat:"food",name:"Musa's Place",wiki:"Doner_kebab",gen:1,lat:52.0956052,lon:5.1142047,pid:"ChIJX8ItzENvxkcRukSbLoNZ9O0",price:"€€",rating:4.7,rc:1573,rdate:"17.10.2026",eat:"Döner kutu, döner sandviç, falafel. Porsiyonlar fiyatına göre büyük.",why:"Türk işletmesi, sıcak karşılama.",hours:"Her gün 11:00-22:00",tip:"Yorumlara göre Visa geçmeyebiliyor, nakit bulundur."},
+      {id:"u_yunak",cat:"food",name:"Yunak",wiki:"Pide",gen:1,lat:52.0912753,lon:5.1015689,pid:"ChIJl7R882VvxkcRXW7PAJSyd34",price:"€€",rating:4.4,rc:740,rdate:"17.10.2026",eat:"Konya usulü etli ekmek (kuşbaşı ve kıymalı), pide, sütlaç.",why:"Lombok mahallesinde, memleket tadında.",hours:"Her gün 08:00-21:00",tip:"Gardan batıya 10 dakika. Kanaalstraat'taki Türk dükkânlarıyla birleştir."},
+      {id:"u_tantelien",cat:"food",name:"Tante Lien",wiki:"Rendang",gen:1,lat:52.0892966,lon:5.1214124,pid:"ChIJVcHOWf5vxkcRbd38KBRR_Lw",price:"€€",rating:4.5,rc:332,rdate:"17.10.2026",eat:"Endonezya mutfağı: rendang, sambal goreng tempe; sandviç olarak da var.",why:"Ailece işletilen küçük Endonezya mutfağı, Oudegracht'ta.",hours:"Sal-Cmt 12:00-21:00, Paz 16:00-21:00, Pazartesi kapalı",tip:"Yorumlara göre kart geçmiyor, nakit götür."},
+      {id:"u_nonna",cat:"food",name:"Nonna Rosa",lat:52.0889576,lon:5.1215199,pid:"ChIJ2SN_LMVvxkcRKy9SPCZh3GQ",price:"€€",rating:4.7,rc:315,rdate:"17.10.2026",eat:"İtalyan sandviçleri (salame toscana, mortadella), €10-12, çok büyük.",why:"Alıp kanal kenarında ye.",hours:"Pzt-Per 11:00-16:00, Cum-Paz 11:00-17:00"},
+      {id:"u_toastable",cat:"food",name:"Toastable",lat:52.0923946,lon:5.1171633,pid:"ChIJM-pceiBvxkcRFip1PO2KTcg",price:"€€",rating:4.6,rc:682,rdate:"17.10.2026",eat:"Çok katlı tostlar (The Legend, Fajita), hardal sosuyla.",why:"Oudegracht'ta sıcak ve doyurucu öğle.",hours:"Her gün 09:00-17:00"},
+      {id:"u_silkroad",cat:"food",name:"Silk Road",lat:52.0915799,lon:5.1185996,pid:"ChIJP_DVMDtvxkcRLhBDba3PT7w",price:"€€",rating:4.7,rc:663,rdate:"17.10.2026",eat:"Orta Asya mutfağı: kebap, şefin menüsü.",why:"Kanalın rıhtım katında, akşam yemeği için.",hours:"Sal-Paz 17:00-22:00, Pazartesi kapalı",tip:"Rıhtımdaki masalar için rezervasyon iyi olur."},
+      {id:"u_kartoffel",cat:"food",name:"Kartoffel",wiki:"Schnitzel",gen:1,lat:52.0914601,lon:5.1178384,pid:"ChIJKV4w_0RvxkcRZR9tDwN1p4Q",price:"€€",rating:4.4,rc:2574,rdate:"17.10.2026",eat:"Alman mutfağı: şnitzel, bratwurst, currywurst; büyük porsiyon.",why:"Rıhtımda en çok yorumlu restoran.",hours:"Pzt-Cum 17:00'de açılır, Cmt-Paz 12:00'de açılır",tip:"Kanal kenarı masalar sıraya göre, rezervasyonla verilmiyor."},
+      {id:"u_vanschaik",cat:"food",name:"Van Schaik Stroopwafels",wiki:"Stroopwafel",gen:1,lat:52.0917962,lon:5.115436,pid:"ChIJhUxbVERvxkcRejYAS95w1Jw",price:"€",rating:4.9,rc:425,rdate:"17.10.2026",eat:"Gözünün önünde yapılan sıcak stroopwafel ve poffertjes.",why:"Utrecht'in en yüksek puanlı tatlı durağı. Hediyelik teneke kutular da var.",hours:"Pzt-Cum 11:00-18:30, Cmt 10:00-18:30, Paz 12:00-18:30"},
+      {id:"u_vredenburgmarkt",cat:"food",name:"Vredenburg Pazarı",wiki:"Kibbeling",gen:1,lat:52.0922192,lon:5.1145539,pid:"ChIJ5xtU4kJvxkcRxC6uWyjhPkc",price:"€",rating:4.2,rc:1983,rdate:"17.10.2026",eat:"Kibbeling, ringa, peynir, poffertjes, churros.",why:"Ucuza Hollanda tadımı. Cumartesi en canlı günü.",hours:"Çar ve Cum 10:00-17:00, Cmt 08:00-17:00",tip:"Bugün 17.10 Cumartesi, pazar kurulu."},
+      {id:"u_pieper",cat:"food",name:"De Pieper",wiki:"French_fries",gen:1,lat:52.0951402,lon:5.130236,pid:"ChIJCd8YqE5vxkcRvAQf54OvmA4",price:"€",rating:4.3,rc:296,rdate:"17.10.2026",eat:"Patat oorlog (fıstık sosu, mayonez, soğan), tavuk şiş, burger.",why:"Biltstraat'ta mahalle patatçısı, yakınında Griftpark.",hours:"Her gün 12:00-20:30"},
+      /* ================= MARKET ================= */
+      {id:"u_ahneude",cat:"market",name:"Albert Heijn Neude",lat:52.0933358,lon:5.1175888,pid:"ChIJUw8IfUNvxkcR-0qX27R5c44",price:"€€",rating:4.1,rc:736,rdate:"17.10.2026",eat:"Hollanda'nın en büyük zinciri. Hazır sandviç, salata, Sushi Daily tezgâhı, oturma alanı.",why:"Merkezde gece yarısına kadar açık tek büyük market.",hours:"Pzt-Cmt 08:00-24:00, Paz 10:00-24:00"},
+      {id:"u_jumbo",cat:"market",name:"Jumbo (Hoog Catharijne)",lat:52.090956,lon:5.1145616,pid:"ChIJWT2m1YJvxkcRnt4AGU_o1hY",price:"€€",rating:4.0,rc:754,rdate:"17.10.2026",eat:"Geniş ürün yelpazesi. Kafeteryasında marketten aldığını ısıtıp yiyebiliyorsun, kahve kafelerin yarı fiyatı.",why:"Gara bitişik; ucuz kahvaltı ve şarj molası.",hours:"Pzt-Cmt 08:00-21:00, Paz 10:00-21:00"},
+      {id:"u_ahstation",cat:"market",name:"Albert Heijn (Godebaldkwartier)",lat:52.0894602,lon:5.1130743,pid:"ChIJXTYH41xvxkcR1ErwF_oC0EE",price:"€€",rating:4.1,rc:552,rdate:"17.10.2026",eat:"Geniş taze ürün reyonu.",why:"Garın güney tarafında, trene binmeden alışveriş.",hours:"Pzt-Cum 08:00-21:00, Cmt 09:00-21:00, Paz 10:00-20:00"}
+    ],
+    routes:[
+      {id:"r-u-dom",name:"Garın Önünden Dom'a",wiki:"Utrecht_Centraal_station",desc:"Utrecht Centraal'den bisiklet otoparkı, Miffy lambası ve Oudegracht üzerinden Domplein ve Pandhof'a.",hist:"Garın önü 1970'lerde Hoog Catharijne alışveriş merkezi ve otoyol için kısmen doldurulan Catharijnesingel kanalının yeridir. Belediye son yıllarda kanalı yeniden kazıp suyu geri getirdi. Gardan Dom'a yürüyüş, beton yeni şehirden ortaçağa geçişi on beş dakikada gösterir.",why:"Şehre ilk gelişte en doğal başlangıç.",stops:["Utrecht Centraal","Bisiklet otoparkı","Miffy lambası","Vinkenburgstraat","Oudegracht","Domplein","Pandhof"],pts:[[52.08973,5.10921],[52.0912,5.11056],[52.0931,5.11496],[52.09213,5.11762],[52.09158,5.1186],[52.09067,5.12173],[52.09053,5.12258]]},
+      {id:"r-u-gracht",name:"Oudegracht Boyunca",wiki:"Oudegracht",desc:"Kuzeydeki Weerdsluis'ten güneydeki Twijnstraat'a, iki katlı kanalın bütün uzunluğu.",hist:"Oudegracht yaklaşık 2 km uzunluğundadır ve şehrin bir ucundan diğerine akar. Ortaçağda burası Utrecht'in ana limanıydı. Kanal boyunca yüzlerce rıhtım mahzeni var; çoğu bugün kafe, restoran ya da depo. Yürürken bazen yukarıdaki sokaktan, bazen aşağıdaki rıhtımdan git.",why:"Utrecht'i en iyi anlatan yürüyüş. Gün batımında çok güzel.",stops:["Weerdsluis","Oudegracht 92","Oudaen","Bezembrug","Gaardbrug","Blackbird","De Keuken van KEEK","Twijnstraat"],pts:[[52.09749,5.11489],[52.09384,5.11698],[52.09287,5.11669],[52.09158,5.1186],[52.08954,5.12089],[52.08836,5.1217],[52.0846,5.12322],[52.08273,5.12342]]},
+      {id:"r-u-kruis",name:"Kiliseler Haçı",wiki:"Pieterskerk,_Utrecht",desc:"Speelklok'tan Dom'a, oradan Janskerk, Pieterskerk ve Kromme Nieuwegracht boyunca Paushuize ve Catharijneconvent'e.",hist:"11. yüzyılda Piskopos Bernold, Dom'u merkez alan haç biçiminde dört kilise planladı. Bu rota haçın ayakta kalan kollarını ve aralarındaki ortaçağ sokaklarını dolaşır. Kromme Nieuwegracht'ın evleri kanala kendi küçük köprüleriyle bağlanır.",why:"Kalabalıktan uzak, sessiz ve tarihi bir saat.",stops:["Museum Speelklok","Domplein","Janskerk","Pieterskerk","Paushuize","Catharijneconvent"],pts:[[52.09083,5.11959],[52.09067,5.12173],[52.09326,5.12148],[52.09145,5.12446],[52.09039,5.12414],[52.08729,5.12392]]},
+      {id:"r-u-muze",name:"Müze Mahallesi ve Singel",wiki:"Centraal_Museum",desc:"Catharijneconvent'ten Oude Hortus ve Centraal Museum'a, Singel boyunca Sonnenborgh ve Zocherpark'tan Spoorwegmuseum'a.",hist:"Museumkwartier, şehrin güneydoğusundaki eski manastırların ve hayır kurumlarının bölgesidir. Reformdan sonra manastırlar kapatılınca binalar okul, hastane ve sonunda müze oldu. Rota daha sonra şehrin eski hendeği Singel'e çıkar ve parkın içinden doğuya devam eder.",why:"Müze günü için ideal hat. Yeşil ve sakin.",stops:["Catharijneconvent","Oude Hortus","Centraal Museum","Sonnenborgh","Zocherpark","Spoorwegmuseum"],pts:[[52.08729,5.12392],[52.08484,5.12577],[52.08375,5.12591],[52.08538,5.1292],[52.0886,5.12785],[52.08793,5.13119]]},
+      {id:"r-u-rietveld",name:"Rietveld'e Yürüyüş",wiki:"Rietveld_Schröder_House",desc:"Spoorwegmuseum'dan SAB. Broodjes ve Wilhelminapark üzerinden Rietveld Schröderhuis'a.",hist:"Surların dışındaki bu doğu mahalleleri 19. yüzyıl sonunda zenginlerin villa bölgesi olarak büyüdü. Rietveld Schröder evi 1924'te yapıldığında sokağın sonunda tarla vardı; bugün bir otoyol köprüsünün dibinde kalıyor. Villa sokaklarından modern mimarinin simgesine yürümek, Utrecht'in yüz yıllık değişimini gösterir.",why:"Rietveld biletin varsa en keyifli yaklaşma yolu.",stops:["Spoorwegmuseum","SAB. Broodjes","Wilhelminapark","Rietveld Schröderhuis"],pts:[[52.08793,5.13119],[52.09005,5.13457],[52.08852,5.1391],[52.08532,5.14756]]}
+    ]
   }
 };
+Object.entries(CITIES).forEach(([k, c]) => c.key = k);
 
 /* ============================ ARAYÜZ ============================ */
 const CATS = {
@@ -546,6 +633,31 @@ const ART_CAT = {
   arch:'<path fill="#A0A7AF" d="M10 18h28v34H10z"/><path fill="#55606E" d="M13 22h6v4h-6zM21 22h6v4h-6zM29 22h6v4h-6zM13 30h6v4h-6zM21 30h6v4h-6zM29 30h6v4h-6zM13 38h6v4h-6zM29 38h6v4h-6z"/><path fill="#3A1D0B" d="M21 52v-8h6v8z"/>',
   park:'<path fill="#B4DB7A" d="M2 46h44v6H2z"/><path fill="#6B4A2B" d="M15 36h2v11h-2zM31 34h2v12h-2z"/><circle cx="16" cy="30" r="8" fill="#4FA35A"/><circle cx="32" cy="27" r="9" fill="#3E8E4B"/>'
 };
+/* Utrecht çizimleri */
+Object.assign(ART, {
+  u_dom:'<path fill="#E9D3A6" d="M3 50h42v2H3z"/><path fill="#D8BE8A" d="M15 30h18v20H15z"/><path fill="#C9B07E" d="M17 16h14v14H17z"/><path fill="#E9D3A6" d="M19.500 7h9v9h-9z"/><path fill="#4A5568" d="M21 7l3-5 3 5z"/><path fill="#6B5636" d="M18 34h3v11h-3zM27 34h3v11h-3zM20 19h2.500v8H20zM25.500 19h2.500v8h-2.500zM22.500 9h3v5h-3z"/><path fill="#3A1D0B" d="M21.500 50v-4a2.500 2.500 0 0 1 5 0v4z"/>',
+  u_domkerk:'<path fill="#D8BE8A" d="M8 30h32v22H8z"/><path fill="#4A5568" d="M6 30l18-12 18 12z"/><path fill="#C9B07E" d="M5 30h4v22H5zM39 30h4v22h-4z"/><path fill="#9FD3F0" d="M13 35a2.500 3 0 0 1 5 0v11h-5zM21.500 35a2.500 3 0 0 1 5 0v11h-5zM30 35a2.500 3 0 0 1 5 0v11h-5z"/><path fill="#4A5568" d="M23 18l1-8 1 8z"/>',
+  u_pandhof:'<path fill="#D8BE8A" d="M3 26h42v20H3z"/><path fill="#4A5568" d="M2 26l4-5h36l4 5z"/><path fill="#3E8E4B" d="M7 46V36a3 4 0 0 1 6 0v10zM17 46V36a3 4 0 0 1 6 0v10zM27 46V36a3 4 0 0 1 6 0v10zM37 46V36a3 4 0 0 1 6 0v10z"/><path fill="#B4DB7A" d="M2 46h44v6H2z"/><circle cx="12" cy="49" r="1.600" fill="#F7B500"/><circle cx="24" cy="49" r="1.600" fill="#E879A6"/><circle cx="36" cy="49" r="1.600" fill="#F7B500"/>',
+  u_domunder:'<path fill="#B4DB7A" d="M2 22h44v3H2z"/><path fill="#8A6A3A" d="M2 25h44v27H2z"/><path fill="#6B5636" d="M8 40h8v12H8zM20 36h10v16H20zM34 42h7v10h-7z"/><path fill="#D8BE8A" d="M20 13h8v9h-8z"/><path fill="#4A5568" d="M21 13l3-6 3 6z"/><circle cx="12" cy="31" r="3" fill="#F7B500"/>',
+  u_academie:'<path fill="#B5532A" d="M4 30h40v22H4z"/><path fill="#9C4623" d="M17 20h14v32H17zM17 20l7-8 7 8z"/><path fill="#F2E3C6" d="M7 34h4v6H7zM12 34h3v6h-3zM33 34h3v6h-3zM37 34h4v6h-4zM7 43h4v6H7zM37 43h4v6h-4zM21 24h6v5h-6z"/><path fill="#3A1D0B" d="M21 52v-8a3 3 0 0 1 6 0v8z"/>',
+  u_paushuize:'<path fill="#B5532A" d="M10 26h3v-3h3v-3h3v-3h6v3h3v3h3v3h3v26H10z"/><path fill="#9C4623" d="M34 18h6v34h-6z"/><path fill="#4A5568" d="M33 18l4-7 4 7z"/><path fill="#F2E3C6" d="M14 30h5v6h-5zM25 30h5v6h-5zM14 40h5v6h-5zM25 40h5v6h-5z"/><path fill="#3A1D0B" d="M20 52v-6h4v6z"/>',
+  u_pieterskerk:'<path fill="#C4A57A" d="M8 30h32v22H8z"/><path fill="#4A5568" d="M6 30l18-8 18 8z"/><path fill="#A68A5B" d="M10 16h8v14h-8zM30 16h8v14h-8z"/><path fill="#4A5568" d="M9 16l5-7 5 7zM29 16l5-7 5 7z"/><path fill="#3A1D0B" d="M12.500 20a1.500 2 0 0 1 3 0v4h-3zM32.500 20a1.500 2 0 0 1 3 0v4h-3zM21 52v-8a3 3 0 0 1 6 0v8z"/><path fill="#F2E3C6" d="M13 36a2 2 0 0 1 4 0v6h-4zM31 36a2 2 0 0 1 4 0v6h-4z"/>',
+  u_janskerk:'<path fill="#B4DB7A" d="M2 48h44v4H2z"/><path fill="#B5532A" d="M8 30h28v18H8z"/><path fill="#4A5568" d="M6 30l16-9 16 9zM21 21l1-9 1 9z"/><path fill="#9FD3F0" d="M12 34a2 2.500 0 0 1 4 0v9h-4zM20 34a2 2.500 0 0 1 4 0v9h-4zM28 34a2 2.500 0 0 1 4 0v9h-4z"/><path fill="#6B4A2B" d="M40 40h2v8h-2z"/><circle cx="41" cy="36" r="5" fill="#4FA35A"/>',
+  u_speelklok:'<path fill="#9C4623" d="M6 32h36v20H6zM20 12h8v12h-8z"/><path fill="#4A5568" d="M4 32l20-10 20 10zM19 12l5-8 5 8z"/><path fill="#F7B500" d="M21.500 20a2.500 3 0 0 1 5 0l1 3h-7z"/><path fill="#F2E3C6" d="M11 37a2.500 3 0 0 1 5 0v8h-5zM32 37a2.500 3 0 0 1 5 0v8h-5z"/><path fill="#3A1D0B" d="M21 52v-8a3 3 0 0 1 6 0v8z"/>',
+  u_oudaen:'<path fill="#27B7D9" d="M2 47h44v5H2z"/><path fill="#E9D3A6" d="M2 44h44v3H2z"/><path fill="#B5532A" d="M12 18h24v26H12zM12 14h4v4h-4zM19 14h4v4h-4zM26 14h4v4h-4zM33 14h3v4h-3z"/><path fill="#F2E3C6" d="M16 23h4v6h-4zM28 23h4v6h-4zM16 33h4v5h-4zM28 33h4v5h-4z"/><path fill="#3A1D0B" d="M22 44v-6a2 2 0 0 1 4 0v6z"/>',
+  u_catharijne:'<path fill="#B5532A" d="M4 34h26v18H4z"/><path fill="#4A5568" d="M3 34l14-7 14 7z"/><path fill="#9C4623" d="M30 26h14v26H30z"/><path fill="#4A5568" d="M29 26l8-6 8 6zM36 20l1-12 1 12z"/><path fill="#9FD3F0" d="M33 30a2 2.500 0 0 1 4 0v8h-4zM38 30a2 2.500 0 0 1 4 0v8h-4z"/><path fill="#F2E3C6" d="M8 38h4v5H8zM15 38h4v5h-4zM22 38h4v5h-4z"/>',
+  u_centraal:'<path fill="#B5532A" d="M4 32h30v20H4z"/><path fill="#4A5568" d="M3 32l16-8 16 8z"/><path fill="#9C4623" d="M34 22h10v30H34z"/><path fill="#4A5568" d="M33 22l6-8 6 8z"/><path fill="#F2E3C6" d="M8 37h4v5H8zM16 37h4v5h-4zM24 37h4v5h-4zM37 27h4v5h-4z"/><path fill="#3A1D0B" d="M16 52v-6h5v6z"/>',
+  u_sonnenborgh:'<path fill="#27B7D9" d="M2 48h44v4H2z"/><path fill="#9C4623" d="M4 36h40l-3 12H7z"/><path fill="#F2E3C6" d="M10 26h14v10H10zM28 28h10v8H28z"/><path fill="#C9CDD2" d="M10 26a7 7 0 0 1 14 0zM28 28a5 5 0 0 1 10 0z"/><path fill="#55606E" d="M16 19h2v4h-2z"/>',
+  u_spoorweg:'<path fill="#E9D3A6" d="M4 24h40v14H4z"/><path fill="#4A5568" d="M2 24l4-6h36l4 6z"/><path fill="#9FD3F0" d="M8 28h4v6H8zM16 28h4v6h-4zM28 28h4v6h-4zM36 28h4v6h-4z"/><path fill="#3A1D0B" d="M22 38v-8h4v8z"/><path fill="#55606E" d="M3 50h42v2H3z"/><path fill="#2F6F4F" d="M8 40h22v8H8zM30 38h8v10h-8z"/><path fill="#1F2933" d="M10 36h4v4h-4z"/><circle cx="13" cy="49" r="2.500" fill="#1F2933"/><circle cx="24" cy="49" r="2.500" fill="#1F2933"/><circle cx="34" cy="49" r="2.500" fill="#1F2933"/>',
+  u_rietveld:'<path fill="#B4DB7A" d="M2 51h44v1.500H2z"/><path fill="#E9EEF2" d="M8 22h26v29H8z"/><path fill="#fff" d="M14 14h22v16H14z"/><path fill="#1F2933" d="M6 30h32v1.600H6zM34 14h1.600v37H34zM12 12h28v1.600H12z"/><path fill="#9FD3F0" d="M17 18h12v8H17zM11 35h10v8H11z"/><path fill="#C53030" d="M38 20h2v14h-2z"/><path fill="#2F6FDE" d="M24 36h8v2h-8z"/><path fill="#F7B500" d="M29 43h3v8h-3z"/>',
+  u_fiets:'<path fill="#A0A7AF" d="M3 22h42v12H3z"/><path fill="#55606E" d="M3 34h42v2H3zM8 26h32v2H8z"/><circle cx="15" cy="45" r="5" fill="none" stroke="#1F2933" stroke-width="2"/><circle cx="31" cy="45" r="5" fill="none" stroke="#1F2933" stroke-width="2"/><path fill="none" stroke="#C53030" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 45l5-8h8l3 8M20 37l3 8h5M26 35h4"/>',
+  u_tivoli:'<path fill="#55606E" d="M6 34h36v18H6z"/><path fill="#A0A7AF" d="M10 22h30v12H10z"/><path fill="#C9CDD2" d="M14 12h22v10H14z"/><path fill="#9FD3F0" d="M10 38h28v3H10zM13 26h24v2H13zM17 15h16v2H17z"/><path fill="#3A1D0B" d="M21 52v-7h6v7z"/>',
+  u_neude:'<path fill="#B5532A" d="M4 26h40v26H4z"/><path fill="#9C4623" d="M4 26h40v3H4zM23 38h2v12h-2z"/><path fill="#9FD3F0" d="M14 50V38a10 10 0 0 1 20 0v12z"/><path fill="#9C4623" d="M23 28h2v22h-2z"/><path fill="#F2E3C6" d="M7 31h3v5H7zM38 31h3v5h-3z"/>',
+  u_miffy:'<path fill="#E9D3A6" d="M2 48h44v4H2z"/><path fill="#E53E3E" d="M6 48h5v4H6z"/><path fill="#F7B500" d="M13 48h5v4h-5z"/><path fill="#1E9E5A" d="M20 48h5v4h-5z"/><path fill="#2F6FDE" d="M27 48h5v4h-5z"/><path fill="#6C4DF5" d="M34 48h5v4h-5z"/><path fill="#55606E" d="M22.500 28h3v20h-3z"/><path fill="#1F2933" d="M17 6h14v22H17z"/><circle cx="24" cy="12" r="4" fill="#5A1A1A"/><circle cx="24" cy="22" r="4" fill="#3FD07A"/>',
+  u_oudegracht:'<path fill="#B5532A" d="M2 12h12v22H2zM34 12h12v22H34z"/><path fill="#F2E3C6" d="M5 16h3v4H5zM40 16h3v4h-3zM5 24h3v4H5zM40 24h3v4h-3z"/><path fill="#E9D3A6" d="M2 34h44v3H2z"/><path fill="#9C4623" d="M2 37h10v8H2zM36 37h10v8H36z"/><path fill="#3A1D0B" d="M4 45v-5a2 2 0 0 1 4 0v5zM40 45v-5a2 2 0 0 1 4 0v5z"/><path fill="#C9B07E" d="M2 45h12v2H2zM34 45h12v2H34z"/><path fill="#27B7D9" d="M12 37h24v15H12zM2 47h12v5H2zM34 47h12v5H34z"/>',
+  u_weerd:'<path fill="#27B7D9" d="M2 40h44v12H2z"/><path fill="#6B4A2B" d="M20 26h3v16h-3zM25 26h3v16h-3z"/><path fill="#8A6A3A" d="M18 24h12v3H18z"/><path fill="#B5532A" d="M2 20h14v20H2zM34 22h12v18H34z"/><path fill="#4A5568" d="M2 20l7-6 7 6zM34 22l6-5 6 5z"/><path fill="#F2E3C6" d="M5 26h3v4H5zM10 26h3v4h-3zM38 27h3v4h-3z"/>'
+});
+ART.u_hortus = ART.hortus; ART.u_zocher = ART.ooster; ART.u_wilhelmina = ART.rembrandtpark;
 const artOf = p => ART[p.id] || ART_CAT[p.cat] || "";
 /* Kendi ikon setimiz (24x24, ince çizgi). ic("camera") gibi kullanılır. */
 const IC = {
@@ -595,24 +707,36 @@ const totalCount = c => c.places.length + c.routes.length;
 function progHTML(c){ const d = doneCount(c), t = totalCount(c); return `<span class="city-prog"><span class="bar"><i style="width:${Math.round(d/t*100)}%"></i></span>${d} / ${t} gittin</span>`; }
 function renderHome(){
   $("#cityCards").innerHTML = Object.entries(CITIES).map(([key,c]) =>
-    `<button class="city-card" type="button" data-city="${key}"><span class="city-body"><span class="city-name">${c.name}</span>
-     <span class="city-meta">${c.places.length} nokta · ${c.routes.filter(r=>!r.ferry).length} yürüyüş rotası · ${c.routes.filter(r=>r.ferry).length} vapur hattı</span>
+    `<button class="city-card" type="button" data-city="${key}" style="background:${c.theme.card}"><span class="city-body"><span class="city-name">${c.name}</span>
+     <span class="city-meta">${c.places.length} nokta · ${c.routes.filter(r=>!r.ferry).length} yürüyüş rotası${c.routes.some(r=>r.ferry) ? " · " + c.routes.filter(r=>r.ferry).length + " vapur hattı" : ""}</span>
      ${progHTML(c)}<span class="go">Haritayı aç</span></span></button>`).join("");
   Object.entries(CITIES).forEach(([key,c]) => photo(c.hero, 1000).then(src => { if (!src) return;
     const img = new Image(); img.alt = ""; img.onload = () => document.querySelector(`[data-city="${key}"]`).prepend(img); img.src = src; }));
 }
 $("#cityCards").addEventListener("click", e => { const b = e.target.closest("[data-city]"); if (b) openCity(b.dataset.city); });
-$("#planCard").addEventListener("click", () => { openCity("amsterdam"); setTab("plan"); });
+/* Plan kartı: konum biliniyorsa en yakın şehri, yoksa son açılan şehri açar. */
+function homeCity(){
+  if (me){ let best = null, bd = 1e9; for (const k in CITIES){ const d = km(me, CITIES[k].center); if (d < bd){ bd = d; best = k; } } if (bd < 40) return best; }
+  return CITIES[store.lastCity] ? store.lastCity : Object.keys(CITIES)[0];
+}
+$("#planCard").addEventListener("click", () => { openCity(homeCity()); setTab("plan"); });
 $("#addCity").addEventListener("click", () => { $("#addNote").hidden = !$("#addNote").hidden; });
-function goHome(){ closeSheet(); $("#legend").hidden = true; $("#city").hidden = true; $("#home").hidden = false; renderHome(); }
+function goHome(){ closeSheet(); $("#legend").hidden = true; $("#city").hidden = true; $("#home").hidden = false; renderHome(); setTheme(null); }
 /* Telefonun geri hareketi (kenardan kaydırma) de ana sayfaya döner. */
 $("#back").addEventListener("click", () => { if (history.state && history.state.city) history.back(); else goHome(); });
 addEventListener("popstate", () => { if (!$("#city").hidden) goHome(); });
 
 /* ---------- Harita (MapLibre + OpenFreeMap, anahtar gerektirmez) ---------- */
 const ll = p => [p[1], p[0]];
-function themed(style){
-  const C = {land:"#FFE3B8", water:"#27B7D9", green:"#B4DB7A", bld:"#F5B872", edge:"#E39A4E", road:"#FFF9EE", cas:"#E9AE6E", text:"#5A3418", halo:"#FFF3DC"};
+/* Şehir teması: arayüz renkleri CSS değişkenleriyle, harita renkleri themed() ile. */
+function setTheme(c){
+  const r = document.documentElement.style, t = c && c.theme, meta = document.querySelector('meta[name="theme-color"]');
+  if (!t){ ["--orange","--orange-deep","--orange-soft","--orange-hi","--orange-shadow"].forEach(v => r.removeProperty(v)); if (meta) meta.content = "#FF7A45"; return; }
+  r.setProperty("--orange", t.main); r.setProperty("--orange-deep", t.deep); r.setProperty("--orange-soft", t.soft); r.setProperty("--orange-hi", t.hi); r.setProperty("--orange-shadow", t.shadow);
+  if (meta) meta.content = t.main;
+}
+let baseStyle = null, mapKey = null;
+function themed(style, C){
   style.layers = style.layers.filter(l => !/^poi/.test(l.id) && l.type !== "fill-extrusion");
   style.layers.forEach(l => { const sl = l["source-layer"] || "", p = l.paint = l.paint || {};
     if (l.type === "background") p["background-color"] = C.land;
@@ -620,7 +744,7 @@ function themed(style){
       if (sl === "water"){ delete p["fill-pattern"]; p["fill-color"] = C.water; }
       else if (sl === "building"){ delete l.maxzoom; p["fill-color"] = C.bld; p["fill-outline-color"] = C.edge; p["fill-opacity"] = 1; }
       else if (sl === "park" || sl === "landcover"){ delete p["fill-pattern"]; p["fill-color"] = C.green; }
-      else if (sl === "landuse"){ delete p["fill-pattern"]; p["fill-color"] = "#FFD7A0"; }
+      else if (sl === "landuse"){ delete p["fill-pattern"]; p["fill-color"] = C.landuse; }
       else if (sl === "transportation" || sl === "aeroway") p["fill-color"] = C.road;
     } else if (l.type === "line"){
       if (sl === "waterway") p["line-color"] = C.water;
@@ -634,13 +758,19 @@ function themed(style){
 let lastPick = 0;
 const ROUTE = "#1D3FA8", FERRY = "#0B8FB8";
 function openCity(key){
-  city = CITIES[key]; sel = null;
+  const changed = !city || city.key !== key;
+  city = CITIES[key]; sel = null; store.lastCity = key; save(); setTheme(city);
+  if (changed){ planDay = 0; if (!city.starts[planForm.start]) planForm.start = "centraal"; quizOpen = null; }
   $("#home").hidden = true; $("#city").hidden = false; $("#cityTitle").textContent = city.name;
   if (!(history.state && history.state.city)) history.pushState({city:key}, "");
-  renderChips(); setTab("map"); startLocate();
-  if (map){ map.resize(); return; }
+  renderChips(); setTab("map"); startLocate(); showMe();
+  if (map && mapKey === key){ map.resize(); return; }
+  // Şehir değiştiyse eski haritayı ve işaretlerini temizle, yenisini o şehrin renkleriyle kur.
+  if (map){ clearPlanMap(); map.remove(); map = null; for (const k in markers) delete markers[k]; meMarker = null; lastWalk = null; }
+  mapKey = key; $("#loading").hidden = false; $("#loading").firstChild.hidden = false; $("#loading").lastChild.textContent = "Harita yükleniyor…";
   if (!window.maplibregl){ $("#loading").firstChild.hidden = true; $("#loading").lastChild.textContent = "Harita yüklenemedi. Bağlantını kontrol edip sayfayı yenile. Liste sekmesi yine çalışır."; return; }
-  fetch("https://tiles.openfreemap.org/styles/liberty").then(r => r.json()).then(themed).then(initMap)
+  (baseStyle ? Promise.resolve(baseStyle) : fetch("https://tiles.openfreemap.org/styles/liberty").then(r => r.json()).then(j => baseStyle = j))
+    .then(j => { if (mapKey !== key) return; initMap(themed(JSON.parse(JSON.stringify(j)), city.theme.map)); })
     .catch(() => { $("#loading").lastChild.textContent = "Harita yüklenemedi. Bağlantını kontrol edip sayfayı yenile. Liste sekmesi yine çalışır."; $("#loading").firstChild.hidden = true; });
 }
 function initMap(style){
@@ -672,7 +802,7 @@ function initMap(style){
   map.on("click", () => { if (Date.now() - lastPick > 350) closeSheet(); });
   map.on("dragstart", () => { follow = false; });
   const lab = () => $("#map").classList.toggle("far", map.getZoom() < 14.2); map.on("zoom", lab); lab();
-  refresh(); startLocate();
+  refresh(); startLocate(); showMe();
 }
 const gj = pts => ({type:"Feature", geometry:{type:"LineString", coordinates:pts.map(ll)}});
 function mk(id, html, name, pos, anchor){
@@ -714,18 +844,23 @@ const fmtD = d => d < 1 ? Math.round(d*1000/10)*10 + " m" : d.toFixed(1).replace
 const inCity = () => { const b = city.bounds; return me && me[0] > b[0][0] && me[0] < b[1][0] && me[1] > b[0][1] && me[1] < b[1][1]; };
 function gps(cls, text){ const g = $("#gps"); g.className = "gps " + cls; g.lastChild.textContent = text; }
 function toast(t){ const el = $("#toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 7000); }
-let watching = false;
+let watching = false, meAcc = 0;
+/* Mavi nokta ve üstteki konum yazısı; şehir değişince de çağrılır. */
+function showMe(){
+  if (!me || !city) return;
+  if (map){ if (!meMarker){ const d = document.createElement("div"); d.className = "medot"; meMarker = new maplibregl.Marker({element:d}).setLngLat(ll(me)).addTo(map); }
+    meMarker.setLngLat(ll(me)); }
+  if (inCity()) gps("on", "Canlı konum ±" + Math.round(meAcc) + " m"); else gps("on", city.dat + " " + fmtD(km(me, city.center)));
+}
 function startLocate(){
   if (watching) return;
   if (!navigator.geolocation){ gps("err", "Konum yok"); return; }
   watching = true; gps("", "Konum aranıyor");
   navigator.geolocation.watchPosition(pos => {
-    me = [pos.coords.latitude, pos.coords.longitude]; const acc = pos.coords.accuracy;
-    if (map){ if (!meMarker){ const d = document.createElement("div"); d.className = "medot"; meMarker = new maplibregl.Marker({element:d}).setLngLat(ll(me)).addTo(map); }
-    meMarker.setLngLat(ll(me)); }
+    me = [pos.coords.latitude, pos.coords.longitude]; meAcc = pos.coords.accuracy;
+    showMe();
     try { onPos(pos); } catch(e){}
-    if (inCity()){ gps("on", "Canlı konum ±" + Math.round(acc) + " m"); if (follow && map) map.panTo(ll(me)); }
-    else gps("on", city.name + "'a " + fmtD(km(me, city.center)));
+    if (inCity() && follow && map) map.panTo(ll(me));
   }, err => {
     const framed = (() => { try { return window.top !== window.self; } catch(e){ return true; } })();
     gps("err", framed && err.code === 1 ? "Claude içinde konum yok" : "Konum kapalı");
@@ -930,7 +1065,65 @@ const MISSIONS = {
     {id:"h_route", type:"route", at:null, r:0, t:"Rota ustası", d:"Bugün herhangi bir yürüyüş rotasını baştan sona yürü (durakların hepsinden geç)."}
   ]
 };
-const LEVELS = [[0,"Turist"],[100,"Gezgin"],[300,"Kaşif"],[600,"Amsterdamlı"],[1000,"Efsane"]];
+/* ---------- Utrecht: günün bilgisi ve görevler ---------- */
+const UT_FACTS = [
+  {t:"Hollanda'nın en yüksek kilise kulesi", x:"Dom Kulesi 112 metre. 1321'de başladı, 1382'de bitti. Tepeye 465 basamakla çıkılıyor ve açık havada Amsterdam ile Rotterdam görünüyor.", p:"u_dom"},
+  {t:"Kasırganın ikiye böldüğü katedral", x:"1 Ağustos 1674 gecesi bir kasırga katedralin nefini yıktı. Kule ve koro ayakta kaldı, ortası bir daha yapılmadı. Aradaki boşluk bugünkü Domplein.", p:"u_domkerk"},
+  {t:"Utrecht bir Roma kalesi olarak doğdu", x:"Romalılar yaklaşık MS 50'de Ren kıyısına Traiectum adında bir kale kurdu. Ren o zaman imparatorluğun kuzey sınırıydı. Şehrin adı da Traiectum'dan geliyor.", p:"u_domunder"},
+  {t:"Hollanda'nın doğum belgesi", x:"1579'da kuzey eyaletleri İspanya'ya karşı Utrecht Birliği'ni imzaladı. Bu birlik bugünkü Hollanda devletinin başlangıcı sayılıyor.", p:"u_academie"},
+  {t:"Cebelitarık'ı İngiltere'ye veren antlaşma", x:"1713 Utrecht Antlaşması İspanya Veraset Savaşı'nı bitirdi. Cebelitarık bu antlaşmayla İngiltere'ye geçti ve hâlâ öyle."},
+  {t:"Tek Hollandalı papa", x:"Utrechtli Adriaan Boeyens 1522'de VI. Adrianus adıyla papa oldu. Emeklilik evini Utrecht'te yaptırıyordu ama Roma'da öldü ve evini hiç görmedi.", p:"u_paushuize"},
+  {t:"İki katlı kanal", x:"Oudegracht'ta sokak yukarıda, rıhtım aşağıda. Tüccarlar malları teknelerden doğrudan sokağın altına oyulmuş mahzenlere taşırdı. Bugün o mahzenler kafe ve restoran.", p:"u_oudegracht"},
+  {t:"Miffy bir Utrechtli", x:"Miffy'nin (Nijntje) yaratıcısı Dick Bruna bütün hayatını Utrecht'te geçirdi. Karakteri 1955'te çizdi. Vredenburg'daki yaya geçidinde ışıkta Miffy yanıyor.", p:"u_miffy"},
+  {t:"Dünyanın en büyük bisiklet otoparkı", x:"Utrecht Centraal'in önündeki meydanın altında 12.500 bisikletlik, üç katlı bir otopark var. Son bölümü 2019'da açıldı.", p:"u_fiets"},
+  {t:"Duvarları kayan ev", x:"Rietveld Schröder evinin üst katı kayar panellerle odalara bölünüp tek salona dönüşebiliyor. 1924'te yapıldı, 2000'de UNESCO Dünya Mirası oldu.", p:"u_rietveld"},
+  {t:"Kiliseler haçı", x:"11. yüzyılda Piskopos Bernold, Dom'un çevresine haç şeklinde dört kilise yaptırdı. Bugün ayakta kalan ikisi Pieterskerk ve Janskerk.", p:"u_pieterskerk"},
+  {t:"Hava durumu burada doğdu", x:"Meteorolog Buys Ballot 1854'te Hollanda'nın ulusal meteoroloji enstitüsü KNMI'yi Utrecht'teki Sonnenborgh gözlemevinde kurdu.", p:"u_sonnenborgh"},
+  {t:"Bin yıllık gemi", x:"1930'da Utrecht'te bir kazıda yaklaşık bin yıllık bir ticaret gemisi bulundu. Bugün Centraal Museum'da sergileniyor.", p:"u_centraal"},
+  {t:"Ülkenin ortası", x:"Utrecht Centraal Hollanda'nın en işlek tren istasyonu. Ülkenin tam ortasında olduğu için neredeyse her şehre buradan aktarmasız gidiliyor."},
+  {t:"32 tonluk çanlar", x:"Dom Kulesi'nde toplam 32 ton gelen 14 çan var. En büyüğü Salvator yaklaşık 8 ton.", p:"u_dom"},
+  {t:"Bir üniversite şehri", x:"Utrecht Üniversitesi 1636'da kuruldu ve bugün ülkenin en büyük üniversitelerinden. Şehrin sokaklarındaki genç kalabalık buradan."}
+];
+const UT_MISSIONS = {
+  easy: [
+    {id:"ue_dom", type:"photo", at:"u_dom", r:120, t:"Kulenin dibinde", d:"Dom Kulesi'ne git ve kuleyi aşağıdan yukarı fotoğrafla."},
+    {id:"ue_miffy", type:"photo", at:"u_miffy", r:90, t:"Yeşil Miffy", d:"Vredenburg'daki yaya geçidine git ve ışık yeşilken fotoğraf çek."},
+    {id:"ue_nata", type:"photo", at:"u_casaferreira", r:90, t:"Pastel de nata", d:"Casa Ferreira'dan bir pastel de nata al ve fotoğrafını çek."},
+    {id:"ue_keen", type:"photo", at:"u_keen", r:90, t:"Filtre kahve molası", d:"Keen Coffee Bar'da bir filtre kahve iç ve fincanla köken kartının fotoğrafını çek."},
+    {id:"ue_pandhof", type:"photo", at:"u_pandhof", r:100, t:"Saklı avlu", d:"Pandhof'a gir ve kemerlerin arasından bahçeyi fotoğrafla."},
+    {id:"ue_stroop", type:"photo", at:"u_vanschaik", r:90, t:"Sıcak stroopwafel", d:"Van Schaik'tan taze bir stroopwafel al ve fotoğrafını çek."},
+    {id:"ue_fiets", type:"photo", at:"u_fiets", r:150, t:"12.500 bisiklet", d:"Garın önündeki bisiklet otoparkına in ve bisiklet sıralarını fotoğrafla."},
+    {id:"ue_werf", type:"photo", at:"u_oudegracht", r:200, t:"Rıhtıma in", d:"Oudegracht'ta merdivenlerden su seviyesindeki rıhtıma in ve kanalı fotoğrafla."}
+  ],
+  medium: [
+    {id:"um_dom", type:"quiz", at:"u_dom", r:130, t:"Kaç basamak?", d:"Dom Kulesi'nin önüne git; oraya varınca soru açılır.", q:"Dom Kulesi'nin tepesine kaç basamakla çıkılır?", o:["365","465","565"], a:1},
+    {id:"um_domkerk", type:"quiz", at:"u_domkerk", r:130, t:"Ayrı duran kule", d:"Dom Kilisesi'ne git; oraya varınca soru açılır.", q:"Kule ile kilise neden ayrı duruyor?", o:["1674'te bir kasırga aradaki nefi yıktı","Savaşta bombalandı","Hiçbir zaman birleşik yapılmadı"], a:0},
+    {id:"um_paus", type:"quiz", at:"u_paushuize", r:120, t:"Papanın evi", d:"Paushuize'ye git; oraya varınca soru açılır.", q:"Paushuize'yi yaptıran papa evinde kaç yıl yaşadı?", o:["Hiç yaşamadı","10 yıl","Ölene kadar"], a:0},
+    {id:"um_miffy", type:"quiz", at:"u_miffy", r:100, t:"Lambadaki tavşan", d:"Miffy trafik lambasına git; oraya varınca soru açılır.", q:"Miffy'yi (Nijntje) kim yarattı?", o:["Gerrit Rietveld","Dick Bruna","Piet Mondriaan"], a:1},
+    {id:"um_speelklok", type:"quiz", at:"u_speelklok", r:110, t:"Çalan kilise", d:"Museum Speelklok'a git; oraya varınca soru açılır.", q:"Museum Speelklok hangi binanın içinde?", o:["Ortaçağdan kalma bir kilisede","Eski bir fabrikada","Bir sarayda"], a:0},
+    {id:"um_pieters", type:"quiz", at:"u_pieterskerk", r:110, t:"En eski kilise", d:"Pieterskerk'e git; oraya varınca soru açılır.", q:"Pieterskerk hangi yüzyılda kutsandı?", o:["11. yüzyıl","14. yüzyıl","17. yüzyıl"], a:0},
+    {id:"um_roma", type:"quiz", at:"u_domunder", r:130, t:"Meydanın altı", d:"Domplein'a git; oraya varınca soru açılır.", q:"Utrecht hangi yapının çevresinde doğdu?", o:["Bir Viking limanı","Bir Roma kalesi","Bir ortaçağ manastırı"], a:1}
+  ],
+  hard: [
+    {id:"uh_rietveld", type:"photo", at:"u_rietveld", r:150, t:"De Stijl evi", d:"Doğuya yürü, Rietveld Schröder evini bul ve renkli cephesini fotoğrafla."},
+    {id:"uh_spoor", type:"photo", at:"u_spoorweg", r:200, t:"Eski istasyon", d:"Spoorwegmuseum'a yürü ve eski Maliebaan istasyon binasını fotoğrafla."},
+    {id:"uh_sonnen", type:"photo", at:"u_sonnenborgh", r:150, t:"Burçtaki gözlemevi", d:"Singel boyunca yürüyüp Sonnenborgh'u bul ve kubbeleri fotoğrafla."},
+    {id:"uh_grift", type:"photo", at:"u_griftpark", r:250, t:"Gaz fabrikasından parka", d:"Griftpark'a git ve parkın içinde fotoğraf çek."},
+    {id:"uh_weerd", type:"photo", at:"u_weerd", r:150, t:"Kanalın kuzey ucu", d:"Oudegracht'ın kuzey ucundaki Weerdsluis'e yürü ve kilidi fotoğrafla."},
+    {id:"uh_twijn", type:"photo", at:"u_twijnstraat", r:150, t:"Kanalın güney ucu", d:"Oudegracht'ın güney ucundaki Twijnstraat'a yürü ve fotoğraf çek."},
+    {id:"uh_route", type:"route", at:null, r:0, t:"Rota ustası", d:"Bugün herhangi bir Utrecht rotasını baştan sona yürü (durakların hepsinden geç)."}
+  ]
+};
+const UT_STARTS = {
+  me:{label:"Konumum"},
+  centraal:{label:"Utrecht Centraal", p:[52.0897, 5.1092]},
+  dom:{label:"Domplein", p:[52.0907, 5.1217]},
+  neude:{label:"Neude", p:[52.0929, 5.1183]},
+  museum:{label:"Müze mahallesi", p:[52.0838, 5.1259]}
+};
+CITIES.utrecht.facts = UT_FACTS; CITIES.utrecht.missions = UT_MISSIONS; CITIES.utrecht.starts = UT_STARTS;
+CITIES.amsterdam.facts = FACTS; CITIES.amsterdam.missions = MISSIONS;
+const LEVELS = [[0,"Turist"],[100,"Gezgin"],[300,"Kaşif"],[600,"Şehirli"],[1000,"Efsane"]];
 const BADGES = [
   {id:"first", i:"steps", t:"İlk adım", d:"Bir noktayı yerinde ziyaret et", ok:() => Object.keys(store.visits).length >= 1},
   {id:"km5", i:"walk", t:"5 km", d:"Uygulama açıkken 5 km yürü", ok:() => store.walkM >= 5000},
@@ -938,13 +1131,16 @@ const BADGES = [
   {id:"bakery3", i:"croissant", t:"Fırın avcısı", d:"3 fırını ziyaret et", ok:() => visitedCat("bakery") >= 3},
   {id:"coffee3", i:"cup", t:"Kahve tadımcısı", d:"3 kahveciyi ziyaret et", ok:() => visitedCat("coffee") >= 3},
   {id:"hist10", i:"columns", t:"Tarih meraklısı", d:"10 tarihi noktayı ziyaret et", ok:() => visitedCat("hist") >= 10},
-  {id:"north", i:"ship", t:"Kuzey yakası", d:"IJ'nin kuzeyindeki bir noktayı ziyaret et", ok:() => city && city.places.some(p => store.visits[p.id] && p.lat > 52.381)},
+  {id:"north", i:"ship", t:"Kuzey yakası", d:"IJ'nin kuzeyindeki bir noktayı ziyaret et", ok:() => CITIES.amsterdam.places.some(p => store.visits[p.id] && p.lat > 52.381)},
   {id:"route1", i:"map", t:"Rota ustası", d:"Bir yürüyüş rotasını bitir", ok:() => Object.keys(store.routesDone).length >= 1},
   {id:"quest5", i:"target", t:"Görev avcısı", d:"5 görev tamamla", ok:() => store.mCount >= 5},
   {id:"hard1", i:"flame", t:"Zor görev", d:"Bir zor görevi tamamla", ok:() => store.hardCount >= 1}
 ];
-Object.assign(store, Object.assign({pts:0, walkM:0, walkPaid:0, visits:{}, routeHits:{}, routesDone:{}, routeDay:{}, missions:{}, mCount:0, hardCount:0, badges:{}, factDay:""}, store));
-const visitedCat = c => city ? city.places.filter(p => p.cat === c && store.visits[p.id]).length : 0;
+Object.assign(store, Object.assign({pts:0, walkM:0, walkPaid:0, visits:{}, routeHits:{}, routesDone:{}, routeDay:{}, missions:{}, mCount:0, hardCount:0, badges:{}, factDay:"", plans:{}}, store));
+/* Planlar şehir başına saklanır; store.plan her zaman açık olan şehrin planıdır. */
+if (Object.prototype.hasOwnProperty.call(store, "plan")){ if (store.plan) store.plans.amsterdam = store.plan; delete store.plan; save(); }
+Object.defineProperty(store, "plan", {get(){ return city ? store.plans[city.key] : undefined; }, set(v){ if (city) store.plans[city.key] = v; }, enumerable:false, configurable:true});
+const visitedCat = c => Object.values(CITIES).reduce((n, C) => n + C.places.filter(p => p.cat === c && store.visits[p.id]).length, 0);
 const dayKey = () => { const d = new Date(); return d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0"); };
 const dayNum = () => Math.floor((new Date(dayKey() + "T12:00:00")).getTime() / 864e5);
 const levelOf = p => { let i = 0; while (i + 1 < LEVELS.length && p >= LEVELS[i+1][0]) i++; return i; };
@@ -1003,8 +1199,9 @@ function onPos(pos){
 /* ---------- Günün bilgisi ---------- */
 let factIdx = 0;
 function openFact(next){
-  factIdx = next ? (factIdx + 1) % FACTS.length : dayNum() % FACTS.length;
-  const f = FACTS[factIdx], m = $("#factModal"), pl = f.p && placeById(f.p);
+  const F = city.facts;
+  factIdx = next ? (factIdx + 1) % F.length : dayNum() % F.length;
+  const f = F[factIdx], m = $("#factModal"), pl = f.p && placeById(f.p);
   m.innerHTML = `<div class="fact" role="dialog" aria-modal="true" aria-label="Günün bilgisi">
     <span class="fact-k">${next ? "Bir bilgi daha" : "Günün bilgisi"}</span>
     ${pl && artOf(pl) ? `<svg class="fact-art" viewBox="0 0 48 56" aria-hidden="true">${artOf(pl)}</svg>` : `<div class="fact-ic">${ic("bulb")}</div>`}<h2>${esc(f.t)}</h2><p>${esc(f.x)}</p>
@@ -1019,13 +1216,13 @@ $("#factModal").addEventListener("click", e => {
   const b = e.target.closest("[data-f]");
   if (!b){ if (e.target.id === "factModal") $("#factModal").hidden = true; return; }
   if (b.dataset.f === "next") openFact(true);
-  else { const f = FACTS[factIdx]; $("#factModal").hidden = true; if (b.dataset.f === "show") select(f.p); }
+  else { const f = city.facts[factIdx]; $("#factModal").hidden = true; if (b.dataset.f === "show") select(f.p); }
 });
 $("#ptsPill").addEventListener("click", () => setTab("quest"));
 
 /* ---------- Günün görevleri ---------- */
 const DIFF = {easy:["Kolay",10,"#1E9E5A"], medium:["Orta",25,"#E8890C"], hard:["Zor",50,"#D7263D"]};
-function todays(){ const n = dayNum(); const E = MISSIONS.easy, M = MISSIONS.medium, H = MISSIONS.hard; return {easy:E[n % E.length], medium:M[(n * 3 + 1) % M.length], hard:H[(n * 5 + 2) % H.length]}; }
+function todays(){ const n = dayNum(); const MS = city.missions, E = MS.easy, M = MS.medium, H = MS.hard; return {easy:E[n % E.length], medium:M[(n * 3 + 1) % M.length], hard:H[(n * 5 + 2) % H.length]}; }
 const mKey = m => dayKey() + ":" + m.id;
 let photos = {}; try { photos = JSON.parse(localStorage.getItem("dolcanrota.photos") || "{}"); } catch(e){}
 const savePhotos = () => { try { localStorage.setItem("dolcanrota.photos", JSON.stringify(photos)); } catch(e){ const k = Object.keys(photos); if (k.length > 1){ delete photos[k[0]]; savePhotos(); } } };
@@ -1069,7 +1266,7 @@ function freshPos(){
 }
 async function nearTarget(m){
   const p = await freshPos(); me = p;
-  if (!m.at) return inCity() ? true : "Şu an Amsterdam'da değilsin.";
+  if (!m.at) return inCity() ? true : "Şu an " + city.loc + " değilsin.";
   const pl = placeById(m.at), d = km(p, [pl.lat, pl.lon]) * 1000;
   return d <= m.r ? true : `Hedefe ${fmtD(d/1000)} uzaktasın. ${m.r} m içine girince tekrar dene.`;
 }
@@ -1126,7 +1323,7 @@ const PACE = {
   orta:{label:"Orta", km:14, hrs:9, stay:0.7, steps:"~20.000 adım"},
   full:{label:"Full", km:21, hrs:11, stay:0.5, steps:"~30.000 adım"}
 };
-const STARTS = {
+const STARTS = CITIES.amsterdam.starts = {
   me:{label:"Konumum"},
   centraal:{label:"Centraal", p:[52.3791, 4.9003]},
   dam:{label:"Dam", p:[52.3731, 4.8924]},
@@ -1149,7 +1346,7 @@ function scoreOf(o){
 }
 
 function buildPlan(f){
-  const start = f.start === "me" && me && inCity() ? me.slice() : (STARTS[f.start].p || STARTS.centraal.p);
+  const start = f.start === "me" && me && inCity() ? me.slice() : ((city.starts[f.start] || {}).p || city.starts.centraal.p);
   const pace = PACE[f.pace];
   let cand = city.places.filter(o => f.interests[o.cat]);
   // Sakin tempoda merkezden çok uzak noktaları ele (ör. Bijlmer).
@@ -1231,7 +1428,7 @@ function renderPlan(){
   if (!P || P.editing){ renderPlanForm(); return; }
   if (planDay >= P.days.length) planDay = 0;
   const tl = timeline(P, planDay), steps = Math.round(tl.km * 1350 / 500) * 500;
-  let h = `<div class="phead"><div><b>${P.f.days} günlük plan</b><small>${PACE[P.f.pace].label} tempo · ${STARTS[P.f.start].label} başlangıç</small></div><button class="btn" type="button" data-pl="edit">Yeni plan</button></div>
+  let h = `<div class="phead"><div><b>${P.f.days} günlük plan</b><small>${PACE[P.f.pace].label} tempo · ${(city.starts[P.f.start] || city.starts.centraal).label} başlangıç</small></div><button class="btn" type="button" data-pl="edit">Yeni plan</button></div>
     <div class="pdays">${P.days.map((_, i) => `<button type="button" class="pday" data-pd="${i}" aria-pressed="${i === planDay}">${i + 1}. Gün</button>`).join("")}</div>
     <div class="psum"><span><b>${fmtKm(tl.km)} km</b>yürüyüş</span><span><b>~${steps.toLocaleString("tr-TR")}</b>adım (duraklar arası)</span><span><b>${fmtT(DAY_START)}–${fmtT(tl.end)}</b>tahmini</span></div>
     <div class="pact"><button class="btn primary" type="button" data-pl="map">${ic("map")}Haritada göster</button>${gmLinks(P, planDay)}</div><ol class="ptl">`;
@@ -1258,14 +1455,14 @@ function renderPlanForm(){
   const f = planForm, chip = (k, v, l, on) => `<button type="button" class="pchip" data-pf="${k}:${v}" aria-pressed="${on}">${l}</button>`;
   $("#list").innerHTML = `<div class="pform">
     <h2 class="lh">Günlük plan oluştur</h2>
-    <p class="pq">Amsterdam'da kaç gün kalacaksın?</p><div class="prow">${[1,2,3,4].map(n => chip("days", n, n + " gün", f.days === n)).join("")}</div>
+    <p class="pq">${city.loc} kaç gün kalacaksın?</p><div class="prow">${[1,2,3,4].map(n => chip("days", n, n + " gün", f.days === n)).join("")}</div>
     <p class="pq">Ne kadar yoğun olsun?</p><div class="pcol">${Object.entries(PACE).map(([k, p]) => `<button type="button" class="pchip big" data-pf="pace:${k}" aria-pressed="${f.pace === k}"><b>${p.label}</b><small>${p.steps} · günde ~${p.km} km</small></button>`).join("")}</div>
-    <p class="pq">Nereden başlıyorsun?</p><div class="prow">${Object.entries(STARTS).map(([k, s]) => chip("start", k, s.label, f.start === k)).join("")}</div>
+    <p class="pq">Nereden başlıyorsun?</p><div class="prow">${Object.entries(city.starts).map(([k, s]) => chip("start", k, s.label, f.start === k)).join("")}</div>
     <p class="pq">Neleri görmek istersin?</p><div class="prow">${Object.entries(INTEREST).map(([k, l]) => chip("int", k, l, !!f.interests[k])).join("")}</div>
     <div class="prow">${chip("meals", 1, ic("plate") + " Kahve ve yemek molalarını ekle", f.meals)}</div>
     <button class="btn primary pgo" type="button" data-pl="make">Planımı oluştur</button>
     ${store.plan ? `<button class="btn" type="button" data-pl="back">Kayıtlı plana dön</button>` : ""}
-    <p class="foot">Plan, şehri günlere bölge bölge ayırır; her gün aynı semtte kalırsın. Başlangıç "Konumum" ise ve Amsterdam'da değilsen Centraal'den başlar.</p></div>`;
+    <p class="foot">Plan, şehri günlere bölge bölge ayırır; her gün aynı semtte kalırsın. Başlangıç "Konumum" ise ve ${city.loc} değilsen ${city.starts.centraal.label}'den başlar.</p></div>`;
 }
 $("#list").addEventListener("click", e => {
   if (tab !== "plan") return;
@@ -1302,7 +1499,7 @@ function showPlanDay(d){
     if (!map.getSource("plan")){
       map.addSource("plan", {type:"geojson", data});
       map.addLayer({id:"plan-c", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":10}});
-      map.addLayer({id:"plan-l", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#E85D04","line-width":6}});
+      map.addLayer({id:"plan-l", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":city.theme.deep,"line-width":6}});
     } else { map.getSource("plan").setData(data); map.setLayoutProperty("plan-c", "visibility", "visible"); map.setLayoutProperty("plan-l", "visibility", "visible"); map.moveLayer("plan-c"); map.moveLayer("plan-l"); }
     const s = document.createElement("div"); s.className = "pmk start"; s.innerHTML = ic("flag");
     planMarkers.push(new maplibregl.Marker({element:s}).setLngLat(ll(P.start)).addTo(map));
