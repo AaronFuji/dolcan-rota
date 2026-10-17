@@ -291,6 +291,36 @@ h1,h2,h3,p,dl{margin:0}
 .btn[aria-pressed="true"]{background:var(--ink);color:var(--white)}
 @media (min-width:760px){#sheet{left:auto;right:16px;bottom:16px;width:400px;border-radius:24px;max-height:calc(100% - 32px)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* ---------- Konum oku ve rota modu ---------- */
+.meloc{position:relative;width:52px;height:52px;display:grid;place-items:center;pointer-events:none}
+.meloc .dot{width:22px;height:22px;border-radius:50%;background:var(--me);border:4px solid var(--white);box-shadow:0 0 0 0 rgba(18,115,235,.5);animation:pulse 1.6s infinite;transition:transform .35s ease-in,opacity .3s}
+.meloc .arrow{position:absolute;inset:0;transform:scale(.2) rotate(-90deg);opacity:0;transition:transform .55s cubic-bezier(.34,1.7,.6,1),opacity .2s}
+.meloc .arrow svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 3px 2px rgba(18,60,140,.35))}
+.meloc .halo{position:absolute;inset:-6px;border-radius:50%;background:rgba(18,115,235,.16);transform:scale(0);transition:transform .5s}
+.meloc.nav .dot{transform:scale(0);opacity:0}
+.meloc.nav .arrow{transform:none;opacity:1;animation:bob 1.8s ease-in-out .6s infinite}
+.meloc.nav .halo{transform:scale(1);animation:halo 1.8s ease-out .6s infinite}
+@keyframes bob{50%{transform:translateY(-2px) scale(1.06)}}
+@keyframes halo{0%{transform:scale(.7);opacity:1}100%{transform:scale(1.5);opacity:0}}
+.compass{position:absolute;right:12px;bottom:96px;width:46px;height:46px;border-radius:50%;background:var(--white);box-shadow:var(--shadow);z-index:500;display:grid;place-items:center;transition:opacity .2s,transform .2s}
+.compass[hidden]{display:grid;opacity:0;transform:scale(.6);pointer-events:none}
+.compass svg{width:30px;height:30px}
+#navbar{position:absolute;left:10px;right:10px;top:10px;z-index:690;background:var(--white);border-radius:20px;box-shadow:0 6px 0 rgba(58,29,11,.18),0 8px 22px rgba(58,29,11,.25);padding:10px 10px 10px 14px;display:flex;align-items:center;gap:12px;animation:navIn .5s cubic-bezier(.34,1.5,.6,1)}
+@keyframes navIn{from{transform:translateY(-130%)}}
+#navbar .nvi{flex:none;width:44px;height:44px;border-radius:14px;background:var(--walk);display:grid;place-items:center}
+#navbar .nvi svg{width:26px;height:26px;transition:transform .4s}
+#navbar .nvt{flex:1;min-width:0}
+#navbar .nvt b{display:block;font-family:var(--display);font-weight:800;font-size:19px;line-height:1.15;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#navbar .nvt small{display:block;font-weight:800;font-size:12.5px;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#navbar .nvx{flex:none;height:44px;padding:0 14px;border-radius:14px;background:var(--ink);color:#fff;font-weight:800;font-size:14px}
+#navbar .nvbar{position:absolute;left:14px;right:14px;bottom:4px;height:4px;border-radius:2px;background:rgba(29,63,168,.12);overflow:hidden}
+#navbar .nvbar i{display:block;height:100%;width:0;background:var(--walk);border-radius:2px;transition:width .6s}
+.view.navigating .gps,.view.navigating .factbtn,.view.navigating .ptspill,.view.navigating .planchip,.view.navigating .help{display:none}
+.fab.recenter{width:auto;padding:0 16px;border-radius:99px;font-weight:800;font-size:14px;gap:8px;display:flex;align-items:center}
+.fab.recenter span{width:14px;height:14px;border-width:3px}
+.btn.go-nav{background:var(--walk);color:#fff;border-color:var(--walk)}
+.btn.go-nav svg{width:18px;height:18px;margin-right:4px;vertical-align:-3px}
 </style>
 </head>
 <body>
@@ -328,6 +358,8 @@ h1,h2,h3,p,dl{margin:0}
       <div id="legend" hidden></div>
       <div id="list" hidden></div>
       <button class="fab" id="locate" type="button" aria-label="Konumuma git"><span></span></button>
+      <button class="compass" id="compass" type="button" aria-label="Haritayı kuzeye çevir" hidden><svg viewBox="0 0 30 30" aria-hidden="true"><g id="needle"><path d="M15 3l5 12h-10z" fill="#E8412C"/><path d="M15 27l-5-12h10z" fill="#B9A089"/><circle cx="15" cy="15" r="2" fill="#fff"/></g><text x="15" y="2.6" text-anchor="middle" font-size="5" font-weight="800" fill="#3A1D0B" font-family="Nunito,sans-serif">K</text></svg></button>
+      <div id="navbar" hidden></div>
       <div id="toast" hidden></div>
       <div id="sheet" hidden></div>
     </div>
@@ -766,7 +798,7 @@ function openCity(key){
   renderChips(); setTab("map"); startLocate(); showMe();
   if (map && mapKey === key){ map.resize(); return; }
   // Şehir değiştiyse eski haritayı ve işaretlerini temizle, yenisini o şehrin renkleriyle kur.
-  if (map){ clearPlanMap(); map.remove(); map = null; for (const k in markers) delete markers[k]; meMarker = null; lastWalk = null; }
+  if (map){ clearPlanMap(); map.remove(); map = null; for (const k in markers) delete markers[k]; meMarker = null; lastWalk = null; navStop(true); }
   mapKey = key; $("#loading").hidden = false; $("#loading").firstChild.hidden = false; $("#loading").lastChild.textContent = "Harita yükleniyor…";
   if (!window.maplibregl){ $("#loading").firstChild.hidden = true; $("#loading").lastChild.textContent = "Harita yüklenemedi. Bağlantını kontrol edip sayfayı yenile. Liste sekmesi yine çalışır."; return; }
   (baseStyle ? Promise.resolve(baseStyle) : fetch("https://tiles.openfreemap.org/styles/liberty").then(r => r.json()).then(j => baseStyle = j))
@@ -776,8 +808,8 @@ function openCity(key){
 function initMap(style){
   const b = city.bounds;
   map = new maplibregl.Map({container:"map", style, center:ll(city.center), zoom:city.zoom, minZoom:city.minZoom, maxZoom:19,
-    maxBounds:[[b[0][1], b[0][0]], [b[1][1], b[1][0]]], dragRotate:false, pitchWithRotate:false, attributionControl:{compact:true}});
-  map.touchZoomRotate.disableRotation();
+    maxBounds:[[b[0][1], b[0][0]], [b[1][1], b[1][0]]], dragRotate:true, pitchWithRotate:false, touchPitch:false, maxPitch:60, attributionControl:{compact:true}});
+  map.on("rotate", compassUI); map.on("pitch", compassUI);
   city.places.forEach(p => { markers[p.id] = mk(p.id, (artOf(p) ? `<svg class="art" viewBox="0 0 48 56">${artOf(p)}</svg>` : "") + `<div class="${pinCls(p)}" style="--c:${CATS[p.cat].c}"><b>${p.cat === "coffee" ? ic("cup") : p.cat === "bakery" ? ic("croissant") : p.cat === "market" ? ic("cart") : (p.price || "")}</b></div>`, p.name, [p.lat, p.lon], "bottom"); if (ART[p.id]) markers[p.id].el.classList.add("hasart"); });
   let n = 0;
   city.routes.forEach(r => { markers[r.id] = mk(r.id, `<div class="rstart${r.ferry ? " ferry" : ""}">${r.ferry || ++n}</div>`, r.name, r.pts[0], "center"); });
@@ -800,7 +832,8 @@ function initMap(style){
     refresh();
   });
   map.on("click", () => { if (Date.now() - lastPick > 350) closeSheet(); });
-  map.on("dragstart", () => { follow = false; });
+  map.on("dragstart", () => { follow = false; navFollow(false); });
+  map.on("rotatestart", e => { if (e.originalEvent) navFollow(false); });
   const lab = () => $("#map").classList.toggle("far", map.getZoom() < 14.2); map.on("zoom", lab); lab();
   refresh(); startLocate(); showMe();
 }
@@ -848,8 +881,7 @@ let watching = false, meAcc = 0;
 /* Mavi nokta ve üstteki konum yazısı; şehir değişince de çağrılır. */
 function showMe(){
   if (!me || !city) return;
-  if (map){ if (!meMarker){ const d = document.createElement("div"); d.className = "medot"; meMarker = new maplibregl.Marker({element:d}).setLngLat(ll(me)).addTo(map); }
-    meMarker.setLngLat(ll(me)); }
+  if (map){ if (!meMarker) meMarker = makeMe(); meMarker.setLngLat(ll(me)); }
   if (inCity()) gps("on", "Canlı konum ±" + Math.round(meAcc) + " m"); else gps("on", city.dat + " " + fmtD(km(me, city.center)));
 }
 function startLocate(){
@@ -860,7 +892,8 @@ function startLocate(){
     me = [pos.coords.latitude, pos.coords.longitude]; meAcc = pos.coords.accuracy;
     showMe();
     try { onPos(pos); } catch(e){}
-    if (inCity() && follow && map) map.panTo(ll(me));
+    try { navPos(pos); } catch(e){}
+    if (inCity() && follow && !NAV && map) map.panTo(ll(me));
   }, err => {
     const framed = (() => { try { return window.top !== window.self; } catch(e){ return true; } })();
     gps("err", framed && err.code === 1 ? "Claude içinde konum yok" : "Konum kapalı");
@@ -868,6 +901,7 @@ function startLocate(){
   }, {enableHighAccuracy:true, maximumAge:3000, timeout:20000});
 }
 $("#locate").addEventListener("click", () => {
+  if (NAV){ navFollow(true); navCam(true); return; }
   if (!me){ toast("Konum henüz alınamadı. İzin penceresi çıktıysa izin ver."); return; }
   if (inCity()){ follow = true; map.flyTo({center:ll(me), zoom:Math.max(map.getZoom(), 16)}); }
   else toast("Konumun alındı: şu an " + city.name + " merkezine " + fmtD(km(me, city.center)) + " uzaktasın. Şehre girdiğinde mavi nokta haritada görünür.");
@@ -915,7 +949,8 @@ function select(id, keepView){
     <dl class="facts">${facts}</dl>
     ${o.tip ? `<p class="open-q">${esc(o.tip)}</p>` : ""}${open.map(t => `<p class="open-q">${t}</p>`).join("")}
     <div class="acts">
-      <a class="btn primary" href="${dir}" target="_blank" rel="noopener">${isRoute ? "Başlangıca yol tarifi" : "Yol tarifi al"}</a>
+      ${isRoute && !o.ferry ? `<button class="btn primary go-nav" type="button" data-nav="${o.id}">${NAV_IC}Rotayı başlat</button>` : ""}
+      <a class="btn${isRoute && !o.ferry ? "" : " primary"}" href="${dir}" target="_blank" rel="noopener">${isRoute ? "Başlangıca yol tarifi" : "Yol tarifi al"}</a>
       <a class="btn" href="${gm}" target="_blank" rel="noopener">${isRoute ? "Rotayı Google Maps'te aç" : "Google Maps'te aç"}</a>
       <button class="btn" type="button" data-t="done" aria-pressed="${!!store.done[id]}">${store.done[id] ? "Gittim ✓" : "Gittim"}</button>
       <button class="btn" type="button" data-t="fav" aria-pressed="${!!store.fav[id]}">${store.fav[id] ? "Favoride ★" : "Favori"}</button>
@@ -927,6 +962,7 @@ function select(id, keepView){
 }
 $("#sheet").addEventListener("click", e => {
   if (e.target.closest("#closeSheet")){ closeSheet(); return; }
+  const nv = e.target.closest("[data-nav]"); if (nv){ startRouteNav(nv.dataset.nav); return; }
   const t = e.target.closest("[data-t]"); if (!t) return;
   const k = t.dataset.t; if (store[k][sel]) delete store[k][sel]; else store[k][sel] = 1; save(); select(sel, true);
 });
@@ -956,7 +992,7 @@ let query = "";
 const norm = t => String(t).toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 function setTab(t){
   tab = t; document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === t));
-  $("#list").hidden = t === "map"; $("#locate").hidden = t !== "map"; $("#helpBtn").hidden = t !== "map"; if ($("#planChip")) $("#planChip").hidden = t !== "map" || planOnMap === null; $("#legend").hidden = true;
+  $("#list").hidden = t === "map"; $("#locate").hidden = t !== "map"; $("#helpBtn").hidden = t !== "map"; if ($("#planChip")) $("#planChip").hidden = t !== "map" || planOnMap === null; $("#legend").hidden = true; $("#navbar").hidden = !NAV || t !== "map"; compassUI();
   if (t !== "map"){ $("#sheet").hidden = true; $("#toast").hidden = true; renderList(); } else if (map) map.resize();
 }
 document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) setTab(b.dataset.tab); });
@@ -1431,7 +1467,7 @@ function renderPlan(){
   let h = `<div class="phead"><div><b>${P.f.days} günlük plan</b><small>${PACE[P.f.pace].label} tempo · ${(city.starts[P.f.start] || city.starts.centraal).label} başlangıç</small></div><button class="btn" type="button" data-pl="edit">Yeni plan</button></div>
     <div class="pdays">${P.days.map((_, i) => `<button type="button" class="pday" data-pd="${i}" aria-pressed="${i === planDay}">${i + 1}. Gün</button>`).join("")}</div>
     <div class="psum"><span><b>${fmtKm(tl.km)} km</b>yürüyüş</span><span><b>~${steps.toLocaleString("tr-TR")}</b>adım (duraklar arası)</span><span><b>${fmtT(DAY_START)}–${fmtT(tl.end)}</b>tahmini</span></div>
-    <div class="pact"><button class="btn primary" type="button" data-pl="map">${ic("map")}Haritada göster</button>${gmLinks(P, planDay)}</div><ol class="ptl">`;
+    <div class="pact"><button class="btn primary go-nav" type="button" data-pl="nav">${NAV_IC}Rotayı başlat</button><button class="btn" type="button" data-pl="map">${ic("map")}Haritada göster</button>${gmLinks(P, planDay)}</div><ol class="ptl">`;
   tl.rows.forEach((r, i) => {
     const o = r.o, cat = CATS[o.cat], tag = r.s.kind === "see" ? cat.label : ic(MEAL[r.s.kind][2]) + " " + MEAL[r.s.kind][0];
     h += `${r.walkMin ? `<li class="pwalk">${ic("walk")} ${r.walkMin} dk · ${fmtKm(r.walkKm)} km</li>` : ""}
@@ -1479,6 +1515,7 @@ $("#list").addEventListener("click", e => {
   else if (a === "back"){ delete store.plan.editing; renderPlan(); }
   else if (a === "make"){ renderPlan.lastDay = -1; store.plan = buildPlan(planForm); planDay = 0; save(); clearPlanMap(); renderPlan(); toast("Plan hazır: " + store.plan.days.map((d, i) => (i + 1) + ". gün " + d.length + " durak").join(", ")); }
   else if (a === "map") showPlanDay(planDay);
+  else if (a === "nav") startPlanNav(planDay);
 });
 
 /* ---------- Planı haritada göster ---------- */
@@ -1516,6 +1553,225 @@ function showPlanDay(d){
   });
 }
 $("#planChip").addEventListener("click", () => clearPlanMap());
+
+/* ---------- Rota modu: rotayı başlat, konum oku, haritayı yöne göre çevir ----------
+   Google Maps kadar yakına inilmez (NAV_ZOOM); harita hafif eğilir ve yürüdüğün yöne döner.
+   Yön, yürürken GPS'ten, dururken telefonun pusulasından alınır. Hiçbiri yoksa rotanın sıradaki noktasına bakılır. */
+var NAV = null;
+var NAV_IC = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l7.5 18.2-7.5-4.3-7.5 4.3z" fill="currentColor"/></svg>';
+var NAV_ZOOM = 16.4, NAV_PITCH = 48, NAV_KMH = 4.5;
+var navHead = null, navGpsHead = null, navGpsT = 0, compassOn = false, mapTouch = false;
+
+function makeMe(){
+  const d = document.createElement("div"); d.className = "meloc" + (NAV ? " nav" : "");
+  d.innerHTML = `<i class="halo"></i><i class="dot"></i><i class="arrow"><svg viewBox="0 0 46 46"><path d="M23 5c1.2 0 2 .7 2.6 1.9l11.6 26.4c1 2.3-1.3 4.4-3.5 3.2L23 31l-10.7 5.5c-2.2 1.2-4.5-.9-3.5-3.2L20.4 6.9C21 5.7 21.8 5 23 5z" fill="#1273EB" stroke="#fff" stroke-width="3.6" stroke-linejoin="round"/><path d="M23 12l7 16-7-3.6z" fill="#fff" opacity=".28"/></svg></i>`;
+  return new maplibregl.Marker({element:d, rotationAlignment:"map", pitchAlignment:"map"}).setLngLat(ll(me)).addTo(map);
+}
+function meShape(){ if (meMarker){ meMarker.getElement().classList.toggle("nav", !!NAV); meMarker.setRotation(NAV && navHead !== null ? navHead : 0); } }
+
+/* Pusula düğmesi: harita döndüyse görünür, dokununca kuzeye döner. */
+function compassUI(){
+  const c = $("#compass"); if (!c || !map) return;
+  const b = map.getBearing(); $("#needle").setAttribute("transform", `rotate(${-b} 15 15)`);
+  c.hidden = tab !== "map" || (Math.abs(b) < 1 && !NAV);
+}
+$("#compass").addEventListener("click", () => {
+  if (!map) return;
+  if (NAV){ navFollow(false); map.easeTo({bearing:0, duration:500}); return; }
+  map.easeTo({bearing:0, pitch:0, duration:500});
+});
+
+/* Yön: kısa yoldan, yumuşak geçiş. */
+const angD = (a, b) => ((b - a + 540) % 360) - 180;
+function setHead(h){
+  if (h === null || isNaN(h)) return;
+  navHead = navHead === null ? h : (navHead + angD(navHead, h) * 0.35 + 360) % 360;
+  meShape();
+}
+function onCompass(e){
+  let h = null;
+  if (typeof e.webkitCompassHeading === "number") h = e.webkitCompassHeading;
+  else if (e.absolute && typeof e.alpha === "number") h = 360 - e.alpha;
+  if (h === null) return;
+  h = (h + (screen.orientation ? screen.orientation.angle : (window.orientation || 0)) + 360) % 360;
+  if (Date.now() - navGpsT < 4000) return; // yürürken GPS yönü daha güvenilir
+  setHead(h); navCam();
+}
+function compassStart(){
+  if (compassOn) return;
+  const go = () => { compassOn = true; addEventListener("deviceorientationabsolute", onCompass); addEventListener("deviceorientation", onCompass); };
+  try {
+    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function")
+      DeviceOrientationEvent.requestPermission().then(r => { if (r === "granted") go(); }).catch(() => {});
+    else go();
+  } catch(e){}
+}
+
+/* Rota çizgisi yardımcıları */
+const mOf = (a, b) => km(a, b) * 1000;
+function cumOf(line){ const c = [0]; for (let i = 1; i < line.length; i++) c.push(c[i-1] + mOf(line[i-1], line[i])); return c; }
+/* Noktayı çizginin en yakın parçasına izdüşürür: {i: parça başı, t: 0-1, at: baştan metre, d: uzaklık, q: izdüşüm}. */
+function nearSeg(line, cum, p, from, to){
+  const kx = Math.cos(p[0] * Math.PI / 180) * 111320, ky = 110540; let best = {i:from, t:0, d:1e9};
+  to = Math.min(to, line.length - 2);
+  for (let i = from; i <= to; i++){
+    const a = line[i], b = line[i+1], ax = (a[1]-p[1])*kx, ay = (a[0]-p[0])*ky, bx = (b[1]-p[1])*kx, by = (b[0]-p[0])*ky;
+    const dx = bx - ax, dy = by - ay, L2 = dx*dx + dy*dy, t = L2 ? Math.max(0, Math.min(1, -(ax*dx + ay*dy) / L2)) : 0;
+    const d = Math.hypot(ax + dx*t, ay + dy*t); if (d < best.d) best = {i, t, d};
+  }
+  const a = line[best.i], b = line[Math.min(best.i + 1, line.length - 1)];
+  best.q = [a[0] + (b[0]-a[0])*best.t, a[1] + (b[1]-a[1])*best.t];
+  best.at = cum[best.i] + (cum[Math.min(best.i + 1, cum.length - 1)] - cum[best.i]) * best.t; return best;
+}
+const bearingOf = (a, b) => { const r = Math.PI/180, y = Math.sin((b[1]-a[1])*r)*Math.cos(b[0]*r), x = Math.cos(a[0]*r)*Math.sin(b[0]*r) - Math.sin(a[0]*r)*Math.cos(b[0]*r)*Math.cos((b[1]-a[1])*r); return (Math.atan2(y, x)/r + 360) % 360; };
+
+function navLayers(){
+  const empty = {type:"Feature", geometry:{type:"LineString", coordinates:[]}};
+  ["nav-done","nav-todo"].forEach(id => { if (!map.getSource(id)) map.addSource(id, {type:"geojson", data:empty}); else map.getSource(id).setData(empty); });
+  if (!map.getLayer("nav-done")){
+    map.addLayer({id:"nav-done", type:"line", source:"nav-done", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#9AA3B5","line-width":7,"line-opacity":.85}});
+    map.addLayer({id:"nav-case", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":13}});
+    map.addLayer({id:"nav-todo", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#1D3FA8","line-width":8}});
+    map.addLayer({id:"nav-dash", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#FFD23F","line-width":2.5,"line-dasharray":[0.1,3]}});
+  }
+  ["nav-done","nav-case","nav-todo","nav-dash"].forEach(id => { map.setLayoutProperty(id, "visibility", "visible"); map.moveLayer(id); });
+}
+const setLine = (id, pts) => { const s = map.getSource(id); if (s) s.setData({type:"Feature", geometry:{type:"LineString", coordinates:pts.map(ll)}}); };
+
+/* Rotayı başlat: kısa açılış animasyonu. Çizgi baştan sona çizilir, sonra kamera konumuna eğilerek iner. */
+function startNav(o){
+  if (!map){ toast("Harita henüz yüklenmedi. Biraz bekleyip tekrar dene."); return; }
+  compassStart();
+  whenMap(() => {
+    navStop(true);
+    const line = o.line.length > 1 ? o.line : o.stops.map(s => s.p), cum = cumOf(line);
+    const stops = o.stops.map(s => Object.assign({}, s, {at:nearSeg(line, cum, s.p, 0, line.length).at}));
+    NAV = {name:o.name, line, cum, stops, idx:0, at:0, q:line[0], off:false, follow:true, t0:Date.now(), anim:true};
+    navHead = null; closeSheet(); setTab("map");
+    document.querySelector(".view").classList.add("navigating");
+    clearPlanMap(); navLayers(); meShape(); compassUI();
+    const fab = $("#locate"); fab.classList.add("recenter"); fab.innerHTML = "<span></span>Ortala"; fab.hidden = true;
+    navBar();
+    // 1) Genel bakış: tüm rota ekrana sığar, çizgi baştan sona çizilir.
+    const bb = new maplibregl.LngLatBounds(ll(line[0]), ll(line[0])); line.forEach(p => bb.extend(ll(p)));
+    const cam = map.cameraForBounds(bb, {padding:{top:120, bottom:80, left:40, right:40}, bearing:0});
+    if (cam) map.easeTo({center:cam.center, zoom:cam.zoom, bearing:0, pitch:0, padding:{top:0, bottom:0, left:0, right:0}, duration:700});
+    const T = 1300, t0 = performance.now(), total = cum[cum.length - 1];
+    const step = now => {
+      if (!NAV || NAV.t0 !== o._t) return;
+      const f = Math.min(1, (now - t0) / T), e = 1 - Math.pow(1 - f, 3), L = total * e;
+      let k = 1; while (k < line.length && cum[k] < L) k++;
+      const pts = line.slice(0, k);
+      if (k < line.length && k > 0){ const a = line[k-1], b = line[k], r = (L - cum[k-1]) / Math.max(1, cum[k] - cum[k-1]); pts.push([a[0] + (b[0]-a[0])*r, a[1] + (b[1]-a[1])*r]); }
+      setLine("nav-todo", pts.length > 1 ? pts : [line[0], line[0]]);
+      if (f < 1) requestAnimationFrame(step); else setTimeout(navDive, 250);
+    };
+    o._t = NAV.t0; requestAnimationFrame(step);
+  });
+}
+/* 2) Kamera konumuna (şehirde değilsen rotanın başına) eğilerek, gidilecek yöne dönerek iner. */
+function navDive(){
+  if (!NAV) return;
+  const here = me && inCity(), at = here ? me : NAV.line[0];
+  if (here) navProgress(me);
+  const nxt = NAV.line[Math.min(NAV.line.length - 1, NAV.idx + 3)];
+  const b = navHead !== null ? navHead : bearingOf(at, nxt);
+  if (navHead === null) setHead(b);
+  NAV.anim = true;
+  map.flyTo({center:ll(at), zoom:NAV_ZOOM, pitch:NAV_PITCH, bearing:b, duration:1900, curve:1.3, essential:true, padding:{top:90, bottom:120}});
+  map.once("moveend", () => { if (NAV) { NAV.anim = false; $("#locate").hidden = true; } });
+  if (!here) toast(me ? "Şu an " + city.name + " dışındasın. Rotanın başlangıcı gösteriliyor; şehre gelince ok seni takip eder." : "Konumun henüz alınamadı. Rotanın başlangıcı gösteriliyor; konum gelince ok seni takip eder.");
+}
+
+/* Kamera takibi: konum ya da yön değişince yumuşakça kayar. Elle oynayınca takip durur, "Ortala" çıkar. */
+function navFollow(on){
+  if (!NAV) return; NAV.follow = on;
+  $("#locate").hidden = on || tab !== "map";
+}
+let camT = 0;
+function navCam(force){
+  if (!NAV || !map || NAV.anim || !NAV.follow || mapTouch || !me || !inCity()) return;
+  const now = Date.now(); if (!force && now - camT < 250) return; camT = now;
+  const c = map.getCenter(), b = map.getBearing(), tb = navHead !== null ? navHead : b;
+  if (!force && mOf([c.lat, c.lng], me) < 1.5 && Math.abs(angD(b, tb)) < 3) return;
+  map.easeTo({center:ll(me), bearing:tb, pitch:force ? NAV_PITCH : map.getPitch(), zoom:force ? NAV_ZOOM : map.getZoom(), padding:{top:90, bottom:120}, duration:force ? 700 : 450, easing:t => t});
+}
+(function(){ const el = $("#map");
+  el.addEventListener("touchstart", () => { mapTouch = true; }, {passive:true});
+  el.addEventListener("touchend", e => { if (!e.touches.length) mapTouch = false; }, {passive:true});
+  el.addEventListener("touchcancel", () => { mapTouch = false; }, {passive:true});
+})();
+
+/* Konum geldikçe: yön, ilerleme, çizgi ve üst bant güncellenir. */
+function navPos(pos){
+  if (!NAV || !map) return;
+  const c = pos.coords;
+  if (c.heading !== null && !isNaN(c.heading) && (c.speed || 0) > 0.8){ navGpsT = Date.now(); setHead(c.heading); }
+  else if (navHead === null && inCity()) setHead(bearingOf(me, NAV.line[Math.min(NAV.line.length - 1, NAV.idx + 2)]));
+  if (!inCity()){ navBar(); return; }
+  navProgress(me); navCam();
+}
+function navProgress(p){
+  const N = NAV, L = N.line;
+  // Önce ileriye doğru ara (geri sıçramasın); uzak kalırsa bütün çizgiye bak.
+  let k = nearSeg(L, N.cum, p, Math.max(0, N.idx - 3), N.idx + 80);
+  if (k.d > 45){ const g = nearSeg(L, N.cum, p, 0, L.length); if (g.d < k.d) k = g; }
+  N.off = k.d > 45;
+  if (!N.off){ N.idx = k.i; N.at = k.at; N.q = k.q; }
+  if (!N.anim){
+    setLine("nav-done", L.slice(0, N.idx + 1).concat([N.q]));
+    setLine("nav-todo", [N.q].concat(L.slice(N.idx + 1)));
+  }
+  if (N.cum[N.cum.length - 1] - N.at < 30 && !N.off && !N.done){ N.done = true; toast(N.name + " bitti. Güzel yürüyüş!"); }
+  navBar();
+}
+function navBar(){
+  const N = NAV, el = $("#navbar"); if (!N){ el.hidden = true; return; }
+  const here = me && inCity(), cur = here ? N.at : 0;
+  const total = N.cum[N.cum.length - 1], left = Math.max(0, total - cur);
+  const next = N.stops.find(s => s.at > cur + 15) || N.stops[N.stops.length - 1];
+  const toNext = here ? (N.off ? mOf(me, next.p) : Math.max(0, next.at - cur)) : next.at;
+  const mins = Math.max(1, Math.round(left / 1000 / NAV_KMH * 60));
+  const head = here ? (N.off ? "Rotaya dön · " + fmtD(nearSeg(N.line, N.cum, me, 0, N.line.length).d / 1000) : (N.done ? "Rota tamamlandı" : next.name)) : N.name;
+  const sub = here ? (N.off ? "Sıradaki durak: " + next.name : (N.done ? "Tebrikler" : fmtD(toNext / 1000) + " sonra · kalan " + fmtD(left / 1000) + " · ~" + mins + " dk"))
+    : "Önizleme · " + fmtD(total / 1000) + " · ~" + Math.max(1, Math.round(total / 1000 / NAV_KMH * 60)) + " dk";
+  const turn = here && navHead !== null && !N.off ? angD(navHead, bearingOf(me, next.p)) : 0;
+  el.innerHTML = `<span class="nvi"><svg viewBox="0 0 24 24" style="transform:rotate(${Math.round(turn)}deg)" aria-hidden="true"><path d="M12 2.5l7.5 18.2-7.5-4.3-7.5 4.3z" fill="#fff"/></svg></span>
+    <span class="nvt"><b>${esc(head)}</b><small>${esc(sub)}</small></span>
+    <button class="nvx" type="button" id="navEnd">Bitir</button><span class="nvbar"><i style="width:${total ? Math.round(cur / total * 100) : 0}%"></i></span>`;
+  el.hidden = tab !== "map";
+}
+$("#navbar").addEventListener("click", e => { if (e.target.closest("#navEnd")) navStop(); });
+
+function navStop(silent){
+  if (!NAV) return;
+  NAV = null; navHead = null;
+  document.querySelector(".view").classList.remove("navigating");
+  $("#navbar").hidden = true;
+  const fab = $("#locate"); fab.classList.remove("recenter"); fab.innerHTML = "<span></span>"; fab.hidden = tab !== "map";
+  if (map && !silent){
+    ["nav-done","nav-case","nav-todo","nav-dash"].forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", "none"); });
+    map.easeTo({pitch:0, bearing:0, zoom:Math.min(map.getZoom(), 15.5), padding:{top:0, bottom:0}, duration:800});
+  }
+  meShape(); compassUI();
+}
+
+/* Hazır yürüyüş rotası */
+function startRouteNav(id){
+  const r = city.routes.find(x => x.id === id); if (!r) return;
+  const names = r.stops && r.stops.length === r.pts.length ? r.stops : null;
+  startNav({name:r.name, line:r.geo ? r.geo.line : r.pts, stops:r.pts.map((p, i) => ({p, name:names ? names[i] : (i + 1) + ". durak"}))});
+}
+/* Günlük plan: duraklar sırayla, çizgi gerçek sokaklardan (olmazsa düz). */
+function startPlanNav(d){
+  const P = store.plan; if (!P) return;
+  const rows = timeline(P, d).rows, pts = [P.start].concat(rows.map(r => ptOf(r.o)));
+  const stops = [{p:P.start, name:"Başlangıç"}].concat(rows.map(r => ({p:ptOf(r.o), name:r.o.name.replace(/ \(.*\)$/, "")})));
+  const go = line => startNav({name:(d + 1) + ". gün planı", line, stops});
+  if (pts.length > 40){ go(pts); return; }
+  fetch("https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + pts.map(p => p[1] + "," + p[0]).join(";") + "?overview=full&geometries=geojson")
+    .then(x => x.json()).then(j => go(j.routes && j.routes[0] ? j.routes[0].geometry.coordinates.map(c => [c[1], c[0]]) : pts)).catch(() => go(pts));
+}
 
 /* Ana ekrana eklenince uygulama gibi çalışsın: servis çalışanını kaydet. */
 if ("serviceWorker" in navigator && location.protocol === "https:" && location.hostname.endsWith("github.io")) {
