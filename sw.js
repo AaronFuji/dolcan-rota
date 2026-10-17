@@ -2,7 +2,7 @@
    Sayfa her açılışta önce internetten taze alınır; bağlantı yoksa son kaydedilen hâli açılır.
    Gezdiğin harita alanları, fotoğraflar ve kütüphaneler de saklanır, böylece metroda ya da
    zayıf bağlantıda daha önce baktığın yerler boş görünmez. Canlı veri her zaman önceliklidir. */
-const V = "dolcanrota-v14";
+const V = "dolcanrota-v15";
 const SHELL = ["./", "./index.html", "./manifest.webmanifest", "./icon-180.png", "./icon-192.png", "./icon-512.png"];
 const MAX_TILES = 1500;
 
@@ -17,10 +17,11 @@ async function trim(name, max){
   const c = await caches.open(name), keys = await c.keys();
   for (let i = 0; i < keys.length - max; i++) await c.delete(keys[i]);
 }
-async function networkFirst(req, name){
+async function networkFirst(req, name, fresh){
   const c = await caches.open(name);
   try {
-    const res = await fetch(req);
+    // Uygulamanın kendi dosyaları tarayıcı önbelleğini atlayarak alınır, güncelleme hemen görünür.
+    const res = fresh ? await fetch(req.url, {cache: "no-cache", credentials: "same-origin"}) : await fetch(req);
     if (res && (res.ok || res.type === "opaque")) c.put(req, res.clone());
     return res;
   } catch (err) {
@@ -43,7 +44,7 @@ self.addEventListener("fetch", e => {
   if (req.method !== "GET") return;
   const u = new URL(req.url);
   // Konum, yönlendirme ve Wikipedia sorguları her zaman canlı; yalnızca bağlantı yoksa son cevap.
-  if (u.origin === location.origin) return e.respondWith(networkFirst(req, V));
+  if (u.origin === location.origin) return e.respondWith(networkFirst(req, V, true));
   if (u.hostname === "unpkg.com" || u.hostname.endsWith("gstatic.com") || u.hostname === "fonts.googleapis.com")
     return e.respondWith(cacheFirst(req, V + "-lib"));
   if (u.hostname.endsWith("openfreemap.org")) {
