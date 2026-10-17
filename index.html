@@ -1515,7 +1515,7 @@ $("#list").addEventListener("click", e => {
   else if (a === "back"){ delete store.plan.editing; renderPlan(); }
   else if (a === "make"){ renderPlan.lastDay = -1; store.plan = buildPlan(planForm); planDay = 0; save(); clearPlanMap(); renderPlan(); toast("Plan hazır: " + store.plan.days.map((d, i) => (i + 1) + ". gün " + d.length + " durak").join(", ")); }
   else if (a === "map") showPlanDay(planDay);
-  else if (a === "nav") startPlanNav(planDay);
+  else if (a === "nav"){ compassStart(); startPlanNav(planDay); }
 });
 
 /* ---------- Planı haritada göster ---------- */
