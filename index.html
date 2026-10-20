@@ -321,6 +321,30 @@ h1,h2,h3,p,dl{margin:0}
 .fab.recenter span{width:14px;height:14px;border-width:3px}
 .btn.go-nav{background:var(--walk);color:#fff;border-color:var(--walk)}
 .btn.go-nav svg{width:18px;height:18px;margin-right:4px;vertical-align:-3px}
+
+/* ---------- Arama ---------- */
+.searchbtn{position:absolute;top:52px;left:10px;z-index:460;height:40px;padding:0 16px 0 12px;border-radius:99px;background:var(--white);box-shadow:var(--shadow);display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px;color:var(--ink)}
+.searchbtn .ic{width:19px;height:19px;stroke-width:2.6}
+.view.navigating .searchbtn{display:none}
+#searchPanel{position:absolute;inset:0;z-index:760;background:rgba(30,20,10,.28);display:flex;flex-direction:column}
+#searchPanel[hidden]{display:none}
+.sq-box{background:var(--paper);border-radius:0 0 22px 22px;box-shadow:0 8px 24px rgba(58,29,11,.3);padding:10px 12px 12px;max-height:82%;display:flex;flex-direction:column;animation:navIn .3s ease-out}
+.sq-row{display:flex;gap:8px;align-items:center;min-width:0}
+.sq-row label{flex:1;min-width:0;display:flex;align-items:center;gap:8px;background:var(--white);border:2px solid var(--orange);border-radius:14px;padding:0 12px;height:48px}
+.sq-row label .ic{width:20px;height:20px;color:var(--ink-soft);stroke-width:2.4;flex:none}
+#sqInput{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:17px;font-weight:700;color:var(--ink)}
+#sqClose{flex:none;height:48px;width:48px;padding:0;font-size:18px;border-radius:14px;background:var(--ink);color:#fff;font-weight:800}
+#sqRes{overflow-y:auto;margin-top:8px;display:flex;flex-direction:column;gap:6px}
+#sqRes h4{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin:6px 2px 0}
+.sq-item{display:flex;gap:10px;align-items:center;text-align:left;background:var(--white);border-radius:14px;padding:10px 12px;box-shadow:0 1px 0 rgba(58,29,11,.08)}
+.sq-item i{flex:none;width:12px;height:12px;border-radius:50%;background:var(--c)}
+.sq-item i.geo{background:#E8412C;border-radius:50% 50% 50% 0;transform:rotate(-45deg)}
+.sq-item b{display:block;font-size:15px;line-height:1.2}
+.sq-item small{display:block;font-size:12.5px;color:var(--ink-soft);font-weight:700}
+.sq-hint{font-size:13.5px;color:var(--ink-soft);font-weight:700;padding:6px 2px}
+.sq-pin{width:34px;height:42px;display:grid;place-items:start center}
+.sq-pin i{width:30px;height:30px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#E8412C;border:3px solid #fff;box-shadow:-2px 3px 0 rgba(58,29,11,.3);animation:sqDrop .45s cubic-bezier(.34,1.6,.6,1)}
+@keyframes sqDrop{from{transform:translateY(-30px) rotate(-45deg);opacity:0}}
 </style>
 </head>
 <body>
@@ -350,6 +374,8 @@ h1,h2,h3,p,dl{margin:0}
     <div class="view">
       <div id="map"></div>
       <div class="gps" id="gps"><i></i><span>Konum bekleniyor</span></div>
+      <button class="searchbtn" id="searchBtn" type="button" aria-label="Yer ara"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>Ara</button>
+      <div id="searchPanel" hidden><div class="sq-box"><div class="sq-row"><label><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><input id="sqInput" type="search" enterkeyhint="search" autocomplete="off" placeholder="Yer, adres ya da tren garı ara"></label><button id="sqClose" type="button" aria-label="Aramayı kapat">✕</button></div><div id="sqRes"></div></div></div>
       <button class="factbtn" id="factBtn" type="button"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2v.1h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>Günün bilgisi</button>
       <button class="planchip" id="planChip" type="button" hidden aria-label="Planı haritadan kaldır"><span>Plan</span>✕</button>
       <button class="ptspill" id="ptsPill" type="button" aria-label="Puanların ve görevler"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="none" d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></svg><span>0 puan</span></button>
@@ -1508,7 +1534,8 @@ function select(id, keepView){
     ${o.tip ? `<p class="open-q">${esc(o.tip)}</p>` : ""}${open.map(t => `<p class="open-q">${t}</p>`).join("")}
     <div class="acts">
       ${isRoute && !o.ferry ? `<button class="btn primary go-nav" type="button" data-nav="${o.id}">${NAV_IC}Rotayı başlat</button>` : ""}
-      <a class="btn${isRoute && !o.ferry ? "" : " primary"}" href="${dir}" target="_blank" rel="noopener">${isRoute ? "Başlangıca yol tarifi" : "Yol tarifi al"}</a>
+      ${!isRoute ? `<button class="btn primary go-nav" type="button" data-go="${o.id}">${NAV_IC}Buraya rota oluştur</button>` : ""}
+      <a class="btn" href="${dir}" target="_blank" rel="noopener">${isRoute ? "Başlangıca yol tarifi" : "Google Maps yol tarifi"}</a>
       <a class="btn" href="${gm}" target="_blank" rel="noopener">${isRoute ? "Rotayı Google Maps'te aç" : "Google Maps'te aç"}</a>
       <button class="btn" type="button" data-t="done" aria-pressed="${!!store.done[id]}">${store.done[id] ? "Gittim ✓" : "Gittim"}</button>
       <button class="btn" type="button" data-t="fav" aria-pressed="${!!store.fav[id]}">${store.fav[id] ? "Favoride ★" : "Favori"}</button>
@@ -1530,7 +1557,7 @@ $("#sheet").addEventListener("click", e => {
   sh.addEventListener("touchmove", e => { if (y0 === null) return; const dy = e.touches[0].clientY - y0; if (dy > 0) sh.style.transform = `translateY(${dy}px)`; }, {passive:true});
   sh.addEventListener("touchend", e => { if (y0 === null) return; const dy = e.changedTouches[0].clientY - y0; sh.style.transform = ""; y0 = null; if (dy > 90) closeSheet(); });
 })();
-function closeSheet(){ if ($("#sheet").hidden) return; $("#sheet").hidden = true; sel = null; refresh(); }
+function closeSheet(){ if (typeof sqClearMarker === "function") sqClearMarker(); if ($("#sheet").hidden) return; $("#sheet").hidden = true; sel = null; refresh(); }
 
 /* ---------- Harita açıklaması ---------- */
 function renderLegend(){
@@ -1550,7 +1577,7 @@ let query = "";
 const norm = t => String(t).toLocaleLowerCase("tr").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 function setTab(t){
   tab = t; document.querySelectorAll(".tab").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === t));
-  $("#list").hidden = t === "map"; $("#locate").hidden = t !== "map"; $("#helpBtn").hidden = t !== "map"; if ($("#planChip")) $("#planChip").hidden = t !== "map" || planOnMap === null; $("#legend").hidden = true; $("#navbar").hidden = !NAV || t !== "map"; compassUI();
+  $("#list").hidden = t === "map"; $("#locate").hidden = t !== "map"; $("#helpBtn").hidden = t !== "map"; $("#searchBtn").hidden = t !== "map"; $("#searchPanel").hidden = true; if ($("#planChip")) $("#planChip").hidden = t !== "map" || planOnMap === null; $("#legend").hidden = true; $("#navbar").hidden = !NAV || t !== "map"; compassUI();
   if (t !== "map"){ $("#sheet").hidden = true; $("#toast").hidden = true; renderList(); } else if (map) map.resize();
 }
 document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest("[data-tab]"); if (b) setTab(b.dataset.tab); });
@@ -2330,6 +2357,178 @@ function startPlanNav(d){
   fetch("https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + pts.map(p => p[1] + "," + p[0]).join(";") + "?overview=full&geometries=geojson")
     .then(x => x.json()).then(j => go(j.routes && j.routes[0] ? j.routes[0].geometry.coordinates.map(c => [c[1], c[0]]) : pts)).catch(() => go(pts));
 }
+
+/* ---------- Arama: uygulamadaki noktalar + OpenStreetMap (Photon, yedek Nominatim) ----------
+   Türkçe, İngilizce, Almanca, Çekçe ve Macarca genel kelimeler aynı anlama eşlenir:
+   "tren istasyonu", "train station", "Bahnhof", "nádraží", "pályaudvar" hepsi gar arar. */
+const SQ_GROUPS = {
+  station:{w:["tren istasyonu","tren gari","istasyon","istasyonu","gar","gari","train station","railway station","station","bahnhof","hauptbahnhof","hbf","nadrazi","hlavni nadrazi","palyaudvar","vasutallomas","centraal"], tag:"railway:station", label:"Tren garı"},
+  bus:{w:["otogar","otobus terminali","otobus","bus station","busbahnhof","zob","autobusove nadrazi","buszpalyaudvar"], tag:"amenity:bus_station"},
+  airport:{w:["havalimani","havaalani","airport","flughafen","letiste","repuloter"], tag:"aeroway:aerodrome"},
+  pharmacy:{w:["eczane","pharmacy","apotheke","lekarna","gyogyszertar"], tag:"amenity:pharmacy"},
+  toilet:{w:["tuvalet","wc","toilet","toilets","toilette","toalety","mosdo"], tag:"amenity:toilets"},
+  atm:{w:["atm","bankamatik","geldautomat","bankomat","cash machine"], tag:"amenity:atm"},
+  hospital:{w:["hastane","hospital","krankenhaus","klinikum","nemocnice","korhaz"], tag:"amenity:hospital"},
+  police:{w:["polis","karakol","police","polizei","policie","rendorseg"], tag:"amenity:police"},
+  supermarket:{w:["market","supermarket","supermarkt","grocery","potraviny","szupermarket","bakkal"], tag:"shop:supermarket", cat:"market"},
+  church:{w:["kilise","katedral","cami","church","cathedral","kirche","dom","kathedrale","kostel","katedrala","bazilika","basilica","templom","szekesegyhaz"], tag:"amenity:place_of_worship"},
+  castle:{w:["kale","sato","saray","castle","palace","burg","schloss","residenz","hrad","zamek","var","palota","kastely"], tag:"historic:castle"},
+  museum:{w:["muze","muzesi","museum","muzeum"], tag:"tourism:museum"},
+  bridge:{w:["kopru","koprusu","bridge","brucke","most","hid","lanchid"]},
+  square:{w:["meydan","meydani","square","platz","markt","namesti","ter"]},
+  synagogue:{w:["sinagog","sinagogu","synagogue","synagoge","synagoga","zsinagoga"]},
+  bath:{w:["hamam","hamami","kaplica","bath","baths","therme","bad","lazne","furdo","thermal"]},
+  tower:{w:["kule","kulesi","tower","turm","vez","torony"]},
+  park:{w:["park","parki","bahce","bahcesi","garden","garten","zahrada","kert","sady"], tag:"leisure:park"},
+  beer:{w:["bira","birahane","beer","bier","brauerei","brewery","pivo","pivovar","sor","sorozo","bierkeller","keller"]},
+  coffee:{w:["kahve","kafe","cafe","coffee","kaffee","kavarna","kave","kavezo"], cat:"coffee"},
+  bakery:{w:["firin","pastane","bakery","backerei","pekarna","pekseg","cukraszda","konditorei"], cat:"bakery"},
+  food:{w:["yemek","restoran","lokanta","restaurant","essen","restaurace","etterem","doner","kebab"], cat:"food"}
+};
+const sqNorm = t => String(t).toLocaleLowerCase("tr").replace(/ı/g, "i").normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
+const SQ_STOP = new Set(["the","de","der","die","das","von","en","ve","ile","bir","in","a","an","of","zum","zur","am","im","yakin","yakindaki","nerede","en yakin"]);
+/* Sorgudan grup kelimelerini (en uzun eşleşme önce) ayıklar. */
+function sqParse(q){
+  let s = " " + sqNorm(q) + " "; const groups = [];
+  const all = [];
+  for (const g in SQ_GROUPS) SQ_GROUPS[g].w.forEach(w => all.push([sqNorm(w), g]));
+  all.sort((a, b) => b[0].length - a[0].length);
+  for (const [w, g] of all){ if (s.includes(" " + w + " ")){ if (!groups.includes(g)) groups.push(g); s = s.split(" " + w + " ").join(" "); } }
+  const cityWords = new Set(Object.values(CITIES).flatMap(c => [sqNorm(c.name), sqNorm(c.key)]).concat(["bamberg","nurnberg","nuremberg","praha","prague","budapest","amsterdam","utrecht"]));
+  const words = s.trim().split(" ").filter(w => w && !SQ_STOP.has(w) && !cityWords.has(w));
+  return {groups, words, rest:words.join(" ")};
+}
+function sqHay(o){
+  if (!o._hay){ const t = [o.name, o.wiki ? o.wiki.replace(/^de:/, "").replace(/_/g, " ") : "", o.desc || "", (o.stops || []).join(" ")].join(" ");
+    o._hay = " " + sqNorm(t) + " "; o._nameN = " " + sqNorm(o.name + " " + (o.wiki ? o.wiki.replace(/^de:/, "").replace(/_/g, " ") : "")) + " "; }
+  return o._hay;
+}
+/* Kısa kelimeler tam kelime, uzunlar başlangıç olarak eşleşir (gar ≠ Gärtnerstadt). */
+const sqHas = (hay, w) => w.length >= 6 ? hay.includes(" " + w) : hay.includes(" " + w + " ");
+function sqGroupHit(o, g){ const G = SQ_GROUPS[g]; if (G.cat && o.cat === G.cat) return true; sqHay(o); return G.w.some(w => sqHas(o._nameN, sqNorm(w))); }
+/* Uygulamadaki noktalar, rotalar ve başlangıç noktaları içinde arar. */
+function searchLocal(q){
+  const P = sqParse(q), out = [];
+  if (!P.words.length && !P.groups.length) return out;
+  if (P.groups.includes("station") && city.starts && city.starts.centraal && city.starts.centraal.p)
+    out.push({kind:"start", score:100, name:city.starts.centraal.label, sub:"Şehrin ana tren garı", p:city.starts.centraal.p});
+  const items = city.places.concat(city.routes.filter(r => !r.ferry));
+  items.forEach(o => {
+    const hay = sqHay(o); let sc = 0, miss = 0;
+    P.words.forEach(w => { const pre = w.length >= 3 ? " " + w : " " + w + " "; if (o._nameN.includes(pre)) sc += 4; else if (hay.includes(pre)) sc += 1.5; else if (w.length >= 5 && hay.includes(w)) sc += 1; else miss++; });
+    P.groups.forEach(g => { if (sqGroupHit(o, g)) sc += 3; else miss++; });
+    if (sc > 0 && miss <= (P.words.length + P.groups.length > 2 ? 1 : 0)) out.push({kind:o.pts ? "route" : "place", score:sc - miss, o});
+  });
+  return out.sort((a, b) => b.score - a.score).slice(0, 8);
+}
+let sqAbort = null;
+async function searchGeo(q){
+  const P = sqParse(q), G = P.groups.map(g => SQ_GROUPS[g]).find(x => x.tag);
+  const text = P.rest || (G ? city.name : sqNorm(q));
+  if (!text) return [];
+  const b = city.bounds, c = map ? map.getCenter() : {lat:city.center[0], lng:city.center[1]};
+  if (sqAbort) sqAbort.abort(); sqAbort = new AbortController();
+  const sig = sqAbort.signal;
+  const photon = bbox => "https://photon.komoot.io/api/?limit=10&q=" + encodeURIComponent(text) + "&lat=" + c.lat.toFixed(4) + "&lon=" + c.lng.toFixed(4) +
+    (G ? "&osm_tag=" + encodeURIComponent(G.tag) : "") + (bbox ? "&bbox=" + [b[0][1], b[0][0], b[1][1], b[1][0]].join(",") : "");
+  const fromPhoton = j => (j.features || []).map(f => { const p = f.properties || {}, g = f.geometry.coordinates;
+    const name = p.name || [p.street, p.housenumber].filter(Boolean).join(" ") || p.osm_value;
+    return {name, sub:[p.street && p.name ? p.street + (p.housenumber ? " " + p.housenumber : "") : "", p.district || p.city || p.county].filter(Boolean).join(", "), p:[g[1], g[0]], type:p.osm_value}; });
+  try {
+    let r = fromPhoton(await (await fetch(photon(true), {signal:sig})).json());
+    if (!r.length) r = fromPhoton(await (await fetch(photon(false), {signal:sig})).json());
+    return r;
+  } catch(e){
+    if (e.name === "AbortError") throw e;
+    // Yedek: Nominatim (grup anahtarı İngilizce: station, pharmacy, airport...)
+    const nq = (G ? P.groups.find(g => SQ_GROUPS[g].tag) + " " : "") + (P.rest || city.name);
+    const u = "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=10&accept-language=tr,en&q=" + encodeURIComponent(nq.trim()) +
+      "&viewbox=" + [b[0][1], b[1][0], b[1][1], b[0][0]].join(",") + "&bounded=1";
+    const j = await (await fetch(u, {signal:sig})).json();
+    return j.map(x => ({name:x.name || x.display_name.split(",")[0], sub:x.display_name.split(",").slice(1, 3).join(","), p:[+x.lat, +x.lon], type:x.type}));
+  }
+}
+
+/* Arayüz */
+const SEARCH_IC = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg>';
+let sqMarker = null, sqTimer = 0, sqLast = null;
+function sqClearMarker(){ if (sqMarker){ sqMarker.remove(); sqMarker = null; } }
+function openSearch(){
+  const p = $("#searchPanel"); p.hidden = false; closeSheet();
+  const i = $("#sqInput"); i.value = ""; $("#sqRes").innerHTML = `<p class="sq-hint">Bir yer, sokak ya da \"tren garı\", \"eczane\", \"WC\" gibi bir şey yaz. Türkçe, İngilizce ya da yerel dilde yazabilirsin.</p>`;
+  setTimeout(() => i.focus(), 50);
+}
+function closeSearch(){ $("#searchPanel").hidden = true; $("#sqInput").blur(); }
+const sqDist = p => me && inCity() ? fmtD(km(me, p)) : "";
+function sqRender(local, geo, loading){
+  const L = local.map((r, i) => { const o = r.o, col = r.kind === "start" ? "var(--walk)" : r.kind === "route" ? "var(--walk)" : CATS[o.cat].c;
+    const p = r.kind === "start" ? r.p : r.kind === "route" ? o.pts[0] : [o.lat, o.lon], d = sqDist(p);
+    return `<button class="sq-item" type="button" data-sl="${i}"><i style="--c:${col}"></i><span><b>${esc(r.kind === "start" ? r.name : o.name)}</b><small>${esc(r.kind === "start" ? r.sub : r.kind === "route" ? "Yürüyüş rotası" : CATS[o.cat].tag)}${d ? " · " + d : ""}</small></span></button>`; }).join("");
+  const Gh = (geo || []).map((r, i) => { const d = sqDist(r.p);
+    return `<button class="sq-item" type="button" data-sg="${i}"><i class="geo"></i><span><b>${esc(r.name)}</b><small>${esc(r.sub || "")}${d ? (r.sub ? " · " : "") + d : ""}</small></span></button>`; }).join("");
+  $("#sqRes").innerHTML = (L ? `<h4>Uygulamada</h4>${L}` : "") + (Gh ? `<h4>Haritada</h4>${Gh}` : "") +
+    (loading ? `<p class="sq-hint">Haritada aranıyor…</p>` : (!L && !Gh ? `<p class="sq-hint">Sonuç bulunamadı. Farklı yazmayı dene.</p>` : ""));
+}
+async function runSearch(q){
+  const local = searchLocal(q); sqLast = {local, geo:[]};
+  sqRender(local, [], true);
+  try { const geo = await searchGeo(q);
+    const fresh = geo.filter(g => !local.some(l => { const p = l.kind === "start" ? l.p : l.kind === "route" ? l.o.pts[0] : [l.o.lat, l.o.lon]; return km(p, g.p) < 0.06; }));
+    sqLast = {local, geo:fresh}; sqRender(local, fresh, false);
+  } catch(e){ if (e.name !== "AbortError"){ sqRender(local, [], false); if (!local.length) $("#sqRes").insertAdjacentHTML("beforeend", `<p class="sq-hint">Harita araması şu an yanıt vermiyor. İnternet bağlantını kontrol et.</p>`); } }
+}
+$("#sqInput").addEventListener("input", e => { clearTimeout(sqTimer); const q = e.target.value.trim(); if (q.length < 2){ if (sqAbort) sqAbort.abort(); return; } sqTimer = setTimeout(() => runSearch(q), 350); });
+$("#sqInput").addEventListener("keydown", e => { if (e.key === "Enter"){ clearTimeout(sqTimer); const q = e.target.value.trim(); if (q.length >= 2) runSearch(q); e.target.blur(); } });
+$("#searchBtn").addEventListener("click", openSearch);
+$("#searchPanel").addEventListener("click", e => {
+  if (e.target.id === "searchPanel" || e.target.closest("#sqClose")){ closeSearch(); return; }
+  const a = e.target.closest("[data-sl]"), b = e.target.closest("[data-sg]");
+  if (a && sqLast){ const r = sqLast.local[+a.dataset.sl]; closeSearch();
+    if (r.kind === "start") showGeo({name:r.name, sub:r.sub, p:r.p}); else { if (r.o.cat && !store.layers[r.o.cat]){ store.layers[r.o.cat] = true; save(); renderChips(); refresh(); } select(r.o.id); } }
+  if (b && sqLast){ closeSearch(); showGeo(sqLast.geo[+b.dataset.sg]); }
+});
+/* Haritadan bulunan bir yer için kart: haritada göster ve rota oluştur. */
+let sqCur = null;
+function showGeo(r){
+  if (!map) return; sqCur = r; sqClearMarker();
+  const el = document.createElement("div"); el.className = "sq-pin"; el.innerHTML = "<i></i>";
+  sqMarker = new maplibregl.Marker({element:el, anchor:"bottom"}).setLngLat(ll(r.p)).addTo(map);
+  const h = $("#map").clientHeight, narrow = innerWidth < 760;
+  map.flyTo({center:ll(r.p), zoom:Math.max(map.getZoom(), 16), offset:narrow ? [0, -h*0.22] : [-200, 0], duration:700});
+  const d = me && inCity() ? km(me, r.p) : null;
+  const gm = `https://www.google.com/maps/dir/?api=1&destination=${r.p.join(",")}&travelmode=walking`;
+  const s = $("#sheet");
+  s.innerHTML = `<div class="grab" aria-hidden="true"></div><button class="x" type="button" id="closeSheet" aria-label="Kartı kapat">✕</button>
+    <div class="sbody"><span class="tag" style="--c:var(--walk)">Arama sonucu</span><h2>${esc(r.name)}</h2>${r.sub ? `<p>${esc(r.sub)}</p>` : ""}
+    <dl class="facts">${d !== null ? `<dt>Uzaklık</dt><dd>Buradan ${fmtD(d)} (kuş uçuşu), yürüyerek yaklaşık ${Math.max(1, Math.round(d * 1.3 / 4.5 * 60))} dk</dd>` : `<dt>Konum</dt><dd>Canlı konumun yok ya da şehir dışındasın; rota harita merkezinden çizilir.</dd>`}</dl>
+    <div class="acts"><button class="btn primary go-nav" type="button" data-sr="route">${NAV_IC}Buraya rota oluştur</button>
+    <button class="btn" type="button" data-sr="show">Haritada göster</button>
+    <a class="btn" href="${gm}" target="_blank" rel="noopener">Google Maps'te yol tarifi</a></div></div>`;
+  s.hidden = false; s.scrollTop = 0; sel = null; refresh();
+}
+/* Uygulama içinde yürüyüş rotası: konumundan (yoksa harita merkezinden) hedefe. */
+function routeTo(dest, name){
+  compassStart();
+  if (!map) return;
+  let from;
+  if (me && inCity()) from = me.slice();
+  else { const c = map.getCenter(); from = [c.lat, c.lng]; toast("Canlı konumun şehirde değil; rota harita merkezinden çizildi."); }
+  const direct = km(from, dest);
+  if (direct < 0.03){ toast("Zaten oradasın."); return; }
+  toast("Rota hesaplanıyor…");
+  const go = line => { $("#toast").hidden = true; startNav({name:name, line, stops:[{p:from, name:"Başlangıç"}, {p:dest, name:name}]});
+    if (direct > 6) setTimeout(() => toast("Yürüyerek uzun bir yol. Toplu taşıma için Google Maps'teki yol tarifini kullanabilirsin."), 3500); };
+  fetch("https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + from[1] + "," + from[0] + ";" + dest[1] + "," + dest[0] + "?overview=full&geometries=geojson")
+    .then(x => x.json()).then(j => go(j.routes && j.routes[0] ? j.routes[0].geometry.coordinates.map(c => [c[1], c[0]]) : [from, dest])).catch(() => go([from, dest]));
+}
+$("#sheet").addEventListener("click", e => {
+  const t = e.target.closest("[data-sr],[data-go]"); if (!t) return;
+  e.stopPropagation();
+  if (t.dataset.go){ const o = find(t.dataset.go); if (o) routeTo([o.lat, o.lon], o.name.replace(/ \(.*\)$/, "")); return; }
+  if (!sqCur) return;
+  if (t.dataset.sr === "route") routeTo(sqCur.p, sqCur.name);
+  else if (t.dataset.sr === "show"){ const h = $("#map").clientHeight; map.flyTo({center:ll(sqCur.p), zoom:17, offset:innerWidth < 760 ? [0, -h*0.22] : [-200, 0], duration:600}); }
+}, true);
 
 /* Ana ekrana eklenince uygulama gibi çalışsın: servis çalışanını kaydet. */
 if ("serviceWorker" in navigator && location.protocol === "https:" && location.hostname.endsWith("github.io")) {
