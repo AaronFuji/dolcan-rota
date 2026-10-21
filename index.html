@@ -102,11 +102,6 @@ h1,h2,h3,p,dl{margin:0}
 .pin.sel{width:38px;height:38px;border-color:var(--ink)}
 .rstart{width:30px;height:30px;border-radius:50%;background:var(--walk);border:3px solid var(--white);box-shadow:0 3px 0 rgba(58,29,11,.3);display:grid;place-items:center;color:var(--white);font-weight:800;font-family:var(--display);font-size:16px}
 .rstart.sel{border-color:var(--ink)}
-.rstart.faded{opacity:.75;transform:scale(.85)}
-.rstart svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.pmk.rs{z-index:6}
-.pmk.rs.first{background:#1D3FA8}
-.far .pmk.rs span{display:none}
 .medot{width:22px;height:22px;border-radius:50%;background:var(--me);border:4px solid var(--white);box-shadow:0 0 0 0 rgba(18,115,235,.5);animation:pulse 1.6s infinite}
 @keyframes pulse{to{box-shadow:0 0 0 20px rgba(18,115,235,0)}}
 .fab{position:absolute;right:12px;bottom:34px;width:52px;height:52px;border-radius:50%;background:var(--white);box-shadow:var(--shadow);display:grid;place-items:center;z-index:500}
@@ -194,9 +189,9 @@ h1,h2,h3,p,dl{margin:0}
 @keyframes spOut{to{opacity:0;visibility:hidden}}
 @media (prefers-reduced-motion:reduce){#splash{animation:spOut .3s 1.2s forwards}.sp-word{clip-path:none}.sp-motto{opacity:1;transform:none}}
 .planchip{position:absolute;left:50%;transform:translateX(-50%);bottom:34px;z-index:470;height:40px;padding:0 14px;border-radius:99px;background:var(--ink);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
-.planning .mk{opacity:.3} .planning .rstart{display:none} .pmk i{font-style:normal;display:grid;place-items:center;width:100%;height:100%} .pmk span{position:absolute;top:100%;left:50%;transform:translate(-50%,4px);white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis;background:#fff;color:var(--ink);font-size:11px;font-weight:800;line-height:1;padding:4px 7px;border-radius:9px;box-shadow:0 2px 0 rgba(58,29,11,.18);pointer-events:none} .pmk:empty span,.pmk.start span{display:none}
+.planning .mk{opacity:.3}
 .planning .mk.on{opacity:1}
-.pmk{position:relative;width:34px;height:34px;border-radius:50%;background:#EE5A3C;color:#fff;border:3px solid #fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 3px 0 rgba(58,29,11,.35);cursor:pointer;font-family:var(--body)}
+.pmk{width:30px;height:30px;border-radius:50%;background:var(--orange-deep);color:#fff;border:3px solid #fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 3px 0 rgba(58,29,11,.35);cursor:pointer;font-family:var(--body)}
 .pmk.meal{background:#7A4A2A}
 .pmk.start{background:var(--ink);font-size:11px}
 .phead{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -315,19 +310,6 @@ h1,h2,h3,p,dl{margin:0}
 .compass svg{width:30px;height:30px}
 #navbar{position:absolute;left:10px;right:10px;top:10px;z-index:690;background:var(--white);border-radius:20px;box-shadow:0 6px 0 rgba(58,29,11,.18),0 8px 22px rgba(58,29,11,.25);padding:10px 10px 10px 14px;display:flex;align-items:center;gap:12px;animation:navIn .5s cubic-bezier(.34,1.5,.6,1)}
 @keyframes navIn{from{transform:translateY(-130%)}}
-#navbar{flex-wrap:wrap;cursor:pointer}
-#navbar .nvh{position:absolute;right:86px;bottom:-12px;background:var(--ink);color:#fff;font-size:11px;font-weight:800;padding:3px 9px;border-radius:99px;box-shadow:0 2px 0 rgba(0,0,0,.2)}
-#navbar.open{bottom:auto;max-height:70vh;overflow:auto}
-#navbar .nvl{list-style:none;margin:6px 0 0;padding:8px 0 0;border-top:2px dashed #EADBC8;width:100%;display:flex;flex-direction:column;gap:4px}
-#navbar .nvl button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:7px 6px;border-radius:12px;background:none;font-weight:800;color:var(--ink)}
-#navbar .nvl button.next{background:#FFE6DE}
-#navbar .nvl button.past{opacity:.45}
-#navbar .nvl i{flex:none;width:26px;height:26px;border-radius:50%;background:#EE5A3C;color:#fff;font-style:normal;font-size:12px;display:grid;place-items:center}
-#navbar .nvl i .ic{width:13px;height:13px}
-#navbar .nvl span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#navbar .nvl small{flex:none;font-size:12px;color:var(--ink-soft)}
-#navbar .nvc{width:100%;margin-top:6px;height:42px;border-radius:14px;background:var(--walk);color:#fff;font-weight:800}
-.pmk.nav{cursor:default}.pmk.nav.past{background:#9AA3B5}
 #navbar .nvi{flex:none;width:44px;height:44px;border-radius:14px;background:var(--walk);display:grid;place-items:center}
 #navbar .nvi svg{width:26px;height:26px;transition:transform .4s}
 #navbar .nvt{flex:1;min-width:0}
@@ -977,7 +959,7 @@ CITIES.prag = {
     {id:"p_havelska",cat:"market",name:"Havelská Pazarı",wiki:"Old_Town_Square",gen:1,lat:50.0847749,lon:14.4209608,pid:"ChIJp9JHkO6UC0cRfEdsFamVHGE",price:"€€",rating:4.2,rc:32048,rdate:"19.10.2026",eat:"Hediyelik eşya ve meyve tezgâhları.",why:"1232'den beri açık pazar. Hediyelik için ucuz; meyve için değil.",hours:"Pzt-Cmt 07:00-19:00, Paz 08:00-18:30",tip:"Meyve fiyatları 100 gram için yazılıyor ve kart makinesi gizleniyor; birçok yorumda dolandırılma anlatılıyor. Meyve alma."}
   ],
   routes:[
-    {id:"r-p-tam",prog:1,name:"Büyük Prag Turu: Gardan Gara",wiki:"Prague",desc:"Praha hlavní nádraží'den başlayıp Václav Meydanı, Barut Kulesi, Eski Şehir, Yahudi Mahallesi, Karl Köprüsü, Malá Strana, Prag Kalesi, Strahov ve Petřín bahçelerinden geçerek nehir kıyısı ve Dans Eden Ev üzerinden yine gara dönen tam günlük tur. Yaklaşık 13 km, molalarla 9-10 saat.",hist:"08:00 Praha hlavní nádraží. Çıkmadan önce garın tarihi binasına bak: Josef Fanta'nın 1909'da bitirdiği Art Nouveau holü ve kubbeli kafesi (Fantova kavárna) ücretsiz görülür. Önündeki Vrchlického sady parkından çıkıp Ulusal Müze'nin önüne yürü.\n\n08:30 Václav Meydanı. Ulusal Müze'nin önündeki Aziz Václav heykelinden 750 metrelik meydanın aşağısına in. 1968 Prag Baharı'nın ve 1989 Kadife Devrim'in sahnesi burası.\n\n09:15 Barut Kulesi ve Belediye Evi. Na Příkopě caddesinden sağa dön; Gotik Barut Kulesi ile yanındaki Art Nouveau Obecní dům yan yana. Kraliyet Yolu buradan başlar. Celetná'da Kolacherie'den bir koláč al, kahvaltı bu.\n\n09:45 Eski Şehir Meydanı. Týn Kilisesi'nin kuleleri, yerdeki 27 haç, Jan Hus anıtı. Saat başı astronomik saatin gösterisini izle (10:00 iyi denk gelir).\n\n10:30 Yahudi Mahallesi. Pařížská caddesinden Eski-Yeni Sinagog'a, oradan İspanyol Sinagogu'nun önüne ve Eski Yahudi Mezarlığı'nın duvarı boyunca yürü. Sinagogların içi Yahudi Müzesi biletiyle; dışarıdan görmek ücretsiz. Cumartesi müzeler kapalı.\n\n11:30 Klementinum ve Karl Köprüsü. Karlova sokağından Klementinum'un önüne, sonra Köprü Kulesi'nin altından köprüye. Aziz Jan Nepomuk heykelinin kabartmasına dokun. Köprüyü yavaş geç, kale tam karşında.\n\n12:15 Kampa ve Lennon Duvarı. Köprünün ortasındaki merdivenden Kampa Adası'na in, Şeytan Deresi'nin değirmenine bak, Lennon Duvarı'na yürü.\n\n13:00 Öğle yemeği Malá Strana'da. Lokál U Bílé kuželky turistik bölgedeki dürüst fiyatlı seçenek; daha ucuzu kale yokuşunun dibindeki U Hrocha (yalnızca nakit).\n\n14:00 Nerudova yokuşu ve Prag Kalesi. St. Nikolaus'un önünden Nerudova'yı çıkıp kale meydanına var. Avlular ve St. Vitus Katedrali'nin girişteki bölümü ücretsiz; Mucha vitrayı oradan görünür. Nöbet değişimi her saat başı ana kapıda.\n\n15:30 Loreta ve Strahov. Kale meydanının batısından Loreta'nın önüne (saat başı çanlar), oradan Strahov Manastırı'na. Avlunun ucundaki teraslardan bütün Prag ayağının altında.\n\n16:30 Petřín bahçeleri. Strahov'dan güneye, meyve bahçelerinin içinden Petřín Kulesi'ne ve yokuş aşağı Újezd'e in. Füniküler ve kule ücretli; inişi yürüyerek yapmak ücretsiz ve çok güzel.\n\n17:30 Nehir kıyısı. Most Legií köprüsünden nehri geç, Ulusal Tiyatro ve Café Slavia'nın önünden nehir boyunca güneye yürü. Gün batımında kale arkada kalır.\n\n18:15 Dans Eden Ev. Frank Gehry ile Vlado Milunić'in eğri binası. İstersen biraz daha güneydeki Náplavka rıhtımına uzan.\n\n18:45 Akşam yemeği ve gara dönüş. Karlovo náměstí üzerinden Pivovarský dům Benedict'te kendi biraları ve Çek tadım menüsü, oradan Ulusal Müze'nin arkasından gara yaklaşık 20 dakika.",why:"Prag'ın bütün önemli noktaları tek günde ve neredeyse hiç bilet almadan. Sabah erken başla; yorulursan tramvay 22 kale ile nehir arasında işe yarar.",stops:["Praha hl.n.","Ulusal Müze","Václav Meydanı","Barut Kulesi","Eski Şehir Meydanı","Eski-Yeni Sinagog","Eski Yahudi Mezarlığı","Klementinum","Köprü Kulesi","Karl Köprüsü","Kampa","Lennon Duvarı","Malá Strana","Nerudova","Prag Kalesi","St. Vitus","Loreta","Strahov","Petřín Kulesi","Újezd","Ulusal Tiyatro","Dans Eden Ev","Karlovo náměstí","Praha hl.n."],pts:[[50.0832,14.4353],[50.0793,14.4305],[50.0827,14.4258],[50.0873,14.4272],[50.0872,14.4209],[50.0900,14.4186],[50.0893,14.4172],[50.0866,14.4160],[50.0862,14.4136],[50.0865,14.4114],[50.0853,14.4088],[50.0863,14.4068],[50.0880,14.4036],[50.0886,14.3990],[50.0898,14.3980],[50.0909,14.4005],[50.0892,14.3917],[50.0864,14.3888],[50.0835,14.3951],[50.0806,14.4040],[50.0811,14.4134],[50.0754,14.4142],[50.0760,14.4190],[50.0832,14.4353]]},
+    {id:"r-p-tam",prog:1,name:"Büyük Prag Turu: Gardan Gara",wiki:"Prague",desc:"Praha hlavní nádraží'den başlayıp Václav Meydanı, Barut Kulesi, Eski Şehir, Yahudi Mahallesi, Karl Köprüsü, Malá Strana, Prag Kalesi, Strahov ve Petřín bahçelerinden geçerek nehir kıyısı ve Dans Eden Ev üzerinden yine gara dönen tam günlük tur. Yaklaşık 13 km, molalarla 9-10 saat.",hist:"08:00 Praha hlavní nádraží. Çıkmadan önce garın tarihi binasına bak: Josef Fanta'nın 1909'da bitirdiği Art Nouveau holü ve kubbeli kafesi (Fantova kavárna) ücretsiz görülür. Önündeki Vrchlického sady parkından çıkıp Ulusal Müze'nin önüne yürü.\n\n08:30 Václav Meydanı. Ulusal Müze'nin önündeki Aziz Václav heykelinden 750 metrelik meydanın aşağısına in. 1968 Prag Baharı'nın ve 1989 Kadife Devrim'in sahnesi burası.\n\n09:15 Barut Kulesi ve Belediye Evi. Na Příkopě caddesinden sağa dön; Gotik Barut Kulesi ile yanındaki Art Nouveau Obecní dům yan yana. Kraliyet Yolu buradan başlar. Celetná'da Kolacherie'den bir koláč al, kahvaltı bu.\n\n09:45 Eski Şehir Meydanı. Týn Kilisesi'nin kuleleri, yerdeki 27 haç, Jan Hus anıtı. Saat başı astronomik saatin gösterisini izle (10:00 iyi denk gelir).\n\n10:30 Yahudi Mahallesi. Pařížská caddesinden Eski-Yeni Sinagog'a, oradan İspanyol Sinagogu'nun önüne ve Eski Yahudi Mezarlığı'nın duvarı boyunca yürü. Sinagogların içi Yahudi Müzesi biletiyle; dışarıdan görmek ücretsiz. Cumartesi müzeler kapalı.\n\n11:30 Klementinum ve Karl Köprüsü. Karlova sokağından Klementinum'un önüne, sonra Köprü Kulesi'nin altından köprüye. Aziz Jan Nepomuk heykelinin kabartmasına dokun. Köprüyü yavaş geç, kale tam karşında.\n\n12:15 Kampa ve Lennon Duvarı. Köprünün ortasındaki merdivenden Kampa Adası'na in, Şeytan Deresi'nin değirmenine bak, Lennon Duvarı'na yürü.\n\n13:00 Öğle yemeği Malá Strana'da. Lokál U Bílé kuželky turistik bölgedeki dürüst fiyatlı seçenek; daha ucuzu kale yokuşunun dibindeki U Hrocha (yalnızca nakit).\n\n14:00 Nerudova yokuşu ve Prag Kalesi. St. Nikolaus'un önünden Nerudova'yı çıkıp kale meydanına var. Avlular ve St. Vitus Katedrali'nin girişteki bölümü ücretsiz; Mucha vitrayı oradan görünür. Nöbet değişimi her saat başı ana kapıda.\n\n15:30 Loreta ve Strahov. Kale meydanının batısından Loreta'nın önüne (saat başı çanlar), oradan Strahov Manastırı'na. Avlunun ucundaki teraslardan bütün Prag ayağının altında.\n\n16:30 Petřín bahçeleri. Strahov'dan güneye, meyve bahçelerinin içinden Petřín Kulesi'ne ve yokuş aşağı Újezd'e in. Füniküler ve kule ücretli; inişi yürüyerek yapmak ücretsiz ve çok güzel.\n\n17:30 Nehir kıyısı. Most Legií köprüsünden nehri geç, Ulusal Tiyatro ve Café Slavia'nın önünden nehir boyunca güneye yürü. Gün batımında kale arkada kalır.\n\n18:15 Dans Eden Ev. Frank Gehry ile Vlado Milunić'in eğri binası. İstersen biraz daha güneydeki Náplavka rıhtımına uzan.\n\n18:45 Akşam yemeği ve gara dönüş. Karlovo náměstí üzerinden Pivovarský dům Benedict'te kendi biraları ve Çek tadım menüsü, oradan Ulusal Müze'nin arkasından gara yaklaşık 20 dakika.",why:"Prag'ın bütün önemli noktaları tek günde ve neredeyse hiç bilet almadan. Sabah erken başla; yorulursan tramvay 22 kale ile nehir arasında işe yarar.",stops:["Praha hl.n.","Ulusal Müze","Václav Meydanı","Barut Kulesi","Eski Şehir Meydanı","Eski-Yeni Sinagog","Eski Yahudi Mezarlığı","Klementinum","Köprü Kulesi","Karl Köprüsü","Kampa","Lennon Duvarı","Malá Strana","Nerudova","Prag Kalesi","St. Vitus","Loreta","Strahov","Petřín Kulesi","Újezd","Ulusal Tiyatro","Dans Eden Ev","Karlovo náměstí","Praha hl.n."],pts:[[50.0832,14.4353],[50.0793,14.4305],[50.0827,14.4258],[50.0873,14.4272],[50.0872,14.4209],[50.0900,14.4186],[50.0893,14.4172],[50.0866,14.4160],[50.0862,14.4136],[50.0865,14.4114],[50.0853,14.4088],[50.0863,14.4068],[50.0880,14.4036],[50.0886,14.3990],[50.0898,14.3980],[50.0909,14.4005],[50.0892,14.3917],[50.0864,14.3888],[50.0835,14.3951],[50.0806,14.4040],[50.0811,14.4134],[50.0754,14.4142],[50.0760,14.4190],[50.0790,14.4310],[50.0832,14.4353]]},
     {id:"r-p-royal",name:"Kraliyet Yolu",wiki:"Charles_Bridge",desc:"Barut Kulesi'nden Celetná, Eski Şehir Meydanı ve Karlova üzerinden Karl Köprüsü'ne, oradan Malá Strana ve Nerudova yokuşundan kaleye.",hist:"Bohemya kralları taç giymeye giderken tam bu yolu izlerdi: Barut Kulesi'nden girip Eski Şehir'i geçer, köprüden nehri aşar, Malá Strana'dan yokuşu çıkarak katedrale varırlardı. Bugün Prag'ın en ünlü yürüyüşüdür ve şehrin bütün çağlarını sırayla gösterir.",why:"Prag'ın omurgası. Sabah erken başla.",stops:["Barut Kulesi","Celetná","Eski Şehir Meydanı","Karlova","Köprü Kulesi","Karl Köprüsü","Malá Strana Meydanı","Nerudova","Kale meydanı","St. Vitus"],pts:[[50.0873,14.4278],[50.0874,14.4245],[50.0875,14.4208],[50.0864,14.4175],[50.0862,14.4136],[50.0865,14.4114],[50.0880,14.4035],[50.0886,14.3986],[50.0898,14.3980],[50.0909,14.4005]]},
     {id:"r-p-josefov",name:"Yahudi Mahallesi (Josefov)",wiki:"Josefov",desc:"Eski Şehir Meydanı'ndan Pařížská caddesi boyunca Eski-Yeni Sinagog, Pinkas Sinagogu ve Eski Yahudi Mezarlığı'na, sonra İspanyol Sinagogu.",hist:"Josefov, yüzyıllarca duvarlarla çevrili Prag Yahudi gettosuydu. 19. yüzyıl sonunda şehir mahallenin çoğunu yıkıp yerine Paris tarzı lüks Pařížská caddesini açtı. Yıkımdan kurtulan altı sinagog ve mezarlık bugün Yahudi Müzesi olarak korunur.",why:"Prag'ın en derin hikâyesi. Cumartesi kapalı.",stops:["Eski Şehir Meydanı","Pařížská","Eski-Yeni Sinagog","Pinkas Sinagogu","Eski Yahudi Mezarlığı","İspanyol Sinagogu"],pts:[[50.0875,14.4208],[50.0890,14.4195],[50.0901,14.4186],[50.0892,14.4170],[50.0899,14.4175],[50.0901,14.4208]]},
     {id:"r-p-mala",name:"Malá Strana ve Kampa",wiki:"Malá_Strana",desc:"Karl Köprüsü'nün batı ucundan Kampa Adası'na, Lennon Duvarı ve Lázeňská sokağından St. Nikolaus'a, sonra Valdštejn Bahçesi.",hist:"Malá Strana (Küçük Taraf), kale ile nehir arasındaki barok mahalledir. Sarayların çoğu bugün büyükelçilik. Dar sokaklarda yürürken Prag'ın en romantik köşelerinden geçersin.",why:"Köprüden sonra sakin bir yarım saat.",stops:["Köprünün batı ucu","Kampa","Lennon Duvarı","Lázeňská","St. Nikolaus","Valdštejn Bahçesi"],pts:[[50.0866,14.4085],[50.0848,14.4084],[50.0863,14.4068],[50.0868,14.4062],[50.0880,14.4035],[50.0904,14.4079]]},
@@ -1674,55 +1656,7 @@ function themed(style, C){
   return style;
 }
 let lastPick = 0;
-const ROUTE = "#1D3FA8", FERRY = "#0B8FB8", BRAND = "#EE5A3C", BRAND_DK = "#9C2F14";
-/* Çizgi üzerinde yürüme yönünü gösteren beyaz ok (harita resmi olarak bir kez eklenir). */
-function arrowImg(){
-  if (map.hasImage("arr")) return;
-  const S = 40, c = document.createElement("canvas"); c.width = c.height = S; const g = c.getContext("2d");
-  g.lineCap = "round"; g.lineJoin = "round";
-  const path = () => { g.beginPath(); g.moveTo(13, 9); g.lineTo(27, 20); g.lineTo(13, 31); };
-  g.strokeStyle = BRAND_DK; g.lineWidth = 9; path(); g.stroke();
-  g.strokeStyle = "#fff"; g.lineWidth = 5; path(); g.stroke();
-  map.addImage("arr", g.getImageData(0, 0, S, S), {pixelRatio:2});
-}
-/* Yaya yönlendirmesi bazen bir durağa ulaşmak için meydanın etrafında tur attırır.
-   Kısa mesafede (≤900 m) başladığı yere geri dönen ilmikler silinir; ilmik bir durağa uğruyorsa
-   yerine o durağa giden ve aynı sokaktan geri dönen kısa bir çıkıntı bırakılır. (Girdi/çıktı: [lon,lat]) */
-function cleanLine(c, wps){
-  const P = c.map(x => [x[1], x[0]]), n = P.length; if (n < 4) return c;
-  const near = (a, b, m) => mOf(a, b) < m, out = [];
-  let i = 0;
-  while (i < n){
-    out.push(P[i]);
-    let L = 0, cut = -1;
-    for (let j = i + 1; j < n && L <= 900; j++){
-      L += mOf(P[j-1], P[j]);
-      if (j - i >= 3 && L > 40 && near(P[i], P[j], 14)) cut = j;
-    }
-    if (cut < 0){ i++; continue; }
-    // İlmik bir durağa uğruyor mu? Uğruyorsa ilmikteki en yakın noktaya git-gel.
-    let best = -1, bd = 45;
-    wps.forEach(w => { if (near(P[i], w, 30)) return; for (let k = i + 1; k < cut; k++){ const d = mOf(P[k], w); if (d < bd){ bd = d; best = k; } } });
-    if (best > 0){
-      const fwd = P.slice(i + 1, best + 1), back = P.slice(cut - (cut - best), cut).reverse();
-      const a = fwd.reduce((t, q, k) => t + (k ? mOf(fwd[k-1], q) : 0), 0), b = back.reduce((t, q, k) => t + (k ? mOf(back[k-1], q) : 0), 0);
-      const leg = a <= b ? fwd : P.slice(best, cut).reverse(); // kısa olan taraftan git
-      leg.forEach(q => out.push(q)); leg.slice(0, -1).reverse().forEach(q => out.push(q));
-    }
-    i = cut;
-  }
-  return out.map(q => [q[1], q[0]]);
-}
-const OSRM = pts => "https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + pts.map(p => p[1] + "," + p[0]).join(";") + "?overview=full&geometries=geojson&continue_straight=false";
-/* Rota gösterilirken alttaki harita hafifçe soluklaşır, çizgi ve duraklar öne çıkar. */
-function dimMap(id, op){
-  if (!map.getLayer(id)) map.addLayer({id, type:"background", paint:{"background-color":"#FFFFFF","background-opacity":op}}, map.getLayer("names") ? "names" : undefined);
-  map.setLayoutProperty(id, "visibility", "visible");
-}
-function arrowLayer(id, src){
-  if (map.getLayer(id)) return;
-  map.addLayer({id, type:"symbol", source:src, layout:{"symbol-placement":"line", "symbol-spacing":["interpolate",["linear"],["zoom"],12,45,17,90], "icon-image":"arr", "icon-size":["interpolate",["linear"],["zoom"],12,.75,17,1.05], "icon-rotation-alignment":"map", "icon-allow-overlap":true, "icon-ignore-placement":true}});
-}
+const ROUTE = "#1D3FA8", FERRY = "#0B8FB8";
 function openCity(key){
   const changed = !city || city.key !== key;
   city = CITIES[key]; sel = null; store.lastCity = key; save(); setTheme(city);
@@ -1740,21 +1674,19 @@ function openCity(key){
     .catch(() => { $("#loading").lastChild.textContent = "Harita yüklenemedi. Bağlantını kontrol edip sayfayı yenile. Liste sekmesi yine çalışır."; $("#loading").firstChild.hidden = true; });
 }
 function initMap(style){
-  stopMk.forEach(m => m.remove()); stopMk = []; stopFor = null;
   const b = city.bounds;
   map = new maplibregl.Map({container:"map", style, center:ll(city.center), zoom:city.zoom, minZoom:city.minZoom, maxZoom:19,
     maxBounds:[[b[0][1], b[0][0]], [b[1][1], b[1][0]]], dragRotate:true, pitchWithRotate:false, touchPitch:false, maxPitch:60, attributionControl:{compact:true}});
   map.on("rotate", compassUI); map.on("pitch", compassUI);
   city.places.forEach(p => { markers[p.id] = mk(p.id, (artOf(p) ? `<svg class="art" viewBox="0 0 48 56">${artOf(p)}</svg>` : "") + `<div class="${pinCls(p)}" style="--c:${CATS[p.cat].c}"><b>${p.cat === "coffee" ? ic("cup") : p.cat === "bakery" ? ic("croissant") : p.cat === "market" ? ic("cart") : (p.price || "")}</b></div>`, p.name, [p.lat, p.lon], "bottom"); if (ART[p.id]) markers[p.id].el.classList.add("hasart"); });
   let n = 0;
-  city.routes.forEach(r => { markers[r.id] = mk(r.id, `<div class="rstart${r.ferry ? " ferry" : ""}">${r.ferry || ic("walk")}</div>`, r.name, r.pts[0], "center"); });
+  city.routes.forEach(r => { markers[r.id] = mk(r.id, `<div class="rstart${r.ferry ? " ferry" : ""}">${r.ferry || ++n}</div>`, r.name, r.pts[0], "center"); });
   map.on("load", () => {
     $("#loading").hidden = true;
     city.routes.forEach(r => {
       map.addSource(r.id, {type:"geojson", data:gj(r.geo ? r.geo.line : r.pts)});
-      map.addLayer({id:r.id + "-c", type:"line", source:r.id, layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#3A1D0B","line-width":["interpolate",["linear"],["zoom"],12,9,17,16]}});
-      map.addLayer({id:r.id + "-l", type:"line", source:r.id, layout:{"line-cap":"round","line-join":"round"}, paint:r.ferry ? {"line-color":FERRY,"line-width":5,"line-dasharray":[1.6,1.6]} : {"line-color":BRAND,"line-width":["interpolate",["linear"],["zoom"],12,5,17,10]}});
-      if (!r.ferry){ arrowImg(); arrowLayer(r.id + "-a", r.id); }
+      map.addLayer({id:r.id + "-c", type:"line", source:r.id, layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":9}});
+      map.addLayer({id:r.id + "-l", type:"line", source:r.id, layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":r.ferry ? FERRY : ROUTE,"line-width":5,"line-dasharray":r.ferry ? [1.6,1.6] : [0.1,2]}});
       map.on("click", r.id + "-c", () => { lastPick = Date.now(); select(r.id); });
       if (!r.ferry) loadRoute(r);
     });
@@ -1780,50 +1712,24 @@ function mk(id, html, name, pos, anchor){
   el.addEventListener("click", e => { e.stopPropagation(); lastPick = Date.now(); select(id); });
   const m = new maplibregl.Marker({element:el, anchor}).setLngLat(ll(pos)).addTo(map); m.el = el; return m;
 }
-/* Haritada aynı anda tek rota görünür: seçili rota ya da en son seçilen (sabitlenen) rota.
-   Durakları numaralı işaretlerle gösterilir; diğer rotaların yalnızca küçük başlangıç simgesi kalır. */
-let stopMk = [], stopFor = null;
-function shownRoute(){
-  if (!city || NAV) return null;
-  if (sel && city.routes.some(r => r.id === sel)) return sel;
-  const p = (store.pin || {})[city.key];
-  return p === undefined ? ((city.routes.find(r => !r.ferry) || {}).id || null) : p;
-}
-function drawStops(off){
-  const id = store.layers.walk && !off ? shownRoute() : null;
-  if (stopFor === id && (stopMk.length || !id)) return;
-  stopMk.forEach(m => m.remove()); stopMk = []; stopFor = id; if (!id) return;
-  const r = city.routes.find(x => x.id === id); if (!r || r.ferry) return;
-  const names = r.stops && r.stops.length === r.pts.length ? r.stops : null, last = r.pts.length - 1;
-  const loop = last > 0 && km(r.pts[0], r.pts[last]) < 0.06;
-  const idx = names ? r.pts.map((_, i) => i) : [0, last];
-  idx.forEach((i, k) => {
-    if (loop && i === last) return;
-    const label = names ? names[i] + (loop && i === 0 ? " (başlangıç ve bitiş)" : "") : (k === 0 ? "Başlangıç" : "Bitiş");
-    const el = document.createElement("div"); el.className = "pmk rs" + (i === 0 ? " first" : "");
-    el.innerHTML = "<i>" + (names ? i + 1 : (k === 0 ? "A" : "B")) + "</i><span></span>"; el.lastChild.textContent = label;
-    el.addEventListener("click", e => { e.stopPropagation(); lastPick = Date.now(); select(r.id, true); });
-    stopMk.push(new maplibregl.Marker({element:el, anchor:"center"}).setLngLat(ll(r.pts[i])).addTo(map));
-  });
-}
 const pinCls = p => "pin" + (p.cat === "photo" ? " ring" : "") + (store.done[p.id] ? " done" : "") + (store.fav[p.id] ? " fav" : "") + (sel === p.id ? " sel" : "");
 function refresh(){
   if (!map) return;
   city.places.forEach(p => { const el = markers[p.id].el; el.style.display = store.layers[p.cat] && paidOK(p) ? "" : "none"; el.querySelector(".pin").className = pinCls(p); el.classList.toggle("on", sel === p.id); el.classList.toggle("dim", !!store.done[p.id]); });
-  const shown = shownRoute(), planning = planOnMap != null;
-  city.routes.forEach(r => { const on = shown === r.id, el = markers[r.id].el; el.style.display = store.layers.walk && !planning && !(on && !r.ferry) ? "" : "none"; el.firstChild.classList.toggle("sel", on); el.firstChild.classList.toggle("faded", !!shown && !on); el.classList.toggle("on", sel === r.id);
-    if (!map.getLayer(r.id + "-c")) return; const v = store.layers.walk && on && !planning ? "visible" : "none";
-    [r.id + "-c", r.id + "-l", r.id + "-a"].forEach(l => { if (map.getLayer(l)){ map.setLayoutProperty(l, "visibility", v); if (on) map.moveLayer(l, "names"); } }); });
-  drawStops(planning);
+  city.routes.forEach(r => { const on = sel === r.id, el = markers[r.id].el; el.style.display = store.layers.walk ? "" : "none"; el.firstChild.classList.toggle("sel", on); el.classList.toggle("on", on);
+    if (!map.getLayer(r.id + "-c")) return; const v = store.layers.walk ? "visible" : "none", base = r.ferry ? FERRY : ROUTE;
+    map.setLayoutProperty(r.id + "-c", "visibility", v); map.setLayoutProperty(r.id + "-l", "visibility", v);
+    map.setPaintProperty(r.id + "-c", "line-color", on ? "#3A1D0B" : "#fff"); map.setPaintProperty(r.id + "-c", "line-width", on ? 12 : 9);
+    map.setPaintProperty(r.id + "-l", "line-color", on ? "#FFD23F" : base); map.setPaintProperty(r.id + "-l", "line-width", on ? 7 : 5);
+    if (on){ map.moveLayer(r.id + "-c", "names"); map.moveLayer(r.id + "-l", "names"); } });
   if (map.getLayer("names")) map.setFilter("names", ["all", ["in", ["get","cat"], ["literal", Object.keys(CATS).filter(k => store.layers[k])]], store.layers.paid ? true : ["==", ["get","paid"], 0]]);
 }
 /* Rotalar gerçek sokaklardan geçsin: yaya yönlendirme servisi (OSM). Olmazsa düz çizgi kalır. */
 function loadRoute(r){
   const useGeo = g => { r.geo = g; const s = map.getSource(r.id); if (s) s.setData(gj(g.line)); };
-  if (store.geo[r.id] && store.geo[r.id].v === r.pts.length && store.geo[r.id].c){ useGeo(store.geo[r.id]); return; }
-  fetch(OSRM(r.pts))
-    .then(x => x.json()).then(j => { const rt = j.routes[0]; const line = cleanLine(rt.geometry.coordinates, r.pts).map(c => [c[1], c[0]]); let L = 0; line.forEach((p, i) => { if (i) L += km(line[i-1], p); });
-      const g = {v:r.pts.length, c:1, km:L, min:L / 4.8 * 60, line};
+  if (store.geo[r.id] && store.geo[r.id].v === r.pts.length){ useGeo(store.geo[r.id]); return; }
+  fetch("https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + r.pts.map(p => p[1] + "," + p[0]).join(";") + "?overview=full&geometries=geojson")
+    .then(x => x.json()).then(j => { const rt = j.routes[0]; const g = {v:r.pts.length, km:rt.distance/1000, min:rt.duration/60, line:rt.geometry.coordinates.map(c => [c[1], c[0]])};
       store.geo[r.id] = g; save(); useGeo(g); if (sel === r.id) select(r.id, true); }).catch(() => {});
 }
 function renderChips(){
@@ -1875,7 +1781,6 @@ const find = id => city.places.find(p => p.id === id) || city.routes.find(r => r
 function select(id, keepView){
   sel = id; const o = find(id), isRoute = !!o.pts, cat = isRoute ? "walk" : o.cat;
   if (!isRoute && !paidOK(o)){ store.layers.paid = true; save(); renderChips(); }
-  if (isRoute){ store.pin = store.pin || {}; store.pin[city.key] = id; save(); }
   if (tab !== "map") setTab("map"); refresh();
   if (!keepView && map){
     const h = $("#map").clientHeight, narrow = innerWidth < 760;
@@ -1888,7 +1793,7 @@ function select(id, keepView){
     const g = o.geo;
     if (o.ferry) facts = o.facts.map(f => `<dt>${f[0]}</dt><dd>${esc(f[1])}</dd>`).join("");
     else facts = g ? `<dt>Mesafe</dt><dd>${g.km.toFixed(1).replace(".",",")} km</dd><dt>Süre</dt><dd>Yaklaşık ${Math.round(g.min/5)*5} dk (molasız)</dd>` : `<dt>Mesafe</dt><dd>Hesaplanıyor</dd>`;
-    if (o.stops) facts += `<dt>Duraklar</dt><dd>${o.stops.length === o.pts.length ? o.stops.map((x, i) => (i + 1) + ". " + esc(x)).join(" → ") : o.stops.map(esc).join(" → ")}</dd>`;
+    if (o.stops) facts += `<dt>Duraklar</dt><dd>${o.stops.map(esc).join(" → ")}</dd>`;
     const s = o.pts[0], e = o.pts[o.pts.length-1], mid = o.pts.slice(1,-1).map(p => p.join(",")).join("|");
     gm = `https://www.google.com/maps/dir/?api=1&origin=${s.join(",")}&destination=${e.join(",")}&waypoints=${encodeURIComponent(mid)}&travelmode=walking`;
     if (o.ferry) gm = `https://www.google.com/maps/dir/?api=1&origin=${s.join(",")}&destination=${e.join(",")}&travelmode=transit`;
@@ -1914,7 +1819,7 @@ function select(id, keepView){
     <dl class="facts">${facts}</dl>
     ${o.tip ? `<p class="open-q">${esc(o.tip)}</p>` : ""}${open.map(t => `<p class="open-q">${t}</p>`).join("")}
     <div class="acts">
-      ${isRoute && !o.ferry ? `<button class="btn primary go-nav" type="button" data-nav="${o.id}">${NAV_IC}Rotayı başlat</button><button class="btn" type="button" data-hide="${o.id}">Rotayı haritadan gizle</button>` : ""}
+      ${isRoute && !o.ferry ? `<button class="btn primary go-nav" type="button" data-nav="${o.id}">${NAV_IC}Rotayı başlat</button>` : ""}
       ${!isRoute ? `<button class="btn primary go-nav" type="button" data-go="${o.id}">${NAV_IC}Buraya rota oluştur</button>` : ""}
       <a class="btn" href="${dir}" target="_blank" rel="noopener">${isRoute ? "Başlangıca yol tarifi" : "Google Maps yol tarifi"}</a>
       <a class="btn" href="${gm}" target="_blank" rel="noopener">${isRoute ? "Rotayı Google Maps'te aç" : "Google Maps'te aç"}</a>
@@ -1929,7 +1834,6 @@ function select(id, keepView){
 $("#sheet").addEventListener("click", e => {
   if (e.target.closest("#closeSheet")){ closeSheet(); return; }
   const nv = e.target.closest("[data-nav]"); if (nv){ startRouteNav(nv.dataset.nav); return; }
-  const hd = e.target.closest("[data-hide]"); if (hd){ store.pin = store.pin || {}; store.pin[city.key] = null; save(); closeSheet(); return; }
   const t = e.target.closest("[data-t]"); if (!t) return;
   const k = t.dataset.t; if (store[k][sel]) delete store[k][sel]; else store[k][sel] = 1; save(); select(sel, true);
 });
@@ -2490,11 +2394,9 @@ $("#list").addEventListener("click", e => {
 /* ---------- Planı haritada göster ---------- */
 function whenMap(fn){ if (!map) return; if (map.isStyleLoaded()) fn(); else map.once("load", fn); }
 function clearPlanMap(){
-  const had = planOnMap != null;
   planMarkers.forEach(m => m.remove()); planMarkers = []; planOnMap = null;
   $("#map").classList.remove("planning"); $("#planChip").hidden = true;
-  if (map && map.getLayer("plan-l")) ["plan-dim","plan-s","plan-c","plan-l","plan-a"].forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", "none"); });
-  if (map && had && city.places.every(p => markers[p.id])) refresh();
+  if (map && map.getLayer("plan-l")){ map.setLayoutProperty("plan-c", "visibility", "none"); map.setLayoutProperty("plan-l", "visibility", "none"); }
 }
 function showPlanDay(d){
   const P = store.plan; if (!P) return;
@@ -2504,19 +2406,14 @@ function showPlanDay(d){
     clearPlanMap(); planOnMap = d;
     const rows = timeline(P, d).rows, pts = [P.start].concat(rows.map(r => ptOf(r.o)));
     const data = {type:"Feature", geometry:{type:"LineString", coordinates:pts.map(ll)}};
-    // Planda sadece o günün rotası görünsün: hazır yürüyüşlerin noktalı çizgileri ve başlangıç rozetleri gizlenir.
-    city.routes.forEach(r => { if (map.getLayer(r.id + "-c")){ map.setLayoutProperty(r.id + "-c", "visibility", "none"); map.setLayoutProperty(r.id + "-l", "visibility", "none"); } if (markers[r.id]) markers[r.id].el.style.display = "none"; });
-    arrowImg(); dimMap("plan-dim", .45);
     if (!map.getSource("plan")){
       map.addSource("plan", {type:"geojson", data});
-      map.addLayer({id:"plan-s", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#3A1D0B","line-width":["interpolate",["linear"],["zoom"],12,10,17,17]}});
-      map.addLayer({id:"plan-c", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":["interpolate",["linear"],["zoom"],12,7.5,17,13.5]}});
-      map.addLayer({id:"plan-l", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":BRAND,"line-width":["interpolate",["linear"],["zoom"],12,4.5,17,9]}});
-      arrowLayer("plan-a", "plan");
-    } else { map.getSource("plan").setData(data); ["plan-s","plan-c","plan-l","plan-a"].forEach(id => { map.setLayoutProperty(id, "visibility", "visible"); map.moveLayer(id); }); }
+      map.addLayer({id:"plan-c", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":10}});
+      map.addLayer({id:"plan-l", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":city.theme.deep,"line-width":6}});
+    } else { map.getSource("plan").setData(data); map.setLayoutProperty("plan-c", "visibility", "visible"); map.setLayoutProperty("plan-l", "visibility", "visible"); map.moveLayer("plan-c"); map.moveLayer("plan-l"); }
     const s = document.createElement("div"); s.className = "pmk start"; s.innerHTML = ic("flag");
     planMarkers.push(new maplibregl.Marker({element:s}).setLngLat(ll(P.start)).addTo(map));
-    rows.forEach((r, i) => { const el = document.createElement("button"); el.type = "button"; el.className = "pmk" + (r.s.kind !== "see" ? " meal" : ""); el.innerHTML = "<i>" + (i + 1) + "</i><span></span>"; el.lastChild.textContent = r.o.name.replace(/ \(.*\)$/, ""); el.setAttribute("aria-label", (i + 1) + ". durak: " + r.o.name);
+    rows.forEach((r, i) => { const el = document.createElement("button"); el.type = "button"; el.className = "pmk" + (r.s.kind !== "see" ? " meal" : ""); el.textContent = i + 1; el.setAttribute("aria-label", (i + 1) + ". durak: " + r.o.name);
       el.addEventListener("click", ev => { ev.stopPropagation(); lastPick = Date.now(); select(r.o.id); });
       planMarkers.push(new maplibregl.Marker({element:el}).setLngLat(ll(ptOf(r.o))).addTo(map)); });
     $("#map").classList.add("planning");
@@ -2524,8 +2421,8 @@ function showPlanDay(d){
     const bb = new maplibregl.LngLatBounds(ll(pts[0]), ll(pts[0])); pts.forEach(p => bb.extend(ll(p)));
     map.fitBounds(bb, {padding:{top:110, bottom:60, left:40, right:40}, duration:700});
     // Gerçek sokaklardan geçen çizgi (yaya yönlendirme). Olmazsa düz çizgi kalır.
-    if (pts.length <= 40) fetch(OSRM(pts))
-      .then(x => x.json()).then(j => { if (planOnMap === d && j.routes && j.routes[0]) map.getSource("plan").setData({type:"Feature", geometry:{type:"LineString", coordinates:cleanLine(j.routes[0].geometry.coordinates, pts)}}); }).catch(() => {});
+    if (pts.length <= 40) fetch("https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + pts.map(p => p[1] + "," + p[0]).join(";") + "?overview=full&geometries=geojson")
+      .then(x => x.json()).then(j => { if (planOnMap === d && j.routes && j.routes[0]) map.getSource("plan").setData({type:"Feature", geometry:j.routes[0].geometry}); }).catch(() => {});
   });
 }
 $("#planChip").addEventListener("click", () => clearPlanMap());
@@ -2533,7 +2430,7 @@ $("#planChip").addEventListener("click", () => clearPlanMap());
 /* ---------- Rota modu: rotayı başlat, konum oku, haritayı yöne göre çevir ----------
    Google Maps kadar yakına inilmez (NAV_ZOOM); harita hafif eğilir ve yürüdüğün yöne döner.
    Yön, yürürken GPS'ten, dururken telefonun pusulasından alınır. Hiçbiri yoksa rotanın sıradaki noktasına bakılır. */
-var NAV = null, navOpen = false, navMarkers = [];
+var NAV = null;
 var NAV_IC = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l7.5 18.2-7.5-4.3-7.5 4.3z" fill="currentColor"/></svg>';
 var NAV_ZOOM = 16.4, NAV_PITCH = 48, NAV_KMH = 4.5;
 var navHead = null, navGpsHead = null, navGpsT = 0, compassOn = false, mapTouch = false;
@@ -2606,13 +2503,11 @@ function navLayers(){
   ["nav-done","nav-todo"].forEach(id => { if (!map.getSource(id)) map.addSource(id, {type:"geojson", data:empty}); else map.getSource(id).setData(empty); });
   if (!map.getLayer("nav-done")){
     map.addLayer({id:"nav-done", type:"line", source:"nav-done", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#9AA3B5","line-width":7,"line-opacity":.85}});
-    map.addLayer({id:"nav-out", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#3A1D0B","line-width":16}});
     map.addLayer({id:"nav-case", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":13}});
-    map.addLayer({id:"nav-todo", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":BRAND,"line-width":8}});
-    arrowImg(); arrowLayer("nav-dash", "nav-todo");
+    map.addLayer({id:"nav-todo", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#1D3FA8","line-width":8}});
+    map.addLayer({id:"nav-dash", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#FFD23F","line-width":2.5,"line-dasharray":[0.1,3]}});
   }
-  dimMap("nav-dim", .3);
-  ["nav-done","nav-out","nav-case","nav-todo","nav-dash"].forEach(id => { map.setLayoutProperty(id, "visibility", "visible"); map.moveLayer(id); });
+  ["nav-done","nav-case","nav-todo","nav-dash"].forEach(id => { map.setLayoutProperty(id, "visibility", "visible"); map.moveLayer(id); });
 }
 const setLine = (id, pts) => { const s = map.getSource(id); if (s) s.setData({type:"Feature", geometry:{type:"LineString", coordinates:pts.map(ll)}}); };
 
@@ -2624,10 +2519,10 @@ function startNav(o){
     navStop(true);
     const line = o.line.length > 1 ? o.line : o.stops.map(s => s.p), cum = cumOf(line);
     const stops = o.stops.map(s => Object.assign({}, s, {at:nearSeg(line, cum, s.p, 0, line.length).at}));
-    NAV = {name:o.name, line, cum, stops, idx:0, at:0, q:line[0], off:false, follow:true, t0:Date.now(), anim:true}; navOpen = false;
+    NAV = {name:o.name, line, cum, stops, idx:0, at:0, q:line[0], off:false, follow:true, t0:Date.now(), anim:true};
     navHead = null; closeSheet(); setTab("map");
     document.querySelector(".view").classList.add("navigating");
-    clearPlanMap(); navLayers(); navStopMarkers(stops); meShape(); compassUI();
+    clearPlanMap(); navLayers(); meShape(); compassUI();
     const fab = $("#locate"); fab.classList.add("recenter"); fab.innerHTML = "<span></span>Ortala"; fab.hidden = true;
     navBar();
     // 1) Genel bakış: tüm rota ekrana sığar, çizgi baştan sona çizilir.
@@ -2695,8 +2590,7 @@ function navProgress(p){
   let k = nearSeg(L, N.cum, p, Math.max(0, N.idx - 3), N.idx + 80);
   if (k.d > 45){ const g = nearSeg(L, N.cum, p, 0, L.length); if (g.d < k.d) k = g; }
   N.off = k.d > 45;
-  if (!N.off){ N.idx = k.i; N.at = k.at; N.q = k.q; N.offT = 0; }
-  else { if (!N.offT) N.offT = Date.now(); else if (Date.now() - N.offT > 20000) navReroute(); }
+  if (!N.off){ N.idx = k.i; N.at = k.at; N.q = k.q; }
   if (!N.anim){
     setLine("nav-done", L.slice(0, N.idx + 1).concat([N.q]));
     setLine("nav-todo", [N.q].concat(L.slice(N.idx + 1)));
@@ -2718,83 +2612,38 @@ function navBar(){
   el.innerHTML = `<span class="nvi"><svg viewBox="0 0 24 24" style="transform:rotate(${Math.round(turn)}deg)" aria-hidden="true"><path d="M12 2.5l7.5 18.2-7.5-4.3-7.5 4.3z" fill="#fff"/></svg></span>
     <span class="nvt"><b>${esc(head)}</b><small>${esc(sub)}</small></span>
     <button class="nvx" type="button" id="navEnd">Bitir</button><span class="nvbar"><i style="width:${total ? Math.round(cur / total * 100) : 0}%"></i></span>`;
-  // Karta dokununca açılan durak listesi: geçilenler soluk, sıradaki vurgulu. Durağa dokununca harita oraya gider.
-  const ni = N.stops.indexOf(next);
-  el.classList.toggle("open", navOpen);
-  if (navOpen) el.insertAdjacentHTML("beforeend", `<ol class="nvl">${N.stops.map((s, i) => `<li><button type="button" data-ns="${i}" class="${i < ni ? "past" : i === ni ? "next" : ""}"><i>${i ? i : ic("flag")}</i><span>${esc(s.name)}</span><small>${i < ni ? "geçildi" : fmtD(Math.max(0, s.at - cur) / 1000)}</small></button></li>`).join("")}</ol><button type="button" class="nvc" data-nc>Konumuma dön</button>`);
-  else el.insertAdjacentHTML("beforeend", `<span class="nvh">Duraklar ▾</span>`);
-  navMarkers.forEach((m, i) => m.getElement().classList.toggle("past", i < ni));
   el.hidden = tab !== "map";
 }
-$("#navbar").addEventListener("click", e => {
-  if (e.target.closest("#navEnd")){ navStop(); return; }
-  const b = e.target.closest("[data-ns]");
-  if (b && NAV){ const st = NAV.stops[+b.dataset.ns]; navOpen = false; navFollow(false); map.flyTo({center:ll(st.p), zoom:Math.max(map.getZoom(), 16.5), duration:900}); if (st.id && find(st.id)){ lastPick = Date.now(); select(st.id, true); } navBar(); return; }
-  if (e.target.closest("[data-nc]")){ navOpen = false; navFollow(true); navCam(true); navBar(); return; }
-  navOpen = !navOpen; navBar();
-});
-function navStopMarkers(stops){
-  navMarkers.forEach(m => m.remove()); navMarkers = [];
-  stops.forEach((st, i) => { const el = document.createElement("div"); el.className = "pmk nav" + (i ? (st.meal ? " meal" : "") : " start");
-    el.innerHTML = i ? "<i>" + i + "</i>" : ic("flag"); navMarkers.push(new maplibregl.Marker({element:el}).setLngLat(ll(st.p)).addTo(map)); });
-}
+$("#navbar").addEventListener("click", e => { if (e.target.closest("#navEnd")) navStop(); });
 
 function navStop(silent){
   if (!NAV) return;
-  NAV = null; navHead = null; navOpen = false; navMarkers.forEach(m => m.remove()); navMarkers = [];
+  NAV = null; navHead = null;
   document.querySelector(".view").classList.remove("navigating");
   $("#navbar").hidden = true;
   const fab = $("#locate"); fab.classList.remove("recenter"); fab.innerHTML = "<span></span>"; fab.hidden = tab !== "map";
   if (map && !silent){
-    ["nav-dim","nav-done","nav-out","nav-case","nav-todo","nav-dash"].forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", "none"); });
+    ["nav-done","nav-case","nav-todo","nav-dash"].forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", "none"); });
     map.easeTo({pitch:0, bearing:0, zoom:Math.min(map.getZoom(), 15.5), padding:{top:0, bottom:0}, duration:800});
   }
   meShape(); compassUI();
 }
 
 /* Hazır yürüyüş rotası */
-/* Rotayı başlat: konum şehirdeyse ve rotanın başından uzaksan, rota bulunduğun yerden en yakın durağa bağlanır
-   ve oradan sırayla rotanın sonuna kadar devam eder. */
 function startRouteNav(id){
   const r = city.routes.find(x => x.id === id); if (!r) return;
-  compassStart();
   const names = r.stops && r.stops.length === r.pts.length ? r.stops : null;
-  const all = r.pts.map((p, i) => ({p, name:names ? names[i] : (i + 1) + ". durak"}));
-  const here = me && inCity() ? me.slice() : null;
-  if (!here || km(here, r.pts[0]) < 0.12){ startNav({name:r.name, line:r.geo ? r.geo.line : r.pts, stops:all}); return; }
-  const last = all.length - 1, loop = last > 0 && km(r.pts[0], r.pts[last]) < 0.06, n = loop ? last : all.length;
-  let j = 0, bd = 1e9; for (let i = 0; i < n; i++){ const d = km(here, all[i].p); if (d < bd){ bd = d; j = i; } }
-  let seq = all.slice(j);
-  if (seq.length < 2) seq = all.slice(Math.max(0, all.length - 2));
-  const stops = [{p:here, name:"Konumun"}].concat(seq), pts = stops.map(s => s.p);
-  toast("Rota bulunduğun yerden kuruldu: önce " + seq[0].name + " durağına, sonra sırayla devam.");
-  const go = line => startNav({name:r.name, line, stops});
-  fetch(OSRM(pts)).then(x => x.json()).then(j2 => go(j2.routes && j2.routes[0] ? cleanLine(j2.routes[0].geometry.coordinates, pts).map(c => [c[1], c[0]]) : pts)).catch(() => go(pts));
-}
-/* Rotadan 45 m'den fazla uzaklaşıp 20 saniye öyle kalırsan çizgi bulunduğun yerden sıradaki duraklara yeniden hesaplanır. */
-function navReroute(){
-  const N = NAV; if (!N || !me || N.rr || Date.now() - (N.rrT || 0) < 30000) return;
-  const cur = N.at, rest = N.stops.filter(s => s.at > cur + 15); if (!rest.length) return;
-  N.rr = true; N.rrT = Date.now();
-  const pts = [me.slice()].concat(rest.map(s => s.p));
-  fetch(OSRM(pts)).then(x => x.json()).then(j => {
-    if (NAV !== N || !j.routes || !j.routes[0]) return;
-    const line = cleanLine(j.routes[0].geometry.coordinates, pts).map(c => [c[1], c[0]]), cum = cumOf(line);
-    N.line = line; N.cum = cum; N.idx = 0; N.at = 0; N.q = line[0]; N.off = false; N.offT = 0;
-    N.stops = [{p:pts[0], name:"Yeniden hesaplandı", at:0}].concat(rest.map(s => Object.assign({}, s, {at:nearSeg(line, cum, s.p, 0, line.length).at})));
-    navStopMarkers(N.stops); setLine("nav-done", [line[0]]); setLine("nav-todo", line); navBar();
-    toast("Rota bulunduğun yerden yeniden hesaplandı.");
-  }).catch(() => {}).finally(() => { N.rr = false; });
+  startNav({name:r.name, line:r.geo ? r.geo.line : r.pts, stops:r.pts.map((p, i) => ({p, name:names ? names[i] : (i + 1) + ". durak"}))});
 }
 /* Günlük plan: duraklar sırayla, çizgi gerçek sokaklardan (olmazsa düz). */
 function startPlanNav(d){
   const P = store.plan; if (!P) return;
   const rows = timeline(P, d).rows, pts = [P.start].concat(rows.map(r => ptOf(r.o)));
-  const stops = [{p:P.start, name:"Başlangıç"}].concat(rows.map(r => ({p:ptOf(r.o), id:r.o.id, meal:r.s.kind !== "see", name:r.o.name.replace(/ \(.*\)$/, "")})));
+  const stops = [{p:P.start, name:"Başlangıç"}].concat(rows.map(r => ({p:ptOf(r.o), name:r.o.name.replace(/ \(.*\)$/, "")})));
   const go = line => startNav({name:(d + 1) + ". gün planı", line, stops});
   if (pts.length > 40){ go(pts); return; }
-  fetch(OSRM(pts))
-    .then(x => x.json()).then(j => go(j.routes && j.routes[0] ? cleanLine(j.routes[0].geometry.coordinates, pts).map(c => [c[1], c[0]]) : pts)).catch(() => go(pts));
+  fetch("https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + pts.map(p => p[1] + "," + p[0]).join(";") + "?overview=full&geometries=geojson")
+    .then(x => x.json()).then(j => go(j.routes && j.routes[0] ? j.routes[0].geometry.coordinates.map(c => [c[1], c[0]]) : pts)).catch(() => go(pts));
 }
 
 /* ---------- Arama: uygulamadaki noktalar + OpenStreetMap (Photon, yedek Nominatim) ----------
@@ -2988,5 +2837,3 @@ if ("serviceWorker" in navigator && location.protocol === "https:" && location.h
 </script>
 </body>
 </html>
-
-</body></html>
