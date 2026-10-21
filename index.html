@@ -1260,7 +1260,62 @@ const WI_FACTS = [
   {t:"Su bedava", x:"Viyana'nın musluk suyu 1873'ten beri borularla Alplerden gelen kaynak suyudur. Şişe su alma; şehirdeki içme çeşmelerinden ve musluktan doldur."},
   {t:"Bedava Viyana", x:"Stephansdom'un girişi, Hofburg avluları, Schönbrunn ve Belvedere bahçeleri, Wien Museum'un kalıcı sergisi ve Parlamento turu ücretsiz. Uygulama ücretli müzeleri ve pahalı restoranları ayrı bir filtrede gösteriyor."},
   {t:"Yürüyerek gez", x:"İç şehir küçük, çoğu nokta yürüme mesafesinde. Toplu taşıma yalnızca Schönbrunn, Kahlenberg ve Zentralfriedhof için gerekiyor; günlük bileti o güne denk getir."},
-  {t:"26 Ekim Ulusal Bayram", x:"26 Ekim Avusturya'nın ulusal bayramı. Mağazalar kapalı olur; önceki yıllarda Heldenplatz'ta ordu gösterisi yapıldı ve bazı müzeler ücretsizdi. Bu yılın programını doğrula."}
+  {t:"26 Ekim Ulusal Bayram", x:"26 Ekim Avusturya'nın ulusal bayramı. Mağazalar kapalı olur; önceki yıllarda Heldenplatz'ta ordu gösterisi yapıldı ve bazı müzeler ücretsizdi. Bu yılın programını doğrula."},
+  {t:"Kuşatmada genç bir subay", x:"Belvedere'yi yaptıran Savoy Prensi Eugen, 1683'te Kahlenberg'deki kurtarma muharebesinde henüz 19 yaşında genç bir süvari subayıydı. Fransa Kralı XIV. Louis onu ordusuna almamıştı; Habsburglara katıldı ve sonraki 30 yılda Osmanlı'ya karşı en büyük zaferleri kazandı.", p:"w_belv"},
+  {t:"1529'u yağmur durdurdu", x:"Kanuni Sultan Süleyman 1529'da Viyana'ya geldiğinde mevsim çok yağmurlu geçti; ağır toplar çamurda geride kaldı. Lağımlar ve hücumlar surları aşamayınca, kış yaklaşırken ordu Ekim ortasında geri çekildi.", p:"w_hofburg"},
+  {t:"Mozart'ın Türk marşı", x:"1683'ten sonra Osmanlı mehter müziği Viyana'da modaya döndü. Mozart'ın 'Alla Turca' rondosu ve sahnesi bir Osmanlı sarayında geçen 'Saraydan Kız Kaçırma' operası (1782) bu modanın ürünüdür. Beethoven da sonradan bir 'Türk Marşı' yazdı."},
+  {t:"Üçe bölünen Habsburglar", x:"Habsburglar öldüğünde vücutları üç yere gömülürdü: bedenleri Kaisergruft'a, kalpleri Augustinerkirche'deki Kalp Mahzeni'ne (54 kap), iç organları Stephansdom'un katakomblarına.", p:"w_gruft"},
+  {t:"Katakomblardaki kemikler", x:"Stephansdom'un altındaki katakomblarda, eski kilise mezarlığı kapatıldıktan sonra taşınan binlerce Viyanalının kemikleri yatar. Veba dönemlerinde ölüler burada toplu mezarlara konuldu. Katakomblar yalnızca rehberli turla geziliyor.", p:"w_stephan"},
+  {t:"Çatıdaki kartal", x:"Stephansdom'un renkli çatısı yaklaşık 230 bin sırlı kiremitten oluşur. Güney yüzünde kiremitlerle yapılmış çift başlı Habsburg kartalı, kuzey yüzünde Viyana ve Avusturya armaları vardır. Viyanalılar güney kulesine sevgiyle 'Steffl' der.", p:"w_stephan"},
+  {t:"Mozart'ın kayıp mezarı", x:"Mozart 1791'de 35 yaşında Viyana'da öldü ve St. Marx Mezarlığı'nda, dönemin kurallarına göre işaretsiz sıradan bir mezara gömüldü. Mezarının yeri bugün bilinmiyor. Zentralfriedhof'taki Mozart anıtı bu yüzden bir mezar değil, bir anıttır.", p:"w_zentral"},
+  {t:"Figaro'nun evi", x:"Mozart, Stephansdom'un hemen arkasındaki Domgasse 5'te 1784-1787 arasında yaşadı ve 'Figaro'nun Düğünü'nü burada yazdı. Ev bugün Mozarthaus müzesidir; 1683 rotasındaki Kolschitzky plakasıyla aynı sokakta.", p:"w_stephan"},
+  {t:"Beethoven'ın 60 evi", x:"Beethoven Viyana'da otuz beş yıl yaşadı ve 60'tan fazla kez ev değiştirdiği anlatılır. Ev sahipleriyle sık sık kavga eder, gürültüsü yüzünden çıkarılırdı.", p:"w_mayer"},
+  {t:"Heiligenstadt Vasiyeti", x:"1802'de sağırlaşmaya başlayan Beethoven, Heiligenstadt'ta kardeşlerine umutsuz bir mektup yazdı ve göndermedi. Heiligenstadt Vasiyeti diye bilinen bu mektup ölümünden sonra bulundu. Kahlenberg rotası tam bu mahallede biter.", p:"w_mayer"},
+  {t:"Gece yarısı Mavi Tuna", x:"Johann Strauss'un Mavi Tuna valsi 1867'de yazıldı. Avusturya radyosu her yılbaşı gece yarısı onu çalar; Viyana Filarmoni'nin Yeni Yıl Konseri de geleneksel olarak Mavi Tuna ve Radetzky Marşı ile biter.", p:"w_stadtpark"},
+  {t:"Marşın melodisi", x:"Joseph Haydn 1797'de imparator için bir marş besteledi. Aynı melodi bugün Almanya'nın milli marşıdır."},
+  {t:"Viyana Çocuk Korosu", x:"Viyana Çocuk Korosu 1498'de İmparator I. Maximilian'ın saray şapeli için kuruldu. Koro bugün de birçok pazar sabahı Hofburg'daki saray şapelinde ayine eşlik eder.", p:"w_hofburg"},
+  {t:"Freud'un muayenehanesi", x:"Sigmund Freud 1891'den 1938'e kadar Berggasse 19'da yaşadı ve hastalarını orada kabul etti. Nazilerden kaçıp Londra'ya gitmek zorunda kaldı. Ev bugün Sigmund Freud Müzesi'dir; Votivkirche'den yürüyerek 10 dakika.", p:"w_votiv"},
+  {t:"1913'ün tuhaf komşuları", x:"1913'te Viyana'da aynı anda Troçki, Freud, genç Hitler, birkaç haftalığına Stalin ve yakındaki bir fabrikada çalışan Tito bulunuyordu. Troçki'nin satranç oynadığı yer Café Central'dı.", p:"w_central"},
+  {t:"Reddedilen ressam", x:"Genç Adolf Hitler 1907 ve 1908'de Viyana Güzel Sanatlar Akademisi'ne başvurdu ve iki kez reddedildi. Viyana'da yoksulluk içinde kartpostal resimleri satarak yaşadı."},
+  {t:"68 yıllık imparator", x:"Franz Joseph 1848'den 1916'daki ölümüne kadar 68 yıl tahtta kaldı. Sabahın çok erken saatinde kalkıp gününe başladığı ve sade bir demir askerî yatakta uyuduğu anlatılır.", p:"w_schoen"},
+  {t:"Sisi'nin saçları", x:"İmparatoriçe Elisabeth (Sisi) topuklarına kadar inen saçları ve inanılmaz ince beliyle ünlüydü; saçlarının yıkanmasının neredeyse bütün günü aldığı anlatılır. 1898'de Cenevre'de bir İtalyan anarşistin eğeyle saldırısında öldü.", p:"w_hofburg"},
+  {t:"Mayerling", x:"Veliaht Prens Rudolf 1889'da Viyana yakınlarındaki Mayerling av köşkünde genç sevgilisi Mary Vetsera ile birlikte ölü bulundu. Olay Habsburg ailesinin en büyük sırrı oldu; Rudolf bugün Kaisergruft'ta annesi ve babasının yanında yatıyor.", p:"w_gruft"},
+  {t:"Plakadaki tesadüf", x:"Arşidük Franz Ferdinand'ın 1914'te Saraybosna'da vurulduğu arabanın plakası 'A III 118'dir. Bunu 'Armistice 11.11.18' (Ateşkes 11 Kasım 1918) diye okuyanlar çıktı; savaş tam o gün bitti. Araba Askeri Tarih Müzesi'nde.", p:"w_hgm"},
+  {t:"16 çocuklu imparatoriçe", x:"Maria Theresia 40 yıl hükümdarlık yaptı ve 16 çocuk doğurdu. Fransa kraliçesi olup Fransız Devrimi'nde idam edilen Marie Antoinette, onun Schönbrunn'da büyüyen kızıdır.", p:"w_schoen"},
+  {t:"Dünyanın en eski hayvanat bahçesi", x:"Schönbrunn bahçesindeki hayvanat bahçesi 1752'de açıldı ve bugün hâlâ çalışan dünyanın en eski hayvanat bahçesidir.", p:"w_schoen"},
+  {t:"Güzel çeşme", x:"Schönbrunn 'güzel çeşme' demektir. Efsaneye göre İmparator Matthias 17. yüzyıl başında avlanırken burada bir kaynak buldu ve ona bu adı verdi. Sarayın sarı rengi 'Schönbrunn sarısı' olarak imparatorluğun her yerindeki resmî binalara yayıldı.", p:"w_schoen"},
+  {t:"Napolyon Schönbrunn'da", x:"Napolyon Viyana'yı 1805 ve 1809'da işgal etti ve Schönbrunn'da kaldı. Oğlu Reichstadt Dükü, Habsburg annesinin ailesi yanında büyüdü ve 1832'de 21 yaşında Schönbrunn'da öldü.", p:"w_schoen"},
+  {t:"Kongre dans ediyor", x:"Napolyon'dan sonra Avrupa'nın haritası 1814-1815 Viyana Kongresi'nde yeniden çizildi. Toplantılar balolarla o kadar uzadı ki Prens de Ligne 'Kongre dans ediyor ama ilerlemiyor' dedi."},
+  {t:"Yüzlerce balo", x:"Viyana'da her kış yüzlerce balo düzenlenir. En ünlüsü Opera Balosu'dur: Devlet Operası'nın salonu ve sahnesi tek bir dev balo salonuna dönüştürülür.", p:"w_oper"},
+  {t:"Beyaz doğmayan atlar", x:"İspanyol Binicilik Okulu'nun Lipizzan atları koyu renkli, hatta siyaha yakın doğar. Beyazlamaları yıllar sürer ve ancak 6-10 yaşları arasında bembeyaz olurlar.", p:"w_srs"},
+  {t:"Roma hendeği Graben", x:"Viyana'nın çekirdeği Roma'nın Vindobona askeri kampıdır. Bugünkü Graben caddesinin adı 'hendek' demektir ve Roma kampının hendeğinin izini takip eder.", p:"w_pest"},
+  {t:"Saatteki imparator", x:"Ankeruhr'da geçen figürlerden biri Roma imparatoru Marcus Aurelius'tur; geleneğe göre 180 yılında Vindobona'da öldü. Öğlen 12'de bütün figürler müzik eşliğinde geçer.", p:"w_ankeruhr"},
+  {t:"Şarlman efsanesi", x:"Peterskirche'nin cephesindeki kabartma, kilisenin Şarlman tarafından kurulduğu efsanesini anlatır. Bu bir efsanedir ama kilisenin yerinde çok eski bir ibadethane olduğu bilinir.", p:"w_peter"},
+  {t:"Venüs 30 bin yaşında", x:"KHM'nin karşısındaki Doğa Tarihi Müzesi'nde yaklaşık 30 bin yıllık Willendorf Venüsü durur: avuç içine sığan, taş devrinin en ünlü kadın heykelciği.", p:"w_khm"},
+  {t:"Altın lahana", x:"Karlsplatz yakınındaki Secession binası 1898'de Klimt ve arkadaşlarının sanat isyanı için yapıldı. Altın yapraklı kubbesine Viyanalılar 'altın lahana' der. Kapısında 'Her çağa kendi sanatı, sanata özgürlüğü' yazar."},
+  {t:"Süs suçtur", x:"Mimar Adolf Loos 'Süs ve Suç' adlı yazısıyla gereksiz süslemeye savaş açtı. Michaelerplatz'taki süssüz Looshaus 1911'de bittiğinde büyük skandal oldu.", p:"w_michaeler"},
+  {t:"Viyana'nın sosyal konutları", x:"Viyanalıların büyük bir kısmı belediyenin ya da kooperatiflerin uygun kiralı konutlarında yaşar. Bu sistemin en ünlü binası, yaklaşık 1,1 km uzunluğundaki Karl-Marx-Hof'tur. Hundertwasserhaus da bir belediye konutudur.", p:"w_hundert"},
+  {t:"Posta kodunun sırrı", x:"Viyana 23 bölgeye ayrılır. Posta kodunun ortadaki iki rakamı bölgeyi gösterir: 1010 1. bölge (iç şehir), 1130 13. bölge (Schönbrunn), 1160 16. bölge (Ottakring, Brunnenmarkt)."},
+  {t:"Wiener mi Frankfurter mi", x:"Almanya'da 'Wiener' denen sosise Viyana'da 'Frankfurter' denir. Sosisi 19. yüzyıl başında Frankfurt'ta çıraklık yapmış Viyanalı kasap Johann Georg Lahner yaptı.", p:"w_bitzinger"},
+  {t:"Sosis büfesi dili", x:"Würstelstand'larda kendine özgü bir argo vardır. Käsekrainer'e şakayla 'Eitrige', yanındaki ekmek ucuna 'Scherzl' denir. Sipariş verirken bunları söylersen satıcı gülümser.", p:"w_bitzinger"},
+  {t:"Gazete okunan hamur", x:"Gerçek Viyana elmalı strudelinin hamuru, altına konan gazete okunabilecek kadar ince açılır. Pek çok yemek tarihçisi bu ince hamurun Osmanlı yufkasından Macaristan üzerinden geldiğini düşünür.", p:"w_demel"},
+  {t:"Saçmalık pankek", x:"Kaiserschmarrn, parçalanmış tatlı pankektir. 'Schmarrn' Avusturya'da aynı zamanda 'saçmalık' demektir; adının imparator Franz Joseph için yapılan bir tatlıdan geldiği anlatılır.", p:"w_demel"},
+  {t:"Şnitzel Milano'dan mı", x:"Wiener Schnitzel'in Mareşal Radetzky tarafından Milano'dan getirildiği hikâyesi yaygındır ama tarihçiler bunun sonradan uydurulmuş bir efsane olduğunu söyler.", p:"w_figl"},
+  {t:"Kahve nasıl söylenir", x:"Kleiner Schwarzer: espresso. Großer Brauner: sütlü büyük kahve. Verlängerter: suyla uzatılmış espresso. Melange: yarı kahve yarı süt köpüğü. Einspänner: bardakta, üstü bol kremalı sert kahve. Garsona 'Herr Ober' diye seslenilir.", p:"w_hawelka"},
+  {t:"Tek atlı arabacının kahvesi", x:"Einspänner 'tek atlı araba' demektir. Arabacıların bir eliyle dizgin tutarken içtiği, kremanın sıcak tuttuğu kahve olduğu anlatılır.", p:"w_hawelka"},
+  {t:"Fiaker'in adı", x:"Viyana'nın atlı fayton arabalarına Fiaker denir. Ad, 17. yüzyılda Paris'te kiralık arabaların beklediği Saint-Fiacre otelinden gelir."},
+  {t:"Sisi'nin menekşeleri", x:"Demel'in vitrininde satılan şekerlenmiş menekşelerin İmparatoriçe Sisi'nin sevdiği tatlılardan olduğu anlatılır.", p:"w_demel"},
+  {t:"Üçüncü Adam", x:"1949 yapımı Üçüncü Adam filmi savaş sonrası yıkık Viyana'da çekildi. Orson Welles'in Riesenrad kabinindeki ünlü 'guguklu saat' konuşması bu filmdendir; şehirde filmin kanalizasyon sahnelerinin turları da var.", p:"w_riesenrad"},
+  {t:"Hanswurst'un parkı", x:"Prater'in lunapark bölümüne 'Wurstelprater' denir. Ad sosisten değil, Viyana halk tiyatrosunun soytarı karakteri Hanswurst'tan gelir. Riesenrad yaklaşık 65 metre yüksekliğindedir.", p:"w_riesenrad"},
+  {t:"Yapay ada", x:"Tuna, şehir merkezinden biraz uzaktan akar; iç şehrin kenarındaki su aslında Tuna Kanalı'dır. Taşkınlara karşı yapılan 21 km'lik yapay Tuna Adası bugün yaz aylarında Viyanalıların plajıdır."},
+  {t:"Ölüler yaşayanlardan fazla", x:"1874'te açılan Zentralfriedhof'ta yaklaşık 3 milyon kişi gömülüdür, yani Viyana'nın bugünkü nüfusundan fazla. Viyanalıların ölümle ilgili kara mizahı meşhurdur.", p:"w_zentral"},
+  {t:"Turnike yok", x:"Viyana metrosunda turnike yoktur, bilet kontrolü güvene dayanır. Ama kontrolörler sık çıkar ve biletsiz yakalanmanın cezası yüksektir. Biletini binmeden önce damgalat ya da uygulamadan al."},
+  {t:"Pazar günü kapalı", x:"Avusturya'da mağazalar pazar günü kanunen kapalıdır. Garlarda ve bazı istasyonlarda açık marketler bulunur; Neuer Markt'taki büyük BILLA da pazar açık.", p:"w_billa"},
+  {t:"Bahşiş nasıl verilir", x:"Viyana'da bahşiş masaya bırakılmaz. Hesap gelince garsona bahşiş dahil ödeyeceğin tutarı söylersin; yaklaşık yüzde 5-10 yuvarlamak normaldir."},
+  {t:"Grüß Gott", x:"Avusturya'da günlük selam 'Grüß Gott'tur. Arkadaşlar arasında 'Servus' denir; bu söz hem merhaba hem hoşça kal anlamına gelir."},
+  {t:"Prens Eugen hiç evlenmedi", x:"Belvedere 'güzel manzara' demektir. Sarayı yaptıran Prens Eugen hiç evlenmedi; servetinin ve kütüphanesinin büyük kısmı ölümünden sonra imparatorluğa geçti. Kütüphanesi bugün Ulusal Kütüphane'nin Prunksaal salonundadır.", p:"w_prunksaal"},
+  {t:"İki milyonluk şehir", x:"Viyana 1910 dolayında iki milyonu aşan bir imparatorluk başkentiydi. İmparatorluk çökünce nüfus azaldı ve şehir ancak 2020'lerde yeniden iki milyonu geçti."},
+  {t:"Hep listenin başında", x:"Viyana, yaşam kalitesi sıralamalarında yıllarca dünyanın en yaşanabilir şehri seçildi. Ucuz toplu taşıma, sosyal konutlar, temiz musluk suyu ve bol yeşil alan bunun başlıca nedenleri sayılır."}
 ];
 const WI_MISSIONS = {
   easy:[
@@ -2117,9 +2172,22 @@ function onPos(pos){
 
 /* ---------- Günün bilgisi ---------- */
 let factIdx = 0;
+/* Bilgiler her şehir için karıştırılmış bir destede durur: açılış ya da "Bir tane daha" sıradakini gösterir,
+   deste bitene kadar hiçbiri tekrar etmez, sonra yeniden karıştırılır (yeni destenin ilki son gösterilen olmaz). */
+function nextFact(n){
+  store.factDeck = store.factDeck || {};
+  let d = store.factDeck[city.key];
+  if (!d || d.n !== n || d.pos >= d.order.length){
+    const lastShown = d && d.order ? d.order[d.pos - 1] : -1, order = Array.from({length:n}, (_, i) => i);
+    for (let i = n - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+    if (n > 1 && order[0] === lastShown) [order[0], order[1]] = [order[1], order[0]];
+    d = store.factDeck[city.key] = {n, order, pos:0};
+  }
+  const k = d.order[d.pos++]; save(); return k;
+}
 function openFact(next){
   const F = city.facts;
-  factIdx = next ? (factIdx + 1) % F.length : dayNum() % F.length;
+  factIdx = nextFact(F.length);
   const f = F[factIdx], m = $("#factModal"), pl = f.p && placeById(f.p);
   m.innerHTML = `<div class="fact" role="dialog" aria-modal="true" aria-label="Günün bilgisi">
     <span class="fact-k">${next ? "Bir bilgi daha" : "Günün bilgisi"}</span>
