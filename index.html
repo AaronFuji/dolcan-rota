@@ -102,12 +102,11 @@ h1,h2,h3,p,dl{margin:0}
 .pin.sel{width:38px;height:38px;border-color:var(--ink)}
 .rstart{width:30px;height:30px;border-radius:50%;background:var(--walk);border:3px solid var(--white);box-shadow:0 3px 0 rgba(58,29,11,.3);display:grid;place-items:center;color:var(--white);font-weight:800;font-family:var(--display);font-size:16px}
 .rstart.sel{border-color:var(--ink)}
-.rstart.faded{opacity:.7;transform:scale(.8)}
+.rstart.faded{opacity:.75;transform:scale(.85)}
 .rstart svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.mk.rs{z-index:6}
-.rstop{width:28px;height:28px;border-radius:50%;background:#FFD23F;border:3px solid #3A1D0B;color:#3A1D0B;display:grid;place-items:center;font-weight:800;font-family:var(--display);font-size:14px;box-shadow:0 2px 0 rgba(58,29,11,.35)}
-.rstop.first{background:#1D3FA8;color:#fff}
-.far .mk.rs span{display:none}
+.pmk.rs{z-index:6}
+.pmk.rs.first{background:#1D3FA8}
+.far .pmk.rs span{display:none}
 .medot{width:22px;height:22px;border-radius:50%;background:var(--me);border:4px solid var(--white);box-shadow:0 0 0 0 rgba(18,115,235,.5);animation:pulse 1.6s infinite}
 @keyframes pulse{to{box-shadow:0 0 0 20px rgba(18,115,235,0)}}
 .fab{position:absolute;right:12px;bottom:34px;width:52px;height:52px;border-radius:50%;background:var(--white);box-shadow:var(--shadow);display:grid;place-items:center;z-index:500}
@@ -195,9 +194,9 @@ h1,h2,h3,p,dl{margin:0}
 @keyframes spOut{to{opacity:0;visibility:hidden}}
 @media (prefers-reduced-motion:reduce){#splash{animation:spOut .3s 1.2s forwards}.sp-word{clip-path:none}.sp-motto{opacity:1;transform:none}}
 .planchip{position:absolute;left:50%;transform:translateX(-50%);bottom:34px;z-index:470;height:40px;padding:0 14px;border-radius:99px;background:var(--ink);color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
-.planning .mk{opacity:.3}
+.planning .mk{opacity:.3} .planning .rstart{display:none} .pmk i{font-style:normal;display:grid;place-items:center;width:100%;height:100%} .pmk span{position:absolute;top:100%;left:50%;transform:translate(-50%,4px);white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis;background:#fff;color:var(--ink);font-size:11px;font-weight:800;line-height:1;padding:4px 7px;border-radius:9px;box-shadow:0 2px 0 rgba(58,29,11,.18);pointer-events:none} .pmk:empty span,.pmk.start span{display:none}
 .planning .mk.on{opacity:1}
-.pmk{width:30px;height:30px;border-radius:50%;background:var(--orange-deep);color:#fff;border:3px solid #fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 3px 0 rgba(58,29,11,.35);cursor:pointer;font-family:var(--body)}
+.pmk{position:relative;width:34px;height:34px;border-radius:50%;background:#EE5A3C;color:#fff;border:3px solid #fff;font-weight:800;font-size:13px;display:grid;place-items:center;box-shadow:0 3px 0 rgba(58,29,11,.35);cursor:pointer;font-family:var(--body)}
 .pmk.meal{background:#7A4A2A}
 .pmk.start{background:var(--ink);font-size:11px}
 .phead{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -316,6 +315,19 @@ h1,h2,h3,p,dl{margin:0}
 .compass svg{width:30px;height:30px}
 #navbar{position:absolute;left:10px;right:10px;top:10px;z-index:690;background:var(--white);border-radius:20px;box-shadow:0 6px 0 rgba(58,29,11,.18),0 8px 22px rgba(58,29,11,.25);padding:10px 10px 10px 14px;display:flex;align-items:center;gap:12px;animation:navIn .5s cubic-bezier(.34,1.5,.6,1)}
 @keyframes navIn{from{transform:translateY(-130%)}}
+#navbar{flex-wrap:wrap;cursor:pointer}
+#navbar .nvh{position:absolute;right:86px;bottom:-12px;background:var(--ink);color:#fff;font-size:11px;font-weight:800;padding:3px 9px;border-radius:99px;box-shadow:0 2px 0 rgba(0,0,0,.2)}
+#navbar.open{bottom:auto;max-height:70vh;overflow:auto}
+#navbar .nvl{list-style:none;margin:6px 0 0;padding:8px 0 0;border-top:2px dashed #EADBC8;width:100%;display:flex;flex-direction:column;gap:4px}
+#navbar .nvl button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:7px 6px;border-radius:12px;background:none;font-weight:800;color:var(--ink)}
+#navbar .nvl button.next{background:#FFE6DE}
+#navbar .nvl button.past{opacity:.45}
+#navbar .nvl i{flex:none;width:26px;height:26px;border-radius:50%;background:#EE5A3C;color:#fff;font-style:normal;font-size:12px;display:grid;place-items:center}
+#navbar .nvl i .ic{width:13px;height:13px}
+#navbar .nvl span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#navbar .nvl small{flex:none;font-size:12px;color:var(--ink-soft)}
+#navbar .nvc{width:100%;margin-top:6px;height:42px;border-radius:14px;background:var(--walk);color:#fff;font-weight:800}
+.pmk.nav{cursor:default}.pmk.nav.past{background:#9AA3B5}
 #navbar .nvi{flex:none;width:44px;height:44px;border-radius:14px;background:var(--walk);display:grid;place-items:center}
 #navbar .nvi svg{width:26px;height:26px;transition:transform .4s}
 #navbar .nvt{flex:1;min-width:0}
@@ -1662,7 +1674,55 @@ function themed(style, C){
   return style;
 }
 let lastPick = 0;
-const ROUTE = "#1D3FA8", FERRY = "#0B8FB8";
+const ROUTE = "#1D3FA8", FERRY = "#0B8FB8", BRAND = "#EE5A3C", BRAND_DK = "#9C2F14";
+/* Çizgi üzerinde yürüme yönünü gösteren beyaz ok (harita resmi olarak bir kez eklenir). */
+function arrowImg(){
+  if (map.hasImage("arr")) return;
+  const S = 40, c = document.createElement("canvas"); c.width = c.height = S; const g = c.getContext("2d");
+  g.lineCap = "round"; g.lineJoin = "round";
+  const path = () => { g.beginPath(); g.moveTo(13, 9); g.lineTo(27, 20); g.lineTo(13, 31); };
+  g.strokeStyle = BRAND_DK; g.lineWidth = 9; path(); g.stroke();
+  g.strokeStyle = "#fff"; g.lineWidth = 5; path(); g.stroke();
+  map.addImage("arr", g.getImageData(0, 0, S, S), {pixelRatio:2});
+}
+/* Yaya yönlendirmesi bazen bir durağa ulaşmak için meydanın etrafında tur attırır.
+   Kısa mesafede (≤900 m) başladığı yere geri dönen ilmikler silinir; ilmik bir durağa uğruyorsa
+   yerine o durağa giden ve aynı sokaktan geri dönen kısa bir çıkıntı bırakılır. (Girdi/çıktı: [lon,lat]) */
+function cleanLine(c, wps){
+  const P = c.map(x => [x[1], x[0]]), n = P.length; if (n < 4) return c;
+  const near = (a, b, m) => mOf(a, b) < m, out = [];
+  let i = 0;
+  while (i < n){
+    out.push(P[i]);
+    let L = 0, cut = -1;
+    for (let j = i + 1; j < n && L <= 900; j++){
+      L += mOf(P[j-1], P[j]);
+      if (j - i >= 3 && L > 40 && near(P[i], P[j], 14)) cut = j;
+    }
+    if (cut < 0){ i++; continue; }
+    // İlmik bir durağa uğruyor mu? Uğruyorsa ilmikteki en yakın noktaya git-gel.
+    let best = -1, bd = 45;
+    wps.forEach(w => { if (near(P[i], w, 30)) return; for (let k = i + 1; k < cut; k++){ const d = mOf(P[k], w); if (d < bd){ bd = d; best = k; } } });
+    if (best > 0){
+      const fwd = P.slice(i + 1, best + 1), back = P.slice(cut - (cut - best), cut).reverse();
+      const a = fwd.reduce((t, q, k) => t + (k ? mOf(fwd[k-1], q) : 0), 0), b = back.reduce((t, q, k) => t + (k ? mOf(back[k-1], q) : 0), 0);
+      const leg = a <= b ? fwd : P.slice(best, cut).reverse(); // kısa olan taraftan git
+      leg.forEach(q => out.push(q)); leg.slice(0, -1).reverse().forEach(q => out.push(q));
+    }
+    i = cut;
+  }
+  return out.map(q => [q[1], q[0]]);
+}
+const OSRM = pts => "https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + pts.map(p => p[1] + "," + p[0]).join(";") + "?overview=full&geometries=geojson&continue_straight=false";
+/* Rota gösterilirken alttaki harita hafifçe soluklaşır, çizgi ve duraklar öne çıkar. */
+function dimMap(id, op){
+  if (!map.getLayer(id)) map.addLayer({id, type:"background", paint:{"background-color":"#FFFFFF","background-opacity":op}}, map.getLayer("names") ? "names" : undefined);
+  map.setLayoutProperty(id, "visibility", "visible");
+}
+function arrowLayer(id, src){
+  if (map.getLayer(id)) return;
+  map.addLayer({id, type:"symbol", source:src, layout:{"symbol-placement":"line", "symbol-spacing":["interpolate",["linear"],["zoom"],12,45,17,90], "icon-image":"arr", "icon-size":["interpolate",["linear"],["zoom"],12,.75,17,1.05], "icon-rotation-alignment":"map", "icon-allow-overlap":true, "icon-ignore-placement":true}});
+}
 function openCity(key){
   const changed = !city || city.key !== key;
   city = CITIES[key]; sel = null; store.lastCity = key; save(); setTheme(city);
@@ -1692,8 +1752,9 @@ function initMap(style){
     $("#loading").hidden = true;
     city.routes.forEach(r => {
       map.addSource(r.id, {type:"geojson", data:gj(r.geo ? r.geo.line : r.pts)});
-      map.addLayer({id:r.id + "-c", type:"line", source:r.id, layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":9}});
-      map.addLayer({id:r.id + "-l", type:"line", source:r.id, layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":r.ferry ? FERRY : ROUTE,"line-width":5,"line-dasharray":r.ferry ? [1.6,1.6] : [0.1,2]}});
+      map.addLayer({id:r.id + "-c", type:"line", source:r.id, layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#3A1D0B","line-width":["interpolate",["linear"],["zoom"],12,9,17,16]}});
+      map.addLayer({id:r.id + "-l", type:"line", source:r.id, layout:{"line-cap":"round","line-join":"round"}, paint:r.ferry ? {"line-color":FERRY,"line-width":5,"line-dasharray":[1.6,1.6]} : {"line-color":BRAND,"line-width":["interpolate",["linear"],["zoom"],12,5,17,10]}});
+      if (!r.ferry){ arrowImg(); arrowLayer(r.id + "-a", r.id); }
       map.on("click", r.id + "-c", () => { lastPick = Date.now(); select(r.id); });
       if (!r.ferry) loadRoute(r);
     });
@@ -1719,20 +1780,18 @@ function mk(id, html, name, pos, anchor){
   el.addEventListener("click", e => { e.stopPropagation(); lastPick = Date.now(); select(id); });
   const m = new maplibregl.Marker({element:el, anchor}).setLngLat(ll(pos)).addTo(map); m.el = el; return m;
 }
-const pinCls = p => "pin" + (p.cat === "photo" ? " ring" : "") + (store.done[p.id] ? " done" : "") + (store.fav[p.id] ? " fav" : "") + (sel === p.id ? " sel" : "");
 /* Haritada aynı anda tek rota görünür: seçili rota ya da en son seçilen (sabitlenen) rota.
-   Durakları numaralı işaretlerle gösterilir; diğer rotaların yalnızca başlangıç simgesi kalır. */
+   Durakları numaralı işaretlerle gösterilir; diğer rotaların yalnızca küçük başlangıç simgesi kalır. */
 let stopMk = [], stopFor = null;
 function shownRoute(){
-  if (!city) return null;
+  if (!city || NAV) return null;
   if (sel && city.routes.some(r => r.id === sel)) return sel;
-  if (NAV) return null;
   const p = (store.pin || {})[city.key];
   return p === undefined ? ((city.routes.find(r => !r.ferry) || {}).id || null) : p;
 }
-function drawStops(){
-  const id = store.layers.walk ? shownRoute() : null;
-  if (stopFor === id && stopMk.length) return;
+function drawStops(off){
+  const id = store.layers.walk && !off ? shownRoute() : null;
+  if (stopFor === id && (stopMk.length || !id)) return;
   stopMk.forEach(m => m.remove()); stopMk = []; stopFor = id; if (!id) return;
   const r = city.routes.find(x => x.id === id); if (!r || r.ferry) return;
   const names = r.stops && r.stops.length === r.pts.length ? r.stops : null, last = r.pts.length - 1;
@@ -1740,33 +1799,31 @@ function drawStops(){
   const idx = names ? r.pts.map((_, i) => i) : [0, last];
   idx.forEach((i, k) => {
     if (loop && i === last) return;
-    const num = names ? i + 1 : (k === 0 ? "A" : "B");
     const label = names ? names[i] + (loop && i === 0 ? " (başlangıç ve bitiş)" : "") : (k === 0 ? "Başlangıç" : "Bitiş");
-    const el = document.createElement("div"); el.className = "mk on rs";
-    el.innerHTML = `<div class="rstop${i === 0 ? " first" : ""}">${num}</div><span></span>`; el.lastChild.textContent = label;
+    const el = document.createElement("div"); el.className = "pmk rs" + (i === 0 ? " first" : "");
+    el.innerHTML = "<i>" + (names ? i + 1 : (k === 0 ? "A" : "B")) + "</i><span></span>"; el.lastChild.textContent = label;
     el.addEventListener("click", e => { e.stopPropagation(); lastPick = Date.now(); select(r.id, true); });
     stopMk.push(new maplibregl.Marker({element:el, anchor:"center"}).setLngLat(ll(r.pts[i])).addTo(map));
   });
 }
+const pinCls = p => "pin" + (p.cat === "photo" ? " ring" : "") + (store.done[p.id] ? " done" : "") + (store.fav[p.id] ? " fav" : "") + (sel === p.id ? " sel" : "");
 function refresh(){
   if (!map) return;
   city.places.forEach(p => { const el = markers[p.id].el; el.style.display = store.layers[p.cat] && paidOK(p) ? "" : "none"; el.querySelector(".pin").className = pinCls(p); el.classList.toggle("on", sel === p.id); el.classList.toggle("dim", !!store.done[p.id]); });
-  const shown = shownRoute();
-  city.routes.forEach(r => { const on = shown === r.id, el = markers[r.id].el; el.style.display = store.layers.walk && !(on && !r.ferry) ? "" : "none"; el.firstChild.classList.toggle("sel", on); el.firstChild.classList.toggle("faded", !!shown && !on); el.classList.toggle("on", sel === r.id);
-    if (!map.getLayer(r.id + "-c")) return; const v = store.layers.walk && on ? "visible" : "none", base = r.ferry ? FERRY : ROUTE;
-    map.setLayoutProperty(r.id + "-c", "visibility", v); map.setLayoutProperty(r.id + "-l", "visibility", v);
-    map.setPaintProperty(r.id + "-c", "line-color", on ? "#3A1D0B" : "#fff"); map.setPaintProperty(r.id + "-c", "line-width", on ? 12 : 9);
-    map.setPaintProperty(r.id + "-l", "line-color", on ? "#FFD23F" : base); map.setPaintProperty(r.id + "-l", "line-width", on ? 7 : 5);
-    if (on){ map.moveLayer(r.id + "-c", "names"); map.moveLayer(r.id + "-l", "names"); } });
-  drawStops();
+  const shown = shownRoute(), planning = planOnMap != null;
+  city.routes.forEach(r => { const on = shown === r.id, el = markers[r.id].el; el.style.display = store.layers.walk && !planning && !(on && !r.ferry) ? "" : "none"; el.firstChild.classList.toggle("sel", on); el.firstChild.classList.toggle("faded", !!shown && !on); el.classList.toggle("on", sel === r.id);
+    if (!map.getLayer(r.id + "-c")) return; const v = store.layers.walk && on && !planning ? "visible" : "none";
+    [r.id + "-c", r.id + "-l", r.id + "-a"].forEach(l => { if (map.getLayer(l)){ map.setLayoutProperty(l, "visibility", v); if (on) map.moveLayer(l, "names"); } }); });
+  drawStops(planning);
   if (map.getLayer("names")) map.setFilter("names", ["all", ["in", ["get","cat"], ["literal", Object.keys(CATS).filter(k => store.layers[k])]], store.layers.paid ? true : ["==", ["get","paid"], 0]]);
 }
 /* Rotalar gerçek sokaklardan geçsin: yaya yönlendirme servisi (OSM). Olmazsa düz çizgi kalır. */
 function loadRoute(r){
   const useGeo = g => { r.geo = g; const s = map.getSource(r.id); if (s) s.setData(gj(g.line)); };
-  if (store.geo[r.id] && store.geo[r.id].v === r.pts.length){ useGeo(store.geo[r.id]); return; }
-  fetch("https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + r.pts.map(p => p[1] + "," + p[0]).join(";") + "?overview=full&geometries=geojson")
-    .then(x => x.json()).then(j => { const rt = j.routes[0]; const g = {v:r.pts.length, km:rt.distance/1000, min:rt.duration/60, line:rt.geometry.coordinates.map(c => [c[1], c[0]])};
+  if (store.geo[r.id] && store.geo[r.id].v === r.pts.length && store.geo[r.id].c){ useGeo(store.geo[r.id]); return; }
+  fetch(OSRM(r.pts))
+    .then(x => x.json()).then(j => { const rt = j.routes[0]; const line = cleanLine(rt.geometry.coordinates, r.pts).map(c => [c[1], c[0]]); let L = 0; line.forEach((p, i) => { if (i) L += km(line[i-1], p); });
+      const g = {v:r.pts.length, c:1, km:L, min:L / 4.8 * 60, line};
       store.geo[r.id] = g; save(); useGeo(g); if (sel === r.id) select(r.id, true); }).catch(() => {});
 }
 function renderChips(){
@@ -2433,9 +2490,11 @@ $("#list").addEventListener("click", e => {
 /* ---------- Planı haritada göster ---------- */
 function whenMap(fn){ if (!map) return; if (map.isStyleLoaded()) fn(); else map.once("load", fn); }
 function clearPlanMap(){
+  const had = planOnMap != null;
   planMarkers.forEach(m => m.remove()); planMarkers = []; planOnMap = null;
   $("#map").classList.remove("planning"); $("#planChip").hidden = true;
-  if (map && map.getLayer("plan-l")){ map.setLayoutProperty("plan-c", "visibility", "none"); map.setLayoutProperty("plan-l", "visibility", "none"); }
+  if (map && map.getLayer("plan-l")) ["plan-dim","plan-s","plan-c","plan-l","plan-a"].forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", "none"); });
+  if (map && had && city.places.every(p => markers[p.id])) refresh();
 }
 function showPlanDay(d){
   const P = store.plan; if (!P) return;
@@ -2445,14 +2504,19 @@ function showPlanDay(d){
     clearPlanMap(); planOnMap = d;
     const rows = timeline(P, d).rows, pts = [P.start].concat(rows.map(r => ptOf(r.o)));
     const data = {type:"Feature", geometry:{type:"LineString", coordinates:pts.map(ll)}};
+    // Planda sadece o günün rotası görünsün: hazır yürüyüşlerin noktalı çizgileri ve başlangıç rozetleri gizlenir.
+    city.routes.forEach(r => { if (map.getLayer(r.id + "-c")){ map.setLayoutProperty(r.id + "-c", "visibility", "none"); map.setLayoutProperty(r.id + "-l", "visibility", "none"); } if (markers[r.id]) markers[r.id].el.style.display = "none"; });
+    arrowImg(); dimMap("plan-dim", .45);
     if (!map.getSource("plan")){
       map.addSource("plan", {type:"geojson", data});
-      map.addLayer({id:"plan-c", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":10}});
-      map.addLayer({id:"plan-l", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":city.theme.deep,"line-width":6}});
-    } else { map.getSource("plan").setData(data); map.setLayoutProperty("plan-c", "visibility", "visible"); map.setLayoutProperty("plan-l", "visibility", "visible"); map.moveLayer("plan-c"); map.moveLayer("plan-l"); }
+      map.addLayer({id:"plan-s", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#3A1D0B","line-width":["interpolate",["linear"],["zoom"],12,10,17,17]}});
+      map.addLayer({id:"plan-c", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":["interpolate",["linear"],["zoom"],12,7.5,17,13.5]}});
+      map.addLayer({id:"plan-l", type:"line", source:"plan", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":BRAND,"line-width":["interpolate",["linear"],["zoom"],12,4.5,17,9]}});
+      arrowLayer("plan-a", "plan");
+    } else { map.getSource("plan").setData(data); ["plan-s","plan-c","plan-l","plan-a"].forEach(id => { map.setLayoutProperty(id, "visibility", "visible"); map.moveLayer(id); }); }
     const s = document.createElement("div"); s.className = "pmk start"; s.innerHTML = ic("flag");
     planMarkers.push(new maplibregl.Marker({element:s}).setLngLat(ll(P.start)).addTo(map));
-    rows.forEach((r, i) => { const el = document.createElement("button"); el.type = "button"; el.className = "pmk" + (r.s.kind !== "see" ? " meal" : ""); el.textContent = i + 1; el.setAttribute("aria-label", (i + 1) + ". durak: " + r.o.name);
+    rows.forEach((r, i) => { const el = document.createElement("button"); el.type = "button"; el.className = "pmk" + (r.s.kind !== "see" ? " meal" : ""); el.innerHTML = "<i>" + (i + 1) + "</i><span></span>"; el.lastChild.textContent = r.o.name.replace(/ \(.*\)$/, ""); el.setAttribute("aria-label", (i + 1) + ". durak: " + r.o.name);
       el.addEventListener("click", ev => { ev.stopPropagation(); lastPick = Date.now(); select(r.o.id); });
       planMarkers.push(new maplibregl.Marker({element:el}).setLngLat(ll(ptOf(r.o))).addTo(map)); });
     $("#map").classList.add("planning");
@@ -2460,8 +2524,8 @@ function showPlanDay(d){
     const bb = new maplibregl.LngLatBounds(ll(pts[0]), ll(pts[0])); pts.forEach(p => bb.extend(ll(p)));
     map.fitBounds(bb, {padding:{top:110, bottom:60, left:40, right:40}, duration:700});
     // Gerçek sokaklardan geçen çizgi (yaya yönlendirme). Olmazsa düz çizgi kalır.
-    if (pts.length <= 40) fetch("https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + pts.map(p => p[1] + "," + p[0]).join(";") + "?overview=full&geometries=geojson")
-      .then(x => x.json()).then(j => { if (planOnMap === d && j.routes && j.routes[0]) map.getSource("plan").setData({type:"Feature", geometry:j.routes[0].geometry}); }).catch(() => {});
+    if (pts.length <= 40) fetch(OSRM(pts))
+      .then(x => x.json()).then(j => { if (planOnMap === d && j.routes && j.routes[0]) map.getSource("plan").setData({type:"Feature", geometry:{type:"LineString", coordinates:cleanLine(j.routes[0].geometry.coordinates, pts)}}); }).catch(() => {});
   });
 }
 $("#planChip").addEventListener("click", () => clearPlanMap());
@@ -2469,7 +2533,7 @@ $("#planChip").addEventListener("click", () => clearPlanMap());
 /* ---------- Rota modu: rotayı başlat, konum oku, haritayı yöne göre çevir ----------
    Google Maps kadar yakına inilmez (NAV_ZOOM); harita hafif eğilir ve yürüdüğün yöne döner.
    Yön, yürürken GPS'ten, dururken telefonun pusulasından alınır. Hiçbiri yoksa rotanın sıradaki noktasına bakılır. */
-var NAV = null;
+var NAV = null, navOpen = false, navMarkers = [];
 var NAV_IC = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l7.5 18.2-7.5-4.3-7.5 4.3z" fill="currentColor"/></svg>';
 var NAV_ZOOM = 16.4, NAV_PITCH = 48, NAV_KMH = 4.5;
 var navHead = null, navGpsHead = null, navGpsT = 0, compassOn = false, mapTouch = false;
@@ -2542,11 +2606,13 @@ function navLayers(){
   ["nav-done","nav-todo"].forEach(id => { if (!map.getSource(id)) map.addSource(id, {type:"geojson", data:empty}); else map.getSource(id).setData(empty); });
   if (!map.getLayer("nav-done")){
     map.addLayer({id:"nav-done", type:"line", source:"nav-done", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#9AA3B5","line-width":7,"line-opacity":.85}});
+    map.addLayer({id:"nav-out", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#3A1D0B","line-width":16}});
     map.addLayer({id:"nav-case", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#fff","line-width":13}});
-    map.addLayer({id:"nav-todo", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#1D3FA8","line-width":8}});
-    map.addLayer({id:"nav-dash", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":"#FFD23F","line-width":2.5,"line-dasharray":[0.1,3]}});
+    map.addLayer({id:"nav-todo", type:"line", source:"nav-todo", layout:{"line-cap":"round","line-join":"round"}, paint:{"line-color":BRAND,"line-width":8}});
+    arrowImg(); arrowLayer("nav-dash", "nav-todo");
   }
-  ["nav-done","nav-case","nav-todo","nav-dash"].forEach(id => { map.setLayoutProperty(id, "visibility", "visible"); map.moveLayer(id); });
+  dimMap("nav-dim", .3);
+  ["nav-done","nav-out","nav-case","nav-todo","nav-dash"].forEach(id => { map.setLayoutProperty(id, "visibility", "visible"); map.moveLayer(id); });
 }
 const setLine = (id, pts) => { const s = map.getSource(id); if (s) s.setData({type:"Feature", geometry:{type:"LineString", coordinates:pts.map(ll)}}); };
 
@@ -2558,10 +2624,10 @@ function startNav(o){
     navStop(true);
     const line = o.line.length > 1 ? o.line : o.stops.map(s => s.p), cum = cumOf(line);
     const stops = o.stops.map(s => Object.assign({}, s, {at:nearSeg(line, cum, s.p, 0, line.length).at}));
-    NAV = {name:o.name, line, cum, stops, idx:0, at:0, q:line[0], off:false, follow:true, t0:Date.now(), anim:true};
+    NAV = {name:o.name, line, cum, stops, idx:0, at:0, q:line[0], off:false, follow:true, t0:Date.now(), anim:true}; navOpen = false;
     navHead = null; closeSheet(); setTab("map");
     document.querySelector(".view").classList.add("navigating");
-    clearPlanMap(); navLayers(); meShape(); compassUI();
+    clearPlanMap(); navLayers(); navStopMarkers(stops); meShape(); compassUI();
     const fab = $("#locate"); fab.classList.add("recenter"); fab.innerHTML = "<span></span>Ortala"; fab.hidden = true;
     navBar();
     // 1) Genel bakış: tüm rota ekrana sığar, çizgi baştan sona çizilir.
@@ -2629,7 +2695,8 @@ function navProgress(p){
   let k = nearSeg(L, N.cum, p, Math.max(0, N.idx - 3), N.idx + 80);
   if (k.d > 45){ const g = nearSeg(L, N.cum, p, 0, L.length); if (g.d < k.d) k = g; }
   N.off = k.d > 45;
-  if (!N.off){ N.idx = k.i; N.at = k.at; N.q = k.q; }
+  if (!N.off){ N.idx = k.i; N.at = k.at; N.q = k.q; N.offT = 0; }
+  else { if (!N.offT) N.offT = Date.now(); else if (Date.now() - N.offT > 20000) navReroute(); }
   if (!N.anim){
     setLine("nav-done", L.slice(0, N.idx + 1).concat([N.q]));
     setLine("nav-todo", [N.q].concat(L.slice(N.idx + 1)));
@@ -2651,38 +2718,83 @@ function navBar(){
   el.innerHTML = `<span class="nvi"><svg viewBox="0 0 24 24" style="transform:rotate(${Math.round(turn)}deg)" aria-hidden="true"><path d="M12 2.5l7.5 18.2-7.5-4.3-7.5 4.3z" fill="#fff"/></svg></span>
     <span class="nvt"><b>${esc(head)}</b><small>${esc(sub)}</small></span>
     <button class="nvx" type="button" id="navEnd">Bitir</button><span class="nvbar"><i style="width:${total ? Math.round(cur / total * 100) : 0}%"></i></span>`;
+  // Karta dokununca açılan durak listesi: geçilenler soluk, sıradaki vurgulu. Durağa dokununca harita oraya gider.
+  const ni = N.stops.indexOf(next);
+  el.classList.toggle("open", navOpen);
+  if (navOpen) el.insertAdjacentHTML("beforeend", `<ol class="nvl">${N.stops.map((s, i) => `<li><button type="button" data-ns="${i}" class="${i < ni ? "past" : i === ni ? "next" : ""}"><i>${i ? i : ic("flag")}</i><span>${esc(s.name)}</span><small>${i < ni ? "geçildi" : fmtD(Math.max(0, s.at - cur) / 1000)}</small></button></li>`).join("")}</ol><button type="button" class="nvc" data-nc>Konumuma dön</button>`);
+  else el.insertAdjacentHTML("beforeend", `<span class="nvh">Duraklar ▾</span>`);
+  navMarkers.forEach((m, i) => m.getElement().classList.toggle("past", i < ni));
   el.hidden = tab !== "map";
 }
-$("#navbar").addEventListener("click", e => { if (e.target.closest("#navEnd")) navStop(); });
+$("#navbar").addEventListener("click", e => {
+  if (e.target.closest("#navEnd")){ navStop(); return; }
+  const b = e.target.closest("[data-ns]");
+  if (b && NAV){ const st = NAV.stops[+b.dataset.ns]; navOpen = false; navFollow(false); map.flyTo({center:ll(st.p), zoom:Math.max(map.getZoom(), 16.5), duration:900}); if (st.id && find(st.id)){ lastPick = Date.now(); select(st.id, true); } navBar(); return; }
+  if (e.target.closest("[data-nc]")){ navOpen = false; navFollow(true); navCam(true); navBar(); return; }
+  navOpen = !navOpen; navBar();
+});
+function navStopMarkers(stops){
+  navMarkers.forEach(m => m.remove()); navMarkers = [];
+  stops.forEach((st, i) => { const el = document.createElement("div"); el.className = "pmk nav" + (i ? (st.meal ? " meal" : "") : " start");
+    el.innerHTML = i ? "<i>" + i + "</i>" : ic("flag"); navMarkers.push(new maplibregl.Marker({element:el}).setLngLat(ll(st.p)).addTo(map)); });
+}
 
 function navStop(silent){
   if (!NAV) return;
-  NAV = null; navHead = null;
+  NAV = null; navHead = null; navOpen = false; navMarkers.forEach(m => m.remove()); navMarkers = [];
   document.querySelector(".view").classList.remove("navigating");
   $("#navbar").hidden = true;
   const fab = $("#locate"); fab.classList.remove("recenter"); fab.innerHTML = "<span></span>"; fab.hidden = tab !== "map";
   if (map && !silent){
-    ["nav-done","nav-case","nav-todo","nav-dash"].forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", "none"); });
+    ["nav-dim","nav-done","nav-out","nav-case","nav-todo","nav-dash"].forEach(id => { if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", "none"); });
     map.easeTo({pitch:0, bearing:0, zoom:Math.min(map.getZoom(), 15.5), padding:{top:0, bottom:0}, duration:800});
   }
   meShape(); compassUI();
 }
 
 /* Hazır yürüyüş rotası */
+/* Rotayı başlat: konum şehirdeyse ve rotanın başından uzaksan, rota bulunduğun yerden en yakın durağa bağlanır
+   ve oradan sırayla rotanın sonuna kadar devam eder. */
 function startRouteNav(id){
   const r = city.routes.find(x => x.id === id); if (!r) return;
+  compassStart();
   const names = r.stops && r.stops.length === r.pts.length ? r.stops : null;
-  startNav({name:r.name, line:r.geo ? r.geo.line : r.pts, stops:r.pts.map((p, i) => ({p, name:names ? names[i] : (i + 1) + ". durak"}))});
+  const all = r.pts.map((p, i) => ({p, name:names ? names[i] : (i + 1) + ". durak"}));
+  const here = me && inCity() ? me.slice() : null;
+  if (!here || km(here, r.pts[0]) < 0.12){ startNav({name:r.name, line:r.geo ? r.geo.line : r.pts, stops:all}); return; }
+  const last = all.length - 1, loop = last > 0 && km(r.pts[0], r.pts[last]) < 0.06, n = loop ? last : all.length;
+  let j = 0, bd = 1e9; for (let i = 0; i < n; i++){ const d = km(here, all[i].p); if (d < bd){ bd = d; j = i; } }
+  let seq = all.slice(j);
+  if (seq.length < 2) seq = all.slice(Math.max(0, all.length - 2));
+  const stops = [{p:here, name:"Konumun"}].concat(seq), pts = stops.map(s => s.p);
+  toast("Rota bulunduğun yerden kuruldu: önce " + seq[0].name + " durağına, sonra sırayla devam.");
+  const go = line => startNav({name:r.name, line, stops});
+  fetch(OSRM(pts)).then(x => x.json()).then(j2 => go(j2.routes && j2.routes[0] ? cleanLine(j2.routes[0].geometry.coordinates, pts).map(c => [c[1], c[0]]) : pts)).catch(() => go(pts));
+}
+/* Rotadan 45 m'den fazla uzaklaşıp 20 saniye öyle kalırsan çizgi bulunduğun yerden sıradaki duraklara yeniden hesaplanır. */
+function navReroute(){
+  const N = NAV; if (!N || !me || N.rr || Date.now() - (N.rrT || 0) < 30000) return;
+  const cur = N.at, rest = N.stops.filter(s => s.at > cur + 15); if (!rest.length) return;
+  N.rr = true; N.rrT = Date.now();
+  const pts = [me.slice()].concat(rest.map(s => s.p));
+  fetch(OSRM(pts)).then(x => x.json()).then(j => {
+    if (NAV !== N || !j.routes || !j.routes[0]) return;
+    const line = cleanLine(j.routes[0].geometry.coordinates, pts).map(c => [c[1], c[0]]), cum = cumOf(line);
+    N.line = line; N.cum = cum; N.idx = 0; N.at = 0; N.q = line[0]; N.off = false; N.offT = 0;
+    N.stops = [{p:pts[0], name:"Yeniden hesaplandı", at:0}].concat(rest.map(s => Object.assign({}, s, {at:nearSeg(line, cum, s.p, 0, line.length).at})));
+    navStopMarkers(N.stops); setLine("nav-done", [line[0]]); setLine("nav-todo", line); navBar();
+    toast("Rota bulunduğun yerden yeniden hesaplandı.");
+  }).catch(() => {}).finally(() => { N.rr = false; });
 }
 /* Günlük plan: duraklar sırayla, çizgi gerçek sokaklardan (olmazsa düz). */
 function startPlanNav(d){
   const P = store.plan; if (!P) return;
   const rows = timeline(P, d).rows, pts = [P.start].concat(rows.map(r => ptOf(r.o)));
-  const stops = [{p:P.start, name:"Başlangıç"}].concat(rows.map(r => ({p:ptOf(r.o), name:r.o.name.replace(/ \(.*\)$/, "")})));
+  const stops = [{p:P.start, name:"Başlangıç"}].concat(rows.map(r => ({p:ptOf(r.o), id:r.o.id, meal:r.s.kind !== "see", name:r.o.name.replace(/ \(.*\)$/, "")})));
   const go = line => startNav({name:(d + 1) + ". gün planı", line, stops});
   if (pts.length > 40){ go(pts); return; }
-  fetch("https://routing.openstreetmap.de/routed-foot/route/v1/foot/" + pts.map(p => p[1] + "," + p[0]).join(";") + "?overview=full&geometries=geojson")
-    .then(x => x.json()).then(j => go(j.routes && j.routes[0] ? j.routes[0].geometry.coordinates.map(c => [c[1], c[0]]) : pts)).catch(() => go(pts));
+  fetch(OSRM(pts))
+    .then(x => x.json()).then(j => go(j.routes && j.routes[0] ? cleanLine(j.routes[0].geometry.coordinates, pts).map(c => [c[1], c[0]]) : pts)).catch(() => go(pts));
 }
 
 /* ---------- Arama: uygulamadaki noktalar + OpenStreetMap (Photon, yedek Nominatim) ----------
@@ -2876,3 +2988,5 @@ if ("serviceWorker" in navigator && location.protocol === "https:" && location.h
 </script>
 </body>
 </html>
+
+</body></html>
