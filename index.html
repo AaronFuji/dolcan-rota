@@ -102,6 +102,12 @@ h1,h2,h3,p,dl{margin:0}
 .pin.sel{width:38px;height:38px;border-color:var(--ink)}
 .rstart{width:30px;height:30px;border-radius:50%;background:var(--walk);border:3px solid var(--white);box-shadow:0 3px 0 rgba(58,29,11,.3);display:grid;place-items:center;color:var(--white);font-weight:800;font-family:var(--display);font-size:16px}
 .rstart.sel{border-color:var(--ink)}
+.rstart.faded{opacity:.7;transform:scale(.8)}
+.rstart svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mk.rs{z-index:6}
+.rstop{width:28px;height:28px;border-radius:50%;background:#FFD23F;border:3px solid #3A1D0B;color:#3A1D0B;display:grid;place-items:center;font-weight:800;font-family:var(--display);font-size:14px;box-shadow:0 2px 0 rgba(58,29,11,.35)}
+.rstop.first{background:#1D3FA8;color:#fff}
+.far .mk.rs span{display:none}
 .medot{width:22px;height:22px;border-radius:50%;background:var(--me);border:4px solid var(--white);box-shadow:0 0 0 0 rgba(18,115,235,.5);animation:pulse 1.6s infinite}
 @keyframes pulse{to{box-shadow:0 0 0 20px rgba(18,115,235,0)}}
 .fab{position:absolute;right:12px;bottom:34px;width:52px;height:52px;border-radius:50%;background:var(--white);box-shadow:var(--shadow);display:grid;place-items:center;z-index:500}
@@ -959,7 +965,7 @@ CITIES.prag = {
     {id:"p_havelska",cat:"market",name:"Havelská Pazarı",wiki:"Old_Town_Square",gen:1,lat:50.0847749,lon:14.4209608,pid:"ChIJp9JHkO6UC0cRfEdsFamVHGE",price:"€€",rating:4.2,rc:32048,rdate:"19.10.2026",eat:"Hediyelik eşya ve meyve tezgâhları.",why:"1232'den beri açık pazar. Hediyelik için ucuz; meyve için değil.",hours:"Pzt-Cmt 07:00-19:00, Paz 08:00-18:30",tip:"Meyve fiyatları 100 gram için yazılıyor ve kart makinesi gizleniyor; birçok yorumda dolandırılma anlatılıyor. Meyve alma."}
   ],
   routes:[
-    {id:"r-p-tam",prog:1,name:"Büyük Prag Turu: Gardan Gara",wiki:"Prague",desc:"Praha hlavní nádraží'den başlayıp Václav Meydanı, Barut Kulesi, Eski Şehir, Yahudi Mahallesi, Karl Köprüsü, Malá Strana, Prag Kalesi, Strahov ve Petřín bahçelerinden geçerek nehir kıyısı ve Dans Eden Ev üzerinden yine gara dönen tam günlük tur. Yaklaşık 13 km, molalarla 9-10 saat.",hist:"08:00 Praha hlavní nádraží. Çıkmadan önce garın tarihi binasına bak: Josef Fanta'nın 1909'da bitirdiği Art Nouveau holü ve kubbeli kafesi (Fantova kavárna) ücretsiz görülür. Önündeki Vrchlického sady parkından çıkıp Ulusal Müze'nin önüne yürü.\n\n08:30 Václav Meydanı. Ulusal Müze'nin önündeki Aziz Václav heykelinden 750 metrelik meydanın aşağısına in. 1968 Prag Baharı'nın ve 1989 Kadife Devrim'in sahnesi burası.\n\n09:15 Barut Kulesi ve Belediye Evi. Na Příkopě caddesinden sağa dön; Gotik Barut Kulesi ile yanındaki Art Nouveau Obecní dům yan yana. Kraliyet Yolu buradan başlar. Celetná'da Kolacherie'den bir koláč al, kahvaltı bu.\n\n09:45 Eski Şehir Meydanı. Týn Kilisesi'nin kuleleri, yerdeki 27 haç, Jan Hus anıtı. Saat başı astronomik saatin gösterisini izle (10:00 iyi denk gelir).\n\n10:30 Yahudi Mahallesi. Pařížská caddesinden Eski-Yeni Sinagog'a, oradan İspanyol Sinagogu'nun önüne ve Eski Yahudi Mezarlığı'nın duvarı boyunca yürü. Sinagogların içi Yahudi Müzesi biletiyle; dışarıdan görmek ücretsiz. Cumartesi müzeler kapalı.\n\n11:30 Klementinum ve Karl Köprüsü. Karlova sokağından Klementinum'un önüne, sonra Köprü Kulesi'nin altından köprüye. Aziz Jan Nepomuk heykelinin kabartmasına dokun. Köprüyü yavaş geç, kale tam karşında.\n\n12:15 Kampa ve Lennon Duvarı. Köprünün ortasındaki merdivenden Kampa Adası'na in, Şeytan Deresi'nin değirmenine bak, Lennon Duvarı'na yürü.\n\n13:00 Öğle yemeği Malá Strana'da. Lokál U Bílé kuželky turistik bölgedeki dürüst fiyatlı seçenek; daha ucuzu kale yokuşunun dibindeki U Hrocha (yalnızca nakit).\n\n14:00 Nerudova yokuşu ve Prag Kalesi. St. Nikolaus'un önünden Nerudova'yı çıkıp kale meydanına var. Avlular ve St. Vitus Katedrali'nin girişteki bölümü ücretsiz; Mucha vitrayı oradan görünür. Nöbet değişimi her saat başı ana kapıda.\n\n15:30 Loreta ve Strahov. Kale meydanının batısından Loreta'nın önüne (saat başı çanlar), oradan Strahov Manastırı'na. Avlunun ucundaki teraslardan bütün Prag ayağının altında.\n\n16:30 Petřín bahçeleri. Strahov'dan güneye, meyve bahçelerinin içinden Petřín Kulesi'ne ve yokuş aşağı Újezd'e in. Füniküler ve kule ücretli; inişi yürüyerek yapmak ücretsiz ve çok güzel.\n\n17:30 Nehir kıyısı. Most Legií köprüsünden nehri geç, Ulusal Tiyatro ve Café Slavia'nın önünden nehir boyunca güneye yürü. Gün batımında kale arkada kalır.\n\n18:15 Dans Eden Ev. Frank Gehry ile Vlado Milunić'in eğri binası. İstersen biraz daha güneydeki Náplavka rıhtımına uzan.\n\n18:45 Akşam yemeği ve gara dönüş. Karlovo náměstí üzerinden Pivovarský dům Benedict'te kendi biraları ve Çek tadım menüsü, oradan Ulusal Müze'nin arkasından gara yaklaşık 20 dakika.",why:"Prag'ın bütün önemli noktaları tek günde ve neredeyse hiç bilet almadan. Sabah erken başla; yorulursan tramvay 22 kale ile nehir arasında işe yarar.",stops:["Praha hl.n.","Ulusal Müze","Václav Meydanı","Barut Kulesi","Eski Şehir Meydanı","Eski-Yeni Sinagog","Eski Yahudi Mezarlığı","Klementinum","Köprü Kulesi","Karl Köprüsü","Kampa","Lennon Duvarı","Malá Strana","Nerudova","Prag Kalesi","St. Vitus","Loreta","Strahov","Petřín Kulesi","Újezd","Ulusal Tiyatro","Dans Eden Ev","Karlovo náměstí","Praha hl.n."],pts:[[50.0832,14.4353],[50.0793,14.4305],[50.0827,14.4258],[50.0873,14.4272],[50.0872,14.4209],[50.0900,14.4186],[50.0893,14.4172],[50.0866,14.4160],[50.0862,14.4136],[50.0865,14.4114],[50.0853,14.4088],[50.0863,14.4068],[50.0880,14.4036],[50.0886,14.3990],[50.0898,14.3980],[50.0909,14.4005],[50.0892,14.3917],[50.0864,14.3888],[50.0835,14.3951],[50.0806,14.4040],[50.0811,14.4134],[50.0754,14.4142],[50.0760,14.4190],[50.0790,14.4310],[50.0832,14.4353]]},
+    {id:"r-p-tam",prog:1,name:"Büyük Prag Turu: Gardan Gara",wiki:"Prague",desc:"Praha hlavní nádraží'den başlayıp Václav Meydanı, Barut Kulesi, Eski Şehir, Yahudi Mahallesi, Karl Köprüsü, Malá Strana, Prag Kalesi, Strahov ve Petřín bahçelerinden geçerek nehir kıyısı ve Dans Eden Ev üzerinden yine gara dönen tam günlük tur. Yaklaşık 13 km, molalarla 9-10 saat.",hist:"08:00 Praha hlavní nádraží. Çıkmadan önce garın tarihi binasına bak: Josef Fanta'nın 1909'da bitirdiği Art Nouveau holü ve kubbeli kafesi (Fantova kavárna) ücretsiz görülür. Önündeki Vrchlického sady parkından çıkıp Ulusal Müze'nin önüne yürü.\n\n08:30 Václav Meydanı. Ulusal Müze'nin önündeki Aziz Václav heykelinden 750 metrelik meydanın aşağısına in. 1968 Prag Baharı'nın ve 1989 Kadife Devrim'in sahnesi burası.\n\n09:15 Barut Kulesi ve Belediye Evi. Na Příkopě caddesinden sağa dön; Gotik Barut Kulesi ile yanındaki Art Nouveau Obecní dům yan yana. Kraliyet Yolu buradan başlar. Celetná'da Kolacherie'den bir koláč al, kahvaltı bu.\n\n09:45 Eski Şehir Meydanı. Týn Kilisesi'nin kuleleri, yerdeki 27 haç, Jan Hus anıtı. Saat başı astronomik saatin gösterisini izle (10:00 iyi denk gelir).\n\n10:30 Yahudi Mahallesi. Pařížská caddesinden Eski-Yeni Sinagog'a, oradan İspanyol Sinagogu'nun önüne ve Eski Yahudi Mezarlığı'nın duvarı boyunca yürü. Sinagogların içi Yahudi Müzesi biletiyle; dışarıdan görmek ücretsiz. Cumartesi müzeler kapalı.\n\n11:30 Klementinum ve Karl Köprüsü. Karlova sokağından Klementinum'un önüne, sonra Köprü Kulesi'nin altından köprüye. Aziz Jan Nepomuk heykelinin kabartmasına dokun. Köprüyü yavaş geç, kale tam karşında.\n\n12:15 Kampa ve Lennon Duvarı. Köprünün ortasındaki merdivenden Kampa Adası'na in, Şeytan Deresi'nin değirmenine bak, Lennon Duvarı'na yürü.\n\n13:00 Öğle yemeği Malá Strana'da. Lokál U Bílé kuželky turistik bölgedeki dürüst fiyatlı seçenek; daha ucuzu kale yokuşunun dibindeki U Hrocha (yalnızca nakit).\n\n14:00 Nerudova yokuşu ve Prag Kalesi. St. Nikolaus'un önünden Nerudova'yı çıkıp kale meydanına var. Avlular ve St. Vitus Katedrali'nin girişteki bölümü ücretsiz; Mucha vitrayı oradan görünür. Nöbet değişimi her saat başı ana kapıda.\n\n15:30 Loreta ve Strahov. Kale meydanının batısından Loreta'nın önüne (saat başı çanlar), oradan Strahov Manastırı'na. Avlunun ucundaki teraslardan bütün Prag ayağının altında.\n\n16:30 Petřín bahçeleri. Strahov'dan güneye, meyve bahçelerinin içinden Petřín Kulesi'ne ve yokuş aşağı Újezd'e in. Füniküler ve kule ücretli; inişi yürüyerek yapmak ücretsiz ve çok güzel.\n\n17:30 Nehir kıyısı. Most Legií köprüsünden nehri geç, Ulusal Tiyatro ve Café Slavia'nın önünden nehir boyunca güneye yürü. Gün batımında kale arkada kalır.\n\n18:15 Dans Eden Ev. Frank Gehry ile Vlado Milunić'in eğri binası. İstersen biraz daha güneydeki Náplavka rıhtımına uzan.\n\n18:45 Akşam yemeği ve gara dönüş. Karlovo náměstí üzerinden Pivovarský dům Benedict'te kendi biraları ve Çek tadım menüsü, oradan Ulusal Müze'nin arkasından gara yaklaşık 20 dakika.",why:"Prag'ın bütün önemli noktaları tek günde ve neredeyse hiç bilet almadan. Sabah erken başla; yorulursan tramvay 22 kale ile nehir arasında işe yarar.",stops:["Praha hl.n.","Ulusal Müze","Václav Meydanı","Barut Kulesi","Eski Şehir Meydanı","Eski-Yeni Sinagog","Eski Yahudi Mezarlığı","Klementinum","Köprü Kulesi","Karl Köprüsü","Kampa","Lennon Duvarı","Malá Strana","Nerudova","Prag Kalesi","St. Vitus","Loreta","Strahov","Petřín Kulesi","Újezd","Ulusal Tiyatro","Dans Eden Ev","Karlovo náměstí","Praha hl.n."],pts:[[50.0832,14.4353],[50.0793,14.4305],[50.0827,14.4258],[50.0873,14.4272],[50.0872,14.4209],[50.0900,14.4186],[50.0893,14.4172],[50.0866,14.4160],[50.0862,14.4136],[50.0865,14.4114],[50.0853,14.4088],[50.0863,14.4068],[50.0880,14.4036],[50.0886,14.3990],[50.0898,14.3980],[50.0909,14.4005],[50.0892,14.3917],[50.0864,14.3888],[50.0835,14.3951],[50.0806,14.4040],[50.0811,14.4134],[50.0754,14.4142],[50.0760,14.4190],[50.0832,14.4353]]},
     {id:"r-p-royal",name:"Kraliyet Yolu",wiki:"Charles_Bridge",desc:"Barut Kulesi'nden Celetná, Eski Şehir Meydanı ve Karlova üzerinden Karl Köprüsü'ne, oradan Malá Strana ve Nerudova yokuşundan kaleye.",hist:"Bohemya kralları taç giymeye giderken tam bu yolu izlerdi: Barut Kulesi'nden girip Eski Şehir'i geçer, köprüden nehri aşar, Malá Strana'dan yokuşu çıkarak katedrale varırlardı. Bugün Prag'ın en ünlü yürüyüşüdür ve şehrin bütün çağlarını sırayla gösterir.",why:"Prag'ın omurgası. Sabah erken başla.",stops:["Barut Kulesi","Celetná","Eski Şehir Meydanı","Karlova","Köprü Kulesi","Karl Köprüsü","Malá Strana Meydanı","Nerudova","Kale meydanı","St. Vitus"],pts:[[50.0873,14.4278],[50.0874,14.4245],[50.0875,14.4208],[50.0864,14.4175],[50.0862,14.4136],[50.0865,14.4114],[50.0880,14.4035],[50.0886,14.3986],[50.0898,14.3980],[50.0909,14.4005]]},
     {id:"r-p-josefov",name:"Yahudi Mahallesi (Josefov)",wiki:"Josefov",desc:"Eski Şehir Meydanı'ndan Pařížská caddesi boyunca Eski-Yeni Sinagog, Pinkas Sinagogu ve Eski Yahudi Mezarlığı'na, sonra İspanyol Sinagogu.",hist:"Josefov, yüzyıllarca duvarlarla çevrili Prag Yahudi gettosuydu. 19. yüzyıl sonunda şehir mahallenin çoğunu yıkıp yerine Paris tarzı lüks Pařížská caddesini açtı. Yıkımdan kurtulan altı sinagog ve mezarlık bugün Yahudi Müzesi olarak korunur.",why:"Prag'ın en derin hikâyesi. Cumartesi kapalı.",stops:["Eski Şehir Meydanı","Pařížská","Eski-Yeni Sinagog","Pinkas Sinagogu","Eski Yahudi Mezarlığı","İspanyol Sinagogu"],pts:[[50.0875,14.4208],[50.0890,14.4195],[50.0901,14.4186],[50.0892,14.4170],[50.0899,14.4175],[50.0901,14.4208]]},
     {id:"r-p-mala",name:"Malá Strana ve Kampa",wiki:"Malá_Strana",desc:"Karl Köprüsü'nün batı ucundan Kampa Adası'na, Lennon Duvarı ve Lázeňská sokağından St. Nikolaus'a, sonra Valdštejn Bahçesi.",hist:"Malá Strana (Küçük Taraf), kale ile nehir arasındaki barok mahalledir. Sarayların çoğu bugün büyükelçilik. Dar sokaklarda yürürken Prag'ın en romantik köşelerinden geçersin.",why:"Köprüden sonra sakin bir yarım saat.",stops:["Köprünün batı ucu","Kampa","Lennon Duvarı","Lázeňská","St. Nikolaus","Valdštejn Bahçesi"],pts:[[50.0866,14.4085],[50.0848,14.4084],[50.0863,14.4068],[50.0868,14.4062],[50.0880,14.4035],[50.0904,14.4079]]},
@@ -1674,13 +1680,14 @@ function openCity(key){
     .catch(() => { $("#loading").lastChild.textContent = "Harita yüklenemedi. Bağlantını kontrol edip sayfayı yenile. Liste sekmesi yine çalışır."; $("#loading").firstChild.hidden = true; });
 }
 function initMap(style){
+  stopMk.forEach(m => m.remove()); stopMk = []; stopFor = null;
   const b = city.bounds;
   map = new maplibregl.Map({container:"map", style, center:ll(city.center), zoom:city.zoom, minZoom:city.minZoom, maxZoom:19,
     maxBounds:[[b[0][1], b[0][0]], [b[1][1], b[1][0]]], dragRotate:true, pitchWithRotate:false, touchPitch:false, maxPitch:60, attributionControl:{compact:true}});
   map.on("rotate", compassUI); map.on("pitch", compassUI);
   city.places.forEach(p => { markers[p.id] = mk(p.id, (artOf(p) ? `<svg class="art" viewBox="0 0 48 56">${artOf(p)}</svg>` : "") + `<div class="${pinCls(p)}" style="--c:${CATS[p.cat].c}"><b>${p.cat === "coffee" ? ic("cup") : p.cat === "bakery" ? ic("croissant") : p.cat === "market" ? ic("cart") : (p.price || "")}</b></div>`, p.name, [p.lat, p.lon], "bottom"); if (ART[p.id]) markers[p.id].el.classList.add("hasart"); });
   let n = 0;
-  city.routes.forEach(r => { markers[r.id] = mk(r.id, `<div class="rstart${r.ferry ? " ferry" : ""}">${r.ferry || ++n}</div>`, r.name, r.pts[0], "center"); });
+  city.routes.forEach(r => { markers[r.id] = mk(r.id, `<div class="rstart${r.ferry ? " ferry" : ""}">${r.ferry || ic("walk")}</div>`, r.name, r.pts[0], "center"); });
   map.on("load", () => {
     $("#loading").hidden = true;
     city.routes.forEach(r => {
@@ -1713,15 +1720,45 @@ function mk(id, html, name, pos, anchor){
   const m = new maplibregl.Marker({element:el, anchor}).setLngLat(ll(pos)).addTo(map); m.el = el; return m;
 }
 const pinCls = p => "pin" + (p.cat === "photo" ? " ring" : "") + (store.done[p.id] ? " done" : "") + (store.fav[p.id] ? " fav" : "") + (sel === p.id ? " sel" : "");
+/* Haritada aynı anda tek rota görünür: seçili rota ya da en son seçilen (sabitlenen) rota.
+   Durakları numaralı işaretlerle gösterilir; diğer rotaların yalnızca başlangıç simgesi kalır. */
+let stopMk = [], stopFor = null;
+function shownRoute(){
+  if (!city) return null;
+  if (sel && city.routes.some(r => r.id === sel)) return sel;
+  if (NAV) return null;
+  const p = (store.pin || {})[city.key];
+  return p === undefined ? ((city.routes.find(r => !r.ferry) || {}).id || null) : p;
+}
+function drawStops(){
+  const id = store.layers.walk ? shownRoute() : null;
+  if (stopFor === id && stopMk.length) return;
+  stopMk.forEach(m => m.remove()); stopMk = []; stopFor = id; if (!id) return;
+  const r = city.routes.find(x => x.id === id); if (!r || r.ferry) return;
+  const names = r.stops && r.stops.length === r.pts.length ? r.stops : null, last = r.pts.length - 1;
+  const loop = last > 0 && km(r.pts[0], r.pts[last]) < 0.06;
+  const idx = names ? r.pts.map((_, i) => i) : [0, last];
+  idx.forEach((i, k) => {
+    if (loop && i === last) return;
+    const num = names ? i + 1 : (k === 0 ? "A" : "B");
+    const label = names ? names[i] + (loop && i === 0 ? " (başlangıç ve bitiş)" : "") : (k === 0 ? "Başlangıç" : "Bitiş");
+    const el = document.createElement("div"); el.className = "mk on rs";
+    el.innerHTML = `<div class="rstop${i === 0 ? " first" : ""}">${num}</div><span></span>`; el.lastChild.textContent = label;
+    el.addEventListener("click", e => { e.stopPropagation(); lastPick = Date.now(); select(r.id, true); });
+    stopMk.push(new maplibregl.Marker({element:el, anchor:"center"}).setLngLat(ll(r.pts[i])).addTo(map));
+  });
+}
 function refresh(){
   if (!map) return;
   city.places.forEach(p => { const el = markers[p.id].el; el.style.display = store.layers[p.cat] && paidOK(p) ? "" : "none"; el.querySelector(".pin").className = pinCls(p); el.classList.toggle("on", sel === p.id); el.classList.toggle("dim", !!store.done[p.id]); });
-  city.routes.forEach(r => { const on = sel === r.id, el = markers[r.id].el; el.style.display = store.layers.walk ? "" : "none"; el.firstChild.classList.toggle("sel", on); el.classList.toggle("on", on);
-    if (!map.getLayer(r.id + "-c")) return; const v = store.layers.walk ? "visible" : "none", base = r.ferry ? FERRY : ROUTE;
+  const shown = shownRoute();
+  city.routes.forEach(r => { const on = shown === r.id, el = markers[r.id].el; el.style.display = store.layers.walk && !(on && !r.ferry) ? "" : "none"; el.firstChild.classList.toggle("sel", on); el.firstChild.classList.toggle("faded", !!shown && !on); el.classList.toggle("on", sel === r.id);
+    if (!map.getLayer(r.id + "-c")) return; const v = store.layers.walk && on ? "visible" : "none", base = r.ferry ? FERRY : ROUTE;
     map.setLayoutProperty(r.id + "-c", "visibility", v); map.setLayoutProperty(r.id + "-l", "visibility", v);
     map.setPaintProperty(r.id + "-c", "line-color", on ? "#3A1D0B" : "#fff"); map.setPaintProperty(r.id + "-c", "line-width", on ? 12 : 9);
     map.setPaintProperty(r.id + "-l", "line-color", on ? "#FFD23F" : base); map.setPaintProperty(r.id + "-l", "line-width", on ? 7 : 5);
     if (on){ map.moveLayer(r.id + "-c", "names"); map.moveLayer(r.id + "-l", "names"); } });
+  drawStops();
   if (map.getLayer("names")) map.setFilter("names", ["all", ["in", ["get","cat"], ["literal", Object.keys(CATS).filter(k => store.layers[k])]], store.layers.paid ? true : ["==", ["get","paid"], 0]]);
 }
 /* Rotalar gerçek sokaklardan geçsin: yaya yönlendirme servisi (OSM). Olmazsa düz çizgi kalır. */
@@ -1781,6 +1818,7 @@ const find = id => city.places.find(p => p.id === id) || city.routes.find(r => r
 function select(id, keepView){
   sel = id; const o = find(id), isRoute = !!o.pts, cat = isRoute ? "walk" : o.cat;
   if (!isRoute && !paidOK(o)){ store.layers.paid = true; save(); renderChips(); }
+  if (isRoute){ store.pin = store.pin || {}; store.pin[city.key] = id; save(); }
   if (tab !== "map") setTab("map"); refresh();
   if (!keepView && map){
     const h = $("#map").clientHeight, narrow = innerWidth < 760;
@@ -1793,7 +1831,7 @@ function select(id, keepView){
     const g = o.geo;
     if (o.ferry) facts = o.facts.map(f => `<dt>${f[0]}</dt><dd>${esc(f[1])}</dd>`).join("");
     else facts = g ? `<dt>Mesafe</dt><dd>${g.km.toFixed(1).replace(".",",")} km</dd><dt>Süre</dt><dd>Yaklaşık ${Math.round(g.min/5)*5} dk (molasız)</dd>` : `<dt>Mesafe</dt><dd>Hesaplanıyor</dd>`;
-    if (o.stops) facts += `<dt>Duraklar</dt><dd>${o.stops.map(esc).join(" → ")}</dd>`;
+    if (o.stops) facts += `<dt>Duraklar</dt><dd>${o.stops.length === o.pts.length ? o.stops.map((x, i) => (i + 1) + ". " + esc(x)).join(" → ") : o.stops.map(esc).join(" → ")}</dd>`;
     const s = o.pts[0], e = o.pts[o.pts.length-1], mid = o.pts.slice(1,-1).map(p => p.join(",")).join("|");
     gm = `https://www.google.com/maps/dir/?api=1&origin=${s.join(",")}&destination=${e.join(",")}&waypoints=${encodeURIComponent(mid)}&travelmode=walking`;
     if (o.ferry) gm = `https://www.google.com/maps/dir/?api=1&origin=${s.join(",")}&destination=${e.join(",")}&travelmode=transit`;
@@ -1819,7 +1857,7 @@ function select(id, keepView){
     <dl class="facts">${facts}</dl>
     ${o.tip ? `<p class="open-q">${esc(o.tip)}</p>` : ""}${open.map(t => `<p class="open-q">${t}</p>`).join("")}
     <div class="acts">
-      ${isRoute && !o.ferry ? `<button class="btn primary go-nav" type="button" data-nav="${o.id}">${NAV_IC}Rotayı başlat</button>` : ""}
+      ${isRoute && !o.ferry ? `<button class="btn primary go-nav" type="button" data-nav="${o.id}">${NAV_IC}Rotayı başlat</button><button class="btn" type="button" data-hide="${o.id}">Rotayı haritadan gizle</button>` : ""}
       ${!isRoute ? `<button class="btn primary go-nav" type="button" data-go="${o.id}">${NAV_IC}Buraya rota oluştur</button>` : ""}
       <a class="btn" href="${dir}" target="_blank" rel="noopener">${isRoute ? "Başlangıca yol tarifi" : "Google Maps yol tarifi"}</a>
       <a class="btn" href="${gm}" target="_blank" rel="noopener">${isRoute ? "Rotayı Google Maps'te aç" : "Google Maps'te aç"}</a>
@@ -1834,6 +1872,7 @@ function select(id, keepView){
 $("#sheet").addEventListener("click", e => {
   if (e.target.closest("#closeSheet")){ closeSheet(); return; }
   const nv = e.target.closest("[data-nav]"); if (nv){ startRouteNav(nv.dataset.nav); return; }
+  const hd = e.target.closest("[data-hide]"); if (hd){ store.pin = store.pin || {}; store.pin[city.key] = null; save(); closeSheet(); return; }
   const t = e.target.closest("[data-t]"); if (!t) return;
   const k = t.dataset.t; if (store[k][sel]) delete store[k][sel]; else store[k][sel] = 1; save(); select(sel, true);
 });
